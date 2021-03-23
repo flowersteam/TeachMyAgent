@@ -4,8 +4,8 @@ import emcee
 import numpy as np
 import torch
 import scipy.linalg as scpla
-from ACL_bench.teachers.algos.AbstractTeacher import AbstractTeacher
-from ACL_bench.teachers.utils.gaussian_torch_distribution import GaussianTorchDistribution
+from TeachMyAgent.teachers.algos.AbstractTeacher import AbstractTeacher
+from TeachMyAgent.teachers.utils.gaussian_torch_distribution import GaussianTorchDistribution
 from scipy.optimize import minimize, NonlinearConstraint, Bounds
 from scipy.stats import multivariate_normal
 import itertools
