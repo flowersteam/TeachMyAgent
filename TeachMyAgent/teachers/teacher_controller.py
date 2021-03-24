@@ -6,7 +6,7 @@ from TeachMyAgent.teachers.algos.alp_gmm import ALPGMM
 from TeachMyAgent.teachers.algos.covar_gmm import CovarGMM
 from TeachMyAgent.teachers.algos.adr import ADR
 from TeachMyAgent.teachers.algos.self_paced_teacher import SelfPacedTeacher
-from ACL_bench.teachers.algos.truncated_self_paced import SelfPacedTeacher as TruncatedSelfPacedTeacher
+from TeachMyAgent.teachers.algos.truncated_self_paced import SelfPacedTeacher as TruncatedSelfPacedTeacher
 from TeachMyAgent.teachers.algos.goal_gan import GoalGAN
 from TeachMyAgent.teachers.algos.setter_solver import SetterSolver
 from TeachMyAgent.teachers.algos.random_teacher import RandomTeacher
