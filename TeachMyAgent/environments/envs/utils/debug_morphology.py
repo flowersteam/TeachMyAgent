@@ -61,7 +61,7 @@ def main():
         walkers_to_debug = [sys.argv[1]]
 
     for walker_type in walkers_to_debug:
-        env = gym.make('parametric-continuous-walker-v0', walker_type=walker_type)
+        env = gym.make('parametric-continuous-stump-tracks-v0', walker_type=walker_type)
         action_space = env.action_space
 
         env.set_environment(stump_height=0, obstacle_spacing=0)

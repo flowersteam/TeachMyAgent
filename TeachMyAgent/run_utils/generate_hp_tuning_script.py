@@ -72,7 +72,7 @@ if __name__ == '__main__':
 
                 f.write(
                     '--slurm_conf jeanzay_medium --nb_seeds 16 --exp_name teachers_hp_tuning --allow_expert_knowledge original '
-                    '--test_set parametric_stumps_test_set --env parametric-continuous-walker-v0 --max_stump_h 3.0 '
+                    '--test_set parametric_stumps_test_set --env parametric-continuous-stump-tracks-v0 --max_stump_h 3.0 '
                     '--max_obstacle_spacing 6.0 --walker_type old_classic_bipedal --student sac_v0.1.1 --backend tf1 '
                     '--steps_per_ep 500000 --nb_test_episode 100 --nb_env_steps 7 {} --keep_periodical_task_samples 250000\n'
                     .format(current_arguments)

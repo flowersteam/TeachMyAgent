@@ -41,7 +41,7 @@ envs = [
     #     "stump_seq": None
     # },
     # {
-    #     'env':'parametric-continuous-walker-v0',
+    #     'env':'parametric-continuous-stump-tracks-v0',
     #     "walker_type": ["old_classic_bipedal", "classic_bipedal", "profile_chimpanzee"],
     #     "motors_torque": 80,
     #     "max_stump_h": [0, 3.0],

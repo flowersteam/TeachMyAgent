@@ -1,10 +1,14 @@
 TeachMyAgent: a Benchmark for Automatic Curriculum Learning in Deep RL
 ==================================
+Useful links:
+- Our [paper]
+- Our [website]
+----
 `TeachMyAgent` is a testbed platform for **Automatic Curriculum Learning** methods. We leverage Box2D procedurally generated environments to assess the performance of teacher algorithms in continuous task spaces.
 Our repository provides:
 - **Two parametric Box2D environments**: Stumps Tracks and Parkour
 - **Multiple embodiments** with different locomotion skills (e.g. bipedal walker, spider, climbing chimpanzee, fish)
-- **Two DeepRL students**: SAC and PPO
+- **Two Deep RL students**: SAC and PPO
 - **Several ACL algorithms**: ADR, ALP-GMM, Covar-GMM, SPDL, GoalGAN, Setter-Solver, RIAC
 - **Two benchmark experiments** using elements above: Skill-specific comparison and global performance assessment
 - **A notebook for systematic analysis** of results using statistical tests along with visualisation tools (plots, videos...)
@@ -42,13 +46,41 @@ You can launch an experiment using [`run.py`]:
 python run.py --exp_name <name> --env <environment_name> <optional environment parameters> --student <student_name> <optional student parameters> --teacher <teacher_name> <optional teacher parameters>
 ```
 
-Here is an example of a 10 millions steps training of PPO with the fish embodiment in Parkour using GoalGAN as teacher:
+Here is a non-exhaustive list of the arguments you can use:
+- Environments:
+    - parametric-continuous-stump-tracks-v0
+    - parametric-continuous-parkour-v0
+- Embodiments:
+    - old_classic_bipedal
+    - small_bipedal
+    - old_big_quadru
+    - spider
+    - millipede
+    - profile_chimpanzee
+    - climbing_profile_chimpanzee
+    - climbing_chest_profile_chimpanzee
+    - fish
+    - amphibious_bipedal
+- Deep RL students:
+    - sac_v0.1.1
+    - ppo
+ - Teachers:
+    - Random
+    - ADR
+    - ALP-GMM
+    - Covar-GMM
+    - RIAC
+    - Self-Paced
+    - GoalGAN
+    - Setter-Solver
+ 
+Using these, the following example shows a 10 millions steps training of PPO with the fish embodiment in Parkour using GoalGAN as teacher:
 
 ```
 python run.py --exp_name TestExperiment --env parametric-continuous-parkour-v0 --embodiment fish --student ppo --nb_env_steps 10 --teacher GoalGAN --use_pretrained_samples
 ```
 
-Possible arguments can be found in the [`run_utils`] subpackage (as mentioned in [Code structure](#code-structure)):
+All possible arguments can be found in the [`run_utils`] subpackage (as mentioned in [Code structure](#code-structure)):
 - [`environment_args_handler.py`]
 - [`student_args_handler.py`]
 - [`teacher_args_handler.py`]
