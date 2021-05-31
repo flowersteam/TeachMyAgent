@@ -3,6 +3,8 @@
 
 TeachMyAgent/data/*
 TeachMyAgent/students/data/*
+!TeachMyAgent/data/**/progress.txt
+!TeachMyAgent/data/**/progress.csv
 
 TeachMyAgent/graphics/*
 !TeachMyAgent/graphics/readme_graphics/
@@ -10,9 +12,6 @@ TeachMyAgent/graphics/*
 !TeachMyAgent/data/HP_TUNING_TEACHERS/V1/
 
 campain_logs/
-slurm*
-
-
 ## PYTHON STUFFS ##
 #Pycharm
 .ieda/

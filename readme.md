@@ -93,25 +93,31 @@ python TeachMyAgent/run_utils/generate_benchmark_script.py <campaign_name> --*te
 ``` 
 
 This will generate a script in [`benchmark_scripts/`] containing all the experiments to run. 
-The script can then be used with our [`campaign_launcher.py`] (move your script to the root of the folder first):
+The script can then be used with our [`slurm_campaign_launcher.py`] (move your script to the root of the folder first):
 ```
-python campaign_launcher.py <script_name>
+python slurm_campaign_launcher.py <script_name>
 ```
 Each experiment will be run with multiple seeds using slurm.
 
 ## Visualizing results
+### Import baseline results from our paper
+In order to benchmark methods against the ones we evaluated in our [paper](https://arxiv.org/abs/2103.09815) you must download our results:
+1. Go to the `notebooks` folder
+2. Make the `download_baselines.sh` script executable: `chmod +x download_baselines.sh`
+3. Download results: `./download_baselines.sh`
+> **_WARNING:_**  This will download a zip weighting approximayely 4GB. Then, our script will extract the zip file in `TeachMyAgent/data`. Once extracted, results will weight approximately 15GB. 
+----
+
 1- Launch a jupyter server:
 ```
+cd notebooks;
 jupyter notebook
 ```
 
-2- Open our [`Results_Analysis.ipynb`] notebook
+2- Open our [`Results_analysis.ipynb`] notebook for graphs (i.e. figures in our paper)
+3- Open our [`Book_keeping_analysis.ipynb`] notebook for test set and curriculum analysis
+4- Open our [`Policies_visualization.ipynb`] notebook to visualize policies learned
 
-3- Import your data
-
-4- Run plot definitions
-
-5- Run plots with appropriate parameters
 
 ## Code structure
 Our code is shared between 4 main folders in the [`TeachMyAgent`] package:
@@ -242,8 +248,10 @@ If you use `TeachMyAgent` in your work, please cite the accompanying [paper]:
 
 [`run.py`]: run.py
 [`benchmark_scripts/`]: benchmark_scripts/
-[`campaign_launcher.py`]: campain_launcher.py
-[`Results_Analysis.ipynb`]: Results_Analysis.ipynb
+[`slurm_campaign_launcher.py`]: slurm_campain_launcher.py
+[`Results_analysis.ipynb`]: Results_analysis.ipynb
+[`Book_keeping_analysis.ipynb`]: Book_keeping_analysis.ipynb
+[`Policies_visualization.ipynb`]: Policies_visualization.ipynb
 
 [`TeachMyAgent`]: TeachMyAgent
 [`environments`]: TeachMyAgent/environments

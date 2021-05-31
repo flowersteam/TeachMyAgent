@@ -74,7 +74,7 @@ def get_baselines_run_logs(root, exp_idx, units, condition=None):
 
     return data_dict
 
-def get_run_logs(logdir, min_len=4):
+def get_run_logs(logdir, book_keeping_keys='*', min_len=4):
     """
         Recursively look through logdir for output files produced by
         Assumes that any file "progress.txt/csv" is a valid hit.
@@ -104,7 +104,8 @@ def get_run_logs(logdir, min_len=4):
                 try:
                     env_params_dict = pickle.load(open(os.path.join(root, 'env_params_save.pkl'), "rb"))
                     for k, v in env_params_dict.items():
-                        data_dict[k] = v
+                        if book_keeping_keys == '*' or k in book_keeping_keys:
+                            data_dict[k] = v
                 except EOFError as err:
                     print(err)
                     print('Corrupted save, ignoring {}'.format(root[-1])) #data_dict['config']['seed']))
