@@ -14,8 +14,20 @@ SPEED_HIP     = 4
 SPEED_KNEE    = 6
 
 class WheelBody(WalkerAbstractBody):
+    '''
+        Walking 'wheel' embodiment.
+    '''
     def __init__(self, scale, motors_torque=500, body_scale=1, nb_steps_under_water=600,
                  reset_on_hull_critical_contact=False):
+        '''
+            Creates an embodiment with a square hull and a pair of leg at each of its side.
+
+            :param scale: Scale value used in the environment (to adapt the embodiment to its environment)
+            :param motors_torque: Maximum torque the embodiment can use on its motors
+            :param body_scale: If the hull must be reduced or increased (1 means leave it as it is)
+            :param  nb_steps_under_water: How many consecutive steps the embodiment can survive under water
+            :param reset_on_hull_critical_contact: Whether a contact detected with the head should stop the episode
+        '''
         super(WheelBody, self).__init__(scale, motors_torque, nb_steps_under_water)
         self.LEG_W, self.LEG_H = 4 / self.SCALE, 10 / self.SCALE
         self.TORQUE_PENALTY = 0.00035 / 2 # 4 legs = 2 pair of legs

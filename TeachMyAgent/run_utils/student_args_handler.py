@@ -2,13 +2,19 @@ from TeachMyAgent.run_utils.abstract_args_handler import AbstractArgsHandler
 from TeachMyAgent.students.spinup.utils.run_utils import setup_logger_kwargs
 
 class StudentArgsHandler(AbstractArgsHandler):
+    '''
+        Handling arguments controlling the DeepRL student.
+    '''
     @staticmethod
     def set_parser_arguments(parser):
-        parser.add_argument('--student', type=str, default='sac_v0.1.1')  # Currently : sac_v0.1.1, sac_v0.2, ppo
-        parser.add_argument('--backend', type=str, default='tf1')  # Currently : tf1 / pytorch
+        '''
+            Declaration of arguments controlling the DeepRL student and its training.
+        '''
+        parser.add_argument('--student', type=str, default='sac_v0.1.1') # Currently : sac_v0.1.1, sac_v0.2, ppo
+        parser.add_argument('--backend', type=str, default='tf1') # Currently : tf1 / pytorch
 
         parser.add_argument('--network', type=str, default='custom_mlp')
-        parser.add_argument('--hidden_sizes', type=str, default="400/300")  # layers (with nb of neurons) separated by '/'
+        parser.add_argument('--hidden_sizes', type=str, default="400/300") # layers (with nb of neurons) separated by '/'
 
         # For all students
         parser.add_argument('--gamma', type=float, default=0.99)
@@ -44,6 +50,11 @@ class StudentArgsHandler(AbstractArgsHandler):
 
     @staticmethod
     def get_object_from_arguments(args, env_f, teacher):
+        '''
+            Create a DeepRL student and its learning function given an environment and a teacher.
+
+            :return the learning function.
+        '''
         logger_kwargs = setup_logger_kwargs(args.exp_name, args.seed)
         ac_kwargs = dict()
 

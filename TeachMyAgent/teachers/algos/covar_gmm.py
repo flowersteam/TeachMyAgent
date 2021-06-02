@@ -7,6 +7,13 @@ from gym.spaces import Box
 from TeachMyAgent.teachers.algos.AbstractTeacher import AbstractTeacher
 
 def proportional_choice(v, random_state, eps=0.):
+    '''
+        Return an index of `v` chosen proportionally to values contained in `v`.
+
+        :param v: List of values
+        :param random_state: Random generator
+        :param eps: Epsilon used for an Epsilon-greedy strategy
+    '''
     if np.sum(v) == 0 or random_state.rand() < eps:
         return random_state.randint(np.size(v))
     else:
@@ -17,6 +24,17 @@ def proportional_choice(v, random_state, eps=0.):
 class CovarGMM(AbstractTeacher):
     def __init__(self, mins, maxs, seed, env_reward_lb, env_reward_ub, absolute_lp=False, fit_rate=250,
                  potential_ks=np.arange(2, 11, 1), random_task_ratio=0.2, nb_bootstrap=None, initial_dist=None):
+        '''
+            Covar - Gaussian Mixture Model.
+            Implementation of IGMM (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3893575/) + minor improvements.
+
+            :param absolute_lp: Original version does not use Absolute LP, only LP.
+            :param fit_rate: Number of episodes between two fit of the GMM
+            :param potential_ks: Range of number of Gaussians to try when fitting the GMM
+            :param random_task_ratio: Ratio of randomly sampled tasks VS tasks sampling using GMM
+            :param nb_bootstrap: Number of bootstrapping episodes, must be >= to fit_rate
+            :param initial_dist: Initial Gaussian distribution. If None, bootstrap with random tasks
+        '''
         AbstractTeacher.__init__(self, mins, maxs, env_reward_lb, env_reward_ub, seed)
 
         # Range of number of Gaussians to try when fitting the GMM

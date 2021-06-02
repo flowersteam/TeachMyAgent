@@ -1,3 +1,6 @@
+# Taken from https://github.com/psclklnk/spdl
+# Copy of the license at TeachMyAgent/teachers/LICENSES/SPDL
+
 import torch
 import numpy as np
 

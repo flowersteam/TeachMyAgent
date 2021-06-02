@@ -41,6 +41,8 @@ def learn(*, network, env, total_timesteps, eval_env = None, seed=None, nsteps=2
     '''
     Learn policy using PPO algorithm (https://arxiv.org/abs/1707.06347)
 
+    With some modifications were made to make it use an ACL teacher and a test env.
+
     Parameters:
     ----------
 

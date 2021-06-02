@@ -37,7 +37,20 @@ SPEED_HIP     = 4
 SPEED_KNEE    = 6
 
 class FishBody(SwimmerAbstractBody):
-    def __init__(self, scale, density, motors_torque = 80, nb_steps_outside_water = 600):
+    '''
+        Swimming 'fish' embodiment.
+    '''
+    def __init__(self, scale, density, motors_torque=80, nb_steps_outside_water=600):
+        '''
+            Creates a fish with three body parts, a fin and a tale.
+
+            Head contact is allowed for the fish.
+
+            :param scale: Scale value used in the environment (to adapt the embodiment to its environment)
+            :param motors_torque: Maximum torque the embodiment can use on its motors
+            :param density: Water density (in order to make the agent in a zero-gravity-like setup)
+            :param nb_steps_outside_water: How many consecutive steps the embodiment can survive outside water
+        '''
         super(FishBody, self).__init__(scale, motors_torque, density, nb_steps_outside_water)
         self.TORQUE_PENALTY = 0.00035
 

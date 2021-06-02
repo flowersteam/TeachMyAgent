@@ -13,7 +13,22 @@ SPEED_HIP     = 4
 SPEED_KNEE    = 6
 
 class ClassicBipedalBody(WalkerAbstractBody):
+    '''
+        New version of the Bipedal walker implemented in https://gym.openai.com/envs/BipedalWalker-v2/.
+
+        In the initial version, the embodiment is created with an angle on legs, but position are not set according to this.
+        This results in bodies with wrong positions that Box2D's solver has to reposition at the first step of the environment.
+        This new version uses straight legs and fixed bad positions.
+    '''
     def __init__(self, scale, motors_torque=80, nb_steps_under_water=600, reset_on_hull_critical_contact=False):
+        '''
+            Creates a bipedal walker.
+
+            :param scale: Scale value used in the environment (to adapt the embodiment to its environment)
+            :param motors_torque: Maximum torque the embodiment can use on its motors
+            :param nb_steps_under_water: How many consecutive steps the embodiment can survive under water
+            :param reset_on_hull_critical_contact: Whether a contact detected with the head should stop the episode
+        '''
         super(ClassicBipedalBody, self).__init__(scale, motors_torque, nb_steps_under_water)
         self.LEG_DOWN = 3 / self.SCALE # 0 = center of hull
         self.LEG_W, self.LEG_H = 8 / self.SCALE, 34 / self.SCALE

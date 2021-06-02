@@ -8,8 +8,14 @@ from TeachMyAgent.environments.envs.bodies.BodiesEnum import BodiesEnum
 
 
 class EnvironmentArgsHandler(AbstractArgsHandler):
+    '''
+        Handling arguments controlling the environment (including the embodiment).
+    '''
     @staticmethod
     def get_body_wargs(args):
+        '''
+            Parse kwargs controlling embodiment specific options.
+        '''
         body_args = {}
         if args.motors_torque is not None:
             body_args["motors_torque"] = args.motors_torque
@@ -31,6 +37,9 @@ class EnvironmentArgsHandler(AbstractArgsHandler):
 
     @staticmethod
     def set_parser_arguments(parser):
+        '''
+            Declaration of arguments for each environment and embodiment.
+        '''
         parser.add_argument('--env', type=str, default="parametric-continuous-stump-tracks-v0")
 
         # Choose student's embodiment
@@ -78,6 +87,14 @@ class EnvironmentArgsHandler(AbstractArgsHandler):
 
     @classmethod
     def get_object_from_arguments(cls, args):
+        '''
+            Create an environment given arguments.
+
+            :return env_f (function creating the environment),
+                    param_env_bounds (bounds of the task space controlling PCG),
+                    initial_dist (Distribution of easy tasks to start with),
+                    target_dist (Target task distribution)
+        '''
         param_env_bounds = OrderedDict()
         # For teachers using an initial distribution of easy tasks
         initial_dist = None

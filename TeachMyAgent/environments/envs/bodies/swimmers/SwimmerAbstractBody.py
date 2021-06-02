@@ -2,7 +2,18 @@ from TeachMyAgent.environments.envs.bodies.AbstractBody import AbstractBody
 from TeachMyAgent.environments.envs.bodies.BodyTypesEnum import BodyTypesEnum
 
 class SwimmerAbstractBody(AbstractBody):
+    '''
+        Base class for swimmers.
+    '''
     def __init__(self, scale, motors_torque, density, nb_steps_outside_water):
+        '''
+            Creates a swimmer, which cannot survive outside water.
+
+            :param scale: Scale value used in the environment (to adapt the embodiment to its environment)
+            :param motors_torque: Maximum torque the embodiment can use on its motors
+            :param density: Water density (in order to make the agent in a zero-gravity-like setup)
+            :param nb_steps_outside_water: How many consecutive steps the embodiment can survive outside water
+        '''
         super(SwimmerAbstractBody, self).__init__(scale, motors_torque)
 
         self.body_type = BodyTypesEnum.SWIMMER

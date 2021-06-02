@@ -4,7 +4,17 @@ import Box2D
 from Box2D.b2 import circleShape, fixtureDef
 
 class ClimberAbstractBody(WalkerAbstractBody):
+    '''
+        Base class for climbers.
+    '''
     def __init__(self, scale, motors_torque, nb_steps_under_water):
+        '''
+            Creates a climber, which cannot survive under water and cannot touch ground.
+
+            :param scale: Scale value used in the environment (to adapt the embodiment to its environment)
+            :param motors_torque: Maximum torque the embodiment can use on its motors
+            :param nb_steps_under_water: How many consecutive steps the embodiment can survive under water
+        '''
         super(ClimberAbstractBody, self).__init__(scale, motors_torque, nb_steps_under_water)
 
         self.body_type = BodyTypesEnum.CLIMBER
@@ -20,9 +30,19 @@ class ClimberAbstractBody(WalkerAbstractBody):
 
     # States
     def get_state_size(self):
+        '''
+            Returns the size of the embodiment's state vector (classic state + sensors)
+        '''
         return super(ClimberAbstractBody, self).get_state_size() + len(self.get_sensors_state())
 
     def get_sensors_state(self):
+        '''
+            Returns state vector sensors.
+
+            For each sensor returns:
+            - if it a collision is detected
+            - if it is already grasping (i.e. it is attached to a joint)
+        '''
         state = []
         for sensor in self.sensors:
             state.extend([1.0 if sensor.userData.has_contact else 0.0,
@@ -31,10 +51,16 @@ class ClimberAbstractBody(WalkerAbstractBody):
 
     # Actions
     def get_action_size(self):
+        '''
+            Returns the size of the action space (classic action space + number of sensors).
+        '''
         return super(ClimberAbstractBody, self).get_action_size() + len(self.sensors)
 
     # Draw
     def get_elements_to_render(self):
+        '''
+            Returns bodies that must be rendered in the `env.render` function (including sensors).
+        '''
         return super(ClimberAbstractBody, self).get_elements_to_render() + self.sensors
 
     # Destroy

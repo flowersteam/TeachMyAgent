@@ -13,7 +13,17 @@ SPEED_HIP     = 4
 SPEED_KNEE    = 6
 
 class AmphibiousBipedalBody(AmphibianAbstractBody):
-    def __init__(self, scale, density, motors_torque = 80):
+    '''
+        Amphibious Bipedal walker embodiment.
+    '''
+    def __init__(self, scale, density, motors_torque=80):
+        '''
+            Creates an amphibious bipedal embodiment allowed to go both under and outside water
+
+            :param scale: Scale value used in the environment (to adapt the embodiment to its environment)
+            :param motors_torque: Maximum torque the embodiment can use on its motors
+            :param density: Water density (in order to make the agent in a zero-gravity-like setup)
+        '''
         super(AmphibiousBipedalBody, self).__init__(scale, motors_torque, density)
         self.LEG_DOWN = 3 / self.SCALE # 0 = center of hull
         self.LEG_W, self.LEG_H = 8 / self.SCALE, 34 / self.SCALE

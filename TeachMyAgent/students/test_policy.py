@@ -21,6 +21,12 @@ from TeachMyAgent.students.openai_baselines.ppo2.ppo2 import get_model as get_ba
 from TeachMyAgent.students.ppo_utils import create_custom_vec_normalized_envs
 
 def get_student_type(save_path):
+    '''
+        Returns 'spinup' or 'baselines' depending on how the logs look like.
+
+        :param save_path: Path containing logs
+        :type save_path: str
+    '''
     for root, _, files in os.walk(save_path):
         if 'progress.txt' in files: # Spinup
             return 'spinup'
@@ -28,11 +34,23 @@ def get_student_type(save_path):
             return 'baselines'
 
 def load_training_infos(save_path):
+    '''
+        Load hyperparameters stored in config.json.
+
+        :param save_path: Path containing logs
+        :type save_path: str
+    '''
     with open(osp.join(save_path, 'config.json')) as json_file:
         training_config = json.load(json_file)
     return training_config
 
 def get_baselines_last_checkpoint(path):
+    '''
+        OpenAI Baselines students save multiple checkpoints of the model. This function only loads the last one.
+
+        :param save_path: Path containing checkpoints
+        :type save_path: str
+    '''
     last_checkpoint = -1
     for f in listdir(path):
         if osp.isfile(osp.join(path, f)):
@@ -44,10 +62,23 @@ def get_baselines_last_checkpoint(path):
     return last_checkpoint
 
 def load_env_params(save_path):
+    '''
+        Load book-keeped information (e.g. training and test tasks along with the obtained reward).
+
+        :param save_path: Path containing logs
+        :type save_path: str
+    '''
     with open(osp.join(save_path, 'env_params_save.pkl'), "rb") as file:
         teacher_dict = pickle.load(file)
     return teacher_dict
+
 def get_training_test_size(teacher_dict):
+    '''
+        Calculate size of test set used during training.
+
+        :param teacher_dict: Dictionary of loaded logs.
+        :type teacher_dict: dict
+    '''
     param_to_count = teacher_dict["env_params_test"][0]
     nb_of_epochs = 0
     for param in teacher_dict["env_params_test"]:
@@ -57,6 +88,18 @@ def get_training_test_size(teacher_dict):
     return int(len(teacher_dict["env_params_test"]) / nb_of_epochs)
 
 def load_training_test_set(save_path, order_by_best_rewards=None):
+    '''
+        Load test set used during training.
+
+        :param save_path: Path containing logs
+        :type save_path: str
+        :param order_by_best_rewards:
+            If None => Do not order test set
+            If True => Order test set using rewards obtained from greatest to lowest
+            If False => Order test set using rewards obtained from lowest to greatest
+        :type order_by_best_rewards: str
+        :return list of tasks and list associated rewards
+    '''
     ### Get last training test episodes and sort them by total reward
     teacher_dict = load_env_params(save_path)
     test_set_size = get_training_test_size(teacher_dict)
@@ -81,6 +124,15 @@ def load_training_test_set(save_path, order_by_best_rewards=None):
     return env_params_list, associated_rewards_list
 
 def load_fixed_test_set(save_path, test_set_name):
+    '''
+        Load a test set from a file.
+
+        :param save_path: Path containing test sets
+        :type save_path: str
+        :param test_set_name: Name of the file containing the test set (do not add the extension)
+        :type test_set_name: str
+        :return list of tasks
+    '''
     teacher_dict = load_env_params(save_path)
     teacher_param_env_bounds = OrderedDict(teacher_dict["env_param_bounds"])
     test_param_vec = np.array(pickle.load(open("TeachMyAgent/teachers/test_sets/" + test_set_name + ".pkl", "rb")))
@@ -88,6 +140,15 @@ def load_fixed_test_set(save_path, test_set_name):
     return [param_vec_to_param_dict(teacher_param_env_bounds, vec) for vec in test_param_vec]
 
 def load_env(save_path, load_test_env=False):
+    '''
+        Load saved environment.
+
+        :param save_path: Path containing logs
+        :type save_path: str
+        :param load_test_env: Name of the file containing the test set (do not add the extension)
+        :type load_test_env: str
+        :return loaded environment
+    '''
     try:
         filename = osp.join(save_path, 'vars.pkl')
         state = joblib.load(filename)
@@ -111,6 +172,19 @@ def load_vectorized_env(save_path, env):
 
 def run_policy(env, get_action, env_params_list, max_ep_len=None, episode_id=0, record=False, recording_path=None,
                no_render=False, use_baselines=False):
+    '''
+        Run an episode of a trained policy.
+
+        :param env: Environment
+        :param get_action: Policy function
+        :param env_params_list: List of tasks among one must be loaded
+        :param max_ep_len: Maximum number of steps allowed in the episode
+        :param episode_id: Id of the episode to load in `env_params_list`
+        :param record: Whether a video of the episode should be recorded
+        :param recording_path: Path on which the video must be saved
+        :param no_render: Whether the episode must be ran without a frame rendering it
+        :param use_baselines: Whether the policy was trained using OpenAI Baselines
+    '''
     if record:
         if os.name == "nt":
             full_path = os.path.join(pathlib.Path().absolute(), recording_path)
@@ -155,6 +229,11 @@ def run_policy(env, get_action, env_params_list, max_ep_len=None, episode_id=0, 
     return ep_ret
 
 def main(args):
+    '''
+        Test a learned policy on tasks.
+
+        :param args: arguments defining what has to be run
+    '''
     if args.fixed_test_set is None:
         # training_config = load_training_infos(args.fpath)
         # nb_test_episodes_during_training = training_config["num_test_episodes"] \
@@ -225,6 +304,9 @@ def str2bool(v):
         raise argparse.ArgumentTypeError('Boolean value expected.')
 
 def get_parser():
+    '''
+        Define arguments that can be used when testing a policy.
+    '''
     parser = argparse.ArgumentParser()
     parser.add_argument('--fpath', type=str)
     parser.add_argument('--len', '-l', type=int, default=0)

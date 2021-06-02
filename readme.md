@@ -105,7 +105,7 @@ In order to benchmark methods against the ones we evaluated in our [paper](https
 1. Go to the `notebooks` folder
 2. Make the `download_baselines.sh` script executable: `chmod +x download_baselines.sh`
 3. Download results: `./download_baselines.sh`
-> **_WARNING:_**  This will download a zip weighting approximayely 4GB. Then, our script will extract the zip file in `TeachMyAgent/data`. Once extracted, results will weight approximately 15GB. 
+> **_WARNING:_**  This will download a zip weighting approximayely 4.5GB. Then, our script will extract the zip file in `TeachMyAgent/data`. Once extracted, results will weight approximately 15GB. 
 ----
 
 1- Launch a jupyter server:

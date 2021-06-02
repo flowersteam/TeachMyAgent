@@ -9,6 +9,13 @@ from TeachMyAgent.teachers.algos.AbstractTeacher import AbstractTeacher
 
 
 def proportional_choice(v, random_state, eps=0.):
+    '''
+        Return an index of `v` chosen proportionally to values contained in `v`.
+
+        :param v: List of values
+        :param random_state: Random generator
+        :param eps: Epsilon used for an Epsilon-greedy strategy
+    '''
     if np.sum(v) == 0 or random_state.rand() < eps:
         return random_state.randint(np.size(v))
     else:
@@ -18,6 +25,10 @@ def proportional_choice(v, random_state, eps=0.):
 # Absolute Learning Progress (ALP) computer object
 # It uses a buffered kd-tree to efficiently implement a k-nearest-neighbor algorithm
 class EmpiricalALPComputer():
+    '''
+        Absolute Learning Progress (ALP) computer object.
+        It uses a buffered kd-tree to efficiently implement a k-nearest-neighbor algorithm.
+    '''
     def __init__(self, task_size, max_size=None, buffer_size=500):
         self.alp_knn = BufferedDataset(1, task_size, buffer_size=buffer_size, lateness=0, max_size=max_size)
 
@@ -45,6 +56,20 @@ class EmpiricalALPComputer():
 class ALPGMM(AbstractTeacher):
     def __init__(self, mins, maxs, seed, env_reward_lb, env_reward_ub, gmm_fitness_func="aic", warm_start=False, nb_em_init=1, fit_rate=250,
                  alp_max_size=None, alp_buffer_size=500, potential_ks=np.arange(2, 11, 1), random_task_ratio=0.2, nb_bootstrap=None, initial_dist=None):
+        '''
+            Absolute Learning Progress - Gaussian Mixture Model (https://arxiv.org/abs/1910.07224).
+
+            :param gmm_fitness_func: Fitness criterion when selecting best GMM among range of GMMs varying in number of Gaussians.
+            :param warm_start: Restart new fit by initializing with last fit
+            :param nb_em_init: Number of Expectation-Maximization trials when fitting
+            :param fit_rate: Number of episodes between two fit of the GMM
+            :param alp_max_size: Maximum number of episodes stored
+            :param alp_buffer_size: Maximal number of episodes to account for when computing ALP
+            :param potential_ks: Range of number of Gaussians to try when fitting the GMM
+            :param random_task_ratio: Ratio of randomly sampled tasks VS tasks sampling using GMM
+            :param nb_bootstrap: Number of bootstrapping episodes, must be >= to fit_rate
+            :param initial_dist: Initial Gaussian distribution. If None, bootstrap with random tasks
+        '''
         AbstractTeacher.__init__(self, mins, maxs, env_reward_lb, env_reward_ub, seed)
 
         # Range of number of Gaussians to try when fitting the GMM
@@ -85,11 +110,16 @@ class ALPGMM(AbstractTeacher):
                    'tasks_lps':[], 'episodes': [], 'tasks_origin': []}
 
     def init_gmm(self, nb_gaussians):
+        '''
+            Init the GMM given the number of gaussians.
+        '''
         return GMM(n_components=nb_gaussians, covariance_type='full', random_state=self.seed,
                                             warm_start=self.warm_start, n_init=self.nb_em_init)
     def get_nb_gmm_params(self, gmm):
-        # assumes full covariance
-        # see https://stats.stackexchange.com/questions/229293/the-number-of-parameters-in-gaussian-mixture-model
+        '''
+            Assumes full covariance.
+            See https://stats.stackexchange.com/questions/229293/the-number-of-parameters-in-gaussian-mixture-model
+        '''
         nb_gmms = gmm.get_params()['n_components']
         d = len(self.mins)
         params_per_gmm = (d*d - d)/2 + 2*d + 1

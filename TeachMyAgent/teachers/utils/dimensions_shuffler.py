@@ -3,6 +3,14 @@ import random
 
 class DimensionsShuffler():
     def __init__(self, mins, maxs, cuttings=4, seed=21):
+        '''
+            Object evenly cutting a task space into hypercubes and shuffling them.
+
+            :param mins: Lower bounds of task space
+            :param max: Upper bounds of task space
+            :param cuttings: How many cuttings should be done on each dimension
+            :param seed: Seed of the random shuffler
+        '''
         self.rnd_state = np.random.RandomState(seed)
         self.nb_dims = len(mins)
         self.dims_dicts = []
@@ -21,6 +29,9 @@ class DimensionsShuffler():
             self.dims_dicts.append(current_dim_dict)
 
     def interpolate_task(self, task):
+        '''
+            Maps a task from the original task space towards the shuffled one.
+        '''
         new_task = []
         for i in range(self.nb_dims):
             try:
@@ -38,6 +49,9 @@ class DimensionsShuffler():
         return self.last_interpolated_task
 
     def inverse_interpolate_task(self, task):
+        '''
+            Maps a task from the shuffled task space towards the original one.
+        '''
         new_task = []
         for i in range(self.nb_dims):
             try:

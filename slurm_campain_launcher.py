@@ -6,8 +6,8 @@ import shutil
 import os
 import stat
 
-##### USE THIS FILE TO LAUNCH EXPERIMENT CAMPAIGNS ON A CLUSTER #####
-##### A CAMPAIGN IS COMPOSE OF MULTIPLE EXPERIMENTS AND MULTIPLE SEEDS PER EXPERIMENT #####
+##### USE THIS FILE TO LAUNCH EXPERIMENT CAMPAIGNS ON A CLUSTER USING SLURM #####
+##### A CAMPAIGN IS COMPOSED OF MULTIPLE EXPERIMENTS AND MULTIPLE SEEDS PER EXPERIMENT #####
 
 def process_arg_string(expe_args):  # function to extract flagged (with a *) arguments as details for experience name
     details_string = ''
@@ -28,7 +28,7 @@ def process_arg_string(expe_args):  # function to extract flagged (with a *) arg
             details_string += '_' + arg[1:].replace(' ', '_').replace('/', '-')
     return details_string, processed_arg_string
 
-
+##### ADD YOUR SLURM CONFS HERE #####
 slurm_confs = {'curta_inria_extra_long': "#SBATCH -p XXX\n"
                                          "#SBATCH -t 119:00:00\n",
                'curta_inria_long': "#SBATCH -p XXX\n"
@@ -67,6 +67,7 @@ slurm_confs = {'curta_inria_extra_long': "#SBATCH -p XXX\n"
                                      "#SBATCH -t 48:00:00\n"
                                      '#SBATCH --gres=gpu:1\n'
                }
+##### ADD YOUR SLURM CONFS HERE #####
 
 cur_path = str(Path.cwd())
 date = date.today().strftime("%d-%m")
@@ -105,6 +106,8 @@ for expe_args in expe_list:
     print('creating slurm script with: {}'.format(expe_args))
     exp_config = expe_args.split('--')[1:4]
     slurm_conf_name, nb_seeds, exp_name = [arg.split(' ')[1] for arg in exp_config]
+
+    ##### ADD THE PATH OF PYTHON DEPENDING ON THE SLURM CONF HERE #####
     if 'curta' in slurm_conf_name:
         gpu = ''
         PYTHON_INTERP = '/gpfs/home/XXX/bin/python'
@@ -123,6 +126,7 @@ for expe_args in expe_list:
         n_cpus = 2
     else:
         raise Exception("Unrecognized conf name.")
+    ##### ADD THE PATH OF PYTHON DEPENDING ON THE SLURM CONF HERE #####
 
     # parse possible seed offset
     if '+' in nb_seeds:

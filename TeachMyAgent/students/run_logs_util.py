@@ -4,6 +4,9 @@ import os
 import pandas as pd
 
 def get_spinup_run_logs(root, exp_idx, units, condition=None):
+    '''
+        Load logs produced by SpinningUp students.
+    '''
     exp_name = None
     try:
         config_path = open(os.path.join(root, 'config.json'))
@@ -43,6 +46,9 @@ def get_spinup_run_logs(root, exp_idx, units, condition=None):
     return data_dict
 
 def get_baselines_run_logs(root, exp_idx, units, condition=None):
+    '''
+        Load logs produced by OpenAI Baselines students.
+    '''
     condition1 = condition or 'exp'
     condition2 = condition1 + '-' + str(exp_idx)
     if condition1 not in units:
@@ -76,7 +82,7 @@ def get_baselines_run_logs(root, exp_idx, units, condition=None):
 
 def get_run_logs(logdir, book_keeping_keys='*', min_len=4):
     """
-        Recursively look through logdir for output files produced by
+        Recursively look through logdir for output files produced by experiments.
         Assumes that any file "progress.txt/csv" is a valid hit.
     """
     exp_idx = 0

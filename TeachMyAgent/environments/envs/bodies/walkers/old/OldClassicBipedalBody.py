@@ -14,7 +14,17 @@ SPEED_HIP     = 4
 SPEED_KNEE    = 6
 
 class OldClassicBipedalBody(WalkerAbstractBody):
+    '''
+        Bipedal walker implemented in https://gym.openai.com/envs/BipedalWalker-v2/.
+    '''
     def __init__(self, scale, nb_steps_under_water=600, reset_on_hull_critical_contact=True):
+        '''
+            Creates a bipedal walker with a torque of 80.
+
+            :param scale: Scale value used in the environment (to adapt the embodiment to its environment)
+            :param  nb_steps_under_water: How many consecutive steps the embodiment can survive under water
+            :param reset_on_hull_critical_contact: Whether a contact detected with the head should stop the episode
+        '''
         super(OldClassicBipedalBody, self).__init__(scale, 80, nb_steps_under_water)
         self.LEG_DOWN = -8 / self.SCALE # 0 = center of hull
         self.LEG_W, self.LEG_H = 8 / self.SCALE, 34 / self.SCALE

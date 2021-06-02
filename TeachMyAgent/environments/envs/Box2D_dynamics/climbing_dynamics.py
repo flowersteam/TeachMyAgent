@@ -4,6 +4,10 @@ from TeachMyAgent.environments.envs.utils.custom_user_data import CustomUserData
 
 class ClimbingDynamics(object):
     def before_step_climbing_dynamics(self, actions, body, world):
+        '''
+            Check if sensors are in 'grasping mode' (i.e. their associated action is greater than 0).
+            Otherwise, check if a joint is existing and destroy it.
+        '''
         for i in range(len(body.sensors)):
             action_to_check = actions[len(actions) - i - 1]
             sensor_to_check = body.sensors[len(body.sensors) - i - 1]
@@ -19,7 +23,9 @@ class ClimbingDynamics(object):
                         world.DestroyJoint(joint_to_destroy)
 
     def after_step_climbing_dynamics(self, contact_detector, world):
-        # Add climbing joints if needed
+        '''
+            Add climbing joints if needed (i.e. objects are still overlapping after Box2D's solver execution)
+        '''
         for sensor in contact_detector.contact_dictionaries:
             if len(contact_detector.contact_dictionaries[sensor]) > 0 and \
                     sensor.userData.ready_to_attach and not sensor.userData.has_joint:
@@ -50,7 +56,7 @@ class ClimbingDynamics(object):
 
 class ClimbingContactDetector(contactListener):
     '''
-    Store contacts between sensors and graspable surfaces in a dictionaries associated to the sensor.
+        Store contacts between sensors and graspable surfaces in a dictionary associated to the sensor.
     '''
     def __init__(self):
         super(ClimbingContactDetector, self).__init__()

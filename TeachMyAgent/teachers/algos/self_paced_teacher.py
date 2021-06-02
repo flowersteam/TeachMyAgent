@@ -1,4 +1,4 @@
-# Taken from https://github.com/psclklnk/spdl and wrapped in our architecture
+# Taken from https://github.com/psclklnk/spdl and wrapped to our architecture
 # Modified by Clément Romac, copy of the license at TeachMyAgent/teachers/LICENSES/SPDL
 
 import torch
@@ -11,7 +11,6 @@ from TeachMyAgent.teachers.utils.torch import to_float_tensor
 from TeachMyAgent.teachers.utils.gaussian_torch_distribution import GaussianTorchDistribution
 
 class Buffer:
-
     def __init__(self, n_elements, max_buffer_size, reset_on_query):
         self.reset_on_query = reset_on_query
         self.max_buffer_size = max_buffer_size
@@ -46,7 +45,9 @@ class Buffer:
 
 
 class AbstractSelfPacedTeacher():
-
+    '''
+        Base SPDL Teacher
+    '''
     def __init__(self, init_mean, flat_init_chol, target_mean, flat_target_chol, alpha_function, max_kl, cg_parameters):
         self.context_dist = GaussianTorchDistribution(init_mean, flat_init_chol, use_cuda=False)
         self.target_dist = GaussianTorchDistribution(target_mean, flat_target_chol, use_cuda=False)
@@ -86,10 +87,31 @@ class AbstractSelfPacedTeacher():
 
 
 class SelfPacedTeacher(AbstractTeacher, AbstractSelfPacedTeacher):
-
     def __init__(self, mins, maxs, seed, env_reward_lb, env_reward_ub, update_frequency, update_offset, alpha_function, initial_dist=None,
                  target_dist=None, max_kl=0.1, std_lower_bound=None, kl_threshold=None,  cg_parameters=None,
                  use_avg_performance=False, max_context_buffer_size=1000, reset_contexts=True, discount_factor=0.99):
+        '''
+            Self-paced Deep Reinforcement Learning (https://papers.nips.cc/paper/2020/hash/68a9750337a418a86fe06c1991a1d64c-Abstract.html).
+            Taken from https://github.com/psclklnk/spdl and wrapped to our architecture.
+
+            Works in a non-episodic setup, updates are thus made in the `step_update` method.
+
+            :param update_frequency: Update frequency of the sampling distribution (in steps)
+            :param update_offset: How many steps must be done before the starting to update the distribution
+            :param alpha_function: Function calculating the alpha parameter
+            :param initial_dist: Initial distribution to start from
+            :param target_dist: Target distribution to reach
+            :param max_kl: Maximum KL-divergence authorized between the old and new distributions when updating
+            :param std_lower_bound: Minimum std authorized on the sampling distribution if the KL-divergence between
+                                    the latter and the target distribution is greater than `kl_threshold`. Set this to
+                                    `None` if no constraint on the std must be applied
+            :param kl_threshold: Threshold enforcing the std constraint
+            :param cg_parameters: Additional parameters for the Conjugate Gradient method
+            :param use_avg_performance: Whether the alpha function must used the averaged performance
+            :param max_context_buffer_size: Maximum size of the buffer storing sampled tasks
+            :param reset_contexts: Whether the buffer should be reset when queried
+            :param discount_factor: Discount factor used in the Universal Value Function
+        '''
         AbstractTeacher.__init__(self, mins, maxs, env_reward_lb, env_reward_ub, seed)
         torch.manual_seed(self.seed)
 

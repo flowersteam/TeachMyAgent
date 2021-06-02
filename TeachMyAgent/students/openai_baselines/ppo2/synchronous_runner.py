@@ -3,6 +3,8 @@ from TeachMyAgent.students.openai_baselines.common.runners import AbstractEnvRun
 
 class SynchronousRunner():
     """
+    Synchronous runner to interact with environment and sample trajectories (created for TeachMyAgent).
+
     We use this object to make a mini batch of experiences
     __init__:
     - Initialize the runner

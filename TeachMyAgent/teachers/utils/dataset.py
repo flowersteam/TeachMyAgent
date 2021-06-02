@@ -1,6 +1,9 @@
+# Taken from https://arxiv.org/abs/1910.07224
+# Copy of the license at TeachMyAgent/teachers/LICENSES/ALP-GMM
+
 # Modified version of dataset from https://github.com/flowersteam/explauto
 # Implements a buffered knn using a kd-tree
-# WARNING ugly code, sorry
+
 try:
     import numpy as np
     import scipy.spatial

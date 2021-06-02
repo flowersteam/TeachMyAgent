@@ -4,6 +4,9 @@ from TeachMyAgent.teachers.algos.AbstractTeacher import AbstractTeacher
 
 class RandomTeacher(AbstractTeacher):
     def __init__(self, mins, maxs, seed, env_reward_lb, env_reward_ub):
+        '''
+            Random teacher sampling tasks uniformly random over the task space.
+        '''
         AbstractTeacher.__init__(self, mins, maxs, env_reward_lb, env_reward_ub, seed)
 
         self.random_task_generator = Box(np.array(mins), np.array(maxs), dtype=np.float32)

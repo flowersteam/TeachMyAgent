@@ -5,9 +5,15 @@ from TeachMyAgent.teachers.utils.alpha_functions import PercentageAlphaFunction
 import numpy as np
 
 class TeacherArgsHandler(AbstractArgsHandler):
+    '''
+        Handling arguments controlling the ACL teacher.
+    '''
     @staticmethod
     def set_parser_arguments(parser):
-        parser.add_argument('--teacher', type=str, default="ALP-GMM")  # Random, ADR, ALP-GMM, Covar-GMM, RIAC, GoalGAN, Self-Paced, Truncated-Self-Paced, Setter-Solver
+        '''
+            Declaration of arguments controlling the teacher.
+        '''
+        parser.add_argument('--teacher', type=str, default="ALP-GMM")  # Random, ADR, ALP-GMM, Covar-GMM, RIAC, GoalGAN, Self-Paced, Setter-Solver
         parser.add_argument('--test_set', type=str, default=None)
         parser.add_argument('--allow_expert_knowledge', type=str, default="original") # original (white paper's version), no, low, high
         parser.add_argument('--keep_periodical_task_samples', type=int, default=None) # in steps /!\
@@ -42,7 +48,7 @@ class TeacherArgsHandler(AbstractArgsHandler):
         parser.add_argument('--max_reward_thr', '-maxrt', type=float, default=180)
         parser.add_argument('--queue_len', '-ql', type=int, default=10)
 
-        # (Truncated) Self-Paced related arguments
+        # Self-Paced related arguments
         parser.add_argument('--sp_update_frequency', type=int, default=100000)
         parser.add_argument('--sp_update_offset', type=int, default=200000)
         parser.add_argument('--alpha_offset', type=int, default=0)
@@ -52,7 +58,6 @@ class TeacherArgsHandler(AbstractArgsHandler):
         parser.add_argument('--kl_threshold', type=float, default=None)
         parser.add_argument('--cg_parameters', type=float, default=None)
         parser.add_argument('--use_avg_performance', action='store_true')
-        parser.add_argument('--use_rejection_sampling', action='store_true')
 
         # GoalGAN related arguments
         parser.add_argument('--state_noise_level', type=float, default=0.01)
@@ -71,6 +76,11 @@ class TeacherArgsHandler(AbstractArgsHandler):
 
     @staticmethod
     def get_object_from_arguments(args, param_env_bounds, initial_dist=None, target_dist=None):
+        '''
+            Create an ACL teacher.
+
+            Returns a `TeacherController`.
+        '''
         params = {}
         # Reward bounds are necessary if you want a normalized reward for your teachers (not used as default).
         params["env_reward_lb"] = args.env_reward_lb
@@ -121,18 +131,6 @@ class TeacherArgsHandler(AbstractArgsHandler):
             if args.alp_window_size is not None:
                 params['alp_window_size'] = args.alp_window_size
 
-        elif args.teacher == "Oracle":
-            if 'stump_height' in param_env_bounds and 'obstacle_spacing' in param_env_bounds:
-                params['window_step_vector'] = [0.1, -0.2]  # order must match param_env_bounds construction
-            elif 'poly_shape' in param_env_bounds:
-                params['window_step_vector'] = [0.1] * 12
-                print('hih')
-            elif 'stump_seq' in param_env_bounds:
-                params['window_step_vector'] = [0.1] * 10
-            else:
-                print('Oracle not defined for this parameter space')
-                exit(1)
-
         elif args.teacher == "ADR":
             params['step_size'] = args.step_size
             params['boundary_sampling_p'] = args.boundary_sampling_p
@@ -145,7 +143,7 @@ class TeacherArgsHandler(AbstractArgsHandler):
             if initial_dist is not None and args.allow_expert_knowledge in ["original", "high"]:
                 params['initial_dist'] = initial_dist
 
-        elif args.teacher == "Self-Paced" or args.teacher == "Truncated-Self-Paced":
+        elif args.teacher == "Self-Paced":
             params["update_frequency"] = args.sp_update_frequency
             params["update_offset"] = args.sp_update_offset
             params["alpha_function"] = PercentageAlphaFunction(args.alpha_offset, args.zeta)
@@ -157,14 +155,11 @@ class TeacherArgsHandler(AbstractArgsHandler):
             else:
                 params["discount_factor"] = 0.99
 
-            if args.teacher == "Self-Paced":
-                params["cg_parameters"] = args.cg_parameters
-                if args.use_avg_performance:
-                    params["use_avg_performance"] = True
-                else:
-                    params["use_avg_performance"] = False
+            params["cg_parameters"] = args.cg_parameters
+            if args.use_avg_performance:
+                params["use_avg_performance"] = True
             else:
-                params["use_rejection_sampling"] = args.use_rejection_sampling
+                params["use_avg_performance"] = False
 
             if initial_dist is not None and args.allow_expert_knowledge in ["original", "maximal"]:
                 params['initial_dist'] = initial_dist

@@ -43,6 +43,14 @@ class GoalBuffer(object):
 class SetterSolver(AbstractTeacher):
     def __init__(self, mins, maxs, seed, env_reward_lb, env_reward_ub, update_frequency=100,
                  setter_loss_noise_ub=0.01, setter_hidden_size=128):
+        '''
+            Setter-Solver (https://arxiv.org/abs/1909.12892).
+            Made with the help of https://drive.google.com/drive/folders/1yjhztFeX67tHEImXCiP_UAQfQ-wFvV4Y.
+
+            :param update_frequency: How many episodes between two updates of the neural networks
+            :param setter_loss_noise_ub: Upper bound of the noise added to tasks in the Setter's loss
+            :param setter_hidden_size: Number of neurons in the Setter's layers
+        '''
         AbstractTeacher.__init__(self, mins, maxs, env_reward_lb, env_reward_ub, seed)
         self.nb_dims = len(self.mins)
 

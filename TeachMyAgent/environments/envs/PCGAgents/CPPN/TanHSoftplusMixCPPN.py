@@ -3,7 +3,7 @@ from TeachMyAgent.environments.envs.PCGAgents.CPPN.BaseCPPN import BaseCPPN
 
 class TanHSoftplusMixCPPN(BaseCPPN):
     '''
-    Feedforward CPNN with 4 layers of 64 units alternating TanH/Softplus activation functions.
+        Feedforward CPPN with 4 layers of 64 units alternating TanH/Softplus activation functions.
     '''
     def generator(self):
         tf.reset_default_graph()

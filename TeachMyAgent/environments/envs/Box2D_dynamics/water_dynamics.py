@@ -6,8 +6,8 @@ import numpy as np
 
 class WaterDynamics(object):
     '''
-    Calculate forces to simulate in a simplified way water physics.
-    Most of the forces implemented here are taken from https://www.iforce2d.net/b2dtut/buoyancy except the push force implemented by Clément Romac.
+        Calculate forces to simulate in a simplified way water physics.
+        Most of the forces implemented here are taken from https://www.iforce2d.net/b2dtut/buoyancy except the push force implemented by Clément Romac.
     '''
     def __init__(self, gravity, drag_mod=0.25, lift_mod=0.25, push_mod=0.05, max_drag=2000, max_lift=500, max_push=20):
         self.gravity = gravity
@@ -187,7 +187,7 @@ class WaterDynamics(object):
 
 class WaterContactDetector(contactListener):
     '''
-    Store fixtures having contact with water.
+        Store fixtures having contact with water.
     '''
     def __init__(self):
         super(WaterContactDetector, self).__init__()

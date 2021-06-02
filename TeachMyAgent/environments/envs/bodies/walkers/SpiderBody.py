@@ -13,8 +13,22 @@ SPEED_HIP     = 4
 SPEED_KNEE    = 6
 
 class SpiderBody(WalkerAbstractBody):
+    '''
+        Walking spider embodiment.
+    '''
     def __init__(self, scale, motors_torque=100, nb_pairs_of_legs=2, nb_steps_under_water=600,
                  reset_on_hull_critical_contact=False):
+        '''
+            Creates a spider with `n` pair of legs.
+
+            Each legs has 3 parts.
+
+            :param scale: Scale value used in the environment (to adapt the embodiment to its environment)
+            :param motors_torque: Maximum torque the embodiment can use on its motors
+            :param nb_pairs_of_legs: Number of pair of legs the agent has
+            :param  nb_steps_under_water: How many consecutive steps the embodiment can survive under water
+            :param reset_on_hull_critical_contact: Whether a contact detected with the head should stop the episode
+        '''
         super(SpiderBody, self).__init__(scale, motors_torque, nb_steps_under_water)
         self.LEG_DOWN = 4 / self.SCALE
         self.LEG_W, self.LEG_H = 6 / self.SCALE, 20 / self.SCALE

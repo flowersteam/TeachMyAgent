@@ -47,6 +47,7 @@ def sac(env_fn, actor_critic=core.mlp_actor_critic, ac_kwargs=dict(), seed=0,
     """
     Soft Actor-Critic (SAC)
 
+    With some modifications were made to make it use an ACL teacher and a test env.
 
     Args:
         env_fn : A function which creates a copy of the environment.

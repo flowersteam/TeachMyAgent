@@ -3,7 +3,9 @@ import itertools
 
 if __name__ == '__main__':
     '''
-    Generate scripts to perform grid search on teachers' hyperparameters.
+        Generate scripts to perform grid search on teachers' hyperparameters.
+        
+        Defines the values to test for each hyperparameter.
     '''
 
     tuning_dict = {

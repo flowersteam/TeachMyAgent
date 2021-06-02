@@ -25,10 +25,22 @@ from TeachMyAgent.environments.envs.utils.custom_user_data import CustomUserData
 
 #region Utils
 class ContactDetector(WaterContactDetector, ClimbingContactDetector):
+    '''
+        Custom contact detector.
+    '''
     def __init__(self, env):
         super(ContactDetector, self).__init__()
         self.env = env
     def BeginContact(self, contact):
+        '''
+            Triggered when contact is detected.
+
+            Checks userData of each of the two fixtures colliding.
+            If contact with water is detected, uses WaterContactDetector.
+            If contact with graspable area is detected, uses ClimbingContactDetector.
+            Otherwise sets `userData.has_contact` to True on the body if `body.userData.check_contact == True`.
+            If `userData.is_contact_critical == True`, `env.critical_contact` is set to True, stopping the episode.
+        '''
         bodies = [contact.fixtureA.body, contact.fixtureB.body]
         if any([body.userData.object_type == CustomUserDataObjectTypes.WATER for body in bodies]):
             WaterContactDetector.BeginContact(self, contact)
@@ -48,6 +60,13 @@ class ContactDetector(WaterContactDetector, ClimbingContactDetector):
                         self.env.critical_contact = True
 
     def EndContact(self, contact):
+        '''
+            Triggered when contact ends.
+
+            If contact with water is detected, uses WaterContactDetector.
+            If contact with graspable area is detected, uses ClimbingContactDetector.
+            Otherwise sets `userData.has_contact` to False on the body if `body.userData.check_contact == True`.
+        '''
         bodies = [contact.fixtureA.body, contact.fixtureB.body]
         if any([body.userData.object_type == CustomUserDataObjectTypes.WATER for body in bodies]):
             WaterContactDetector.EndContact(self, contact)
@@ -64,13 +83,24 @@ class ContactDetector(WaterContactDetector, ClimbingContactDetector):
 
 
 class LidarCallback(Box2D.b2.rayCastCallback):
+    '''
+        Callback function triggered when lidar detects an object.
+    '''
     def __init__(self, agent_mask_filter):
+        '''
+            :param agent_mask_filter: Mask filter used to avoid detecting collisions with the agent's body
+        '''
         Box2D.b2.rayCastCallback.__init__(self)
         self.agent_mask_filter = agent_mask_filter
         self.fixture = None
         self.is_water_detected = False
         self.is_creeper_detected = False
     def ReportFixture(self, fixture, point, normal, fraction):
+        '''
+            Triggered when a body is detected by the lidar.
+
+            :return Distance to object detected.
+        '''
         if (fixture.filterData.categoryBits & self.agent_mask_filter) == 0:
             return -1
         self.p2 = point
@@ -84,13 +114,13 @@ class LidarCallback(Box2D.b2.rayCastCallback):
 
 FPS    = 50
 SCALE  =  30.0   # affects how fast-paced the game is, forces should be adjusted as well
-VIEWPORT_W = 600
-VIEWPORT_H = 400
+VIEWPORT_W = 600 # Careful, this affects training
+VIEWPORT_H = 400 # Careful, this affects training
 
-RENDERING_VIEWER_W = VIEWPORT_W
-RENDERING_VIEWER_H = VIEWPORT_H
+RENDERING_VIEWER_W = VIEWPORT_W # Only affects rendering, not the policy
+RENDERING_VIEWER_H = VIEWPORT_H # Only affects rendering, not the policy
 
-NB_LIDAR = 10
+NB_LIDAR = 10 # Number of lidars used by the agent
 LIDAR_RANGE   = 160/SCALE
 
 INITIAL_RANDOM = 5
@@ -107,14 +137,33 @@ NB_FIRST_STEPS_HANG = 5
 #endregion
 
 class ParametricContinuousParkour(gym.Env, EzPickle):
+    '''
+        The Parkour: a procedurally generated Gym environment.
+    '''
     metadata = {
         'render.modes': ['human', 'rgb_array'],
         'video.frames_per_second' : FPS
     }
 
-    def __init__(self, agent_body_type, CPPN_weights_path = None, input_CPPN_dim=3, terrain_cppn_scale=10,
-                 ceiling_offset = 200, ceiling_clip_offset = 0, lidars_type = 'full', water_clip = 20, movable_creepers=False,
+    def __init__(self, agent_body_type, CPPN_weights_path=None, input_CPPN_dim=3, terrain_cppn_scale=10,
+                 ceiling_offset=200, ceiling_clip_offset=0, lidars_type='full', water_clip=20, movable_creepers=False,
                  **walker_args):
+        '''
+            Creates a Parkour environment with an embodiment.
+
+            :param agent_body_type: Embodiment
+            :type agent_body_type: BodiesEnum
+            :param CPPN_weights_path: Path to the CPPN's weights (leave to None for default)
+            :param input_CPPN_dim: Dimensions of the vector controlling terrain's generation through the CPPN
+            :param terrain_cppn_scale: How much values outputted by the CPNN must be scaled (default 10)
+            :param ceiling_offset: Distance between ground and ceiling in the startpad
+            :param ceiling_clip_offset: How close ceiling can get to the ground
+            :param lidars_type: Type of lidars used by the agent (use 'up' for climbers, 'down' for walkers and 'full' for swimmers)
+            :param water_clip: Clips the push force applied under water (you should not need to change this)
+            :param movable_creepers: Whether creepers should be one static rectangle or multiple dynamic rectangles linked by a joint
+            :param walker_args: kwargs controlling the agent (e.g. number of body for a millipede)
+        '''
+
         super(ParametricContinuousParkour, self).__init__()
 
         # Use 'down' for walkers, 'up' for climbers and 'full' for swimmers.
@@ -187,7 +236,7 @@ class ParametricContinuousParkour(gym.Env, EzPickle):
 
     def set_terrain_cppn_scale(self, terrain_cppn_scale, ceiling_offset, ceiling_clip_offset):
         '''
-        Scale the terrain generate by the CPPN to be more suited to our embodiments.
+            Scale the terrain generated by the CPPN to be more suited to our embodiments.
         '''
         assert terrain_cppn_scale > 1
         self.TERRAIN_CPPN_SCALE = terrain_cppn_scale
@@ -199,8 +248,15 @@ class ParametricContinuousParkour(gym.Env, EzPickle):
     def set_environment(self, input_vector, water_level, creepers_width=None, creepers_height=None,
                         creepers_spacing=0.1, terrain_cppn_scale=10):
         '''
-        Set the parameters controlling the PCG algorithm to generate a task.
-        Call this method before `reset()`.
+            Set the parameters controlling the PCG algorithm to generate a task.
+            Call this method before `reset()`.
+
+            :param input_vector: Input vector controlling the CPPN
+            :param water_level: Water level between 0.0 (no water at all) and 1.0 (full of water)
+            :param creepers_width: Width of creepers
+            :param creepers_height: Mean of creepers' height (height is then sample using a normal distribution with a 0.1 std for each creeper)
+            :param creepers_spacing: Spacing between creepers
+            :param terrain_cppn_scale: How much values outputted by the CPNN must be scaled (default 10)
         '''
         self.CPPN_input_vector = input_vector
         self.water_level = water_level.item() if isinstance(water_level, np.float32) else water_level
@@ -387,7 +443,7 @@ class ParametricContinuousParkour(gym.Env, EzPickle):
     # ------------------------------------------ RENDERING ------------------------------------------
     def color_agent_head(self, c1, c2):
         '''
-        Color agent's head depending on its 'dying' state.
+            Color agent's head depending on its 'dying' state.
         '''
         ratio = 0
         if hasattr(self.agent_body, "nb_steps_can_survive_outside_water"):
@@ -463,6 +519,13 @@ class ParametricContinuousParkour(gym.Env, EzPickle):
         return self.viewer.render(return_rgb_array = mode=='rgb_array')
 
     def _SET_RENDERING_VIEWPORT_SIZE(self, width, height=None, keep_ratio=True):
+        '''
+            Set rendering viewport's size (i.e. image size).
+
+            :param width: viewport's width
+            :param height: viewport's height
+            :param keep_ratio: Whether height must be automatically calculated to keep the same ratio as the environment's viewport size.
+        '''
         global RENDERING_VIEWER_W, RENDERING_VIEWER_H
         RENDERING_VIEWER_W = width
         if keep_ratio or height is None:
@@ -475,6 +538,9 @@ class ParametricContinuousParkour(gym.Env, EzPickle):
     # ------------------------------------------ FIXTURES INITIALIZATION ------------------------------------------
 
     def create_terrain_fixtures(self):
+        '''
+            Create fixtures used to generate terrain.
+        '''
         self.fd_polygon = fixtureDef(
             shape=polygonShape(vertices=
                                [(0, 0),
@@ -520,6 +586,9 @@ class ParametricContinuousParkour(gym.Env, EzPickle):
     # ------------------------------------------ GAME GENERATION ------------------------------------------
 
     def generate_game(self):
+        '''
+            Generate the task (i.e. terrain + embodiment).
+        '''
         self._generate_terrain()
         self._generate_clouds()
         self._generate_agent()
@@ -621,7 +690,7 @@ class ParametricContinuousParkour(gym.Env, EzPickle):
                     creeper_step_size = max(1, creeper_step_size)
                     creeper_y_init_pos = max(self.terrain_ceiling_y[i],
                                              self.terrain_ceiling_y[min(i + creeper_step_size, len(self.terrain_x) - 1)])
-                    if self.movable_creepers: # Break creepers in multiple objects linked by joints
+                    if self.movable_creepers: # Break down creepers into multiple objects linked by joints
                         previous_creeper_part = t
                         for w in range(math.ceil(creeper_height)):
                             if w == creeper_height // 1:

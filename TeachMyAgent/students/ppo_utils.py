@@ -2,8 +2,10 @@ import numpy as np
 from TeachMyAgent.students.openai_baselines.common.wrappers import ClipActionsWrapper
 from TeachMyAgent.students.openai_baselines.common.vec_env import VecNormalize, DummyVecEnv
 
-# Custom inherited class that gives access to raw observation and reward
 class CustomVecNormalizeEnv(VecNormalize):
+    '''
+        Custom inherited class that gives access to raw observation and reward (i.e. unscaled).
+    '''
     def _rewsfilt(self, rews, news):
         self.ret = self.ret * self.gamma + rews
         if self.ret_rms:
@@ -33,11 +35,12 @@ class CustomVecNormalizeEnv(VecNormalize):
         self.ob_rms = ob_rms
         self.ret_rms = ret_rms
 
-    # def _SET_RENDERING_VIEWPORT_SIZE(self, width, height=None, keep_ratio=True):
-    #     self.envs[0]._SET_RENDERING_VIEWPORT_SIZE(width, height, keep_ratio)
-
-# Share reward and observation normalization with a twin class (i.e. for the test env)
 class TwinCustomVecNormalizeEnv(CustomVecNormalizeEnv):
+    '''
+        Share reward and observation normalization with a twin class (i.e. for the test env).
+
+        Use this to make the test env scale reward and observation the same way the training env does.
+    '''
     def __init__(self, twin_env, venv, **kwargs):
         super().__init__(venv, **kwargs)
         self.twin = twin_env
@@ -61,6 +64,9 @@ def create_clipped_env(env_f):
     return ClipActionsWrapper(vanilla_env)
 
 def create_custom_vec_normalized_envs(env_f):
+    '''
+        Create two vectorized, normalized and clipped envs (i.e. training env and test env).
+    '''
     clipped_env = DummyVecEnv([lambda: create_clipped_env(env_f)])
     vec_normalized_env = CustomVecNormalizeEnv(clipped_env, use_tf=False)
 

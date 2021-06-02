@@ -1,6 +1,9 @@
 import sys
 
 if __name__ == '__main__':
+    '''
+        Generate a script launching all experiments needed to perform the full benchmark (both skill-specific and global performance) for a teacher.
+    '''
     experiment_name = sys.argv[1]
     experiment_arguments = ' '.join(sys.argv[2:])
     nb_seeds = 16  # {}

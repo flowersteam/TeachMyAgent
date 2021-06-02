@@ -1,3 +1,5 @@
+# Taken from https://github.com/psclklnk/spdl
+# Copy of the license at TeachMyAgent/teachers/LICENSES/SPDL
 from abc import ABC, abstractmethod
 import torch
 
@@ -10,8 +12,13 @@ class AlphaFunction(ABC):
 
 
 class PercentageAlphaFunction(AlphaFunction):
-
     def __init__(self, offset, percentage):
+        '''
+            Calculate an automatically adjusted alpha parameter to maintain constant proportion.
+
+            :param percentage: proportion to maintain
+            :param offset: How many times alpha should be set to 0
+        '''
         self.offset = offset
         self.percentage = percentage
 

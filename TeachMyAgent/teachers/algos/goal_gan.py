@@ -15,6 +15,22 @@ class GoalGAN(AbstractTeacher):
     def __init__(self, mins, maxs, seed, env_reward_lb, env_reward_ub, state_noise_level, success_distance_threshold,
                  update_size,  n_rollouts=2, goid_lb=0.25, goid_ub=0.75, p_old=0.2, use_pretrained_samples=False,
                  initial_dist=None):
+        '''
+            GoalGAN (http://proceedings.mlr.press/v80/florensa18a.html).
+
+            Code taken from https://github.com/psclklnk/spdl + minor updates.
+
+            :param state_noise_level: Proportion of noise added to goal sampled by the GAN (used on each dimension)
+            :param success_distance_threshold: How far a 'Goal Of Intermediate Difficulty' must be from the others to be
+                                               added to the buffer (expressed percentage of each dimension)
+            :param update_size: How many new goals must be sampled before training the GAN
+            :param n_rollouts: How many times a goal must be proposed to the student before calculating its mean success
+            :param goid_lb: Lower bound to consider the mean success of a goal of 'Intermediate Difficulty'
+            :param goid_ub: Upper bound to consider the mean success of a goal of 'Intermediate Difficulty'
+            :param p_old: Probability to sample a goal from the buffer of old goals
+            :param use_pretrained_samples: Whether the GAN should be pretrained using samples from `initial_dist`
+            :param initial_dist Initial distribution from which samples should be generated to pretrain the GAN
+        '''
         AbstractTeacher.__init__(self, mins, maxs, env_reward_lb, env_reward_ub, seed)
 
         np.random.seed(self.seed) # To seed the GAN (sufficient ?)

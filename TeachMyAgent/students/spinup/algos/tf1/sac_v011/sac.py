@@ -40,15 +40,17 @@ class ReplayBuffer:
 Soft Actor-Critic
 
 (With slight variations that bring it closer to TD3)
-
 """
 def sac(env_fn, actor_critic=core.mlp_actor_critic, ac_kwargs=dict(), seed=0,
         steps_per_epoch=4000, epochs=100, replay_size=2000000, gamma=0.99,
         polyak=0.995, lr=1e-3, alpha=0.2, batch_size=100, start_steps=10000,
-        max_ep_len=2000, logger_kwargs=dict(), save_freq=1, env_init=dict(),
+        max_ep_len=2000, logger_kwargs=dict(), save_freq=1,
         nb_test_episodes=50, train_freq=10, Teacher=None, half_save=False,
         pretrained_model=None, reset_frequency=None):
     """
+    Soft Actor-Critic
+
+    With some modifications were made to make it use an ACL teacher and a test env.
 
     Args:
         env_fn : A function which creates a copy of the environment.
@@ -142,12 +144,6 @@ def sac(env_fn, actor_critic=core.mlp_actor_critic, ac_kwargs=dict(), seed=0,
     np.random.seed(seed)
 
     env, test_env = env_fn(), env_fn()
-
-    # initialize environment (choose between short, default or quadrupedal walker)
-    if len(env_init.items()) > 0:
-        env.env.my_init(env_init)
-        test_env.env.my_init(env_init)
-
 
     if Teacher:
         params = Teacher.set_env_params(env)

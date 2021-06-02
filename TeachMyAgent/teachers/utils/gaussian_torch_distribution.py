@@ -1,3 +1,6 @@
+# Taken from https://github.com/psclklnk/spdl
+# Copy of the license at TeachMyAgent/teachers/LICENSES/SPDL
+
 import scipy.linalg as scpla
 from abc import ABC
 import numpy as np

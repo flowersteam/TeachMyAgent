@@ -33,10 +33,20 @@ from TeachMyAgent.environments.envs.utils.custom_user_data import CustomUserData
 
 
 class ContactDetector(contactListener):
+    '''
+        Custom contact detector.
+    '''
     def __init__(self, env):
         contactListener.__init__(self)
         self.env = env
     def BeginContact(self, contact):
+        '''
+            Triggered when contact is detected.
+
+            Checks userData of each of the two fixtures colliding.
+            Sets `userData.has_contact` to True on the body if `body.userData.check_contact == True`.
+            If `userData.is_contact_critical == True`, `env.critical_contact` is set to True, stopping the episode.
+        '''
         for body in [contact.fixtureA.body, contact.fixtureB.body]:
             if body.userData.object_type == CustomUserDataObjectTypes.BODY_OBJECT and body.userData.check_contact:
                 body.userData.has_contact = True
@@ -44,6 +54,11 @@ class ContactDetector(contactListener):
                     self.env.head_contact = True
 
     def EndContact(self, contact):
+        '''
+            Triggered when contact ends.
+
+            Sets `userData.has_contact` to False on the body if `body.userData.check_contact == True`.
+        '''
         for body in [contact.fixtureA.body, contact.fixtureB.body]:
             if body.userData.object_type == CustomUserDataObjectTypes.BODY_OBJECT and body.userData.check_contact:
                 body.userData.has_contact = False
@@ -56,11 +71,22 @@ def Rotate2D(pts,cnt,ang=np.pi/4):
 
 
 class LidarCallback(Box2D.b2.rayCastCallback):
+    '''
+        Callback function triggered when lidar detects an object.
+    '''
     def __init__(self, agent_mask_filter):
+        '''
+            :param agent_mask_filter: Mask filter used to avoid detecting collisions with the agent's body
+        '''
         Box2D.b2.rayCastCallback.__init__(self)
         self.agent_mask_filter = agent_mask_filter
         self.fixture = None
     def ReportFixture(self, fixture, point, normal, fraction):
+        '''
+            Triggered when a body is detected by the lidar.
+
+            :return Distance to object detected.
+        '''
         if (fixture.filterData.categoryBits & self.agent_mask_filter) == 0:
             return -1
         self.p2 = point
@@ -73,13 +99,13 @@ class LidarCallback(Box2D.b2.rayCastCallback):
 
 FPS    = 50
 SCALE  = 30.0   # affects how fast-paced the game is, forces should be adjusted as well
-VIEWPORT_W = 600
-VIEWPORT_H = 400
+VIEWPORT_W = 600 # Careful, this affects training
+VIEWPORT_H = 400 # Careful, this affects training
 
-RENDERING_VIEWER_W = VIEWPORT_W
-RENDERING_VIEWER_H = VIEWPORT_H
+RENDERING_VIEWER_W = VIEWPORT_W # Only affects rendering, not the policy
+RENDERING_VIEWER_H = VIEWPORT_H # Only affects rendering, not the policy
 
-NB_LIDAR = 10
+NB_LIDAR = 10 # Number of lidars used by the agent
 LIDAR_RANGE   = 160/SCALE
 
 INITIAL_RANDOM = 5
@@ -94,12 +120,23 @@ FRICTION = 2.5
 #endregion
 
 class ParametricContinuousStumpTracks(gym.Env, EzPickle):
+    '''
+        The Stump Tracks: a procedurally generated Gym environment.
+    '''
     metadata = {
         'render.modes': ['human', 'rgb_array'],
         'video.frames_per_second' : FPS
     }
 
     def __init__(self, walker_type, **walker_args):
+        '''
+            Creates a Stump Tracks environment with an embodiment.
+
+            :param walker_type: Embodiment
+            :type walker_type: BodiesEnum
+            :param walker_args: kwargs controlling the agent (e.g. number of body for a millipede)
+        '''
+
         super(ParametricContinuousStumpTracks, self).__init__()
 
         # Seed env and init Box2D
@@ -146,8 +183,15 @@ class ParametricContinuousStumpTracks(gym.Env, EzPickle):
     def set_environment(self, roughness=None, stump_height=None, stump_width=None, stump_rot=None,
                         obstacle_spacing=None, poly_shape=None, stump_seq=None):
         '''
-        Set the parameters controlling the PCG algorithm to generate a task.
-        Call this method before `reset()`.
+            Set the parameters controlling the PCG algorithm to generate a task.
+            Call this method before `reset()`.
+
+            :param roughness: Input vector controlling the CPPN
+            :param stump_height: Tuple specifying mean and std of a normal distribution from which the height of each stump is sampled
+            :param stump_width: Tuple specifying mean and std of a normal distribution from which the width of each stump is sampled
+            :param stump_rot: Tuple specifying mean and std of a normal distribution from which the rotation degree of each stump is sampled
+            :param obstacle_spacing: Spacing between stumps
+            :param poly_shape: Shape of polygon stumps
         '''
         self.roughness = roughness if roughness else 0
         self.obstacle_spacing = max(0.01, obstacle_spacing) if obstacle_spacing is not None else 8.0
@@ -295,6 +339,13 @@ class ParametricContinuousStumpTracks(gym.Env, EzPickle):
         return self.viewer.render(return_rgb_array = mode=='rgb_array')
 
     def _SET_RENDERING_VIEWPORT_SIZE(self, width, height=None, keep_ratio=True):
+        '''
+            Set rendering viewport's size (i.e. image size).
+
+            :param width: viewport's width
+            :param height: viewport's height
+            :param keep_ratio: Whether height must be automatically calculated to keep the same ratio as the environment's viewport size.
+        '''
         global RENDERING_VIEWER_W, RENDERING_VIEWER_H
         RENDERING_VIEWER_W = width
         if keep_ratio or height is None:
@@ -312,6 +363,9 @@ class ParametricContinuousStumpTracks(gym.Env, EzPickle):
     # ------------------------------------------ FIXTURES INITIALIZATION ------------------------------------------
 
     def create_terrain_fixtures(self):
+        '''
+            Create fixtures used to generate terrain.
+        '''
         self.fd_polygon = fixtureDef(
             shape=polygonShape(vertices=
                                [(0, 0),
@@ -351,6 +405,9 @@ class ParametricContinuousStumpTracks(gym.Env, EzPickle):
     # ------------------------------------------ GAME GENERATION ------------------------------------------
 
     def generate_game(self):
+        '''
+            Generate the task (i.e. terrain + embodiment).
+        '''
         self._generate_terrain()
         self._generate_clouds()
         self._generate_walker()

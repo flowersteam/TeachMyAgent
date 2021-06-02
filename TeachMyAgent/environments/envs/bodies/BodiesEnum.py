@@ -1,8 +1,6 @@
 from enum import Enum
 from TeachMyAgent.environments.envs.bodies.BodyTypesEnum import BodyTypesEnum
 
-from TeachMyAgent.environments.envs.bodies.back_bodies.BackChimpanzee import BackChimpanzee
-
 from TeachMyAgent.environments.envs.bodies.climbers.ClimbingChestProfileChimpanzee import ClimbingChestProfileChimpanzee
 from TeachMyAgent.environments.envs.bodies.climbers.ClimbingProfileChimpanzee import ClimbingProfileChimpanzee
 
@@ -15,7 +13,6 @@ from TeachMyAgent.environments.envs.bodies.walkers.old.OldClassicBipedalBody imp
 from TeachMyAgent.environments.envs.bodies.walkers.SmallBipedalBody import SmallBipedalBody
 from TeachMyAgent.environments.envs.bodies.walkers.BigQuadruBody import BigQuadruBody
 from TeachMyAgent.environments.envs.bodies.walkers.ClassicBipedalBody import ClassicBipedalBody
-from TeachMyAgent.environments.envs.bodies.walkers.HumanBody import HumanBody
 from TeachMyAgent.environments.envs.bodies.walkers.MillipedeBody import MillipedeBody
 from TeachMyAgent.environments.envs.bodies.walkers.ProfileChimpanzee import ProfileChimpanzee
 from TeachMyAgent.environments.envs.bodies.walkers.SpiderBody import SpiderBody
@@ -23,16 +20,19 @@ from TeachMyAgent.environments.envs.bodies.walkers.WheelBody import WheelBody
 
 
 class BodiesEnum(Enum):
+    '''
+        Possible embodiments to use.
+
+        Associates a string name to a class.
+    '''
     small_bipedal = SmallBipedalBody
     classic_bipedal = ClassicBipedalBody
     big_quadru = BigQuadruBody
     spider = SpiderBody
     millipede = MillipedeBody
     wheel = WheelBody
-    human = HumanBody
     old_classic_bipedal = OldClassicBipedalBody
     profile_chimpanzee = ProfileChimpanzee
-    back_chimpanzee = BackChimpanzee
     old_big_quadru = OldBigQuadruBody
     fish = FishBody
     climbing_profile_chimpanzee = ClimbingProfileChimpanzee
@@ -42,7 +42,7 @@ class BodiesEnum(Enum):
     @classmethod
     def get_body_type(self, body_name):
         '''
-        Return embodiment's type given its name.
+            Return embodiment's type given its name.
         '''
         if body_name in ['climbing_chest_profile_chimpanzee', 'climbing_profile_chimpanzee']:
             return BodyTypesEnum.CLIMBER

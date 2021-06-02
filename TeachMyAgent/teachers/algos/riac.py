@@ -10,6 +10,13 @@ from itertools import islice
 from TeachMyAgent.teachers.algos.AbstractTeacher import AbstractTeacher
 
 def proportional_choice(v, random_state, eps=0.):
+    '''
+        Return an index of `v` chosen proportionally to values contained in `v`.
+
+        :param v: List of values
+        :param random_state: Random generator
+        :param eps: Epsilon used for an Epsilon-greedy strategy
+    '''
     if np.sum(v) == 0 or random_state.rand() < eps:
         return random_state.randint(np.size(v))
     else:
@@ -18,6 +25,9 @@ def proportional_choice(v, random_state, eps=0.):
 
 # A region is a subspace of the task space
 class Region(object):
+    '''
+        Subspace of the task space
+    '''
     def __init__(self, maxlen, r_t_pairs=None, bounds=None, alp=None):
         self.r_t_pairs = r_t_pairs  # A list of pairs of sampled tasks associated to the reward the student obtained
         self.bounds = bounds
@@ -39,6 +49,19 @@ class RIAC(AbstractTeacher):
     def __init__(self, mins, maxs, seed, env_reward_lb, env_reward_ub, max_region_size=200, alp_window_size=None,
                  nb_split_attempts=50, sampling_in_leaves_only=False, min_region_size=None, min_dims_range_ratio=1/6,
                  discard_ratio=1/4):
+        '''
+            Implementation of Robust Intelligent-Adaptive-Curiosity (with minor improvements).
+
+            :param max_region_size: Maximal number of (task, reward) pairs a region can hold before splitting
+            :param alp_window_size: Window size to compute ALP
+            :param nb_split_attempts: Number of attempts to find a valid split
+            :param sampling_in_leaves_only: Whether task sampling uses parent and child regions (False) or only child regions (True)
+            :param min_region_size: (Additional trick n°1) Minimum population required for both children when splitting --> set to 1 to cancel
+            :param min_dims_range_ratio: (Additional trick n°2) Mnimum children region size (compared to initial range of each dimension).
+                                         Set min_dims_range_ratio to 1/np.inf to cancel.
+            :param discard_ratio: (Additional trick n°3) If after nb_split_attempts, no split is valid, flush oldest points of parent region.
+                                  If 1 and 2 are cancelled, this will be canceled since any split will be valid
+        '''
 
         AbstractTeacher.__init__(self, mins, maxs, env_reward_lb, env_reward_ub, seed)
 
@@ -99,6 +122,9 @@ class RIAC(AbstractTeacher):
         return alp
 
     def split(self, nid):
+        '''
+             Try `nb_split_attempts` splits on region corresponding to node <nid>
+        '''
         # Try nb_split_attempts splits on region corresponding to node <nid>
         reg = self.tree.get_node(nid).data
         best_split_score = 0

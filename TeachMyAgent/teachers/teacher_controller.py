@@ -6,7 +6,6 @@ from TeachMyAgent.teachers.algos.alp_gmm import ALPGMM
 from TeachMyAgent.teachers.algos.covar_gmm import CovarGMM
 from TeachMyAgent.teachers.algos.adr import ADR
 from TeachMyAgent.teachers.algos.self_paced_teacher import SelfPacedTeacher
-from TeachMyAgent.teachers.algos.truncated_self_paced import SelfPacedTeacher as TruncatedSelfPacedTeacher
 from TeachMyAgent.teachers.algos.goal_gan import GoalGAN
 from TeachMyAgent.teachers.algos.setter_solver import SetterSolver
 from TeachMyAgent.teachers.algos.random_teacher import RandomTeacher
@@ -15,6 +14,13 @@ from collections import OrderedDict
 
 # Utils functions to convert task vector into dictionary (or the opposite)
 def param_vec_to_param_dict(param_env_bounds, param):
+    '''
+        Convert a task vector into a dictionary.
+
+        :param param_env_bounds: Dictionary containing bounds of each dimension
+        :param param: Task vector
+        :return Task as a dictionary
+    '''
     param_dict = OrderedDict()
     cpt = 0
     for i,(name, bounds) in enumerate(param_env_bounds.items()):
@@ -34,6 +40,13 @@ def param_vec_to_param_dict(param_env_bounds, param):
     return param_dict
 
 def param_dict_to_param_vec(param_env_bounds, param_dict):
+    '''
+        Convert a task dictionary into a vector.
+
+        :param param_env_bounds: Dictionary containing bounds of each dimension
+        :param param: Task dictionary
+        :return Task vector
+    '''
     param_vec = []
     for name, bounds in param_env_bounds.items():
         if isinstance(param_dict[name], list) or isinstance(param_dict[name], np.ndarray):
@@ -45,8 +58,34 @@ def param_dict_to_param_vec(param_env_bounds, param_dict):
 
 # Class controlling the interactions between ACL methods and DeepRL students
 class TeacherController(object):
+    '''
+        Control the interactions between the ACL method and the DeepRL student.
+    '''
     def __init__(self, teacher, nb_test_episodes, param_env_bounds, seed=None, test_set=None,
                  keep_periodical_task_samples=None, shuffle_dimensions=False, scale_reward=False, **teacher_params):
+        '''
+            Create a TeacherController to make and ACL method interact with a DeepRL student.
+            Pass this object to your DeepRL student and use the methods below to as for new tasks and record trajectories.
+
+            :param teacher: Teacher's name
+            :type teacher: str
+            :param nb_test_episodes: Number of episodes in the test set (used if a new test set must be generated)
+            :param param_env_bounds: Bounds of the task space
+            :type param_env_bounds: dict
+            :param seed: Seed for the teacher and the test set generation (if needed)
+            :param test_set: Test set's name if an existing test set must be used.
+                             Saved test set are in the `TeachMyAgent/teachers/test_sets` folder.
+                             Just specify the filename without the path (and without the .pkl extension).
+            :param keep_periodical_task_samples: How frequently the teacher must be asked to sample 100 (non exploratory) tasks.
+                                                 This is then used to visualize the curriculum.
+            :param shuffle_dimensions: Whether the task space the ACL method uses should be cut into hypercubes and shuffled.
+                                       If set to True, the ACL teacher interacts with  the shuffled task space.
+                                       Tasks are then mapped towards the real task space using a DimensionsShuffler.
+            :type shuffle_dimensions: bool
+            :param scale_reward: Whether rewards should be scaled to a [0, 1] interval
+            :type scale_reward bool
+            :param teacher_params: Additional kwargs for the ACL method.
+        '''
         self.teacher = teacher
         self.nb_test_episodes = nb_test_episodes
         self.test_set = test_set
@@ -80,6 +119,10 @@ class TeacherController(object):
                     print("ill defined boundaries, use [min, max, nb_dims] format or [min, max] if nb_dims=1")
                     exit(1)
         self.task_dim = len(mins)
+
+        # If `shuffle_dimensions` is set to True, the ACL teacher interacts with tasks in the shuffled task space.
+        # Tasks are then mapped towards the real task space.
+        # This uses a DimensionsShuffler.
         if shuffle_dimensions:
             self.dimensions_shuffler = DimensionsShuffler(mins, maxs, seed=seed)
             if "initial_dist" in teacher_params:
@@ -104,8 +147,6 @@ class TeacherController(object):
             self.task_generator = ADR(mins, maxs, seed=seed, scale_reward=scale_reward, **teacher_params)
         elif teacher == 'Self-Paced':
             self.task_generator = SelfPacedTeacher(mins, maxs, seed=seed, **teacher_params)
-        elif teacher == 'Truncated-Self-Paced':
-            self.task_generator = TruncatedSelfPacedTeacher(mins, maxs, seed=seed, **teacher_params)
         elif teacher == 'GoalGAN':
             self.task_generator = GoalGAN(mins, maxs, seed=seed, **teacher_params)
         elif teacher == 'Setter-Solver':
@@ -158,12 +199,21 @@ class TeacherController(object):
         return params
 
     def set_value_estimator(self, estimator):
+        '''
+            Give the DeepRL value estimator to the teacher.
+        '''
         self.task_generator.value_estimator = estimator
 
     def record_train_task_initial_state(self, initial_state):
+        '''
+            Record the initial state of the lastly sampled task.
+        '''
         self.task_generator.record_initial_state(self._get_last_task(), initial_state)
 
     def record_train_step(self, state, action, reward, next_state, done):
+        '''
+            Record a step for the last task.
+        '''
         self.train_step_counter += 1
         self.task_generator.step_update(state, action, reward, next_state, done)
         # Monitor curriculum
@@ -180,9 +230,16 @@ class TeacherController(object):
             self.periodical_task_infos.append(np.array(infos))
 
     def record_train_episode(self, ep_reward, ep_len, is_success=False):
+        '''
+            Record the episode associated to the last task.
+
+            :param ep_reward: Return
+            :param ep_len: Number of steps done
+            :param is_success: Binary reward
+        '''
         self.env_train_rewards.append(ep_reward)
         self.env_train_len.append(ep_len)
-        if self.scale_reward and self.teacher != 'Oracle':
+        if self.scale_reward:
             ep_reward = np.interp(ep_reward,
                                   (self.task_generator.env_reward_lb, self.task_generator.env_reward_ub),
                                   (0, 1))
@@ -190,10 +247,16 @@ class TeacherController(object):
         self.task_generator.episodic_update(self._get_last_task(), ep_reward, is_success)
 
     def record_test_episode(self, reward, ep_len):
+        '''
+            Record the episode for the last test task sampled.
+        '''
         self.env_test_rewards.append(reward)
         self.env_test_len.append(ep_len)
 
     def dump(self, filename):
+        '''
+            Save teacher and all book-keeped information.
+        '''
         with open(filename, 'wb') as handle:
             dump_dict = {'env_params_train': self.env_params_train,
                          'env_train_rewards': self.env_train_rewards,
@@ -208,6 +271,9 @@ class TeacherController(object):
             pickle.dump(dump_dict, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
     def set_env_params(self, env):
+        '''
+            Sample a task and set the PCG of the environment with it.
+        '''
         params = copy.copy(self.task_generator.sample_task())
         if self.dimensions_shuffler is not None:
             params = self.dimensions_shuffler.interpolate_task(params)
@@ -219,6 +285,9 @@ class TeacherController(object):
         return params
 
     def set_test_env_params(self, test_env):
+        '''
+            Sample a test task from the test set and set the PCG of the test environment with it.
+        '''
         self.test_ep_counter += 1
         test_param_dict = self.test_env_list[self.test_ep_counter - 1]
 

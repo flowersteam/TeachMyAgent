@@ -1,3 +1,5 @@
+# Taken from https://github.com/psclklnk/spdl
+# Copy of the license at TeachMyAgent/teachers/LICENSES/SPDL
 from TeachMyAgent.teachers.utils.torch import get_gradient, zero_grad
 import numpy as np
 import torch

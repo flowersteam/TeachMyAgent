@@ -13,8 +13,22 @@ SPEED_HIP     = 4
 SPEED_KNEE    = 6
 
 class MillipedeBody(WalkerAbstractBody):
+    '''
+        Millipede embodiment with controllable number of bodies.
+    '''
     def __init__(self, scale, motors_torque=200, nb_of_bodies=4, nb_steps_under_water=600,
                  reset_on_hull_critical_contact=False):
+        '''
+            Creates a millipede walker.
+
+            Each of its body has two legs. The head is considered as the rightmost body.
+
+            :param scale: Scale value used in the environment (to adapt the embodiment to its environment)
+            :param motors_torque: Maximum torque the embodiment can use on its motors
+            :param nb_of_bodies: Number of square bodies the agent has
+            :param  nb_steps_under_water: How many consecutive steps the embodiment can survive under water
+            :param reset_on_hull_critical_contact: Whether a contact detected with the head should stop the episode
+        '''
         super(MillipedeBody, self).__init__(scale, motors_torque, nb_steps_under_water)
         self.LEG_DOWN = 3 / self.SCALE  # 0 = center of hull
         self.LEG_W, self.LEG_H = 4 / self.SCALE, 10 / self.SCALE

@@ -36,6 +36,6 @@ setup(
         'emcee',
         'notebook'
     ],
-    description="TeachMyAgent: A benchmark to study and compare ACL algorithms in continuous procedural environments.",
+    description="TeachMyAgent: A benchmark to study and compare ACL algorithms for DeepRL in continuous procedural environments.",
     author="Clément Romac",
 )

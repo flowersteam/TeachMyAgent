@@ -9,7 +9,24 @@ SPEED_KNEE    = 6
 SPEED_HAND    = 8
 
 class ClimbingChestProfileChimpanzee(ClimberAbstractBody):
-    def __init__(self, scale, motors_torque = 100, nb_steps_under_water = 600):
+    '''
+        Climbing 'chimpanzee' embodiment without legs.
+    '''
+    def __init__(self, scale, motors_torque=100, nb_steps_under_water=600):
+        '''
+            Creates a legless chimpanzee with:
+            - a head
+            - a chest
+            - two arms (constituted of two limbs each)
+            - two hands (constituted of one limbs each)
+            - two sensors (each at the extremity of a hand) to detect collisions with graspable areas and grasp them.
+
+            No contact with ground is allowed.
+
+            :param scale: Scale value used in the environment (to adapt the embodiment to its environment)
+            :param motors_torque: Maximum torque the embodiment can use on its motors
+            :param nb_steps_under_water: How many consecutive steps the embodiment can survive under water
+        '''
         super(ClimbingChestProfileChimpanzee, self).__init__(scale, motors_torque, nb_steps_under_water)
         self.LEG_DOWN = 12 / self.SCALE
         self.ARM_UP = 22 / self.SCALE
