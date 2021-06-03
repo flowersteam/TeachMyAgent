@@ -39,13 +39,6 @@ if __name__ == '__main__':
             "max_kl": [0.1, 0.8],
             "use_avg_performance": [None]
         },
-        "Truncated-Self-Paced": {
-            "sp_update_offset": [100000, 200000],
-            "sp_update_frequency": [50000, 100000],
-            "alpha_offset": [0, 10],
-            "zeta": [0.5, 1.0, 2.0, 4.0],
-            "max_kl": [0.2, 0.6],
-        },
         "Setter-Solver": {
             "ss_update_frequency": [50, 100, 200, 300],
             "setter_loss_noise_ub": [0.005, 0.01, 0.05, 0.1],
