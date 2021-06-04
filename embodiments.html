@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link href="style.css" rel="stylesheet">
+    <title>TeachMyAgent</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">TeachMyAgent</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="embodiments.html">Embodiments</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="environments.html">Environments</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="methods.html">ACL methods</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="doc/index.html">Documentation</a>
+                </li>
+            </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="head-image-container text-center">
+        <img src="images/embodiments/head-image.png" class="head-image w-100" alt="Millipede">
+        <div class="head-image-caption">
+            <h1>Embodiments</h1>
+        </div>
+    </div>
+    <div class="container my-5">
+        <div class="accordion" id="accordionEmbodiments">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="Embodiments-headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#Embodiments-collapseOne" aria-expanded="true" aria-controls="Embodiments-collapseOne">
+                  Walkers
+                </button>
+              </h2>
+              <div id="Embodiments-collapseOne" class="accordion-collapse collapse show" aria-labelledby="Embodiments-headingOne">
+                <div class="accordion-body">
+                    <p class="mt-3">All our walkers feature at least legs, on which they receive information of whether it has contact with the ground or not. They have the particularity of not being allowed to spend more than 600 consecutive steps underwater otherwise they are considered as "dead" and the actions sent to their motors no longer have any effect.</p>
+                    <div class="row mt-5">
+                        <div class="col-12 col-md-3">
+                            <img class="w-100" src="images/embodiments/bipedal.gif" alt="Bipedal walker"/>
+                            <h4 class="text-center mt-3">Bipedal walker</h4>
+                            <p class="text-center">We reused the classic bipedal walker agent. *</p>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <img class="w-100" src="images/embodiments/short.gif" alt="Short walker"/>
+                            <h4 class="text-center mt-3">Short walker</h4>
+                            <p class="text-center">Short bipedal walker introduced <a class="main-color" href="https://github.com/flowersteam/teachDeepRL">here</a>. *</p>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <img class="w-100" src="images/embodiments/quadru.gif" alt="Quadrupedal walker"/>
+                            <h4 class="text-center mt-3">Quadrupedal walker</h4>
+                            <p class="text-center">Quadrupedal walker introduced in this <a class="main-color" href="https://github.com/flowersteam/teachDeepRL">repository</a>. The image above is taken from it.</p>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <img class="w-100" src="images/embodiments/spider.gif" alt="Spider"/>
+                            <h4 class="text-center mt-3">Spider</h4>
+                            <p class="text-center">We introduce the spider, on which the number of pairs of legs (default 2) can be modified. *</p>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-12 col-md-3">
+                            <img class="w-100" src="images/embodiments/walking_chimp.gif" alt="Chimpanzee"/>
+                            <h4 class="text-center mt-3">Chimpanzee</h4>
+                            <p class="text-center">Its hand is composed of three parts (with motors in between). *</p>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <img class="w-100" src="images/embodiments/wheel.gif" alt="Wheel"/>
+                            <h4 class="text-center mt-3">Wheel</h4>
+                            <p class="text-center">The wheel is made of a hull and legs around. The number of legs per side is controllable (default 1). * </p>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <img class="w-100" src="images/embodiments/millipede.gif" alt="Millipede"/>
+                            <h4 class="text-center mt-3">Millipede</h4>
+                            <p class="text-center">Composed multiple body parts linked by a joint (which is not a motor). Each part has two legs and the number of parts is controllable. *</p>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="Embodiments-headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#Embodiments-collapseTwo" aria-expanded="false" aria-controls="Embodiments-collapseTwo">
+                  Climbers
+                </button>
+              </h2>
+              <div id="Embodiments-collapseTwo" class="accordion-collapse collapse" aria-labelledby="Embodiments-headingTwo">
+                <div class="accordion-body">
+                    <p class="mt-3">
+                        Climbers are made to grasp creepers or the ceiling in order to move forward. 
+                        For this, they use sensors (red circles below) placed at the end of their arms. 
+                        When a contact with a graspable surface is detected, climbers can grasp (creating a rotational joint in yellow below) using an action between [-1;1]. 
+                        Whenever this action is greater than 0, the grasping behavior is activated, otherwise, the agent releases its "hand" (destroying the joint). 
+                        Climbers are not allowed to touch the ground with any of their body part, and die after 600 consecutive steps underwater the same way walkers do.
+                    </p>
+                    <p>
+                        Note that, as opposed to walkers which appear in the episode on the ground, climbers appear with all of their sensors attached to the ceiling, simplifying the access of graspable surfaces in the beginning of the episode.
+                    </p>
+                    <div class="row mt-5">
+                        <div class="col-12 col-md-3">
+                            <img class="w-100" src="images/embodiments/legless_chimp.gif" alt="Legless chimpanzee"/>
+                            <h4 class="text-center mt-3">Legless chimpanzee</h4>
+                            <p class="text-center">We introduce a cimbing (legless) chimpanzee. Its hands are replaced by sensors used to grasp creepers or the  ceiling. *</p>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <img class="w-100" src="images/embodiments/chimp.gif" alt="Chimpanzee"/>
+                            <h4 class="text-center mt-3">Chimpanzee</h4>
+                            <p class="text-center">We then add legs to our chimpanzee (which complicates the action space). *</p>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="Embodiments-headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#Embodiments-collapseThree" aria-expanded="false" aria-controls="Embodiments-collapseThree">
+                  Swimmers
+                </button>
+              </h2>
+              <div id="Embodiments-collapseThree" class="accordion-collapse collapse" aria-labelledby="Embodiments-headingThree">
+                <div class="accordion-body">
+                    <p class="mt-3">
+                        Swimming morphologies act underwater in a zero-gravity setup (i.e. their density is the same as the water's, meaning that they neither sink nor float as opposed to climbers and walkers which both sink). 
+                        They are not allowed to spend more than 600 consecutive steps out of water otherwise they die the same way our other embodiments do.
+                    </p>
+                    <div class="row mt-5">
+                        <div class="col-12 col-md-3">
+                            <img class="w-100" src="images/embodiments/fish.gif" alt="Fish"/>
+                            <h4 class="text-center mt-3">Fish</h4>
+                            <p class="text-center">Featuring a body composed of multi parts linked by a motor. It also has a fin movable through a motor positioned at its right extremity. *</p>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <img class="w-100" src="images/embodiments/amphibious_bipedal.gif" alt="Amphibious bipedal walker"/>
+                            <h4 class="text-center mt-3">Amphibious bipedal walker</h4>
+                            <p class="text-center">An extended version of the classic bipedal walker that is allowed to go both out and underwater. *</p>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <p class="my-5"><i>* Policies shown above were learned using Soft Actor Critic for 10 millions steps.</i></p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  </body>
+</html>

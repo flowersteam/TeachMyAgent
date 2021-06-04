@@ -1,8 +1,22 @@
 .head-image{
-    width: 100%;
-    max-height: 500px;
+    max-height: 400px;
     object-fit: cover;
     object-position: 0% 60%;
+}
+
+.head-image-container{
+    position: relative;
+}
+
+.head-image-caption{
+    position: absolute;
+    top: 45%;
+    left: 0;
+    width: 100%;
+}
+
+.head-image-caption > h1{
+    font-size: 3rem;
 }
 
 .main-color{
@@ -18,43 +32,31 @@
 }
 
 .home-links{
-    font-size: 1.5em;
-}
-
-.text-li{
-    margin: 10px 0;
-}
-
-.text-block{
-    margin: 50px 0;
+    font-size: 1.5rem;
 }
 
 .normal-title{
-    font-size: 0.9em;
+    font-size: 1.6rem;
 }
 
-h2{
-    padding: 25px 0;
+.parkour-img{
+    max-height: 350px;
+    object-fit: cover;
+    object-position: 0% 80%;
 }
 
-.container-section{
-    margin-top: 25px;
-    margin-bottom: 25px;
+.accordion-button{
+    font-size: 1.5rem;
 }
 
 #home_title{
-    text-align: center;
-    margin: 5% 50px;
-    width: 90%;
-    font-size: 3em;
+    font-size: 3rem;
 }
 
 #global_schema{
-    width: 100%;
     max-width: 600px;
 }
 
 #home_carousel{
-    width: 100%;
     max-width: 600px;
 }
