@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link href="style.css" rel="stylesheet">
+    <title>TeachMyAgent</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">TeachMyAgent</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/embodiments">Embodiments</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/environments">Environments</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/methods">ACL methods</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/doc">Documentation</a>
+                </li>
+            </ul>
+            </div>
+        </div>
+    </nav>
+    <img src="images/home/head_image.png" class="head-image" alt="Parkour environment">
+    <div class="container container-section">
+        <h1 class="main-color" id="home_title">TeachMyAgent: a Benchmark for Automatic Curriculum Learning in Deep RL</h1>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col d-flex justify-content-end">
+                    <a href="https://github.com/flowersteam/TeachMyAgent" class="home-links main-color">Code</a>
+                </div>
+                <div class="col d-flex justify-content-lg-start">
+                    <a href="https://arxiv.org/abs/2103.09815" class="home-links main-color">Paper</a>
+                </div>
+            </div>
+        </div>
+
+        <img src="images/home/global_schema.png" class="rounded mx-auto d-block" id="global_schema" alt="Global schema">
+        <div class="container-fluid text-block">
+            <p><strong>TeachMyAgent</strong> is a testbed platform for <strong>Automatic Curriculum Learning</strong> (ACL) methods in Deep Reinforcement Learning (<strong>Deep RL</strong>). We leverage<strong>procedurally generated environments</strong> to assess the performance of teacher algorithms in continuous task spaces. We provide tools for systematic study and comparison of ACL algorithms using <strong>both skill-specific and global performance</strong> assessment.</p>
+            <p>We release our platform as an open-source repository along with APIs allowing one to extend our testbed. We currently provide the following elements:</p>
+            <ul>
+                <li class="text-li"><u>Two parametric Box2D environment</u>s: Stump Tracks (an extension of <a class="main-color" href="https://github.com/flowersteam/teachDeepRL" target="_blank">this environment</a>) and Parkour</li>
+                <li class="text-li"><u>Multiple embodiments</u> with different locomotion skills (e.g. bipedal walker, spider, climbing chimpanzee, fish)</li>
+                <li class="text-li"><u>Two Deep RL students</u>: SAC and PPO</li>
+                <li class="text-li"><u>Several ACL algorithms</u>: ADR, ALP-GMM, Covar-GMM, SPDL, GoalGAN, Setter-Solver, RIAC</li>
+                <li class="text-li"><u>Two benchmark experiments using elements above</u>: Skill-specific comparison and global performance assessment</li>
+                <li class="text-li"><u>A notebook for systematic analysis</u> of results using statistical tests along with visualisation tools (plots, videos...)</li>
+            </ul>
+        </div>
+
+        <h2><a  class="main-color normal-title" href="/embodiments">Introducing new morphologies</a></h2>
+        <div class="container-fluid text-block">
+            <p>We introduce new embodiments for our Deep RL agents to interact with environments. We create three types of morphology:</p>
+            <ul>
+                <li class="text-li">Walkers</li>
+                <li class="text-li">Swimmers</li>
+                <li class="text-li">Climbers</li>
+            </ul>
+            <p>
+                Additionally, we introduce new physics (water, graspable surfaces) in our environments allowing to make each type of embodiment have a preferred "milieu" (e.g. walkers cannot survive underwater). 
+                These new embodiments along with our new physics create agents requiring novel locomotion such as climbing or swimming. We give a detailed presentation of our morphologies on <a class="main-color" href="/embodiments" target="_blank">this page</a>, as well as some policies we managed to learn using a Deep RL learner.
+            </p>
+        </div>
+        <div id="home_carousel" class="carousel slide rounded mx-auto d-block" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#home_carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#home_carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#home_carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              <button type="button" data-bs-target="#home_carousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="images/home/morphologies/climber.gif" class="d-block w-100" alt="Climber">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Legless climber</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="images/home/morphologies/fish.gif" class="d-block w-100" alt="Fish">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Fish</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="images/home/morphologies/millipede.gif" class="d-block w-100" alt="Millipede">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Millipede</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="images/home/morphologies/spider.gif" class="d-block w-100" alt="Spider">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Spider</h5>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#home_carousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#home_carousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+    </div>
+    <div class="container-fluid dark-main-bg container-section">
+        <div class="container">
+            <h2><a  class="dark-main-color normal-title" href="/environments">Introducing the Parkour environment</a></h2>
+            <div class="container">
+                <div class="row">
+                  <div class="col">
+                    <img style="width: 100%; height: 350px;" src="images/home/parkour/parkour_walker.png" alt="Parkour walker"/>
+                  </div>
+                  <div class="col">
+                    <h3>CPPN-based PCG</h3>
+                    <p>
+                        We introduce a new parkour track environment which uses a CPPN-encoded procedural generation. Using this, we present a highly uneven terrain composed of a ground and a ceiling. 
+                        We add water controlled through a level parameter as well as creepers along with our new physics (simulation of some water physics and introduction of possible grasping actions on creepers and the ground). 
+                        The generation of tasks is controlled with a 6D vector.
+                    </p>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <h3>Milieu-specific agents</h3>
+                      <p>
+                        The difficulty of the terrain along with the characteristics of our embodiments (e.g. swimmers die out of water) create unfeasible regions in the Parkour's task space depending on the morhpology used. 
+                        This makes our parkour track a challenging learning problem requiring an efficient ACL method as most of the tasks are unfeasible for all our embodiments.
+                      </p>
+                      <p>
+                        Such a hard environment requires strong locomotion skills to go over tasks. We show below some of the behaviours that emerged in the Deep RL policies we trained.
+                      </p>
+                    </div>
+                    <div class="col">
+                        <img style="width: 100%; height: 350px;" src="images/home/parkour/parkour_climber.png" alt="Parkour climber"/>
+                      </div>
+                </div>
+              </div>
+              <hr/>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  </body>
+</html>

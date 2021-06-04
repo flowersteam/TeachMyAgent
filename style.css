@@ -1,0 +1,60 @@
+.head-image{
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    object-position: 0% 60%;
+}
+
+.main-color{
+    color: #EF8354;
+}
+
+.dark-main-color{
+    color: #24292E;
+}
+
+.dark-main-bg{
+    background-color: #BFC0C0;
+}
+
+.home-links{
+    font-size: 1.5em;
+}
+
+.text-li{
+    margin: 10px 0;
+}
+
+.text-block{
+    margin: 50px 0;
+}
+
+.normal-title{
+    font-size: 0.9em;
+}
+
+h2{
+    padding: 25px 0;
+}
+
+.container-section{
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+#home_title{
+    text-align: center;
+    margin: 5% 50px;
+    width: 90%;
+    font-size: 3em;
+}
+
+#global_schema{
+    width: 100%;
+    max-width: 600px;
+}
+
+#home_carousel{
+    width: 100%;
+    max-width: 600px;
+}
