@@ -1,0 +1,3 @@
+"""
+.. include:: ./doc/documentation.md
+"""
