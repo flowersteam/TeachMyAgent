@@ -248,5 +248,5 @@ If you use `TeachMyAgent` in your work, please cite the accompanying [paper]:
 ```
 
 [paper]: https://arxiv.org/abs/2103.09815
-[website]: https://teachmyagent.github.io/index.html
+[website]: http://developmentalsystems.org/TeachMyAgent/
 [repository]: https://github.com/flowersteam/TeachMyAgent

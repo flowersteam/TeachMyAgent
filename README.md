@@ -69,11 +69,11 @@ If you use `TeachMyAgent` in your work, please cite the accompanying [paper]:
 ```
 
 [paper]: https://arxiv.org/abs/2103.09815
-[website]: https://teachmyagent.github.io/index.html
-[documentation]: https://teachmyagent.github.io/doc/index.html
+[website]: http://developmentalsystems.org/TeachMyAgent/
+[documentation]: http://developmentalsystems.org/TeachMyAgent/doc/
 
 [Paper]: https://arxiv.org/abs/2103.09815
-[Website]: https://teachmyagent.github.io/index.html
-[Documentation]: https://teachmyagent.github.io/doc/index.html
+[Website]: http://developmentalsystems.org/TeachMyAgent/
+[Documentation]: http://developmentalsystems.org/TeachMyAgent/doc/
 
 [CONTRIBUTING.md]: CONTRIBUTING.md
