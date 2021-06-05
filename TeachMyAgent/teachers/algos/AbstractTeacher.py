@@ -9,12 +9,13 @@ class AbstractTeacher(object):
         '''
             Creates an ACL teacher.
 
-            :param mins: Lower bounds of task space
-            :param max: Upper bounds of task space
-            :param env_reward_lb: Minimum return possible of the environment (used only if `scale_reward` is activated on the `TeacherController`)
-            :param env_reward_ub: maximum return possible of the environment (used only if `scale_reward` is activated on the `TeacherController`)
-            :param seed: Seed
-            :param **args: Additional kwargs specific to the ACL method
+            Args:
+                mins: Lower bounds of task space
+                max: Upper bounds of task space
+                env_reward_lb: Minimum return possible of the environment (used only if `scale_reward` is activated on the `TeacherController`)
+                env_reward_ub: maximum return possible of the environment (used only if `scale_reward` is activated on the `TeacherController`)
+                seed: Seed
+                **args: Additional kwargs specific to the ACL method
         '''
         self.seed = seed
         if not seed:
@@ -39,12 +40,12 @@ class AbstractTeacher(object):
         '''
             Create a gaussian distribution from bounds (either over the whole space or only a subspace if `subspace == True`)
 
-            :param mins: Lower bounds of task space
-            :param max: Upper bounds of task space
-            :param subspace: Whether the gaussian distribution should be over a subspace
-                            (with mean randomly sampled and std equal to 10% of each dimension) or spread over the whole
-                            task space
-            :type subspace: bool
+            Args:
+                mins: Lower bounds of task space
+                max: Upper bounds of task space
+                subspace (bool): Whether the gaussian distribution should be over a subspace
+                                (with mean randomly sampled and std equal to 10% of each dimension) or spread over the whole
+                                task space
         '''
         if subspace:
             mean = np.array([self.random_state.uniform(min, max) for min, max in zip(mins, maxs)])
@@ -61,13 +62,13 @@ class AbstractTeacher(object):
         '''
             Get distribution if `dist_dict` is not None else create a new one (Gaussian).
 
-            :param dist_dict: Dictionary containing a gaussian distribution
-            :param mins: Lower bounds of task space
-            :param max: Upper bounds of task space
-            :param subspace: Whether the gaussian distribution should be over a subspace
-                            (with mean randomly sampled and std equal to 10% of each dimension) or spread over the whole
-                            task space
-            :type subspace: bool
+            Args:
+                dist_dict: Dictionary containing a gaussian distribution
+                mins: Lower bounds of task space
+                max: Upper bounds of task space
+                subspace (bool): Whether the gaussian distribution should be over a subspace
+                          (with mean randomly sampled and std equal to 10% of each dimension) or spread over the whole
+                          task space
         '''
         if dist_dict is not None:
             dist_mean = dist_dict["mean"]
@@ -80,8 +81,9 @@ class AbstractTeacher(object):
         '''
             Maps a task from the n-dimensional task space towards a n-dimensional [0, 1] space.
 
-            :param task: Task that has to be mapped
-            :param original_space: Target space bounds
+            Args:
+                task: Task that has to be mapped
+                original_space: Target space bounds
         '''
         return np.array([np.interp(task[i], original_space, (self.mins[i], self.maxs[i]))
                          for i in range(len(self.mins))])
@@ -90,8 +92,9 @@ class AbstractTeacher(object):
         '''
             Maps a task from a n-dimensional [0, 1] space towards the n-dimensional task space.
 
-            :param task: Task that has to be mapped
-            :param original_space: Source space bounds
+            Args:
+                task: Task that has to be mapped
+                original_space: Source space bounds
         '''
         return np.array([np.interp(task[i], (self.mins[i], self.maxs[i]), original_space)
                          for i in range(len(self.mins))])
@@ -136,7 +139,8 @@ class AbstractTeacher(object):
         '''
             Save the teacher.
 
-            :param dump_dict: Dictionary storing what must be saved.
+            Args:
+                dump_dict: Dictionary storing what must be saved.
         '''
         dump_dict.update(self.bk)
         return dump_dict

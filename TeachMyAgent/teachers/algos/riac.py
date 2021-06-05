@@ -13,9 +13,10 @@ def proportional_choice(v, random_state, eps=0.):
     '''
         Return an index of `v` chosen proportionally to values contained in `v`.
 
-        :param v: List of values
-        :param random_state: Random generator
-        :param eps: Epsilon used for an Epsilon-greedy strategy
+        Args:
+            v: List of values
+            random_state: Random generator
+            eps: Epsilon used for an Epsilon-greedy strategy
     '''
     if np.sum(v) == 0 or random_state.rand() < eps:
         return random_state.randint(np.size(v))
@@ -52,14 +53,15 @@ class RIAC(AbstractTeacher):
         '''
             Implementation of Robust Intelligent-Adaptive-Curiosity (with minor improvements).
 
-            :param max_region_size: Maximal number of (task, reward) pairs a region can hold before splitting
-            :param alp_window_size: Window size to compute ALP
-            :param nb_split_attempts: Number of attempts to find a valid split
-            :param sampling_in_leaves_only: Whether task sampling uses parent and child regions (False) or only child regions (True)
-            :param min_region_size: (Additional trick n°1) Minimum population required for both children when splitting --> set to 1 to cancel
-            :param min_dims_range_ratio: (Additional trick n°2) Mnimum children region size (compared to initial range of each dimension).
+            Args:
+                max_region_size: Maximal number of (task, reward) pairs a region can hold before splitting
+                alp_window_size: Window size to compute ALP
+                nb_split_attempts: Number of attempts to find a valid split
+                sampling_in_leaves_only: Whether task sampling uses parent and child regions (False) or only child regions (True)
+                min_region_size: (Additional trick n°1) Minimum population required for both children when splitting --> set to 1 to cancel
+                min_dims_range_ratio: (Additional trick n°2) Mnimum children region size (compared to initial range of each dimension).
                                          Set min_dims_range_ratio to 1/np.inf to cancel.
-            :param discard_ratio: (Additional trick n°3) If after nb_split_attempts, no split is valid, flush oldest points of parent region.
+                discard_ratio: (Additional trick n°3) If after nb_split_attempts, no split is valid, flush oldest points of parent region.
                                   If 1 and 2 are cancelled, this will be canceled since any split will be valid
         '''
 

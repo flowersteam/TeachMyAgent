@@ -22,10 +22,11 @@ class OldBigQuadruBody(WalkerAbstractBody):
         '''
             Creates a big quadrupedal walker.
 
-            :param scale: Scale value used in the environment (to adapt the embodiment to its environment)
-            :param motors_torque: Maximum torque the embodiment can use on its motors
-            :param  nb_steps_under_water: How many consecutive steps the embodiment can survive under water
-            :param reset_on_hull_critical_contact: Whether a contact detected with the head should stop the episode
+            Args:
+                scale: Scale value used in the environment (to adapt the embodiment to its environment)
+                motors_torque: Maximum torque the embodiment can use on its motors
+                 nb_steps_under_water: How many consecutive steps the embodiment can survive under water
+                reset_on_hull_critical_contact: Whether a contact detected with the head should stop the episode
         '''
         super(OldBigQuadruBody, self).__init__(scale, motors_torque, nb_steps_under_water)
         self.LEG_DOWN = -8 / self.SCALE  # 0 = center of hull

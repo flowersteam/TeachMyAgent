@@ -6,10 +6,11 @@ class DimensionsShuffler():
         '''
             Object evenly cutting a task space into hypercubes and shuffling them.
 
-            :param mins: Lower bounds of task space
-            :param max: Upper bounds of task space
-            :param cuttings: How many cuttings should be done on each dimension
-            :param seed: Seed of the random shuffler
+            Args:
+                mins: Lower bounds of task space
+                max: Upper bounds of task space
+                cuttings: How many cuttings should be done on each dimension
+                seed: Seed of the random shuffler
         '''
         self.rnd_state = np.random.RandomState(seed)
         self.nb_dims = len(mins)

@@ -9,11 +9,12 @@ class BaseCPPN():
         '''
             Builds the computational graph.
 
-            :param x_dim: How many times the CPPN should slide on the x axis
-            :param input_dim: Size of the input vector controlling the generated pattern
-            :param batch_size: Size of batch provided
-            :param output_dim: Size of the output vector
-            :param weights_path: Path to load weights. If None, weights are randomly sampled
+            Args:
+                x_dim: How many times the CPPN should slide on the x axis
+                input_dim: Size of the input vector controlling the generated pattern
+                batch_size: Size of batch provided
+                output_dim: Size of the output vector
+                weights_path: Path to load weights. If None, weights are randomly sampled
         '''
         self.batch_size = batch_size
         self.output_dim = output_dim

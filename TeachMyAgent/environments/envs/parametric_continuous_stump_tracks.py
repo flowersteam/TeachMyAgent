@@ -76,7 +76,8 @@ class LidarCallback(Box2D.b2.rayCastCallback):
     '''
     def __init__(self, agent_mask_filter):
         '''
-            :param agent_mask_filter: Mask filter used to avoid detecting collisions with the agent's body
+            Args:
+                agent_mask_filter: Mask filter used to avoid detecting collisions with the agent's body
         '''
         Box2D.b2.rayCastCallback.__init__(self)
         self.agent_mask_filter = agent_mask_filter
@@ -85,7 +86,8 @@ class LidarCallback(Box2D.b2.rayCastCallback):
         '''
             Triggered when a body is detected by the lidar.
 
-            :return Distance to object detected.
+            Returns:
+                Distance to object detected.
         '''
         if (fixture.filterData.categoryBits & self.agent_mask_filter) == 0:
             return -1
@@ -132,9 +134,9 @@ class ParametricContinuousStumpTracks(gym.Env, EzPickle):
         '''
             Creates a Stump Tracks environment with an embodiment.
 
-            :param walker_type: Embodiment
+                walker_type: Embodiment
             :type walker_type: BodiesEnum
-            :param walker_args: kwargs controlling the agent (e.g. number of body for a millipede)
+                walker_args: kwargs controlling the agent (e.g. number of body for a millipede)
         '''
 
         super(ParametricContinuousStumpTracks, self).__init__()
@@ -186,12 +188,13 @@ class ParametricContinuousStumpTracks(gym.Env, EzPickle):
             Set the parameters controlling the PCG algorithm to generate a task.
             Call this method before `reset()`.
 
-            :param roughness: Input vector controlling the CPPN
-            :param stump_height: Tuple specifying mean and std of a normal distribution from which the height of each stump is sampled
-            :param stump_width: Tuple specifying mean and std of a normal distribution from which the width of each stump is sampled
-            :param stump_rot: Tuple specifying mean and std of a normal distribution from which the rotation degree of each stump is sampled
-            :param obstacle_spacing: Spacing between stumps
-            :param poly_shape: Shape of polygon stumps
+            Args:
+                roughness: Input vector controlling the CPPN
+                stump_height: Tuple specifying mean and std of a normal distribution from which the height of each stump is sampled
+                stump_width: Tuple specifying mean and std of a normal distribution from which the width of each stump is sampled
+                stump_rot: Tuple specifying mean and std of a normal distribution from which the rotation degree of each stump is sampled
+                obstacle_spacing: Spacing between stumps
+                poly_shape: Shape of polygon stumps
         '''
         self.roughness = roughness if roughness else 0
         self.obstacle_spacing = max(0.01, obstacle_spacing) if obstacle_spacing is not None else 8.0
@@ -342,9 +345,10 @@ class ParametricContinuousStumpTracks(gym.Env, EzPickle):
         '''
             Set rendering viewport's size (i.e. image size).
 
-            :param width: viewport's width
-            :param height: viewport's height
-            :param keep_ratio: Whether height must be automatically calculated to keep the same ratio as the environment's viewport size.
+            Args:
+                width: viewport's width
+                height: viewport's height
+                keep_ratio: Whether height must be automatically calculated to keep the same ratio as the environment's viewport size.
         '''
         global RENDERING_VIEWER_W, RENDERING_VIEWER_H
         RENDERING_VIEWER_W = width

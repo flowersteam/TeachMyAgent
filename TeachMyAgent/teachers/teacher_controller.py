@@ -17,9 +17,11 @@ def param_vec_to_param_dict(param_env_bounds, param):
     '''
         Convert a task vector into a dictionary.
 
-        :param param_env_bounds: Dictionary containing bounds of each dimension
-        :param param: Task vector
-        :return Task as a dictionary
+        Args:
+            param_env_bounds: Dictionary containing bounds of each dimension
+            param: Task vector
+        Returns:
+            Task as a dictionary
     '''
     param_dict = OrderedDict()
     cpt = 0
@@ -43,9 +45,11 @@ def param_dict_to_param_vec(param_env_bounds, param_dict):
     '''
         Convert a task dictionary into a vector.
 
-        :param param_env_bounds: Dictionary containing bounds of each dimension
-        :param param: Task dictionary
-        :return Task vector
+        Args:
+            param_env_bounds: Dictionary containing bounds of each dimension
+            param_dict: Task dictionary
+        Returns:
+            Task vector
     '''
     param_vec = []
     for name, bounds in param_env_bounds.items():
@@ -67,24 +71,21 @@ class TeacherController(object):
             Create a TeacherController to make and ACL method interact with a DeepRL student.
             Pass this object to your DeepRL student and use the methods below to as for new tasks and record trajectories.
 
-            :param teacher: Teacher's name
-            :type teacher: str
-            :param nb_test_episodes: Number of episodes in the test set (used if a new test set must be generated)
-            :param param_env_bounds: Bounds of the task space
-            :type param_env_bounds: dict
-            :param seed: Seed for the teacher and the test set generation (if needed)
-            :param test_set: Test set's name if an existing test set must be used.
-                             Saved test set are in the `TeachMyAgent/teachers/test_sets` folder.
-                             Just specify the filename without the path (and without the .pkl extension).
-            :param keep_periodical_task_samples: How frequently the teacher must be asked to sample 100 (non exploratory) tasks.
-                                                 This is then used to visualize the curriculum.
-            :param shuffle_dimensions: Whether the task space the ACL method uses should be cut into hypercubes and shuffled.
-                                       If set to True, the ACL teacher interacts with  the shuffled task space.
-                                       Tasks are then mapped towards the real task space using a DimensionsShuffler.
-            :type shuffle_dimensions: bool
-            :param scale_reward: Whether rewards should be scaled to a [0, 1] interval
-            :type scale_reward bool
-            :param teacher_params: Additional kwargs for the ACL method.
+            Args:
+                teacher (str): Teacher's name
+                nb_test_episodes: Number of episodes in the test set (used if a new test set must be generated)
+                param_env_bounds (dict): Bounds of the task space
+                seed: Seed for the teacher and the test set generation (if needed)
+                test_set: Test set's name if an existing test set must be used.
+                          Saved test set are in the `TeachMyAgent/teachers/test_sets` folder.
+                          Just specify the filename without the path (and without the .pkl extension).
+                keep_periodical_task_samples: How frequently the teacher must be asked to sample 100 (non exploratory) tasks.
+                                              This is then used to visualize the curriculum.
+                shuffle_dimensions (bool): Whether the task space the ACL method uses should be cut into hypercubes and shuffled.
+                                    If set to True, the ACL teacher interacts with  the shuffled task space.
+                                    Tasks are then mapped towards the real task space using a DimensionsShuffler.
+                scale_reward (bool): Whether rewards should be scaled to a [0, 1] interval
+                teacher_params: Additional kwargs for the ACL method.
         '''
         self.teacher = teacher
         self.nb_test_episodes = nb_test_episodes
@@ -233,9 +234,9 @@ class TeacherController(object):
         '''
             Record the episode associated to the last task.
 
-            :param ep_reward: Return
-            :param ep_len: Number of steps done
-            :param is_success: Binary reward
+                ep_reward: Return
+                ep_len: Number of steps done
+                is_success: Binary reward
         '''
         self.env_train_rewards.append(ep_reward)
         self.env_train_len.append(ep_len)

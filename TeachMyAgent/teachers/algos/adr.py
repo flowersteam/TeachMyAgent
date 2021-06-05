@@ -12,12 +12,13 @@ class ADR(AbstractTeacher):
         '''
             Automatic Domain Randomization (https://arxiv.org/abs/1910.07113).
 
-            :params step_size: Size of the growth (or decrease) of a bound at update
-            :param max_reward_thr: Upper reward threshold used to inflate distribution
-            :param min_reward_thr: Lowers reward threshold used to deflate distribution
-            :param initial_dist: The mean of this initial distribution is used as the initial task used by ADR
-            :param boundary_sampling_p: Probability to sample a dimension at a bound
-            :param queue_len: Size of the queue associated to each bound. Once reached, ADR increases or decreases the bound.
+            Args:
+                step_size: Size of the growth (or decrease) of a bound at update
+                max_reward_thr: Upper reward threshold used to inflate distribution
+                min_reward_thr: Lowers reward threshold used to deflate distribution
+                initial_dist: The mean of this initial distribution is used as the initial task used by ADR
+                boundary_sampling_p: Probability to sample a dimension at a bound
+                queue_len: Size of the queue associated to each bound. Once reached, ADR increases or decreases the bound.
         '''
         AbstractTeacher.__init__(self, mins, maxs, env_reward_lb, env_reward_ub, seed)
         self.nb_dims = len(self.mins)

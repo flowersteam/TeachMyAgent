@@ -24,8 +24,8 @@ def get_student_type(save_path):
     '''
         Returns 'spinup' or 'baselines' depending on how the logs look like.
 
-        :param save_path: Path containing logs
-        :type save_path: str
+        Args:
+            save_path (str): Path containing logs
     '''
     for root, _, files in os.walk(save_path):
         if 'progress.txt' in files: # Spinup
@@ -37,8 +37,8 @@ def load_training_infos(save_path):
     '''
         Load hyperparameters stored in config.json.
 
-        :param save_path: Path containing logs
-        :type save_path: str
+        Args:
+            save_path (str): Path containing logs
     '''
     with open(osp.join(save_path, 'config.json')) as json_file:
         training_config = json.load(json_file)
@@ -48,8 +48,8 @@ def get_baselines_last_checkpoint(path):
     '''
         OpenAI Baselines students save multiple checkpoints of the model. This function only loads the last one.
 
-        :param save_path: Path containing checkpoints
-        :type save_path: str
+        Args:
+            save_path (str): Path containing checkpoints
     '''
     last_checkpoint = -1
     for f in listdir(path):
@@ -65,8 +65,8 @@ def load_env_params(save_path):
     '''
         Load book-keeped information (e.g. training and test tasks along with the obtained reward).
 
-        :param save_path: Path containing logs
-        :type save_path: str
+        Args:
+            save_path (str): Path containing logs
     '''
     with open(osp.join(save_path, 'env_params_save.pkl'), "rb") as file:
         teacher_dict = pickle.load(file)
@@ -76,8 +76,8 @@ def get_training_test_size(teacher_dict):
     '''
         Calculate size of test set used during training.
 
-        :param teacher_dict: Dictionary of loaded logs.
-        :type teacher_dict: dict
+        Args:
+            teacher_dict (dict): Dictionary of loaded logs.
     '''
     param_to_count = teacher_dict["env_params_test"][0]
     nb_of_epochs = 0
@@ -91,14 +91,14 @@ def load_training_test_set(save_path, order_by_best_rewards=None):
     '''
         Load test set used during training.
 
-        :param save_path: Path containing logs
-        :type save_path: str
-        :param order_by_best_rewards:
-            If None => Do not order test set
-            If True => Order test set using rewards obtained from greatest to lowest
-            If False => Order test set using rewards obtained from lowest to greatest
-        :type order_by_best_rewards: str
-        :return list of tasks and list associated rewards
+        Args:
+            save_path (str): Path containing logs
+            order_by_best_rewards (str): If None => Do not order test set.
+                                   If True => Order test set using rewards obtained from greatest to lowest
+                                   If False => Order test set using rewards obtained from lowest to greatest
+
+        Returns:
+            list of tasks and list associated rewards
     '''
     ### Get last training test episodes and sort them by total reward
     teacher_dict = load_env_params(save_path)
@@ -127,11 +127,12 @@ def load_fixed_test_set(save_path, test_set_name):
     '''
         Load a test set from a file.
 
-        :param save_path: Path containing test sets
-        :type save_path: str
-        :param test_set_name: Name of the file containing the test set (do not add the extension)
-        :type test_set_name: str
-        :return list of tasks
+        Args:
+            save_path (str): Path containing test sets
+            test_set_name (str): Name of the file containing the test set (do not add the extension)
+
+        Returns:
+            list of tasks
     '''
     teacher_dict = load_env_params(save_path)
     teacher_param_env_bounds = OrderedDict(teacher_dict["env_param_bounds"])
@@ -143,11 +144,12 @@ def load_env(save_path, load_test_env=False):
     '''
         Load saved environment.
 
-        :param save_path: Path containing logs
-        :type save_path: str
-        :param load_test_env: Name of the file containing the test set (do not add the extension)
-        :type load_test_env: str
-        :return loaded environment
+        Args:
+            save_path (str): Path containing logs
+            load_test_env (str): Name of the file containing the test set (do not add the extension)
+
+        Returns:
+            loaded environment
     '''
     try:
         filename = osp.join(save_path, 'vars.pkl')
@@ -175,15 +177,16 @@ def run_policy(env, get_action, env_params_list, max_ep_len=None, episode_id=0, 
     '''
         Run an episode of a trained policy.
 
-        :param env: Environment
-        :param get_action: Policy function
-        :param env_params_list: List of tasks among one must be loaded
-        :param max_ep_len: Maximum number of steps allowed in the episode
-        :param episode_id: Id of the episode to load in `env_params_list`
-        :param record: Whether a video of the episode should be recorded
-        :param recording_path: Path on which the video must be saved
-        :param no_render: Whether the episode must be ran without a frame rendering it
-        :param use_baselines: Whether the policy was trained using OpenAI Baselines
+        Args:
+            env: Environment
+            get_action: Policy function
+            env_params_list: List of tasks among one must be loaded
+            max_ep_len: Maximum number of steps allowed in the episode
+            episode_id: Id of the episode to load in `env_params_list`
+            record: Whether a video of the episode should be recorded
+            recording_path: Path on which the video must be saved
+            no_render: Whether the episode must be ran without a frame rendering it
+            use_baselines: Whether the policy was trained using OpenAI Baselines
     '''
     if record:
         if os.name == "nt":
@@ -232,7 +235,8 @@ def main(args):
     '''
         Test a learned policy on tasks.
 
-        :param args: arguments defining what has to be run
+        Args:
+            args: arguments defining what has to be run
     '''
     if args.fixed_test_set is None:
         # training_config = load_training_infos(args.fpath)

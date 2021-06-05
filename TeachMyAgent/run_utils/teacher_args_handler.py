@@ -79,7 +79,8 @@ class TeacherArgsHandler(AbstractArgsHandler):
         '''
             Create an ACL teacher.
 
-            Returns a `TeacherController`.
+            Returns:
+                 A `TeacherController`.
         '''
         params = {}
         # Reward bounds are necessary if you want a normalized reward for your teachers (not used as default).

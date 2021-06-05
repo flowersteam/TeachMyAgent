@@ -12,9 +12,10 @@ def proportional_choice(v, random_state, eps=0.):
     '''
         Return an index of `v` chosen proportionally to values contained in `v`.
 
-        :param v: List of values
-        :param random_state: Random generator
-        :param eps: Epsilon used for an Epsilon-greedy strategy
+        Args:
+            v: List of values
+            random_state: Random generator
+            eps: Epsilon used for an Epsilon-greedy strategy
     '''
     if np.sum(v) == 0 or random_state.rand() < eps:
         return random_state.randint(np.size(v))
@@ -59,16 +60,17 @@ class ALPGMM(AbstractTeacher):
         '''
             Absolute Learning Progress - Gaussian Mixture Model (https://arxiv.org/abs/1910.07224).
 
-            :param gmm_fitness_func: Fitness criterion when selecting best GMM among range of GMMs varying in number of Gaussians.
-            :param warm_start: Restart new fit by initializing with last fit
-            :param nb_em_init: Number of Expectation-Maximization trials when fitting
-            :param fit_rate: Number of episodes between two fit of the GMM
-            :param alp_max_size: Maximum number of episodes stored
-            :param alp_buffer_size: Maximal number of episodes to account for when computing ALP
-            :param potential_ks: Range of number of Gaussians to try when fitting the GMM
-            :param random_task_ratio: Ratio of randomly sampled tasks VS tasks sampling using GMM
-            :param nb_bootstrap: Number of bootstrapping episodes, must be >= to fit_rate
-            :param initial_dist: Initial Gaussian distribution. If None, bootstrap with random tasks
+            Args:
+                gmm_fitness_func: Fitness criterion when selecting best GMM among range of GMMs varying in number of Gaussians.
+                warm_start: Restart new fit by initializing with last fit
+                nb_em_init: Number of Expectation-Maximization trials when fitting
+                fit_rate: Number of episodes between two fit of the GMM
+                alp_max_size: Maximum number of episodes stored
+                alp_buffer_size: Maximal number of episodes to account for when computing ALP
+                potential_ks: Range of number of Gaussians to try when fitting the GMM
+                random_task_ratio: Ratio of randomly sampled tasks VS tasks sampling using GMM
+                nb_bootstrap: Number of bootstrapping episodes, must be >= to fit_rate
+                initial_dist: Initial Gaussian distribution. If None, bootstrap with random tasks
         '''
         AbstractTeacher.__init__(self, mins, maxs, env_reward_lb, env_reward_ub, seed)
 

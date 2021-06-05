@@ -53,7 +53,8 @@ class StudentArgsHandler(AbstractArgsHandler):
         '''
             Create a DeepRL student and its learning function given an environment and a teacher.
 
-            :return the learning function.
+            Returns:
+                The learning function.
         '''
         logger_kwargs = setup_logger_kwargs(args.exp_name, args.seed)
         ac_kwargs = dict()

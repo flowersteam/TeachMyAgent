@@ -90,10 +90,11 @@ class EnvironmentArgsHandler(AbstractArgsHandler):
         '''
             Create an environment given arguments.
 
-            :return env_f (function creating the environment),
-                    param_env_bounds (bounds of the task space controlling PCG),
-                    initial_dist (Distribution of easy tasks to start with),
-                    target_dist (Target task distribution)
+            Returns:
+                env_f (function creating the environment),
+                param_env_bounds (bounds of the task space controlling PCG),
+                initial_dist (Distribution of easy tasks to start with),
+                target_dist (Target task distribution)
         '''
         param_env_bounds = OrderedDict()
         # For teachers using an initial distribution of easy tasks

@@ -23,11 +23,12 @@ class ProfileChimpanzee(WalkerAbstractBody):
             - two arms
             - two hands (with 3 limbs)
 
-            :param scale: Scale value used in the environment (to adapt the embodiment to its environment)
-            :param motors_torque: Maximum torque the embodiment can use on its motors
-            :param nb_of_bodies: Number of square bodies the agent has
-            :param  nb_steps_under_water: How many consecutive steps the embodiment can survive under water
-            :param reset_on_hull_critical_contact: Whether a contact detected with the head should stop the episode
+            Args:
+                scale: Scale value used in the environment (to adapt the embodiment to its environment)
+                motors_torque: Maximum torque the embodiment can use on its motors
+                nb_of_bodies: Number of square bodies the agent has
+                 nb_steps_under_water: How many consecutive steps the embodiment can survive under water
+                reset_on_hull_critical_contact: Whether a contact detected with the head should stop the episode
         '''
         super(ProfileChimpanzee, self).__init__(scale, motors_torque, nb_steps_under_water)
         self.LEG_DOWN = 12 / self.SCALE

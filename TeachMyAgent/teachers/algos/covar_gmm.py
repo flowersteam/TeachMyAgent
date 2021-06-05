@@ -10,9 +10,10 @@ def proportional_choice(v, random_state, eps=0.):
     '''
         Return an index of `v` chosen proportionally to values contained in `v`.
 
-        :param v: List of values
-        :param random_state: Random generator
-        :param eps: Epsilon used for an Epsilon-greedy strategy
+        Args:
+            v: List of values
+            random_state: Random generator
+            eps: Epsilon used for an Epsilon-greedy strategy
     '''
     if np.sum(v) == 0 or random_state.rand() < eps:
         return random_state.randint(np.size(v))
@@ -28,12 +29,13 @@ class CovarGMM(AbstractTeacher):
             Covar - Gaussian Mixture Model.
             Implementation of IGMM (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3893575/) + minor improvements.
 
-            :param absolute_lp: Original version does not use Absolute LP, only LP.
-            :param fit_rate: Number of episodes between two fit of the GMM
-            :param potential_ks: Range of number of Gaussians to try when fitting the GMM
-            :param random_task_ratio: Ratio of randomly sampled tasks VS tasks sampling using GMM
-            :param nb_bootstrap: Number of bootstrapping episodes, must be >= to fit_rate
-            :param initial_dist: Initial Gaussian distribution. If None, bootstrap with random tasks
+            Args:
+                absolute_lp: Original version does not use Absolute LP, only LP.
+                fit_rate: Number of episodes between two fit of the GMM
+                potential_ks: Range of number of Gaussians to try when fitting the GMM
+                random_task_ratio: Ratio of randomly sampled tasks VS tasks sampling using GMM
+                nb_bootstrap: Number of bootstrapping episodes, must be >= to fit_rate
+                initial_dist: Initial Gaussian distribution. If None, bootstrap with random tasks
         '''
         AbstractTeacher.__init__(self, mins, maxs, env_reward_lb, env_reward_ub, seed)
 

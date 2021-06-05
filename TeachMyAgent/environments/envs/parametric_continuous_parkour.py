@@ -88,7 +88,8 @@ class LidarCallback(Box2D.b2.rayCastCallback):
     '''
     def __init__(self, agent_mask_filter):
         '''
-            :param agent_mask_filter: Mask filter used to avoid detecting collisions with the agent's body
+            Args:
+                agent_mask_filter: Mask filter used to avoid detecting collisions with the agent's body
         '''
         Box2D.b2.rayCastCallback.__init__(self)
         self.agent_mask_filter = agent_mask_filter
@@ -99,7 +100,8 @@ class LidarCallback(Box2D.b2.rayCastCallback):
         '''
             Triggered when a body is detected by the lidar.
 
-            :return Distance to object detected.
+            Returns:
+                 Distance to object detected.
         '''
         if (fixture.filterData.categoryBits & self.agent_mask_filter) == 0:
             return -1
@@ -151,17 +153,17 @@ class ParametricContinuousParkour(gym.Env, EzPickle):
         '''
             Creates a Parkour environment with an embodiment.
 
-            :param agent_body_type: Embodiment
-            :type agent_body_type: BodiesEnum
-            :param CPPN_weights_path: Path to the CPPN's weights (leave to None for default)
-            :param input_CPPN_dim: Dimensions of the vector controlling terrain's generation through the CPPN
-            :param terrain_cppn_scale: How much values outputted by the CPNN must be scaled (default 10)
-            :param ceiling_offset: Distance between ground and ceiling in the startpad
-            :param ceiling_clip_offset: How close ceiling can get to the ground
-            :param lidars_type: Type of lidars used by the agent (use 'up' for climbers, 'down' for walkers and 'full' for swimmers)
-            :param water_clip: Clips the push force applied under water (you should not need to change this)
-            :param movable_creepers: Whether creepers should be one static rectangle or multiple dynamic rectangles linked by a joint
-            :param walker_args: kwargs controlling the agent (e.g. number of body for a millipede)
+            Args:
+                agent_body_type (BodiesEnum): Embodiment
+                CPPN_weights_path: Path to the CPPN's weights (leave to None for default)
+                input_CPPN_dim: Dimensions of the vector controlling terrain's generation through the CPPN
+                terrain_cppn_scale: How much values outputted by the CPNN must be scaled (default 10)
+                ceiling_offset: Distance between ground and ceiling in the startpad
+                ceiling_clip_offset: How close ceiling can get to the ground
+                lidars_type: Type of lidars used by the agent (use 'up' for climbers, 'down' for walkers and 'full' for swimmers)
+                water_clip: Clips the push force applied under water (you should not need to change this)
+                movable_creepers: Whether creepers should be one static rectangle or multiple dynamic rectangles linked by a joint
+                walker_args: kwargs controlling the agent (e.g. number of body for a millipede)
         '''
 
         super(ParametricContinuousParkour, self).__init__()
@@ -251,12 +253,13 @@ class ParametricContinuousParkour(gym.Env, EzPickle):
             Set the parameters controlling the PCG algorithm to generate a task.
             Call this method before `reset()`.
 
-            :param input_vector: Input vector controlling the CPPN
-            :param water_level: Water level between 0.0 (no water at all) and 1.0 (full of water)
-            :param creepers_width: Width of creepers
-            :param creepers_height: Mean of creepers' height (height is then sample using a normal distribution with a 0.1 std for each creeper)
-            :param creepers_spacing: Spacing between creepers
-            :param terrain_cppn_scale: How much values outputted by the CPNN must be scaled (default 10)
+            Args:
+                input_vector: Input vector controlling the CPPN
+                water_level: Water level between 0.0 (no water at all) and 1.0 (full of water)
+                creepers_width: Width of creepers
+                creepers_height: Mean of creepers' height (height is then sample using a normal distribution with a 0.1 std for each creeper)
+                creepers_spacing: Spacing between creepers
+                terrain_cppn_scale: How much values outputted by the CPNN must be scaled (default 10)
         '''
         self.CPPN_input_vector = input_vector
         self.water_level = water_level.item() if isinstance(water_level, np.float32) else water_level
@@ -522,9 +525,10 @@ class ParametricContinuousParkour(gym.Env, EzPickle):
         '''
             Set rendering viewport's size (i.e. image size).
 
-            :param width: viewport's width
-            :param height: viewport's height
-            :param keep_ratio: Whether height must be automatically calculated to keep the same ratio as the environment's viewport size.
+            Args:
+                width: viewport's width
+                height: viewport's height
+                keep_ratio: Whether height must be automatically calculated to keep the same ratio as the environment's viewport size.
         '''
         global RENDERING_VIEWER_W, RENDERING_VIEWER_H
         RENDERING_VIEWER_W = width

@@ -46,10 +46,11 @@ class FishBody(SwimmerAbstractBody):
 
             Head contact is allowed for the fish.
 
-            :param scale: Scale value used in the environment (to adapt the embodiment to its environment)
-            :param motors_torque: Maximum torque the embodiment can use on its motors
-            :param density: Water density (in order to make the agent in a zero-gravity-like setup)
-            :param nb_steps_outside_water: How many consecutive steps the embodiment can survive outside water
+            Args:
+                scale: Scale value used in the environment (to adapt the embodiment to its environment)
+                motors_torque: Maximum torque the embodiment can use on its motors
+                density: Water density (in order to make the agent in a zero-gravity-like setup)
+                nb_steps_outside_water: How many consecutive steps the embodiment can survive outside water
         '''
         super(FishBody, self).__init__(scale, motors_torque, density, nb_steps_outside_water)
         self.TORQUE_PENALTY = 0.00035

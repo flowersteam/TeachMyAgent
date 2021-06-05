@@ -20,7 +20,8 @@ class Databag(object):
 
     def __init__(self, dim):
         """
-        :arg dim:  the dimension of the data vectors
+            Args:
+                dim:  the dimension of the data vectors
         """
         self.dim = dim
         self.reset()
@@ -43,14 +44,17 @@ class Databag(object):
 
     def nn(self, x, k = 1, radius = np.inf, eps = 0.0, p = 2):
         """Find the k nearest neighbors of x in the observed input data
-        :arg x:      center
-        :arg k:      the number of nearest neighbors to return (default: 1)
-        :arg eps:    approximate nearest neighbors.
+
+        Args:
+            x:      center
+            k:      the number of nearest neighbors to return (default: 1)
+            eps:    approximate nearest neighbors.
                      the k-th returned value is guaranteed to be no further than
                      (1 + eps) times the distance to the real k-th nearest neighbor.
-        :arg p:      Which Minkowski p-norm to use. (default: 2, euclidean)
-        :arg radius: the maximum radius (default: +inf)
-        :return:     distance and indexes of found nearest neighbors.
+            p:      Which Minkowski p-norm to use. (default: 2, euclidean)
+            radius: the maximum radius (default: +inf)
+        Returns:
+            distance and indexes of found nearest neighbors.
         """
         assert len(x) == self.dim, 'dimension of input {} does not match expected dimension {}.'.format(len(x), self.dim)
         k_x = min(k, self.size)
@@ -118,8 +122,9 @@ class Dataset(object):
 
     def __init__(self, dim_x, dim_y, lateness=0, max_size=None):
         """
-            :arg dim_x:  the dimension of the input vectors
-            :arg dim_y:  the dimension of the output vectors
+            Args:
+                dim_x:  the dimension of the input vectors
+                dim_y:  the dimension of the output vectors
         """
         self.dim_x = dim_x
         self.dim_y = dim_y
@@ -239,7 +244,8 @@ class Dataset(object):
     def nn_y(self, y, k=1, radius=np.inf, eps=0.0, p=2):
         """Find the k nearest neighbors of y in the observed output data
         @see Databag.nn() for argument description
-        @return  distance and indexes of found nearest neighbors.
+        Returns:
+            distance and indexes of found nearest neighbors.
         """
         assert len(y) == self.dim_y
         k_y = min(k, self.size)
@@ -248,7 +254,8 @@ class Dataset(object):
     def nn_dims(self, x, y, dims_x, dims_y, k=1, radius=np.inf, eps=0.0, p=2):
         """Find the k nearest neighbors of a subset of dims of x and y in the observed output data
         @see Databag.nn() for argument description
-        @return  distance and indexes of found nearest neighbors.
+        Returns:
+            distance and indexes of found nearest neighbors.
         """
         assert len(x) == len(dims_x)
         assert len(y) == len(dims_y)
@@ -269,9 +276,11 @@ class Dataset(object):
 
     def _nn(self, side, v, k = 1, radius = np.inf, eps = 0.0, p = 2):
         """Compute the k nearest neighbors of v in the observed data,
-        :arg side  if equal to DATA_X, search among input data.
+        Aers:
+            side  if equal to DATA_X, search among input data.
                      if equal to DATA_Y, search among output data.
-        @return  distance and indexes of found nearest neighbors.
+        Returns:
+            distance and indexes of found nearest neighbors.
         """
         self._build_tree(side)
         dists, idxes = self.kdtree[side].query(v, k = k, distance_upper_bound = radius,
@@ -282,7 +291,8 @@ class Dataset(object):
 
     def _build_tree(self, side):
         """Build the KDTree for the observed data
-        :arg side  if equal to DATA_X, build input data tree.
+        Args:
+            side  if equal to DATA_X, build input data tree.
                      if equal to DATA_Y, build output data tree.
         """
         if not self.nn_ready[side]:
@@ -296,8 +306,9 @@ class BufferedDataset(Dataset):
 
     def __init__(self, dim_x, dim_y, buffer_size=200, lateness=5, max_size=None):
         """
-            :arg dim_x:  the dimension of the input vectors
-            :arg dim_y:  the dimension of the output vectors
+            Args:
+                dim_x:  the dimension of the input vectors
+                dim_y:  the dimension of the output vectors
         """
         
         self.buffer_size = buffer_size
@@ -388,7 +399,8 @@ class BufferedDataset(Dataset):
     def nn_x(self, x, k=1, radius=np.inf, eps=0.0, p=2):
         """Find the k nearest neighbors of x in the observed input data
         @see Databag.nn() for argument description
-        @return  distance and indexes of found nearest neighbors.
+        Returns:
+            distance and indexes of found nearest neighbors.
         """
         assert len(x) == self.dim_x
         k_x = min(k, self.__len__())
@@ -399,7 +411,8 @@ class BufferedDataset(Dataset):
     def nn_y(self, y, dims=None, k = 1, radius=np.inf, eps=0.0, p=2):
         """Find the k nearest neighbors of y in the observed output data
         @see Databag.nn() for argument description
-        @return  distance and indexes of found nearest neighbors.
+        Returns:
+            distance and indexes of found nearest neighbors.
         """
         if dims is None:
             assert len(y) == self.dim_y
@@ -411,7 +424,8 @@ class BufferedDataset(Dataset):
     def nn_dims(self, x, y, dims_x, dims_y, k=1, radius=np.inf, eps=0.0, p=2):
         """Find the k nearest neighbors of a subset of dims of x and y in the observed output data
         @see Databag.nn() for argument description
-        @return  distance and indexes of found nearest neighbors.
+        Returns:
+            distance and indexes of found nearest neighbors.
         """
         if self.size > 0:
             dists, idxes = Dataset.nn_dims(self, x, y, dims_x, dims_y, k, radius, eps, p)
@@ -430,9 +444,11 @@ class BufferedDataset(Dataset):
         
     def _nn(self, side, v, k=1, radius=np.inf, eps=0.0, p=2):
         """Compute the k nearest neighbors of v in the observed data,
-        :arg side  if equal to DATA_X, search among input data.
+        Args:
+            side  if equal to DATA_X, search among input data.
                      if equal to DATA_Y, search among output data.
-        @return  distance and indexes of found nearest neighbors.
+        Returns:
+            distance and indexes of found nearest neighbors.
         """
         if self.size > 0:
             dists, idxes = Dataset._nn(self, side, v, k, radius, eps, p)

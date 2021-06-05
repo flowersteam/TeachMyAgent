@@ -96,21 +96,22 @@ class SelfPacedTeacher(AbstractTeacher, AbstractSelfPacedTeacher):
 
             Works in a non-episodic setup, updates are thus made in the `step_update` method.
 
-            :param update_frequency: Update frequency of the sampling distribution (in steps)
-            :param update_offset: How many steps must be done before the starting to update the distribution
-            :param alpha_function: Function calculating the alpha parameter
-            :param initial_dist: Initial distribution to start from
-            :param target_dist: Target distribution to reach
-            :param max_kl: Maximum KL-divergence authorized between the old and new distributions when updating
-            :param std_lower_bound: Minimum std authorized on the sampling distribution if the KL-divergence between
+            Args:
+                update_frequency: Update frequency of the sampling distribution (in steps)
+                update_offset: How many steps must be done before the starting to update the distribution
+                alpha_function: Function calculating the alpha parameter
+                initial_dist: Initial distribution to start from
+                target_dist: Target distribution to reach
+                max_kl: Maximum KL-divergence authorized between the old and new distributions when updating
+                std_lower_bound: Minimum std authorized on the sampling distribution if the KL-divergence between
                                     the latter and the target distribution is greater than `kl_threshold`. Set this to
                                     `None` if no constraint on the std must be applied
-            :param kl_threshold: Threshold enforcing the std constraint
-            :param cg_parameters: Additional parameters for the Conjugate Gradient method
-            :param use_avg_performance: Whether the alpha function must used the averaged performance
-            :param max_context_buffer_size: Maximum size of the buffer storing sampled tasks
-            :param reset_contexts: Whether the buffer should be reset when queried
-            :param discount_factor: Discount factor used in the Universal Value Function
+                kl_threshold: Threshold enforcing the std constraint
+                cg_parameters: Additional parameters for the Conjugate Gradient method
+                use_avg_performance: Whether the alpha function must used the averaged performance
+                max_context_buffer_size: Maximum size of the buffer storing sampled tasks
+                reset_contexts: Whether the buffer should be reset when queried
+                discount_factor: Discount factor used in the Universal Value Function
         '''
         AbstractTeacher.__init__(self, mins, maxs, env_reward_lb, env_reward_ub, seed)
         torch.manual_seed(self.seed)

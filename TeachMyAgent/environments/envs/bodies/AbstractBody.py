@@ -8,8 +8,9 @@ class AbstractBody(object):
         '''
             Creates an embodiment.
 
-            :param scale: Scale value used in the environment (to adapt the embodiment to its environment)
-            :param motors_torque: Maximum torque the embodiment can use on its motors
+            Args:
+                scale: Scale value used in the environment (to adapt the embodiment to its environment)
+                motors_torque: Maximum torque the embodiment can use on its motors
         '''
         self.SCALE = scale
         self.MOTORS_TORQUE = motors_torque
