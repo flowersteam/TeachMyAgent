@@ -1,0 +1,1463 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>TeachMyAgent.students.openai_baselines.common.vec_env API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>TeachMyAgent.students.openai_baselines.common.vec_env</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from .vec_env import AlreadySteppingError, NotSteppingError, VecEnv, VecEnvWrapper, VecEnvObservationWrapper, CloudpickleWrapper
+from .dummy_vec_env import DummyVecEnv
+from .shmem_vec_env import ShmemVecEnv
+from .subproc_vec_env import SubprocVecEnv
+from .vec_frame_stack import VecFrameStack
+from .vec_monitor import VecMonitor
+from .vec_normalize import VecNormalize
+from .vec_remove_dict_obs import VecExtractDictObs
+
+__all__ = [&#39;AlreadySteppingError&#39;, &#39;NotSteppingError&#39;, &#39;VecEnv&#39;, &#39;VecEnvWrapper&#39;, &#39;VecEnvObservationWrapper&#39;, &#39;CloudpickleWrapper&#39;, &#39;DummyVecEnv&#39;, &#39;ShmemVecEnv&#39;, &#39;SubprocVecEnv&#39;, &#39;VecFrameStack&#39;, &#39;VecMonitor&#39;, &#39;VecNormalize&#39;, &#39;VecExtractDictObs&#39;]</code></pre>
+</details>
+</section>
+<section>
+<h2 class="section-title" id="header-submodules">Sub-modules</h2>
+<dl>
+<dt><code class="name"><a title="TeachMyAgent.students.openai_baselines.common.vec_env.dummy_vec_env" href="dummy_vec_env.html">TeachMyAgent.students.openai_baselines.common.vec_env.dummy_vec_env</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="TeachMyAgent.students.openai_baselines.common.vec_env.shmem_vec_env" href="shmem_vec_env.html">TeachMyAgent.students.openai_baselines.common.vec_env.shmem_vec_env</a></code></dt>
+<dd>
+<div class="desc"><p>An interface for asynchronous vectorized environments.</p></div>
+</dd>
+<dt><code class="name"><a title="TeachMyAgent.students.openai_baselines.common.vec_env.subproc_vec_env" href="subproc_vec_env.html">TeachMyAgent.students.openai_baselines.common.vec_env.subproc_vec_env</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="TeachMyAgent.students.openai_baselines.common.vec_env.test_video_recorder" href="test_video_recorder.html">TeachMyAgent.students.openai_baselines.common.vec_env.test_video_recorder</a></code></dt>
+<dd>
+<div class="desc"><p>Tests for asynchronous vectorized environments.</p></div>
+</dd>
+<dt><code class="name"><a title="TeachMyAgent.students.openai_baselines.common.vec_env.util" href="util.html">TeachMyAgent.students.openai_baselines.common.vec_env.util</a></code></dt>
+<dd>
+<div class="desc"><p>Helpers for dealing with vectorized environments.</p></div>
+</dd>
+<dt><code class="name"><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env" href="vec_env.html">TeachMyAgent.students.openai_baselines.common.vec_env.vec_env</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_frame_stack" href="vec_frame_stack.html">TeachMyAgent.students.openai_baselines.common.vec_env.vec_frame_stack</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_monitor" href="vec_monitor.html">TeachMyAgent.students.openai_baselines.common.vec_env.vec_monitor</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_normalize" href="vec_normalize.html">TeachMyAgent.students.openai_baselines.common.vec_env.vec_normalize</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_remove_dict_obs" href="vec_remove_dict_obs.html">TeachMyAgent.students.openai_baselines.common.vec_env.vec_remove_dict_obs</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_video_recorder" href="vec_video_recorder.html">TeachMyAgent.students.openai_baselines.common.vec_env.vec_video_recorder</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="TeachMyAgent.students.openai_baselines.common.vec_env.AlreadySteppingError"><code class="flex name class">
+<span>class <span class="ident">AlreadySteppingError</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Raised when an asynchronous step is running while
+step_async() is called again.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class AlreadySteppingError(Exception):
+    &#34;&#34;&#34;
+    Raised when an asynchronous step is running while
+    step_async() is called again.
+    &#34;&#34;&#34;
+
+    def __init__(self):
+        msg = &#39;already running an async step&#39;
+        Exception.__init__(self, msg)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.vec_env.CloudpickleWrapper"><code class="flex name class">
+<span>class <span class="ident">CloudpickleWrapper</span></span>
+<span>(</span><span>x)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Uses cloudpickle to serialize contents (otherwise multiprocessing tries to use pickle)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CloudpickleWrapper(object):
+    &#34;&#34;&#34;
+    Uses cloudpickle to serialize contents (otherwise multiprocessing tries to use pickle)
+    &#34;&#34;&#34;
+
+    def __init__(self, x):
+        self.x = x
+
+    def __getstate__(self):
+        import cloudpickle
+        return cloudpickle.dumps(self.x)
+
+    def __setstate__(self, ob):
+        import pickle
+        self.x = pickle.loads(ob)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.vec_env.DummyVecEnv"><code class="flex name class">
+<span>class <span class="ident">DummyVecEnv</span></span>
+<span>(</span><span>env_fns)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>VecEnv that does runs multiple environments sequentially, that is,
+the step and reset commands are send to one environment at a time.
+Useful when debugging and when num_env == 1 (in the latter case,
+avoids communication overhead)</p>
+<p>Arguments:</p>
+<p>env_fns: iterable of callables
+functions that build environments</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DummyVecEnv(VecEnv):
+    &#34;&#34;&#34;
+    VecEnv that does runs multiple environments sequentially, that is,
+    the step and reset commands are send to one environment at a time.
+    Useful when debugging and when num_env == 1 (in the latter case,
+    avoids communication overhead)
+    &#34;&#34;&#34;
+    def __init__(self, env_fns):
+        &#34;&#34;&#34;
+        Arguments:
+
+        env_fns: iterable of callables      functions that build environments
+        &#34;&#34;&#34;
+        self.envs = [fn() for fn in env_fns]
+        env = self.envs[0]
+        VecEnv.__init__(self, len(env_fns), env.observation_space, env.action_space)
+        obs_space = env.observation_space
+        self.keys, shapes, dtypes = obs_space_info(obs_space)
+
+        self.buf_obs = { k: np.zeros((self.num_envs,) + tuple(shapes[k]), dtype=dtypes[k]) for k in self.keys }
+        self.buf_dones = np.zeros((self.num_envs,), dtype=np.bool)
+        self.buf_rews  = np.zeros((self.num_envs,), dtype=np.float32)
+        self.buf_infos = [{} for _ in range(self.num_envs)]
+        self.actions = None
+        self.spec = self.envs[0].spec
+
+    def step_async(self, actions):
+        listify = True
+        try:
+            if len(actions) == self.num_envs:
+                listify = False
+        except TypeError:
+            pass
+
+        if not listify:
+            self.actions = actions
+        else:
+            assert self.num_envs == 1, &#34;actions {} is either not a list or has a wrong size - cannot match to {} environments&#34;.format(actions, self.num_envs)
+            self.actions = [actions]
+
+    def step_wait(self):
+        for e in range(self.num_envs):
+            action = self.actions[e]
+            # if isinstance(self.envs[e].action_space, spaces.Discrete):
+            #    action = int(action)
+
+            obs, self.buf_rews[e], self.buf_dones[e], self.buf_infos[e] = self.envs[e].step(action)
+            if self.buf_dones[e]:
+                obs = self.envs[e].reset()
+            self._save_obs(e, obs)
+        return (self._obs_from_buf(), np.copy(self.buf_rews), np.copy(self.buf_dones),
+                self.buf_infos.copy())
+
+    def reset(self):
+        for e in range(self.num_envs):
+            obs = self.envs[e].reset()
+            self._save_obs(e, obs)
+        return self._obs_from_buf()
+
+    def _save_obs(self, e, obs):
+        for k in self.keys:
+            if k is None:
+                self.buf_obs[k][e] = obs
+            else:
+                self.buf_obs[k][e] = obs[k]
+
+    def _obs_from_buf(self):
+        return dict_to_obs(copy_obs_dict(self.buf_obs))
+
+    def get_images(self):
+        return [env.render(mode=&#39;rgb_array&#39;) for env in self.envs]
+
+    def render(self, mode=&#39;human&#39;):
+        if self.num_envs == 1:
+            return self.envs[0].render(mode=mode)
+        else:
+            return super().render(mode=mode)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv">VecEnv</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="TeachMyAgent.students.openai_baselines.common.vec_env.DummyVecEnv.render"><code class="name flex">
+<span>def <span class="ident">render</span></span>(<span>self, mode='human')</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def render(self, mode=&#39;human&#39;):
+    if self.num_envs == 1:
+        return self.envs[0].render(mode=mode)
+    else:
+        return super().render(mode=mode)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv">VecEnv</a></b></code>:
+<ul class="hlist">
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.close_extras" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.close_extras">close_extras</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.get_images" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.get_images">get_images</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.reset" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.reset">reset</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step">step</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step_async" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step_async">step_async</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step_wait" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step_wait">step_wait</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.vec_env.NotSteppingError"><code class="flex name class">
+<span>class <span class="ident">NotSteppingError</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Raised when an asynchronous step is not running but
+step_wait() is called.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class NotSteppingError(Exception):
+    &#34;&#34;&#34;
+    Raised when an asynchronous step is not running but
+    step_wait() is called.
+    &#34;&#34;&#34;
+
+    def __init__(self):
+        msg = &#39;not running an async step&#39;
+        Exception.__init__(self, msg)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.vec_env.ShmemVecEnv"><code class="flex name class">
+<span>class <span class="ident">ShmemVecEnv</span></span>
+<span>(</span><span>env_fns, spaces=None, context='spawn')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Optimized version of SubprocVecEnv that uses shared variables to communicate observations.</p>
+<p>If you don't specify observation_space, we'll have to create a dummy
+environment to get it.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ShmemVecEnv(VecEnv):
+    &#34;&#34;&#34;
+    Optimized version of SubprocVecEnv that uses shared variables to communicate observations.
+    &#34;&#34;&#34;
+
+    def __init__(self, env_fns, spaces=None, context=&#39;spawn&#39;):
+        &#34;&#34;&#34;
+        If you don&#39;t specify observation_space, we&#39;ll have to create a dummy
+        environment to get it.
+        &#34;&#34;&#34;
+        ctx = mp.get_context(context)
+        if spaces:
+            observation_space, action_space = spaces
+        else:
+            logger.log(&#39;Creating dummy env object to get spaces&#39;)
+            with logger.scoped_configure(format_strs=[]):
+                dummy = env_fns[0]()
+                observation_space, action_space = dummy.observation_space, dummy.action_space
+                dummy.close()
+                del dummy
+        VecEnv.__init__(self, len(env_fns), observation_space, action_space)
+        self.obs_keys, self.obs_shapes, self.obs_dtypes = obs_space_info(observation_space)
+        self.obs_bufs = [
+            {k: ctx.Array(_NP_TO_CT[self.obs_dtypes[k].type], int(np.prod(self.obs_shapes[k]))) for k in self.obs_keys}
+            for _ in env_fns]
+        self.parent_pipes = []
+        self.procs = []
+        with clear_mpi_env_vars():
+            for env_fn, obs_buf in zip(env_fns, self.obs_bufs):
+                wrapped_fn = CloudpickleWrapper(env_fn)
+                parent_pipe, child_pipe = ctx.Pipe()
+                proc = ctx.Process(target=_subproc_worker,
+                            args=(child_pipe, parent_pipe, wrapped_fn, obs_buf, self.obs_shapes, self.obs_dtypes, self.obs_keys))
+                proc.daemon = True
+                self.procs.append(proc)
+                self.parent_pipes.append(parent_pipe)
+                proc.start()
+                child_pipe.close()
+        self.waiting_step = False
+        self.viewer = None
+
+    def reset(self):
+        if self.waiting_step:
+            logger.warn(&#39;Called reset() while waiting for the step to complete&#39;)
+            self.step_wait()
+        for pipe in self.parent_pipes:
+            pipe.send((&#39;reset&#39;, None))
+        return self._decode_obses([pipe.recv() for pipe in self.parent_pipes])
+
+    def step_async(self, actions):
+        assert len(actions) == len(self.parent_pipes)
+        for pipe, act in zip(self.parent_pipes, actions):
+            pipe.send((&#39;step&#39;, act))
+        self.waiting_step = True
+
+    def step_wait(self):
+        outs = [pipe.recv() for pipe in self.parent_pipes]
+        self.waiting_step = False
+        obs, rews, dones, infos = zip(*outs)
+        return self._decode_obses(obs), np.array(rews), np.array(dones), infos
+
+    def close_extras(self):
+        if self.waiting_step:
+            self.step_wait()
+        for pipe in self.parent_pipes:
+            pipe.send((&#39;close&#39;, None))
+        for pipe in self.parent_pipes:
+            pipe.recv()
+            pipe.close()
+        for proc in self.procs:
+            proc.join()
+
+    def get_images(self, mode=&#39;human&#39;):
+        for pipe in self.parent_pipes:
+            pipe.send((&#39;render&#39;, None))
+        return [pipe.recv() for pipe in self.parent_pipes]
+
+    def _decode_obses(self, obs):
+        result = {}
+        for k in self.obs_keys:
+
+            bufs = [b[k] for b in self.obs_bufs]
+            o = [np.frombuffer(b.get_obj(), dtype=self.obs_dtypes[k]).reshape(self.obs_shapes[k]) for b in bufs]
+            result[k] = np.array(o)
+        return dict_to_obs(result)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv">VecEnv</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv">VecEnv</a></b></code>:
+<ul class="hlist">
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.close_extras" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.close_extras">close_extras</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.get_images" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.get_images">get_images</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.reset" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.reset">reset</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step">step</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step_async" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step_async">step_async</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step_wait" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step_wait">step_wait</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.vec_env.SubprocVecEnv"><code class="flex name class">
+<span>class <span class="ident">SubprocVecEnv</span></span>
+<span>(</span><span>env_fns, spaces=None, context='spawn', in_series=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>VecEnv that runs multiple environments in parallel in subproceses and communicates with them via pipes.
+Recommended to use when num_envs &gt; 1 and step() can be a bottleneck.</p>
+<p>Arguments:</p>
+<p>env_fns: iterable of callables -
+functions that create environments to run in subprocesses. Need to be cloud-pickleable
+in_series: number of environments to run in series in a single process
+(e.g. when len(env_fns) == 12 and in_series == 3, it will run 4 processes, each running 3 envs in series)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SubprocVecEnv(VecEnv):
+    &#34;&#34;&#34;
+    VecEnv that runs multiple environments in parallel in subproceses and communicates with them via pipes.
+    Recommended to use when num_envs &gt; 1 and step() can be a bottleneck.
+    &#34;&#34;&#34;
+    def __init__(self, env_fns, spaces=None, context=&#39;spawn&#39;, in_series=1):
+        &#34;&#34;&#34;
+        Arguments:
+
+        env_fns: iterable of callables -  functions that create environments to run in subprocesses. Need to be cloud-pickleable
+        in_series: number of environments to run in series in a single process
+        (e.g. when len(env_fns) == 12 and in_series == 3, it will run 4 processes, each running 3 envs in series)
+        &#34;&#34;&#34;
+        self.waiting = False
+        self.closed = False
+        self.in_series = in_series
+        nenvs = len(env_fns)
+        assert nenvs % in_series == 0, &#34;Number of envs must be divisible by number of envs to run in series&#34;
+        self.nremotes = nenvs // in_series
+        env_fns = np.array_split(env_fns, self.nremotes)
+        ctx = mp.get_context(context)
+        self.remotes, self.work_remotes = zip(*[ctx.Pipe() for _ in range(self.nremotes)])
+        self.ps = [ctx.Process(target=worker, args=(work_remote, remote, CloudpickleWrapper(env_fn)))
+                   for (work_remote, remote, env_fn) in zip(self.work_remotes, self.remotes, env_fns)]
+        for p in self.ps:
+            p.daemon = True  # if the main process crashes, we should not cause things to hang
+            with clear_mpi_env_vars():
+                p.start()
+        for remote in self.work_remotes:
+            remote.close()
+
+        self.remotes[0].send((&#39;get_spaces_spec&#39;, None))
+        observation_space, action_space, self.spec = self.remotes[0].recv().x
+        self.viewer = None
+        VecEnv.__init__(self, nenvs, observation_space, action_space)
+
+    def step_async(self, actions):
+        self._assert_not_closed()
+        actions = np.array_split(actions, self.nremotes)
+        for remote, action in zip(self.remotes, actions):
+            remote.send((&#39;step&#39;, action))
+        self.waiting = True
+
+    def step_wait(self):
+        self._assert_not_closed()
+        results = [remote.recv() for remote in self.remotes]
+        results = _flatten_list(results)
+        self.waiting = False
+        obs, rews, dones, infos = zip(*results)
+        return _flatten_obs(obs), np.stack(rews), np.stack(dones), infos
+
+    def reset(self):
+        self._assert_not_closed()
+        for remote in self.remotes:
+            remote.send((&#39;reset&#39;, None))
+        obs = [remote.recv() for remote in self.remotes]
+        obs = _flatten_list(obs)
+        return _flatten_obs(obs)
+
+    def close_extras(self):
+        self.closed = True
+        if self.waiting:
+            for remote in self.remotes:
+                remote.recv()
+        for remote in self.remotes:
+            remote.send((&#39;close&#39;, None))
+        for p in self.ps:
+            p.join()
+
+    def get_images(self):
+        self._assert_not_closed()
+        for pipe in self.remotes:
+            pipe.send((&#39;render&#39;, None))
+        imgs = [pipe.recv() for pipe in self.remotes]
+        imgs = _flatten_list(imgs)
+        return imgs
+
+    def _assert_not_closed(self):
+        assert not self.closed, &#34;Trying to operate on a SubprocVecEnv after calling close()&#34;
+
+    def __del__(self):
+        if not self.closed:
+            self.close()</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv">VecEnv</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv">VecEnv</a></b></code>:
+<ul class="hlist">
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.close_extras" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.close_extras">close_extras</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.get_images" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.get_images">get_images</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.reset" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.reset">reset</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step">step</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step_async" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step_async">step_async</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step_wait" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step_wait">step_wait</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv"><code class="flex name class">
+<span>class <span class="ident">VecEnv</span></span>
+<span>(</span><span>num_envs, observation_space, action_space)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>An abstract asynchronous, vectorized environment.
+Used to batch data from multiple copies of an environment, so that
+each observation becomes an batch of observations, and expected action is a batch of actions to
+be applied per-environment.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class VecEnv(ABC):
+    &#34;&#34;&#34;
+    An abstract asynchronous, vectorized environment.
+    Used to batch data from multiple copies of an environment, so that
+    each observation becomes an batch of observations, and expected action is a batch of actions to
+    be applied per-environment.
+    &#34;&#34;&#34;
+    closed = False
+    viewer = None
+
+    metadata = {
+        &#39;render.modes&#39;: [&#39;human&#39;, &#39;rgb_array&#39;]
+    }
+
+    def __init__(self, num_envs, observation_space, action_space):
+        self.num_envs = num_envs
+        self.observation_space = observation_space
+        self.action_space = action_space
+
+    @abstractmethod
+    def reset(self):
+        &#34;&#34;&#34;
+        Reset all the environments and return an array of
+        observations, or a dict of observation arrays.
+
+        If step_async is still doing work, that work will
+        be cancelled and step_wait() should not be called
+        until step_async() is invoked again.
+        &#34;&#34;&#34;
+        pass
+
+    @abstractmethod
+    def step_async(self, actions):
+        &#34;&#34;&#34;
+        Tell all the environments to start taking a step
+        with the given actions.
+        Call step_wait() to get the results of the step.
+
+        You should not call this if a step_async run is
+        already pending.
+        &#34;&#34;&#34;
+        pass
+
+    @abstractmethod
+    def step_wait(self):
+        &#34;&#34;&#34;
+        Wait for the step taken with step_async().
+
+        Returns (obs, rews, dones, infos):
+         - obs: an array of observations, or a dict of
+                arrays of observations.
+         - rews: an array of rewards
+         - dones: an array of &#34;episode done&#34; booleans
+         - infos: a sequence of info objects
+        &#34;&#34;&#34;
+        pass
+
+    def close_extras(self):
+        &#34;&#34;&#34;
+        Clean up the  extra resources, beyond what&#39;s in this base class.
+        Only runs when not self.closed.
+        &#34;&#34;&#34;
+        pass
+
+    def close(self):
+        if self.closed:
+            return
+        if self.viewer is not None:
+            self.viewer.close()
+        self.close_extras()
+        self.closed = True
+
+    def step(self, actions):
+        &#34;&#34;&#34;
+        Step the environments synchronously.
+
+        This is available for backwards compatibility.
+        &#34;&#34;&#34;
+        self.step_async(actions)
+        return self.step_wait()
+
+    def render(self, mode=&#39;human&#39;):
+        imgs = self.get_images()
+        bigimg = tile_images(imgs)
+        if mode == &#39;human&#39;:
+            self.get_viewer().imshow(bigimg)
+            return self.get_viewer().isopen
+        elif mode == &#39;rgb_array&#39;:
+            return bigimg
+        else:
+            raise NotImplementedError
+
+    def get_images(self):
+        &#34;&#34;&#34;
+        Return RGB images from each environment
+        &#34;&#34;&#34;
+        raise NotImplementedError
+
+    @property
+    def unwrapped(self):
+        if isinstance(self, VecEnvWrapper):
+            return self.venv.unwrapped
+        else:
+            return self
+
+    def get_viewer(self):
+        if self.viewer is None:
+            from gym.envs.classic_control import rendering
+            self.viewer = rendering.SimpleImageViewer()
+        return self.viewer</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>abc.ABC</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="TeachMyAgent.students.openai_baselines.common.vec_env.dummy_vec_env.DummyVecEnv" href="dummy_vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.dummy_vec_env.DummyVecEnv">DummyVecEnv</a></li>
+<li><a title="TeachMyAgent.students.openai_baselines.common.vec_env.shmem_vec_env.ShmemVecEnv" href="shmem_vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.shmem_vec_env.ShmemVecEnv">ShmemVecEnv</a></li>
+<li><a title="TeachMyAgent.students.openai_baselines.common.vec_env.subproc_vec_env.SubprocVecEnv" href="subproc_vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.subproc_vec_env.SubprocVecEnv">SubprocVecEnv</a></li>
+<li><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper">VecEnvWrapper</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.closed"><code class="name">var <span class="ident">closed</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.metadata"><code class="name">var <span class="ident">metadata</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.viewer"><code class="name">var <span class="ident">viewer</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.unwrapped"><code class="name">var <span class="ident">unwrapped</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def unwrapped(self):
+    if isinstance(self, VecEnvWrapper):
+        return self.venv.unwrapped
+    else:
+        return self</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.close"><code class="name flex">
+<span>def <span class="ident">close</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def close(self):
+    if self.closed:
+        return
+    if self.viewer is not None:
+        self.viewer.close()
+    self.close_extras()
+    self.closed = True</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.close_extras"><code class="name flex">
+<span>def <span class="ident">close_extras</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Clean up the
+extra resources, beyond what's in this base class.
+Only runs when not self.closed.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def close_extras(self):
+    &#34;&#34;&#34;
+    Clean up the  extra resources, beyond what&#39;s in this base class.
+    Only runs when not self.closed.
+    &#34;&#34;&#34;
+    pass</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.get_images"><code class="name flex">
+<span>def <span class="ident">get_images</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return RGB images from each environment</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_images(self):
+    &#34;&#34;&#34;
+    Return RGB images from each environment
+    &#34;&#34;&#34;
+    raise NotImplementedError</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.get_viewer"><code class="name flex">
+<span>def <span class="ident">get_viewer</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_viewer(self):
+    if self.viewer is None:
+        from gym.envs.classic_control import rendering
+        self.viewer = rendering.SimpleImageViewer()
+    return self.viewer</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.render"><code class="name flex">
+<span>def <span class="ident">render</span></span>(<span>self, mode='human')</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def render(self, mode=&#39;human&#39;):
+    imgs = self.get_images()
+    bigimg = tile_images(imgs)
+    if mode == &#39;human&#39;:
+        self.get_viewer().imshow(bigimg)
+        return self.get_viewer().isopen
+    elif mode == &#39;rgb_array&#39;:
+        return bigimg
+    else:
+        raise NotImplementedError</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.reset"><code class="name flex">
+<span>def <span class="ident">reset</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Reset all the environments and return an array of
+observations, or a dict of observation arrays.</p>
+<p>If step_async is still doing work, that work will
+be cancelled and step_wait() should not be called
+until step_async() is invoked again.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abstractmethod
+def reset(self):
+    &#34;&#34;&#34;
+    Reset all the environments and return an array of
+    observations, or a dict of observation arrays.
+
+    If step_async is still doing work, that work will
+    be cancelled and step_wait() should not be called
+    until step_async() is invoked again.
+    &#34;&#34;&#34;
+    pass</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.step"><code class="name flex">
+<span>def <span class="ident">step</span></span>(<span>self, actions)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Step the environments synchronously.</p>
+<p>This is available for backwards compatibility.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def step(self, actions):
+    &#34;&#34;&#34;
+    Step the environments synchronously.
+
+    This is available for backwards compatibility.
+    &#34;&#34;&#34;
+    self.step_async(actions)
+    return self.step_wait()</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.step_async"><code class="name flex">
+<span>def <span class="ident">step_async</span></span>(<span>self, actions)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Tell all the environments to start taking a step
+with the given actions.
+Call step_wait() to get the results of the step.</p>
+<p>You should not call this if a step_async run is
+already pending.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abstractmethod
+def step_async(self, actions):
+    &#34;&#34;&#34;
+    Tell all the environments to start taking a step
+    with the given actions.
+    Call step_wait() to get the results of the step.
+
+    You should not call this if a step_async run is
+    already pending.
+    &#34;&#34;&#34;
+    pass</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.step_wait"><code class="name flex">
+<span>def <span class="ident">step_wait</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Wait for the step taken with step_async().</p>
+<p>Returns (obs, rews, dones, infos):
+- obs: an array of observations, or a dict of
+arrays of observations.
+- rews: an array of rewards
+- dones: an array of "episode done" booleans
+- infos: a sequence of info objects</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abstractmethod
+def step_wait(self):
+    &#34;&#34;&#34;
+    Wait for the step taken with step_async().
+
+    Returns (obs, rews, dones, infos):
+     - obs: an array of observations, or a dict of
+            arrays of observations.
+     - rews: an array of rewards
+     - dones: an array of &#34;episode done&#34; booleans
+     - infos: a sequence of info objects
+    &#34;&#34;&#34;
+    pass</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnvObservationWrapper"><code class="flex name class">
+<span>class <span class="ident">VecEnvObservationWrapper</span></span>
+<span>(</span><span>venv, observation_space=None, action_space=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>An environment wrapper that applies to an entire batch
+of environments at once.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class VecEnvObservationWrapper(VecEnvWrapper):
+    @abstractmethod
+    def process(self, obs):
+        pass
+
+    def reset(self):
+        obs = self.venv.reset()
+        return self.process(obs)
+
+    def step_wait(self):
+        obs, rews, dones, infos = self.venv.step_wait()
+        return self.process(obs), rews, dones, infos</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper">VecEnvWrapper</a></li>
+<li><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv">VecEnv</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_remove_dict_obs.VecExtractDictObs" href="vec_remove_dict_obs.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_remove_dict_obs.VecExtractDictObs">VecExtractDictObs</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnvObservationWrapper.process"><code class="name flex">
+<span>def <span class="ident">process</span></span>(<span>self, obs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abstractmethod
+def process(self, obs):
+    pass</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper">VecEnvWrapper</a></b></code>:
+<ul class="hlist">
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper.close_extras" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.close_extras">close_extras</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper.get_images" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.get_images">get_images</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper.reset" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.reset">reset</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper.step" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step">step</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper.step_async" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step_async">step_async</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper.step_wait" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step_wait">step_wait</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnvWrapper"><code class="flex name class">
+<span>class <span class="ident">VecEnvWrapper</span></span>
+<span>(</span><span>venv, observation_space=None, action_space=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>An environment wrapper that applies to an entire batch
+of environments at once.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class VecEnvWrapper(VecEnv):
+    &#34;&#34;&#34;
+    An environment wrapper that applies to an entire batch
+    of environments at once.
+    &#34;&#34;&#34;
+
+    def __init__(self, venv, observation_space=None, action_space=None):
+        self.venv = venv
+        super().__init__(num_envs=venv.num_envs,
+                        observation_space=observation_space or venv.observation_space,
+                        action_space=action_space or venv.action_space)
+
+    def step_async(self, actions):
+        self.venv.step_async(actions)
+
+    @abstractmethod
+    def reset(self):
+        pass
+
+    @abstractmethod
+    def step_wait(self):
+        pass
+
+    def close(self):
+        return self.venv.close()
+
+    def render(self, mode=&#39;human&#39;):
+        return self.venv.render(mode=mode)
+
+    def get_images(self):
+        return self.venv.get_images()
+
+    def __getattr__(self, name):
+        if name.startswith(&#39;_&#39;):
+            raise AttributeError(&#34;attempted to get missing private attribute &#39;{}&#39;&#34;.format(name))
+        return getattr(self.venv, name)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv">VecEnv</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvObservationWrapper" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvObservationWrapper">VecEnvObservationWrapper</a></li>
+<li><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_frame_stack.VecFrameStack" href="vec_frame_stack.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_frame_stack.VecFrameStack">VecFrameStack</a></li>
+<li><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_monitor.VecMonitor" href="vec_monitor.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_monitor.VecMonitor">VecMonitor</a></li>
+<li><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_normalize.VecNormalize" href="vec_normalize.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_normalize.VecNormalize">VecNormalize</a></li>
+<li><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_video_recorder.VecVideoRecorder" href="vec_video_recorder.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_video_recorder.VecVideoRecorder">VecVideoRecorder</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnvWrapper.close"><code class="name flex">
+<span>def <span class="ident">close</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def close(self):
+    return self.venv.close()</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnvWrapper.render"><code class="name flex">
+<span>def <span class="ident">render</span></span>(<span>self, mode='human')</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def render(self, mode=&#39;human&#39;):
+    return self.venv.render(mode=mode)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv">VecEnv</a></b></code>:
+<ul class="hlist">
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.close_extras" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.close_extras">close_extras</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.get_images" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.get_images">get_images</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.reset" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.reset">reset</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step">step</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step_async" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step_async">step_async</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step_wait" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step_wait">step_wait</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.vec_env.VecExtractDictObs"><code class="flex name class">
+<span>class <span class="ident">VecExtractDictObs</span></span>
+<span>(</span><span>venv, key)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>An environment wrapper that applies to an entire batch
+of environments at once.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class VecExtractDictObs(VecEnvObservationWrapper):
+    def __init__(self, venv, key):
+        self.key = key
+        super().__init__(venv=venv,
+            observation_space=venv.observation_space.spaces[self.key])
+
+    def process(self, obs):
+        return obs[self.key]</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvObservationWrapper" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvObservationWrapper">VecEnvObservationWrapper</a></li>
+<li><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper">VecEnvWrapper</a></li>
+<li><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv">VecEnv</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="TeachMyAgent.students.openai_baselines.common.vec_env.VecExtractDictObs.process"><code class="name flex">
+<span>def <span class="ident">process</span></span>(<span>self, obs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def process(self, obs):
+    return obs[self.key]</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvObservationWrapper" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvObservationWrapper">VecEnvObservationWrapper</a></b></code>:
+<ul class="hlist">
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvObservationWrapper.close_extras" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.close_extras">close_extras</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvObservationWrapper.get_images" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.get_images">get_images</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvObservationWrapper.reset" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.reset">reset</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvObservationWrapper.step" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step">step</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvObservationWrapper.step_async" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step_async">step_async</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvObservationWrapper.step_wait" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step_wait">step_wait</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.vec_env.VecFrameStack"><code class="flex name class">
+<span>class <span class="ident">VecFrameStack</span></span>
+<span>(</span><span>venv, nstack)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>An environment wrapper that applies to an entire batch
+of environments at once.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class VecFrameStack(VecEnvWrapper):
+    def __init__(self, venv, nstack):
+        self.venv = venv
+        self.nstack = nstack
+        wos = venv.observation_space  # wrapped ob space
+        low = np.repeat(wos.low, self.nstack, axis=-1)
+        high = np.repeat(wos.high, self.nstack, axis=-1)
+        self.stackedobs = np.zeros((venv.num_envs,) + low.shape, low.dtype)
+        observation_space = spaces.Box(low=low, high=high, dtype=venv.observation_space.dtype)
+        VecEnvWrapper.__init__(self, venv, observation_space=observation_space)
+
+    def step_wait(self):
+        obs, rews, news, infos = self.venv.step_wait()
+        self.stackedobs = np.roll(self.stackedobs, shift=-1, axis=-1)
+        for (i, new) in enumerate(news):
+            if new:
+                self.stackedobs[i] = 0
+        self.stackedobs[..., -obs.shape[-1]:] = obs
+        return self.stackedobs, rews, news, infos
+
+    def reset(self):
+        obs = self.venv.reset()
+        self.stackedobs[...] = 0
+        self.stackedobs[..., -obs.shape[-1]:] = obs
+        return self.stackedobs</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper">VecEnvWrapper</a></li>
+<li><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv">VecEnv</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper">VecEnvWrapper</a></b></code>:
+<ul class="hlist">
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper.close_extras" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.close_extras">close_extras</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper.get_images" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.get_images">get_images</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper.reset" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.reset">reset</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper.step" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step">step</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper.step_async" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step_async">step_async</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper.step_wait" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step_wait">step_wait</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.vec_env.VecMonitor"><code class="flex name class">
+<span>class <span class="ident">VecMonitor</span></span>
+<span>(</span><span>venv, filename=None, keep_buf=0, info_keywords=())</span>
+</code></dt>
+<dd>
+<div class="desc"><p>An environment wrapper that applies to an entire batch
+of environments at once.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class VecMonitor(VecEnvWrapper):
+    def __init__(self, venv, filename=None, keep_buf=0, info_keywords=()):
+        VecEnvWrapper.__init__(self, venv)
+        self.eprets = None
+        self.eplens = None
+        self.epcount = 0
+        self.tstart = time.time()
+        if filename:
+            self.results_writer = ResultsWriter(filename, header={&#39;t_start&#39;: self.tstart},
+                extra_keys=info_keywords)
+        else:
+            self.results_writer = None
+        self.info_keywords = info_keywords
+        self.keep_buf = keep_buf
+        if self.keep_buf:
+            self.epret_buf = deque([], maxlen=keep_buf)
+            self.eplen_buf = deque([], maxlen=keep_buf)
+
+    def reset(self):
+        obs = self.venv.reset()
+        self.eprets = np.zeros(self.num_envs, &#39;f&#39;)
+        self.eplens = np.zeros(self.num_envs, &#39;i&#39;)
+        return obs
+
+    def step_wait(self):
+        obs, rews, dones, infos = self.venv.step_wait()
+        self.eprets += rews
+        self.eplens += 1
+
+        newinfos = list(infos[:])
+        for i in range(len(dones)):
+            if dones[i]:
+                info = infos[i].copy()
+                ret = self.eprets[i]
+                eplen = self.eplens[i]
+                epinfo = {&#39;r&#39;: ret, &#39;l&#39;: eplen, &#39;t&#39;: round(time.time() - self.tstart, 6)}
+                for k in self.info_keywords:
+                    epinfo[k] = info[k]
+                info[&#39;episode&#39;] = epinfo
+                if self.keep_buf:
+                    self.epret_buf.append(ret)
+                    self.eplen_buf.append(eplen)
+                self.epcount += 1
+                self.eprets[i] = 0
+                self.eplens[i] = 0
+                if self.results_writer:
+                    self.results_writer.write_row(epinfo)
+                newinfos[i] = info
+        return obs, rews, dones, newinfos</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper">VecEnvWrapper</a></li>
+<li><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv">VecEnv</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper">VecEnvWrapper</a></b></code>:
+<ul class="hlist">
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper.close_extras" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.close_extras">close_extras</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper.get_images" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.get_images">get_images</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper.reset" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.reset">reset</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper.step" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step">step</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper.step_async" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step_async">step_async</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper.step_wait" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step_wait">step_wait</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.vec_env.VecNormalize"><code class="flex name class">
+<span>class <span class="ident">VecNormalize</span></span>
+<span>(</span><span>venv, ob=True, ret=True, clipob=10.0, cliprew=10.0, gamma=0.99, epsilon=1e-08, use_tf=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A vectorized wrapper that normalizes the observations
+and returns from an environment.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class VecNormalize(VecEnvWrapper):
+    &#34;&#34;&#34;
+    A vectorized wrapper that normalizes the observations
+    and returns from an environment.
+    &#34;&#34;&#34;
+
+    def __init__(self, venv, ob=True, ret=True, clipob=10., cliprew=10., gamma=0.99, epsilon=1e-8, use_tf=False):
+        VecEnvWrapper.__init__(self, venv)
+        if use_tf:
+            from TeachMyAgent.students.openai_baselines.common.running_mean_std import TfRunningMeanStd
+            self.ob_rms = TfRunningMeanStd(shape=self.observation_space.shape, scope=&#39;ob_rms&#39;) if ob else None
+            self.ret_rms = TfRunningMeanStd(shape=(), scope=&#39;ret_rms&#39;) if ret else None
+        else:
+            from TeachMyAgent.students.openai_baselines.common.running_mean_std import RunningMeanStd
+            self.ob_rms = RunningMeanStd(shape=self.observation_space.shape) if ob else None
+            self.ret_rms = RunningMeanStd(shape=()) if ret else None
+        self.clipob = clipob
+        self.cliprew = cliprew
+        self.ret = np.zeros(self.num_envs)
+        self.gamma = gamma
+        self.epsilon = epsilon
+
+    def step_wait(self):
+        obs, rews, news, infos = self.venv.step_wait()
+        self.ret = self.ret * self.gamma + rews
+        obs = self._obfilt(obs)
+        if self.ret_rms:
+            self.ret_rms.update(self.ret)
+            rews = np.clip(rews / np.sqrt(self.ret_rms.var + self.epsilon), -self.cliprew, self.cliprew)
+        self.ret[news] = 0.
+        return obs, rews, news, infos
+
+    def _obfilt(self, obs):
+        if self.ob_rms:
+            self.ob_rms.update(obs)
+            obs = np.clip((obs - self.ob_rms.mean) / np.sqrt(self.ob_rms.var + self.epsilon), -self.clipob, self.clipob)
+            return obs
+        else:
+            return obs
+
+    def reset(self):
+        self.ret = np.zeros(self.num_envs)
+        obs = self.venv.reset()
+        return self._obfilt(obs)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper">VecEnvWrapper</a></li>
+<li><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv">VecEnv</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="TeachMyAgent.students.ppo_utils.CustomVecNormalizeEnv" href="../../../ppo_utils.html#TeachMyAgent.students.ppo_utils.CustomVecNormalizeEnv">CustomVecNormalizeEnv</a></li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper">VecEnvWrapper</a></b></code>:
+<ul class="hlist">
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper.close_extras" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.close_extras">close_extras</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper.get_images" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.get_images">get_images</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper.reset" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.reset">reset</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper.step" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step">step</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper.step_async" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step_async">step_async</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnvWrapper.step_wait" href="vec_env.html#TeachMyAgent.students.openai_baselines.common.vec_env.vec_env.VecEnv.step_wait">step_wait</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<a href="https://teachmyagent.github.io/doc/index.html">
+<img src="https://teachmyagent.github.io/images/home/head-image.png" style="display: block; margin: 1em auto">
+</a>
+<a href="https://teachmyagent.github.io/index.html">Website</a>
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common" href="../index.html">TeachMyAgent.students.openai_baselines.common</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-submodules">Sub-modules</a></h3>
+<ul>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.dummy_vec_env" href="dummy_vec_env.html">TeachMyAgent.students.openai_baselines.common.vec_env.dummy_vec_env</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.shmem_vec_env" href="shmem_vec_env.html">TeachMyAgent.students.openai_baselines.common.vec_env.shmem_vec_env</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.subproc_vec_env" href="subproc_vec_env.html">TeachMyAgent.students.openai_baselines.common.vec_env.subproc_vec_env</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.test_video_recorder" href="test_video_recorder.html">TeachMyAgent.students.openai_baselines.common.vec_env.test_video_recorder</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.util" href="util.html">TeachMyAgent.students.openai_baselines.common.vec_env.util</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_env" href="vec_env.html">TeachMyAgent.students.openai_baselines.common.vec_env.vec_env</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_frame_stack" href="vec_frame_stack.html">TeachMyAgent.students.openai_baselines.common.vec_env.vec_frame_stack</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_monitor" href="vec_monitor.html">TeachMyAgent.students.openai_baselines.common.vec_env.vec_monitor</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_normalize" href="vec_normalize.html">TeachMyAgent.students.openai_baselines.common.vec_env.vec_normalize</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_remove_dict_obs" href="vec_remove_dict_obs.html">TeachMyAgent.students.openai_baselines.common.vec_env.vec_remove_dict_obs</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.vec_video_recorder" href="vec_video_recorder.html">TeachMyAgent.students.openai_baselines.common.vec_env.vec_video_recorder</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.AlreadySteppingError" href="#TeachMyAgent.students.openai_baselines.common.vec_env.AlreadySteppingError">AlreadySteppingError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.CloudpickleWrapper" href="#TeachMyAgent.students.openai_baselines.common.vec_env.CloudpickleWrapper">CloudpickleWrapper</a></code></h4>
+</li>
+<li>
+<h4><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.DummyVecEnv" href="#TeachMyAgent.students.openai_baselines.common.vec_env.DummyVecEnv">DummyVecEnv</a></code></h4>
+<ul class="">
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.DummyVecEnv.render" href="#TeachMyAgent.students.openai_baselines.common.vec_env.DummyVecEnv.render">render</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.NotSteppingError" href="#TeachMyAgent.students.openai_baselines.common.vec_env.NotSteppingError">NotSteppingError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.ShmemVecEnv" href="#TeachMyAgent.students.openai_baselines.common.vec_env.ShmemVecEnv">ShmemVecEnv</a></code></h4>
+</li>
+<li>
+<h4><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.SubprocVecEnv" href="#TeachMyAgent.students.openai_baselines.common.vec_env.SubprocVecEnv">SubprocVecEnv</a></code></h4>
+</li>
+<li>
+<h4><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv" href="#TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv">VecEnv</a></code></h4>
+<ul class="two-column">
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.close" href="#TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.close">close</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.close_extras" href="#TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.close_extras">close_extras</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.closed" href="#TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.closed">closed</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.get_images" href="#TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.get_images">get_images</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.get_viewer" href="#TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.get_viewer">get_viewer</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.metadata" href="#TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.metadata">metadata</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.render" href="#TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.render">render</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.reset" href="#TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.reset">reset</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.step" href="#TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.step">step</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.step_async" href="#TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.step_async">step_async</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.step_wait" href="#TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.step_wait">step_wait</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.unwrapped" href="#TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.unwrapped">unwrapped</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.viewer" href="#TeachMyAgent.students.openai_baselines.common.vec_env.VecEnv.viewer">viewer</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnvObservationWrapper" href="#TeachMyAgent.students.openai_baselines.common.vec_env.VecEnvObservationWrapper">VecEnvObservationWrapper</a></code></h4>
+<ul class="">
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnvObservationWrapper.process" href="#TeachMyAgent.students.openai_baselines.common.vec_env.VecEnvObservationWrapper.process">process</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnvWrapper" href="#TeachMyAgent.students.openai_baselines.common.vec_env.VecEnvWrapper">VecEnvWrapper</a></code></h4>
+<ul class="">
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnvWrapper.close" href="#TeachMyAgent.students.openai_baselines.common.vec_env.VecEnvWrapper.close">close</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.VecEnvWrapper.render" href="#TeachMyAgent.students.openai_baselines.common.vec_env.VecEnvWrapper.render">render</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.VecExtractDictObs" href="#TeachMyAgent.students.openai_baselines.common.vec_env.VecExtractDictObs">VecExtractDictObs</a></code></h4>
+<ul class="">
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.VecExtractDictObs.process" href="#TeachMyAgent.students.openai_baselines.common.vec_env.VecExtractDictObs.process">process</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.VecFrameStack" href="#TeachMyAgent.students.openai_baselines.common.vec_env.VecFrameStack">VecFrameStack</a></code></h4>
+</li>
+<li>
+<h4><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.VecMonitor" href="#TeachMyAgent.students.openai_baselines.common.vec_env.VecMonitor">VecMonitor</a></code></h4>
+</li>
+<li>
+<h4><code><a title="TeachMyAgent.students.openai_baselines.common.vec_env.VecNormalize" href="#TeachMyAgent.students.openai_baselines.common.vec_env.VecNormalize">VecNormalize</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

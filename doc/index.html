@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>TeachMyAgent API documentation</title>
+<meta name="description" content="* Our [paper]
+* Our [website]
+* Our [repository]
+…" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Package <code>TeachMyAgent</code></h1>
+</header>
+<section id="section-intro">
+<ul>
+<li>Our <a href="https://arxiv.org/abs/2103.09815">paper</a></li>
+<li>Our <a href="https://teachmyagent.github.io/index.html">website</a></li>
+<li>Our <a href="https://github.com/flowersteam/TeachMyAgent">repository</a></li>
+</ul>
+<hr>
+<p><code><a title="TeachMyAgent" href="#TeachMyAgent">TeachMyAgent</a></code> is a testbed platform for <strong>Automatic Curriculum Learning</strong> methods. We leverage Box2D procedurally generated environments to assess the performance of teacher algorithms in continuous task spaces.
+Our repository provides:</p>
+<ul>
+<li><strong>Two parametric Box2D environments</strong>: Stumps Tracks and Parkour</li>
+<li><strong>Multiple embodiments</strong> with different locomotion skills (e.g. bipedal walker, spider, climbing chimpanzee, fish)</li>
+<li><strong>Two Deep RL students</strong>: SAC and PPO</li>
+<li><strong>Several ACL algorithms</strong>: ADR, ALP-GMM, Covar-GMM, SPDL, GoalGAN, Setter-Solver, RIAC</li>
+<li><strong>Two benchmark experiments</strong> using elements above: Skill-specific comparison and global performance assessment</li>
+<li><strong>Three notebooks for systematic analysis</strong> of results using statistical tests along with visualization tools (plots, videos&hellip;) allowing to reproduce our figures</li>
+</ul>
+<p>Using this, we performed a benchmark of the previously mentioned ACL methods which can be seen in our <a href="https://arxiv.org/abs/2103.09815">paper</a>. We also provide additional visualization on our <a href="https://teachmyagent.github.io/index.html">website</a>.</p>
+<h1 id="installation">Installation</h1>
+<p>1- Get the repository</p>
+<pre><code>git clone https://github.com/flowersteam/TeachMyAgent
+cd TeachMyAgent/
+</code></pre>
+<p>2- Install it, using Conda for example (use Python &gt;= 3.6)</p>
+<pre><code>conda create --name teachMyAgent python=3.6
+conda activate teachMyAgent
+pip install -e .
+</code></pre>
+<p><strong>Note: For Windows users, add <code>-f https://download.pytorch.org/whl/torch_stable.html</code> to the <code>pip install -e .</code> command.</strong></p>
+<h1 id="launching-an-experiment">Launching an experiment</h1>
+<p>You can launch an experiment using <code>run.py</code>:</p>
+<pre><code>python run.py --exp_name &lt;name&gt; --env &lt;environment_name&gt; &lt;optional environment parameters&gt; --student &lt;student_name&gt; &lt;optional student parameters&gt; --teacher &lt;teacher_name&gt; &lt;optional teacher parameters&gt;
+</code></pre>
+<p>Here is a non-exhaustive list of the arguments you can use:</p>
+<ul>
+<li>Environments:<ul>
+<li>parametric-continuous-stump-tracks-v0</li>
+<li>parametric-continuous-parkour-v0</li>
+</ul>
+</li>
+<li>Embodiments:<ul>
+<li>old_classic_bipedal</li>
+<li>small_bipedal</li>
+<li>old_big_quadru</li>
+<li>spider</li>
+<li>millipede</li>
+<li>profile_chimpanzee</li>
+<li>climbing_profile_chimpanzee</li>
+<li>climbing_chest_profile_chimpanzee</li>
+<li>fish</li>
+<li>amphibious_bipedal</li>
+</ul>
+</li>
+<li>Deep RL students:<ul>
+<li>sac_v0.1.1</li>
+<li>ppo
+<br>
+*Teachers:</li>
+<li>Random</li>
+<li>ADR</li>
+<li>ALP-GMM</li>
+<li>Covar-GMM</li>
+<li>RIAC</li>
+<li>Self-Paced</li>
+<li>GoalGAN</li>
+<li>Setter-Solver</li>
+</ul>
+</li>
+</ul>
+<p>Using these, the following example shows a 10 millions steps training of PPO with the fish embodiment in Parkour using GoalGAN as teacher:</p>
+<pre><code>python run.py --exp_name TestExperiment --env parametric-continuous-parkour-v0 --embodiment fish --student ppo --nb_env_steps 10 --teacher GoalGAN --use_pretrained_samples
+</code></pre>
+<p>All possible arguments can be found in the <code><a title="TeachMyAgent.run_utils" href="run_utils/index.html">TeachMyAgent.run_utils</a></code> subpackage (as mentioned in <a href="#code-structure">Code structure</a>):
+- <code>environment_args_handler.py</code>
+- <code>student_args_handler.py</code>
+- <code>teacher_args_handler.py</code></p>
+<h1 id="launching-a-benchmark-campaign">Launching a benchmark campaign</h1>
+<p>Performing a full benchmark campaign on an ACL method (as shown in our <a href="https://arxiv.org/abs/2103.09815">paper</a>) can be done through multiple experiments.
+We provide a way to generate a script containing all the experiments:</p>
+<pre><code>python TeachMyAgent/run_utils/generate_benchmark_script.py &lt;campaign_name&gt; --*teacher &lt;teacher_name&gt; &lt;optional teacher parameters&gt;
+</code></pre>
+<p>This will generate a script in <code>benchmark_scripts/</code> containing all the experiments to run.
+The script can then be used with our <code>slurm_campaign_launcher.py</code> (move your script to the root of the folder first):</p>
+<pre><code>python slurm_campaign_launcher.py &lt;script_name&gt;
+</code></pre>
+<p>Each experiment will be run with multiple seeds using slurm.</p>
+<h1 id="visualizing-results">Visualizing results</h1>
+<h2 id="import-baseline-results-from-our-paper">Import baseline results from our paper</h2>
+<p>In order to benchmark methods against the ones we evaluated in our <a href="https://arxiv.org/abs/2103.09815">paper</a> you must download our results:</p>
+<ol>
+<li>Go to the <code>notebooks</code> folder</li>
+<li>Make the <code>download_baselines.sh</code> script executable: <code>chmod +x download_baselines.sh</code></li>
+<li>Download results: <code>./download_baselines.sh</code><blockquote>
+<p><strong><em>WARNING:</em></strong>
+This will download a zip weighting approximayely 4.5GB. Then, our script will extract the zip file in <code>TeachMyAgent/data</code>. Once extracted, results will weight approximately 15GB. </p>
+</blockquote>
+</li>
+</ol>
+<hr>
+<p>1- Launch a jupyter server:</p>
+<pre><code>cd notebooks;
+jupyter notebook
+</code></pre>
+<p>2- Open our <code>Results_analysis.ipynb</code> notebook for graphs (i.e. figures in our paper)
+3- Open our <code>Book_keeping_analysis.ipynb</code> notebook for test set and curriculum analysis
+4- Open our <code>Policies_visualization.ipynb</code> notebook to visualize policies learned</p>
+<h1 id="code-structure">Code structure</h1>
+<p>Our code is shared between 4 main folders in the <code><a title="TeachMyAgent" href="#TeachMyAgent">TeachMyAgent</a></code> package:</p>
+<ul>
+<li><code><a title="TeachMyAgent.environments" href="environments/index.html">TeachMyAgent.environments</a></code>: definition of our two procedurally generated environments along with embodiments</li>
+<li><code><a title="TeachMyAgent.students" href="students/index.html">TeachMyAgent.students</a></code>: SAC and PPO's implementations</li>
+<li><code><a title="TeachMyAgent.teachers" href="teachers/index.html">TeachMyAgent.teachers</a></code>: all the ACL algorithms</li>
+<li><code><a title="TeachMyAgent.run_utils" href="run_utils/index.html">TeachMyAgent.run_utils</a></code>: utils for running experiments and generating benchmark scripts</li>
+</ul>
+<h2 id="environments">Environments</h2>
+<p>All our environments respect the OpenAI Gym's interface. We use the environment's constructor to provide parameters such as embodiment.
+Our environments must additionally provide a <code>set_environment()</code> method used by teachers to set tasks (warning: this method must be called before the <code>reset()</code> function).
+Here is an example showing how to use the Parkour environment:</p>
+<pre><code class="language-python">import numpy as np
+import time
+import gym
+import TeachMyAgent.environments
+
+env = gym.make('parametric-continuous-parkour-v0', agent_body_type='fish', movable_creepers=True)
+env.set_environment(input_vector=np.zeros(3), water_level = 0.1)
+env.reset()
+
+while True:
+    _, _, d, _ = env.step(env.action_space.sample())
+    env.render()
+    time.sleep(0.1)
+</code></pre>
+<p>Hence, one can easily add a new environment in <code>TeachMyAgent/environments/envs/</code> as long as it implements the methods presented above. The new environment must then be added to the registration in <code>TeachMyAgent/environments/__init__.py</code>.
+Additionally, we introduced new physics (water and climbing) gathered in <code>TeachMyAgent/environments/envs/Box2D_dynamics/</code> which can be reused in your environment. See the <code>__init__()</code> and <code>step()</code> functions of the <code>parametric_conitnuous_parkour.py</code> for an example on how to use them. </p>
+<h2 id="embodiments">Embodiments</h2>
+<p>We put our embodiments in <code>TeachMyAgent/environments/envs/bodies/</code>. We classify them in three main categories (walkers, climbers, swimmers).
+Each embodiment extends the <code>AbstractBody.py</code> class specifying basic methods such as sending actions to motors or creating the observation vector. Additionally, each embodiment extends an abstract class of its type (e.g. walker or swimmer) defining methods related to type-specific behaviour.
+Finally, <code>BodiesEnum.py</code> is used to list all embodiments and provide access to their class using a string name. </p>
+<p>One must therefore add its new embodiment in the appropriate folder, extend and implement the methods of its parent abstract class and finally add its new class to the <code>BodiesEnum.py</code>.
+Note that if your embodiment has additional parameters, you should add them to the <code>get_body_wargs</code> method in <code>environment_args_handler.py</code>.</p>
+<h2 id="students">Students</h2>
+<p>We modified <a href="https://github.com/openai/spinningup">SpinningUp's</a> implementation of SAC and <a href="https://github.com/openai/baselines">OpenAI Baselines'</a> implementation of PPO in order to make them use a teacher algorithm. For a DeepRL student to be part of <code><a title="TeachMyAgent" href="#TeachMyAgent">TeachMyAgent</a></code>, it must take a teacher as parameter and call its <code>record_train_step</code> method at each step as well as its <code>record_train_episode</code> and <code>set_env_params</code> methods before every reset of the environment. Additionally, it must also take a test environment and use it to test its policy on it.
+Here is an example of the way this must be implemented:</p>
+<pre><code class="language-python"># Train policy
+o, r, d, ep_ret = env.reset(), 0, False, 0
+Teacher.record_train_task_initial_state(o)
+for t in range(total_steps):
+    a = get_action(o)
+    o2, r, d, infos = env.step(a)
+    ep_ret += r
+    Teacher.record_train_step(o, a, r, o2, d)
+    o = o2
+
+    if d:
+        success = False if 'success' not in infos else infos[&quot;success&quot;]
+        Teacher.record_train_episode(ep_ret, ep_len, success)
+        params = Teacher.set_env_params(env)
+        o, r, d, ep_ret = env.reset(), 0, False, 0
+        Teacher.record_train_task_initial_state(o)
+
+# Test policy
+for j in range(n):
+    Teacher.set_test_env_params(test_env)
+    o, r, d, ep_ret = test_env.reset(), 0, False, 0
+    while not d:
+        o, r, d, _ = test_env.step(get_action(o))
+        ep_ret += r
+    Teacher.record_test_episode(ep_ret, ep_len)
+</code></pre>
+<p>Your student must then be added to the <code><a title="TeachMyAgent.students" href="students/index.html">TeachMyAgent.students</a></code> subpackage as well as in <code>student_args_handler.py</code>.
+Note that we provide a <code>test_policy.py</code> file which loads a task from a test set, loads a trained policy and use it in the task. This code currently only works for SpinningUp or Baselines models, so you should modify it if your student does not use any of these.</p>
+<h2 id="teachers">Teachers</h2>
+<p>All our teachers extend the same <code>AbstractTeacher</code> class which defines their required methods:</p>
+<ul>
+<li><code>record_initial_state(self, task, state)</code>: record initial state of the task.</li>
+<li><code>episodic_update(self, task, reward, is_success)</code>: get episodic reward and binary success reward.</li>
+<li><code>step_update(self, state, action, reward, next_state, done)</code>: get step related information.</li>
+<li><code>sample_task(self)</code>: sample a task.</li>
+<li>(Optional) <code>non_exploratory_task_sampling(self)</code>: sample a task without exploration (used to visualize the curriculum as shown on our <a href="https://teachmyagent.github.io/index.html">website</a>).</li>
+<li>(Optional) <code>is_non_exploratory_task_sampling_available(self)</code>: whether the method above can be called.</li>
+<li>(Optional) <code>dump(self, dump_dict)</code>: save the teacher.</li>
+</ul>
+<p>Teachers are then called through the <code>TeacherController</code> class, being the one passed to DeepRL students.
+This class handles the storage of sampled tasks, possible reward interpretation as well as test tasks used when the <code>set_test_env_params</code> method is called.
+In order to add a new teacher, one must extend the <code>AbstractTeacher</code> class and add its class among the possible ones in the following lines of the <code>TeacherController</code>:</p>
+<pre><code class="language-python"># setup tasks generator
+if teacher == 'Random':
+    self.task_generator = RandomTeacher(mins, maxs, seed=seed, **teacher_params)
+elif teacher == 'RIAC':
+    self.task_generator = RIAC(mins, maxs, seed=seed, **teacher_params)
+elif teacher == 'ALP-GMM':
+    self.task_generator = ALPGMM(mins, maxs, seed=seed, **teacher_params)
+elif teacher == 'Covar-GMM':
+    self.task_generator = CovarGMM(mins, maxs, seed=seed, **teacher_params)
+elif teacher == 'ADR':
+    self.task_generator = ADR(mins, maxs, seed=seed, scale_reward=scale_reward, **teacher_params)
+elif teacher == 'Self-Paced':
+    self.task_generator = SelfPacedTeacher(mins, maxs, seed=seed, **teacher_params)
+elif teacher == 'GoalGAN':
+    self.task_generator = GoalGAN(mins, maxs, seed=seed, **teacher_params)
+elif teacher == 'Setter-Solver':
+    self.task_generator = SetterSolver(mins, maxs, seed=seed, **teacher_params)
+else:
+    print('Unknown teacher')
+    raise NotImplementedError
+</code></pre>
+<p>Finally, <code>teacher_args_handler.py</code> must be modified to add the teacher as well as its parameters.</p>
+<h1 id="citing">Citing</h1>
+<p>If you use <code><a title="TeachMyAgent" href="#TeachMyAgent">TeachMyAgent</a></code> in your work, please cite the accompanying <a href="https://arxiv.org/abs/2103.09815">paper</a>:</p>
+<pre><code class="language-bibtex">@misc{romac2021teachmyagent,
+      title={TeachMyAgent: a Benchmark for Automatic Curriculum Learning in Deep RL}, 
+      author={Clément Romac and Rémy Portelas and Katja Hofmann and Pierre-Yves Oudeyer},
+      year={2021},
+      eprint={2103.09815},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG}
+}
+</code></pre>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+.. include:: ./doc/documentation.md
+&#34;&#34;&#34;</code></pre>
+</details>
+</section>
+<section>
+<h2 class="section-title" id="header-submodules">Sub-modules</h2>
+<dl>
+<dt><code class="name"><a title="TeachMyAgent.environments" href="environments/index.html">TeachMyAgent.environments</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="TeachMyAgent.run_utils" href="run_utils/index.html">TeachMyAgent.run_utils</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="TeachMyAgent.students" href="students/index.html">TeachMyAgent.students</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="TeachMyAgent.teachers" href="teachers/index.html">TeachMyAgent.teachers</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<a href="https://teachmyagent.github.io/doc/index.html">
+<img src="https://teachmyagent.github.io/images/home/head-image.png" style="display: block; margin: 1em auto">
+</a>
+<a href="https://teachmyagent.github.io/index.html">Website</a>
+<h1>Index</h1>
+<div class="toc">
+<ul>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#launching-an-experiment">Launching an experiment</a></li>
+<li><a href="#launching-a-benchmark-campaign">Launching a benchmark campaign</a></li>
+<li><a href="#visualizing-results">Visualizing results</a><ul>
+<li><a href="#import-baseline-results-from-our-paper">Import baseline results from our paper</a></li>
+</ul>
+</li>
+<li><a href="#code-structure">Code structure</a><ul>
+<li><a href="#environments">Environments</a></li>
+<li><a href="#embodiments">Embodiments</a></li>
+<li><a href="#students">Students</a></li>
+<li><a href="#teachers">Teachers</a></li>
+</ul>
+</li>
+<li><a href="#citing">Citing</a></li>
+</ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-submodules">Sub-modules</a></h3>
+<ul>
+<li><code><a title="TeachMyAgent.environments" href="environments/index.html">TeachMyAgent.environments</a></code></li>
+<li><code><a title="TeachMyAgent.run_utils" href="run_utils/index.html">TeachMyAgent.run_utils</a></code></li>
+<li><code><a title="TeachMyAgent.students" href="students/index.html">TeachMyAgent.students</a></code></li>
+<li><code><a title="TeachMyAgent.teachers" href="teachers/index.html">TeachMyAgent.teachers</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

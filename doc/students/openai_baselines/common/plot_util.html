@@ -1,0 +1,1164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>TeachMyAgent.students.openai_baselines.common.plot_util API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>TeachMyAgent.students.openai_baselines.common.plot_util</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import matplotlib.pyplot as plt
+import os.path as osp
+import json
+import os
+import numpy as np
+import pandas
+from collections import defaultdict, namedtuple
+from TeachMyAgent.students.openai_baselines.bench import monitor
+from TeachMyAgent.students.openai_baselines.logger import read_json, read_csv
+
+def smooth(y, radius, mode=&#39;two_sided&#39;, valid_only=False):
+    &#39;&#39;&#39;
+    Smooth signal y, where radius is determines the size of the window
+
+    mode=&#39;twosided&#39;:
+        average over the window [max(index - radius, 0), min(index + radius, len(y)-1)]
+    mode=&#39;causal&#39;:
+        average over the window [max(index - radius, 0), index]
+
+    valid_only: put nan in entries where the full-sized window is not available
+
+    &#39;&#39;&#39;
+    assert mode in (&#39;two_sided&#39;, &#39;causal&#39;)
+    if len(y) &lt; 2*radius+1:
+        return np.ones_like(y) * y.mean()
+    elif mode == &#39;two_sided&#39;:
+        convkernel = np.ones(2 * radius+1)
+        out = np.convolve(y, convkernel,mode=&#39;same&#39;) / np.convolve(np.ones_like(y), convkernel, mode=&#39;same&#39;)
+        if valid_only:
+            out[:radius] = out[-radius:] = np.nan
+    elif mode == &#39;causal&#39;:
+        convkernel = np.ones(radius)
+        out = np.convolve(y, convkernel,mode=&#39;full&#39;) / np.convolve(np.ones_like(y), convkernel, mode=&#39;full&#39;)
+        out = out[:-radius+1]
+        if valid_only:
+            out[:radius] = np.nan
+    return out
+
+def one_sided_ema(xolds, yolds, low=None, high=None, n=512, decay_steps=1., low_counts_threshold=1e-8):
+    &#39;&#39;&#39;
+    perform one-sided (causal) EMA (exponential moving average)
+    smoothing and resampling to an even grid with n points.
+    Does not do extrapolation, so we assume
+    xolds[0] &lt;= low &amp;&amp; high &lt;= xolds[-1]
+
+    Arguments:
+
+    xolds: array or list  - x values of data. Needs to be sorted in ascending order
+    yolds: array of list  - y values of data. Has to have the same length as xolds
+
+    low: float            - min value of the new x grid. By default equals to xolds[0]
+    high: float           - max value of the new x grid. By default equals to xolds[-1]
+
+    n: int                - number of points in new x grid
+
+    decay_steps: float    - EMA decay factor, expressed in new x grid steps.
+
+    low_counts_threshold: float or int
+                          - y values with counts less than this value will be set to NaN
+
+    Returns:
+        tuple sum_ys, count_ys where
+            xs        - array with new x grid
+            ys        - array of EMA of y at each point of the new x grid
+            count_ys  - array of EMA of y counts at each point of the new x grid
+
+    &#39;&#39;&#39;
+
+    low = xolds[0] if low is None else low
+    high = xolds[-1] if high is None else high
+
+    assert xolds[0] &lt;= low, &#39;low = {} &lt; xolds[0] = {} - extrapolation not permitted!&#39;.format(low, xolds[0])
+    assert xolds[-1] &gt;= high, &#39;high = {} &gt; xolds[-1] = {}  - extrapolation not permitted!&#39;.format(high, xolds[-1])
+    assert len(xolds) == len(yolds), &#39;length of xolds ({}) and yolds ({}) do not match!&#39;.format(len(xolds), len(yolds))
+
+
+    xolds = xolds.astype(&#39;float64&#39;)
+    yolds = yolds.astype(&#39;float64&#39;)
+
+    luoi = 0 # last unused old index
+    sum_y = 0.
+    count_y = 0.
+    xnews = np.linspace(low, high, n)
+    decay_period = (high - low) / (n - 1) * decay_steps
+    interstep_decay = np.exp(- 1. / decay_steps)
+    sum_ys = np.zeros_like(xnews)
+    count_ys = np.zeros_like(xnews)
+    for i in range(n):
+        xnew = xnews[i]
+        sum_y *= interstep_decay
+        count_y *= interstep_decay
+        while True:
+            if luoi &gt;= len(xolds):
+                break
+            xold = xolds[luoi]
+            if xold &lt;= xnew:
+                decay = np.exp(- (xnew - xold) / decay_period)
+                sum_y += decay * yolds[luoi]
+                count_y += decay
+                luoi += 1
+            else:
+                break
+        sum_ys[i] = sum_y
+        count_ys[i] = count_y
+
+    ys = sum_ys / count_ys
+    ys[count_ys &lt; low_counts_threshold] = np.nan
+
+    return xnews, ys, count_ys
+
+def symmetric_ema(xolds, yolds, low=None, high=None, n=512, decay_steps=1., low_counts_threshold=1e-8):
+    &#39;&#39;&#39;
+    perform symmetric EMA (exponential moving average)
+    smoothing and resampling to an even grid with n points.
+    Does not do extrapolation, so we assume
+    xolds[0] &lt;= low &amp;&amp; high &lt;= xolds[-1]
+
+    Arguments:
+
+    xolds: array or list  - x values of data. Needs to be sorted in ascending order
+    yolds: array of list  - y values of data. Has to have the same length as xolds
+
+    low: float            - min value of the new x grid. By default equals to xolds[0]
+    high: float           - max value of the new x grid. By default equals to xolds[-1]
+
+    n: int                - number of points in new x grid
+
+    decay_steps: float    - EMA decay factor, expressed in new x grid steps.
+
+    low_counts_threshold: float or int
+                          - y values with counts less than this value will be set to NaN
+
+    Returns:
+        tuple sum_ys, count_ys where
+            xs        - array with new x grid
+            ys        - array of EMA of y at each point of the new x grid
+            count_ys  - array of EMA of y counts at each point of the new x grid
+
+    &#39;&#39;&#39;
+    xs, ys1, count_ys1 = one_sided_ema(xolds, yolds, low, high, n, decay_steps, low_counts_threshold=0)
+    _,  ys2, count_ys2 = one_sided_ema(-xolds[::-1], yolds[::-1], -high, -low, n, decay_steps, low_counts_threshold=0)
+    ys2 = ys2[::-1]
+    count_ys2 = count_ys2[::-1]
+    count_ys = count_ys1 + count_ys2
+    ys = (ys1 * count_ys1 + ys2 * count_ys2) / count_ys
+    ys[count_ys &lt; low_counts_threshold] = np.nan
+    return xs, ys, count_ys
+
+Result = namedtuple(&#39;Result&#39;, &#39;monitor progress dirname metadata&#39;)
+Result.__new__.__defaults__ = (None,) * len(Result._fields)
+
+def load_results(root_dir_or_dirs, enable_progress=True, enable_monitor=True, verbose=False):
+    &#39;&#39;&#39;
+    load summaries of runs from a list of directories (including subdirectories)
+    Arguments:
+
+    enable_progress: bool - if True, will attempt to load data from progress.csv files (data saved by logger). Default: True
+
+    enable_monitor: bool - if True, will attempt to load data from monitor.csv files (data saved by Monitor environment wrapper). Default: True
+
+    verbose: bool - if True, will print out list of directories from which the data is loaded. Default: False
+
+
+    Returns:
+    List of Result objects with the following fields:
+         - dirname - path to the directory data was loaded from
+         - metadata - run metadata (such as command-line arguments and anything else in metadata.json file
+         - monitor - if enable_monitor is True, this field contains pandas dataframe with loaded monitor.csv file (or aggregate of all *.monitor.csv files in the directory)
+         - progress - if enable_progress is True, this field contains pandas dataframe with loaded progress.csv file
+    &#39;&#39;&#39;
+    import re
+    if isinstance(root_dir_or_dirs, str):
+        rootdirs = [osp.expanduser(root_dir_or_dirs)]
+    else:
+        rootdirs = [osp.expanduser(d) for d in root_dir_or_dirs]
+    allresults = []
+    for rootdir in rootdirs:
+        assert osp.exists(rootdir), &#34;%s doesn&#39;t exist&#34;%rootdir
+        for dirname, dirs, files in os.walk(rootdir):
+            if &#39;-proc&#39; in dirname:
+                files[:] = []
+                continue
+            monitor_re = re.compile(r&#39;(\d+\.)?(\d+\.)?monitor\.csv&#39;)
+            if set([&#39;metadata.json&#39;, &#39;monitor.json&#39;, &#39;progress.json&#39;, &#39;progress.csv&#39;]).intersection(files) or \
+               any([f for f in files if monitor_re.match(f)]):  # also match monitor files like 0.1.monitor.csv
+                # used to be uncommented, which means do not go deeper than current directory if any of the data files
+                # are found
+                # dirs[:] = []
+                result = {&#39;dirname&#39; : dirname}
+                if &#34;metadata.json&#34; in files:
+                    with open(osp.join(dirname, &#34;metadata.json&#34;), &#34;r&#34;) as fh:
+                        result[&#39;metadata&#39;] = json.load(fh)
+                progjson = osp.join(dirname, &#34;progress.json&#34;)
+                progcsv = osp.join(dirname, &#34;progress.csv&#34;)
+                if enable_progress:
+                    if osp.exists(progjson):
+                        result[&#39;progress&#39;] = pandas.DataFrame(read_json(progjson))
+                    elif osp.exists(progcsv):
+                        try:
+                            result[&#39;progress&#39;] = read_csv(progcsv)
+                        except pandas.errors.EmptyDataError:
+                            print(&#39;skipping progress file in &#39;, dirname, &#39;empty data&#39;)
+                    else:
+                        if verbose: print(&#39;skipping %s: no progress file&#39;%dirname)
+
+                if enable_monitor:
+                    try:
+                        result[&#39;monitor&#39;] = pandas.DataFrame(monitor.load_results(dirname))
+                    except monitor.LoadMonitorResultsError:
+                        print(&#39;skipping %s: no monitor files&#39;%dirname)
+                    except Exception as e:
+                        print(&#39;exception loading monitor file in %s: %s&#39;%(dirname, e))
+
+                if result.get(&#39;monitor&#39;) is not None or result.get(&#39;progress&#39;) is not None:
+                    allresults.append(Result(**result))
+                    if verbose:
+                        print(&#39;successfully loaded %s&#39;%dirname)
+
+    if verbose: print(&#39;loaded %i results&#39;%len(allresults))
+    return allresults
+
+COLORS = [&#39;blue&#39;, &#39;green&#39;, &#39;red&#39;, &#39;cyan&#39;, &#39;magenta&#39;, &#39;yellow&#39;, &#39;black&#39;, &#39;purple&#39;, &#39;pink&#39;,
+        &#39;brown&#39;, &#39;orange&#39;, &#39;teal&#39;,  &#39;lightblue&#39;, &#39;lime&#39;, &#39;lavender&#39;, &#39;turquoise&#39;,
+        &#39;darkgreen&#39;, &#39;tan&#39;, &#39;salmon&#39;, &#39;gold&#39;,  &#39;darkred&#39;, &#39;darkblue&#39;]
+
+
+def default_xy_fn(r):
+    x = np.cumsum(r.monitor.l)
+    y = smooth(r.monitor.r, radius=10)
+    return x,y
+
+def default_split_fn(r):
+    import re
+    # match name between slash and -&lt;digits&gt; at the end of the string
+    # (slash in the beginning or -&lt;digits&gt; in the end or either may be missing)
+    match = re.search(r&#39;[^/-]+(?=(-\d+)?\Z)&#39;, r.dirname)
+    if match:
+        return match.group(0)
+
+def plot_results(
+    allresults, *,
+    xy_fn=default_xy_fn,
+    split_fn=default_split_fn,
+    group_fn=default_split_fn,
+    average_group=False,
+    shaded_std=True,
+    shaded_err=True,
+    figsize=None,
+    legend_outside=False,
+    resample=0,
+    smooth_step=1.0,
+    tiling=&#39;vertical&#39;,
+    xlabel=None,
+    ylabel=None
+):
+    &#39;&#39;&#39;
+    Plot multiple Results objects
+
+    xy_fn: function Result -&gt; x,y           - function that converts results objects into tuple of x and y values.
+                                              By default, x is cumsum of episode lengths, and y is episode rewards
+
+    split_fn: function Result -&gt; hashable   - function that converts results objects into keys to split curves into sub-panels by.
+                                              That is, the results r for which split_fn(r) is different will be put on different sub-panels.
+                                              By default, the portion of r.dirname between last / and -&lt;digits&gt; is returned. The sub-panels are
+                                              stacked vertically in the figure.
+
+    group_fn: function Result -&gt; hashable   - function that converts results objects into keys to group curves by.
+                                              That is, the results r for which group_fn(r) is the same will be put into the same group.
+                                              Curves in the same group have the same color (if average_group is False), or averaged over
+                                              (if average_group is True). The default value is the same as default value for split_fn
+
+    average_group: bool                     - if True, will average the curves in the same group and plot the mean. Enables resampling
+                                              (if resample = 0, will use 512 steps)
+
+    shaded_std: bool                        - if True (default), the shaded region corresponding to standard deviation of the group of curves will be
+                                              shown (only applicable if average_group = True)
+
+    shaded_err: bool                        - if True (default), the shaded region corresponding to error in mean estimate of the group of curves
+                                              (that is, standard deviation divided by square root of number of curves) will be
+                                              shown (only applicable if average_group = True)
+
+    figsize: tuple or None                  - size of the resulting figure (including sub-panels). By default, width is 6 and height is 6 times number of
+                                              sub-panels.
+
+
+    legend_outside: bool                    - if True, will place the legend outside of the sub-panels.
+
+    resample: int                           - if not zero, size of the uniform grid in x direction to resample onto. Resampling is performed via symmetric
+                                              EMA smoothing (see the docstring for symmetric_ema).
+                                              Default is zero (no resampling). Note that if average_group is True, resampling is necessary; in that case, default
+                                              value is 512.
+
+    smooth_step: float                      - when resampling (i.e. when resample &gt; 0 or average_group is True), use this EMA decay parameter (in units of the new grid step).
+                                              See docstrings for decay_steps in symmetric_ema or one_sided_ema functions.
+
+    &#39;&#39;&#39;
+
+    if split_fn is None: split_fn = lambda _ : &#39;&#39;
+    if group_fn is None: group_fn = lambda _ : &#39;&#39;
+    sk2r = defaultdict(list) # splitkey2results
+    for result in allresults:
+        splitkey = split_fn(result)
+        sk2r[splitkey].append(result)
+    assert len(sk2r) &gt; 0
+    assert isinstance(resample, int), &#34;0: don&#39;t resample. &lt;integer&gt;: that many samples&#34;
+    if tiling == &#39;vertical&#39; or tiling is None:
+        nrows = len(sk2r)
+        ncols = 1
+    elif tiling == &#39;horizontal&#39;:
+        ncols = len(sk2r)
+        nrows = 1
+    elif tiling == &#39;symmetric&#39;:
+        import math
+        N = len(sk2r)
+        largest_divisor = 1
+        for i in range(1, int(math.sqrt(N))+1):
+            if N % i == 0:
+                largest_divisor = i
+        ncols = largest_divisor
+        nrows = N // ncols
+    figsize = figsize or (6 * ncols, 6 * nrows)
+
+    f, axarr = plt.subplots(nrows, ncols, sharex=False, squeeze=False, figsize=figsize)
+
+    groups = list(set(group_fn(result) for result in allresults))
+
+    default_samples = 512
+    if average_group:
+        resample = resample or default_samples
+
+    for (isplit, sk) in enumerate(sorted(sk2r.keys())):
+        g2l = {}
+        g2c = defaultdict(int)
+        sresults = sk2r[sk]
+        gresults = defaultdict(list)
+        idx_row = isplit // ncols
+        idx_col = isplit % ncols
+        ax = axarr[idx_row][idx_col]
+        for result in sresults:
+            group = group_fn(result)
+            g2c[group] += 1
+            x, y = xy_fn(result)
+            if x is None: x = np.arange(len(y))
+            x, y = map(np.asarray, (x, y))
+            if average_group:
+                gresults[group].append((x,y))
+            else:
+                if resample:
+                    x, y, counts = symmetric_ema(x, y, x[0], x[-1], resample, decay_steps=smooth_step)
+                l, = ax.plot(x, y, color=COLORS[groups.index(group) % len(COLORS)])
+                g2l[group] = l
+        if average_group:
+            for group in sorted(groups):
+                xys = gresults[group]
+                if not any(xys):
+                    continue
+                color = COLORS[groups.index(group) % len(COLORS)]
+                origxs = [xy[0] for xy in xys]
+                minxlen = min(map(len, origxs))
+                def allequal(qs):
+                    return all((q==qs[0]).all() for q in qs[1:])
+                if resample:
+                    low  = max(x[0] for x in origxs)
+                    high = min(x[-1] for x in origxs)
+                    usex = np.linspace(low, high, resample)
+                    ys = []
+                    for (x, y) in xys:
+                        ys.append(symmetric_ema(x, y, low, high, resample, decay_steps=smooth_step)[1])
+                else:
+                    assert allequal([x[:minxlen] for x in origxs]),\
+                        &#39;If you want to average unevenly sampled data, set resample=&lt;number of samples you want&gt;&#39;
+                    usex = origxs[0]
+                    ys = [xy[1][:minxlen] for xy in xys]
+                ymean = np.mean(ys, axis=0)
+                ystd = np.std(ys, axis=0)
+                ystderr = ystd / np.sqrt(len(ys))
+                l, = axarr[idx_row][idx_col].plot(usex, ymean, color=color)
+                g2l[group] = l
+                if shaded_err:
+                    ax.fill_between(usex, ymean - ystderr, ymean + ystderr, color=color, alpha=.4)
+                if shaded_std:
+                    ax.fill_between(usex, ymean - ystd,    ymean + ystd,    color=color, alpha=.2)
+
+
+        # https://matplotlib.org/users/legend_guide.html
+        plt.tight_layout()
+        if any(g2l.keys()):
+            ax.legend(
+                g2l.values(),
+                [&#39;%s (%i)&#39;%(g, g2c[g]) for g in g2l] if average_group else g2l.keys(),
+                loc=2 if legend_outside else None,
+                bbox_to_anchor=(1,1) if legend_outside else None)
+        ax.set_title(sk)
+        # add xlabels, but only to the bottom row
+        if xlabel is not None:
+            for ax in axarr[-1]:
+                plt.sca(ax)
+                plt.xlabel(xlabel)
+        # add ylabels, but only to left column
+        if ylabel is not None:
+            for ax in axarr[:,0]:
+                plt.sca(ax)
+                plt.ylabel(ylabel)
+
+    return f, axarr
+
+def regression_analysis(df):
+    xcols = list(df.columns.copy())
+    xcols.remove(&#39;score&#39;)
+    ycols = [&#39;score&#39;]
+    import statsmodels.api as sm
+    mod = sm.OLS(df[ycols], sm.add_constant(df[xcols]), hasconst=False)
+    res = mod.fit()
+    print(res.summary())
+
+def test_smooth():
+    norig = 100
+    nup = 300
+    ndown = 30
+    xs = np.cumsum(np.random.rand(norig) * 10 / norig)
+    yclean = np.sin(xs)
+    ys = yclean + .1 * np.random.randn(yclean.size)
+    xup, yup, _ = symmetric_ema(xs, ys, xs.min(), xs.max(), nup, decay_steps=nup/ndown)
+    xdown, ydown, _ = symmetric_ema(xs, ys, xs.min(), xs.max(), ndown, decay_steps=ndown/ndown)
+    xsame, ysame, _ = symmetric_ema(xs, ys, xs.min(), xs.max(), norig, decay_steps=norig/ndown)
+    plt.plot(xs, ys, label=&#39;orig&#39;, marker=&#39;x&#39;)
+    plt.plot(xup, yup, label=&#39;up&#39;, marker=&#39;x&#39;)
+    plt.plot(xdown, ydown, label=&#39;down&#39;, marker=&#39;x&#39;)
+    plt.plot(xsame, ysame, label=&#39;same&#39;, marker=&#39;x&#39;)
+    plt.plot(xs, yclean, label=&#39;clean&#39;, marker=&#39;x&#39;)
+    plt.legend()
+    plt.show()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="TeachMyAgent.students.openai_baselines.common.plot_util.default_split_fn"><code class="name flex">
+<span>def <span class="ident">default_split_fn</span></span>(<span>r)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def default_split_fn(r):
+    import re
+    # match name between slash and -&lt;digits&gt; at the end of the string
+    # (slash in the beginning or -&lt;digits&gt; in the end or either may be missing)
+    match = re.search(r&#39;[^/-]+(?=(-\d+)?\Z)&#39;, r.dirname)
+    if match:
+        return match.group(0)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.plot_util.default_xy_fn"><code class="name flex">
+<span>def <span class="ident">default_xy_fn</span></span>(<span>r)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def default_xy_fn(r):
+    x = np.cumsum(r.monitor.l)
+    y = smooth(r.monitor.r, radius=10)
+    return x,y</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.plot_util.load_results"><code class="name flex">
+<span>def <span class="ident">load_results</span></span>(<span>root_dir_or_dirs, enable_progress=True, enable_monitor=True, verbose=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>load summaries of runs from a list of directories (including subdirectories)
+Arguments:</p>
+<p>enable_progress: bool - if True, will attempt to load data from progress.csv files (data saved by logger). Default: True</p>
+<p>enable_monitor: bool - if True, will attempt to load data from monitor.csv files (data saved by Monitor environment wrapper). Default: True</p>
+<p>verbose: bool - if True, will print out list of directories from which the data is loaded. Default: False</p>
+<p>Returns:
+List of Result objects with the following fields:
+- dirname - path to the directory data was loaded from
+- metadata - run metadata (such as command-line arguments and anything else in metadata.json file
+- monitor - if enable_monitor is True, this field contains pandas dataframe with loaded monitor.csv file (or aggregate of all *.monitor.csv files in the directory)
+- progress - if enable_progress is True, this field contains pandas dataframe with loaded progress.csv file</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def load_results(root_dir_or_dirs, enable_progress=True, enable_monitor=True, verbose=False):
+    &#39;&#39;&#39;
+    load summaries of runs from a list of directories (including subdirectories)
+    Arguments:
+
+    enable_progress: bool - if True, will attempt to load data from progress.csv files (data saved by logger). Default: True
+
+    enable_monitor: bool - if True, will attempt to load data from monitor.csv files (data saved by Monitor environment wrapper). Default: True
+
+    verbose: bool - if True, will print out list of directories from which the data is loaded. Default: False
+
+
+    Returns:
+    List of Result objects with the following fields:
+         - dirname - path to the directory data was loaded from
+         - metadata - run metadata (such as command-line arguments and anything else in metadata.json file
+         - monitor - if enable_monitor is True, this field contains pandas dataframe with loaded monitor.csv file (or aggregate of all *.monitor.csv files in the directory)
+         - progress - if enable_progress is True, this field contains pandas dataframe with loaded progress.csv file
+    &#39;&#39;&#39;
+    import re
+    if isinstance(root_dir_or_dirs, str):
+        rootdirs = [osp.expanduser(root_dir_or_dirs)]
+    else:
+        rootdirs = [osp.expanduser(d) for d in root_dir_or_dirs]
+    allresults = []
+    for rootdir in rootdirs:
+        assert osp.exists(rootdir), &#34;%s doesn&#39;t exist&#34;%rootdir
+        for dirname, dirs, files in os.walk(rootdir):
+            if &#39;-proc&#39; in dirname:
+                files[:] = []
+                continue
+            monitor_re = re.compile(r&#39;(\d+\.)?(\d+\.)?monitor\.csv&#39;)
+            if set([&#39;metadata.json&#39;, &#39;monitor.json&#39;, &#39;progress.json&#39;, &#39;progress.csv&#39;]).intersection(files) or \
+               any([f for f in files if monitor_re.match(f)]):  # also match monitor files like 0.1.monitor.csv
+                # used to be uncommented, which means do not go deeper than current directory if any of the data files
+                # are found
+                # dirs[:] = []
+                result = {&#39;dirname&#39; : dirname}
+                if &#34;metadata.json&#34; in files:
+                    with open(osp.join(dirname, &#34;metadata.json&#34;), &#34;r&#34;) as fh:
+                        result[&#39;metadata&#39;] = json.load(fh)
+                progjson = osp.join(dirname, &#34;progress.json&#34;)
+                progcsv = osp.join(dirname, &#34;progress.csv&#34;)
+                if enable_progress:
+                    if osp.exists(progjson):
+                        result[&#39;progress&#39;] = pandas.DataFrame(read_json(progjson))
+                    elif osp.exists(progcsv):
+                        try:
+                            result[&#39;progress&#39;] = read_csv(progcsv)
+                        except pandas.errors.EmptyDataError:
+                            print(&#39;skipping progress file in &#39;, dirname, &#39;empty data&#39;)
+                    else:
+                        if verbose: print(&#39;skipping %s: no progress file&#39;%dirname)
+
+                if enable_monitor:
+                    try:
+                        result[&#39;monitor&#39;] = pandas.DataFrame(monitor.load_results(dirname))
+                    except monitor.LoadMonitorResultsError:
+                        print(&#39;skipping %s: no monitor files&#39;%dirname)
+                    except Exception as e:
+                        print(&#39;exception loading monitor file in %s: %s&#39;%(dirname, e))
+
+                if result.get(&#39;monitor&#39;) is not None or result.get(&#39;progress&#39;) is not None:
+                    allresults.append(Result(**result))
+                    if verbose:
+                        print(&#39;successfully loaded %s&#39;%dirname)
+
+    if verbose: print(&#39;loaded %i results&#39;%len(allresults))
+    return allresults</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.plot_util.one_sided_ema"><code class="name flex">
+<span>def <span class="ident">one_sided_ema</span></span>(<span>xolds, yolds, low=None, high=None, n=512, decay_steps=1.0, low_counts_threshold=1e-08)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>perform one-sided (causal) EMA (exponential moving average)
+smoothing and resampling to an even grid with n points.
+Does not do extrapolation, so we assume
+xolds[0] &lt;= low &amp;&amp; high &lt;= xolds[-1]</p>
+<p>Arguments:</p>
+<p>xolds: array or list
+- x values of data. Needs to be sorted in ascending order
+yolds: array of list
+- y values of data. Has to have the same length as xolds</p>
+<p>low: float
+- min value of the new x grid. By default equals to xolds[0]
+high: float
+- max value of the new x grid. By default equals to xolds[-1]</p>
+<p>n: int
+- number of points in new x grid</p>
+<p>decay_steps: float
+- EMA decay factor, expressed in new x grid steps.</p>
+<p>low_counts_threshold: float or int
+- y values with counts less than this value will be set to NaN</p>
+<h2 id="returns">Returns</h2>
+<p>tuple sum_ys, count_ys where
+xs
+- array with new x grid
+ys
+- array of EMA of y at each point of the new x grid
+count_ys
+- array of EMA of y counts at each point of the new x grid</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def one_sided_ema(xolds, yolds, low=None, high=None, n=512, decay_steps=1., low_counts_threshold=1e-8):
+    &#39;&#39;&#39;
+    perform one-sided (causal) EMA (exponential moving average)
+    smoothing and resampling to an even grid with n points.
+    Does not do extrapolation, so we assume
+    xolds[0] &lt;= low &amp;&amp; high &lt;= xolds[-1]
+
+    Arguments:
+
+    xolds: array or list  - x values of data. Needs to be sorted in ascending order
+    yolds: array of list  - y values of data. Has to have the same length as xolds
+
+    low: float            - min value of the new x grid. By default equals to xolds[0]
+    high: float           - max value of the new x grid. By default equals to xolds[-1]
+
+    n: int                - number of points in new x grid
+
+    decay_steps: float    - EMA decay factor, expressed in new x grid steps.
+
+    low_counts_threshold: float or int
+                          - y values with counts less than this value will be set to NaN
+
+    Returns:
+        tuple sum_ys, count_ys where
+            xs        - array with new x grid
+            ys        - array of EMA of y at each point of the new x grid
+            count_ys  - array of EMA of y counts at each point of the new x grid
+
+    &#39;&#39;&#39;
+
+    low = xolds[0] if low is None else low
+    high = xolds[-1] if high is None else high
+
+    assert xolds[0] &lt;= low, &#39;low = {} &lt; xolds[0] = {} - extrapolation not permitted!&#39;.format(low, xolds[0])
+    assert xolds[-1] &gt;= high, &#39;high = {} &gt; xolds[-1] = {}  - extrapolation not permitted!&#39;.format(high, xolds[-1])
+    assert len(xolds) == len(yolds), &#39;length of xolds ({}) and yolds ({}) do not match!&#39;.format(len(xolds), len(yolds))
+
+
+    xolds = xolds.astype(&#39;float64&#39;)
+    yolds = yolds.astype(&#39;float64&#39;)
+
+    luoi = 0 # last unused old index
+    sum_y = 0.
+    count_y = 0.
+    xnews = np.linspace(low, high, n)
+    decay_period = (high - low) / (n - 1) * decay_steps
+    interstep_decay = np.exp(- 1. / decay_steps)
+    sum_ys = np.zeros_like(xnews)
+    count_ys = np.zeros_like(xnews)
+    for i in range(n):
+        xnew = xnews[i]
+        sum_y *= interstep_decay
+        count_y *= interstep_decay
+        while True:
+            if luoi &gt;= len(xolds):
+                break
+            xold = xolds[luoi]
+            if xold &lt;= xnew:
+                decay = np.exp(- (xnew - xold) / decay_period)
+                sum_y += decay * yolds[luoi]
+                count_y += decay
+                luoi += 1
+            else:
+                break
+        sum_ys[i] = sum_y
+        count_ys[i] = count_y
+
+    ys = sum_ys / count_ys
+    ys[count_ys &lt; low_counts_threshold] = np.nan
+
+    return xnews, ys, count_ys</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.plot_util.plot_results"><code class="name flex">
+<span>def <span class="ident">plot_results</span></span>(<span>allresults, *, xy_fn=&lt;function default_xy_fn&gt;, split_fn=&lt;function default_split_fn&gt;, group_fn=&lt;function default_split_fn&gt;, average_group=False, shaded_std=True, shaded_err=True, figsize=None, legend_outside=False, resample=0, smooth_step=1.0, tiling='vertical', xlabel=None, ylabel=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Plot multiple Results objects</p>
+<p>xy_fn: function Result -&gt; x,y
+- function that converts results objects into tuple of x and y values.
+By default, x is cumsum of episode lengths, and y is episode rewards</p>
+<p>split_fn: function Result -&gt; hashable
+- function that converts results objects into keys to split curves into sub-panels by.
+That is, the results r for which split_fn(r) is different will be put on different sub-panels.
+By default, the portion of r.dirname between last / and -<digits> is returned. The sub-panels are
+stacked vertically in the figure.</p>
+<p>group_fn: function Result -&gt; hashable
+- function that converts results objects into keys to group curves by.
+That is, the results r for which group_fn(r) is the same will be put into the same group.
+Curves in the same group have the same color (if average_group is False), or averaged over
+(if average_group is True). The default value is the same as default value for split_fn</p>
+<p>average_group: bool
+- if True, will average the curves in the same group and plot the mean. Enables resampling
+(if resample = 0, will use 512 steps)</p>
+<p>shaded_std: bool
+- if True (default), the shaded region corresponding to standard deviation of the group of curves will be
+shown (only applicable if average_group = True)</p>
+<p>shaded_err: bool
+- if True (default), the shaded region corresponding to error in mean estimate of the group of curves
+(that is, standard deviation divided by square root of number of curves) will be
+shown (only applicable if average_group = True)</p>
+<p>figsize: tuple or None
+- size of the resulting figure (including sub-panels). By default, width is 6 and height is 6 times number of
+sub-panels.</p>
+<p>legend_outside: bool
+- if True, will place the legend outside of the sub-panels.</p>
+<p>resample: int
+- if not zero, size of the uniform grid in x direction to resample onto. Resampling is performed via symmetric
+EMA smoothing (see the docstring for symmetric_ema).
+Default is zero (no resampling). Note that if average_group is True, resampling is necessary; in that case, default
+value is 512.</p>
+<p>smooth_step: float
+- when resampling (i.e. when resample &gt; 0 or average_group is True), use this EMA decay parameter (in units of the new grid step).
+See docstrings for decay_steps in symmetric_ema or one_sided_ema functions.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def plot_results(
+    allresults, *,
+    xy_fn=default_xy_fn,
+    split_fn=default_split_fn,
+    group_fn=default_split_fn,
+    average_group=False,
+    shaded_std=True,
+    shaded_err=True,
+    figsize=None,
+    legend_outside=False,
+    resample=0,
+    smooth_step=1.0,
+    tiling=&#39;vertical&#39;,
+    xlabel=None,
+    ylabel=None
+):
+    &#39;&#39;&#39;
+    Plot multiple Results objects
+
+    xy_fn: function Result -&gt; x,y           - function that converts results objects into tuple of x and y values.
+                                              By default, x is cumsum of episode lengths, and y is episode rewards
+
+    split_fn: function Result -&gt; hashable   - function that converts results objects into keys to split curves into sub-panels by.
+                                              That is, the results r for which split_fn(r) is different will be put on different sub-panels.
+                                              By default, the portion of r.dirname between last / and -&lt;digits&gt; is returned. The sub-panels are
+                                              stacked vertically in the figure.
+
+    group_fn: function Result -&gt; hashable   - function that converts results objects into keys to group curves by.
+                                              That is, the results r for which group_fn(r) is the same will be put into the same group.
+                                              Curves in the same group have the same color (if average_group is False), or averaged over
+                                              (if average_group is True). The default value is the same as default value for split_fn
+
+    average_group: bool                     - if True, will average the curves in the same group and plot the mean. Enables resampling
+                                              (if resample = 0, will use 512 steps)
+
+    shaded_std: bool                        - if True (default), the shaded region corresponding to standard deviation of the group of curves will be
+                                              shown (only applicable if average_group = True)
+
+    shaded_err: bool                        - if True (default), the shaded region corresponding to error in mean estimate of the group of curves
+                                              (that is, standard deviation divided by square root of number of curves) will be
+                                              shown (only applicable if average_group = True)
+
+    figsize: tuple or None                  - size of the resulting figure (including sub-panels). By default, width is 6 and height is 6 times number of
+                                              sub-panels.
+
+
+    legend_outside: bool                    - if True, will place the legend outside of the sub-panels.
+
+    resample: int                           - if not zero, size of the uniform grid in x direction to resample onto. Resampling is performed via symmetric
+                                              EMA smoothing (see the docstring for symmetric_ema).
+                                              Default is zero (no resampling). Note that if average_group is True, resampling is necessary; in that case, default
+                                              value is 512.
+
+    smooth_step: float                      - when resampling (i.e. when resample &gt; 0 or average_group is True), use this EMA decay parameter (in units of the new grid step).
+                                              See docstrings for decay_steps in symmetric_ema or one_sided_ema functions.
+
+    &#39;&#39;&#39;
+
+    if split_fn is None: split_fn = lambda _ : &#39;&#39;
+    if group_fn is None: group_fn = lambda _ : &#39;&#39;
+    sk2r = defaultdict(list) # splitkey2results
+    for result in allresults:
+        splitkey = split_fn(result)
+        sk2r[splitkey].append(result)
+    assert len(sk2r) &gt; 0
+    assert isinstance(resample, int), &#34;0: don&#39;t resample. &lt;integer&gt;: that many samples&#34;
+    if tiling == &#39;vertical&#39; or tiling is None:
+        nrows = len(sk2r)
+        ncols = 1
+    elif tiling == &#39;horizontal&#39;:
+        ncols = len(sk2r)
+        nrows = 1
+    elif tiling == &#39;symmetric&#39;:
+        import math
+        N = len(sk2r)
+        largest_divisor = 1
+        for i in range(1, int(math.sqrt(N))+1):
+            if N % i == 0:
+                largest_divisor = i
+        ncols = largest_divisor
+        nrows = N // ncols
+    figsize = figsize or (6 * ncols, 6 * nrows)
+
+    f, axarr = plt.subplots(nrows, ncols, sharex=False, squeeze=False, figsize=figsize)
+
+    groups = list(set(group_fn(result) for result in allresults))
+
+    default_samples = 512
+    if average_group:
+        resample = resample or default_samples
+
+    for (isplit, sk) in enumerate(sorted(sk2r.keys())):
+        g2l = {}
+        g2c = defaultdict(int)
+        sresults = sk2r[sk]
+        gresults = defaultdict(list)
+        idx_row = isplit // ncols
+        idx_col = isplit % ncols
+        ax = axarr[idx_row][idx_col]
+        for result in sresults:
+            group = group_fn(result)
+            g2c[group] += 1
+            x, y = xy_fn(result)
+            if x is None: x = np.arange(len(y))
+            x, y = map(np.asarray, (x, y))
+            if average_group:
+                gresults[group].append((x,y))
+            else:
+                if resample:
+                    x, y, counts = symmetric_ema(x, y, x[0], x[-1], resample, decay_steps=smooth_step)
+                l, = ax.plot(x, y, color=COLORS[groups.index(group) % len(COLORS)])
+                g2l[group] = l
+        if average_group:
+            for group in sorted(groups):
+                xys = gresults[group]
+                if not any(xys):
+                    continue
+                color = COLORS[groups.index(group) % len(COLORS)]
+                origxs = [xy[0] for xy in xys]
+                minxlen = min(map(len, origxs))
+                def allequal(qs):
+                    return all((q==qs[0]).all() for q in qs[1:])
+                if resample:
+                    low  = max(x[0] for x in origxs)
+                    high = min(x[-1] for x in origxs)
+                    usex = np.linspace(low, high, resample)
+                    ys = []
+                    for (x, y) in xys:
+                        ys.append(symmetric_ema(x, y, low, high, resample, decay_steps=smooth_step)[1])
+                else:
+                    assert allequal([x[:minxlen] for x in origxs]),\
+                        &#39;If you want to average unevenly sampled data, set resample=&lt;number of samples you want&gt;&#39;
+                    usex = origxs[0]
+                    ys = [xy[1][:minxlen] for xy in xys]
+                ymean = np.mean(ys, axis=0)
+                ystd = np.std(ys, axis=0)
+                ystderr = ystd / np.sqrt(len(ys))
+                l, = axarr[idx_row][idx_col].plot(usex, ymean, color=color)
+                g2l[group] = l
+                if shaded_err:
+                    ax.fill_between(usex, ymean - ystderr, ymean + ystderr, color=color, alpha=.4)
+                if shaded_std:
+                    ax.fill_between(usex, ymean - ystd,    ymean + ystd,    color=color, alpha=.2)
+
+
+        # https://matplotlib.org/users/legend_guide.html
+        plt.tight_layout()
+        if any(g2l.keys()):
+            ax.legend(
+                g2l.values(),
+                [&#39;%s (%i)&#39;%(g, g2c[g]) for g in g2l] if average_group else g2l.keys(),
+                loc=2 if legend_outside else None,
+                bbox_to_anchor=(1,1) if legend_outside else None)
+        ax.set_title(sk)
+        # add xlabels, but only to the bottom row
+        if xlabel is not None:
+            for ax in axarr[-1]:
+                plt.sca(ax)
+                plt.xlabel(xlabel)
+        # add ylabels, but only to left column
+        if ylabel is not None:
+            for ax in axarr[:,0]:
+                plt.sca(ax)
+                plt.ylabel(ylabel)
+
+    return f, axarr</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.plot_util.regression_analysis"><code class="name flex">
+<span>def <span class="ident">regression_analysis</span></span>(<span>df)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def regression_analysis(df):
+    xcols = list(df.columns.copy())
+    xcols.remove(&#39;score&#39;)
+    ycols = [&#39;score&#39;]
+    import statsmodels.api as sm
+    mod = sm.OLS(df[ycols], sm.add_constant(df[xcols]), hasconst=False)
+    res = mod.fit()
+    print(res.summary())</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.plot_util.smooth"><code class="name flex">
+<span>def <span class="ident">smooth</span></span>(<span>y, radius, mode='two_sided', valid_only=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Smooth signal y, where radius is determines the size of the window</p>
+<p>mode='twosided':
+average over the window [max(index - radius, 0), min(index + radius, len(y)-1)]
+mode='causal':
+average over the window [max(index - radius, 0), index]</p>
+<p>valid_only: put nan in entries where the full-sized window is not available</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def smooth(y, radius, mode=&#39;two_sided&#39;, valid_only=False):
+    &#39;&#39;&#39;
+    Smooth signal y, where radius is determines the size of the window
+
+    mode=&#39;twosided&#39;:
+        average over the window [max(index - radius, 0), min(index + radius, len(y)-1)]
+    mode=&#39;causal&#39;:
+        average over the window [max(index - radius, 0), index]
+
+    valid_only: put nan in entries where the full-sized window is not available
+
+    &#39;&#39;&#39;
+    assert mode in (&#39;two_sided&#39;, &#39;causal&#39;)
+    if len(y) &lt; 2*radius+1:
+        return np.ones_like(y) * y.mean()
+    elif mode == &#39;two_sided&#39;:
+        convkernel = np.ones(2 * radius+1)
+        out = np.convolve(y, convkernel,mode=&#39;same&#39;) / np.convolve(np.ones_like(y), convkernel, mode=&#39;same&#39;)
+        if valid_only:
+            out[:radius] = out[-radius:] = np.nan
+    elif mode == &#39;causal&#39;:
+        convkernel = np.ones(radius)
+        out = np.convolve(y, convkernel,mode=&#39;full&#39;) / np.convolve(np.ones_like(y), convkernel, mode=&#39;full&#39;)
+        out = out[:-radius+1]
+        if valid_only:
+            out[:radius] = np.nan
+    return out</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.plot_util.symmetric_ema"><code class="name flex">
+<span>def <span class="ident">symmetric_ema</span></span>(<span>xolds, yolds, low=None, high=None, n=512, decay_steps=1.0, low_counts_threshold=1e-08)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>perform symmetric EMA (exponential moving average)
+smoothing and resampling to an even grid with n points.
+Does not do extrapolation, so we assume
+xolds[0] &lt;= low &amp;&amp; high &lt;= xolds[-1]</p>
+<p>Arguments:</p>
+<p>xolds: array or list
+- x values of data. Needs to be sorted in ascending order
+yolds: array of list
+- y values of data. Has to have the same length as xolds</p>
+<p>low: float
+- min value of the new x grid. By default equals to xolds[0]
+high: float
+- max value of the new x grid. By default equals to xolds[-1]</p>
+<p>n: int
+- number of points in new x grid</p>
+<p>decay_steps: float
+- EMA decay factor, expressed in new x grid steps.</p>
+<p>low_counts_threshold: float or int
+- y values with counts less than this value will be set to NaN</p>
+<h2 id="returns">Returns</h2>
+<p>tuple sum_ys, count_ys where
+xs
+- array with new x grid
+ys
+- array of EMA of y at each point of the new x grid
+count_ys
+- array of EMA of y counts at each point of the new x grid</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def symmetric_ema(xolds, yolds, low=None, high=None, n=512, decay_steps=1., low_counts_threshold=1e-8):
+    &#39;&#39;&#39;
+    perform symmetric EMA (exponential moving average)
+    smoothing and resampling to an even grid with n points.
+    Does not do extrapolation, so we assume
+    xolds[0] &lt;= low &amp;&amp; high &lt;= xolds[-1]
+
+    Arguments:
+
+    xolds: array or list  - x values of data. Needs to be sorted in ascending order
+    yolds: array of list  - y values of data. Has to have the same length as xolds
+
+    low: float            - min value of the new x grid. By default equals to xolds[0]
+    high: float           - max value of the new x grid. By default equals to xolds[-1]
+
+    n: int                - number of points in new x grid
+
+    decay_steps: float    - EMA decay factor, expressed in new x grid steps.
+
+    low_counts_threshold: float or int
+                          - y values with counts less than this value will be set to NaN
+
+    Returns:
+        tuple sum_ys, count_ys where
+            xs        - array with new x grid
+            ys        - array of EMA of y at each point of the new x grid
+            count_ys  - array of EMA of y counts at each point of the new x grid
+
+    &#39;&#39;&#39;
+    xs, ys1, count_ys1 = one_sided_ema(xolds, yolds, low, high, n, decay_steps, low_counts_threshold=0)
+    _,  ys2, count_ys2 = one_sided_ema(-xolds[::-1], yolds[::-1], -high, -low, n, decay_steps, low_counts_threshold=0)
+    ys2 = ys2[::-1]
+    count_ys2 = count_ys2[::-1]
+    count_ys = count_ys1 + count_ys2
+    ys = (ys1 * count_ys1 + ys2 * count_ys2) / count_ys
+    ys[count_ys &lt; low_counts_threshold] = np.nan
+    return xs, ys, count_ys</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.plot_util.test_smooth"><code class="name flex">
+<span>def <span class="ident">test_smooth</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_smooth():
+    norig = 100
+    nup = 300
+    ndown = 30
+    xs = np.cumsum(np.random.rand(norig) * 10 / norig)
+    yclean = np.sin(xs)
+    ys = yclean + .1 * np.random.randn(yclean.size)
+    xup, yup, _ = symmetric_ema(xs, ys, xs.min(), xs.max(), nup, decay_steps=nup/ndown)
+    xdown, ydown, _ = symmetric_ema(xs, ys, xs.min(), xs.max(), ndown, decay_steps=ndown/ndown)
+    xsame, ysame, _ = symmetric_ema(xs, ys, xs.min(), xs.max(), norig, decay_steps=norig/ndown)
+    plt.plot(xs, ys, label=&#39;orig&#39;, marker=&#39;x&#39;)
+    plt.plot(xup, yup, label=&#39;up&#39;, marker=&#39;x&#39;)
+    plt.plot(xdown, ydown, label=&#39;down&#39;, marker=&#39;x&#39;)
+    plt.plot(xsame, ysame, label=&#39;same&#39;, marker=&#39;x&#39;)
+    plt.plot(xs, yclean, label=&#39;clean&#39;, marker=&#39;x&#39;)
+    plt.legend()
+    plt.show()</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="TeachMyAgent.students.openai_baselines.common.plot_util.Result"><code class="flex name class">
+<span>class <span class="ident">Result</span></span>
+<span>(</span><span>monitor=None, progress=None, dirname=None, metadata=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Result(monitor, progress, dirname, metadata)</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.tuple</li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="TeachMyAgent.students.openai_baselines.common.plot_util.Result.dirname"><code class="name">var <span class="ident">dirname</span></code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 2</p></div>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.plot_util.Result.metadata"><code class="name">var <span class="ident">metadata</span></code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 3</p></div>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.plot_util.Result.monitor"><code class="name">var <span class="ident">monitor</span></code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 0</p></div>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.plot_util.Result.progress"><code class="name">var <span class="ident">progress</span></code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 1</p></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<a href="https://teachmyagent.github.io/doc/index.html">
+<img src="https://teachmyagent.github.io/images/home/head-image.png" style="display: block; margin: 1em auto">
+</a>
+<a href="https://teachmyagent.github.io/index.html">Website</a>
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common" href="index.html">TeachMyAgent.students.openai_baselines.common</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="two-column">
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.plot_util.default_split_fn" href="#TeachMyAgent.students.openai_baselines.common.plot_util.default_split_fn">default_split_fn</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.plot_util.default_xy_fn" href="#TeachMyAgent.students.openai_baselines.common.plot_util.default_xy_fn">default_xy_fn</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.plot_util.load_results" href="#TeachMyAgent.students.openai_baselines.common.plot_util.load_results">load_results</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.plot_util.one_sided_ema" href="#TeachMyAgent.students.openai_baselines.common.plot_util.one_sided_ema">one_sided_ema</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.plot_util.plot_results" href="#TeachMyAgent.students.openai_baselines.common.plot_util.plot_results">plot_results</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.plot_util.regression_analysis" href="#TeachMyAgent.students.openai_baselines.common.plot_util.regression_analysis">regression_analysis</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.plot_util.smooth" href="#TeachMyAgent.students.openai_baselines.common.plot_util.smooth">smooth</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.plot_util.symmetric_ema" href="#TeachMyAgent.students.openai_baselines.common.plot_util.symmetric_ema">symmetric_ema</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.plot_util.test_smooth" href="#TeachMyAgent.students.openai_baselines.common.plot_util.test_smooth">test_smooth</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="TeachMyAgent.students.openai_baselines.common.plot_util.Result" href="#TeachMyAgent.students.openai_baselines.common.plot_util.Result">Result</a></code></h4>
+<ul class="">
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.plot_util.Result.dirname" href="#TeachMyAgent.students.openai_baselines.common.plot_util.Result.dirname">dirname</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.plot_util.Result.metadata" href="#TeachMyAgent.students.openai_baselines.common.plot_util.Result.metadata">metadata</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.plot_util.Result.monitor" href="#TeachMyAgent.students.openai_baselines.common.plot_util.Result.monitor">monitor</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.plot_util.Result.progress" href="#TeachMyAgent.students.openai_baselines.common.plot_util.Result.progress">progress</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>TeachMyAgent.students.spinup.run API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>TeachMyAgent.students.spinup.run</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import TeachMyAgent.students
+from TeachMyAgent.students.spinup.user_config import DEFAULT_BACKEND
+from TeachMyAgent.students.spinup.utils.run_utils import ExperimentGrid
+from TeachMyAgent.students.spinup.utils.serialization_utils import convert_json
+import argparse
+import gym
+import json
+import os, subprocess, sys
+import os.path as osp
+import string
+import tensorflow as tf
+import torch
+from copy import deepcopy
+from textwrap import dedent
+
+
+# Command line args that will go to ExperimentGrid.run, and must possess unique
+# values (therefore must be treated separately).
+RUN_KEYS = [&#39;num_cpu&#39;, &#39;data_dir&#39;, &#39;datestamp&#39;]
+
+# Command line sweetener, allowing short-form flags for common, longer flags.
+SUBSTITUTIONS = {&#39;env&#39;: &#39;env_name&#39;,
+                 &#39;hid&#39;: &#39;ac_kwargs:hidden_sizes&#39;,
+                 &#39;act&#39;: &#39;ac_kwargs:activation&#39;,
+                 &#39;cpu&#39;: &#39;num_cpu&#39;,
+                 &#39;dt&#39;: &#39;datestamp&#39;}
+
+# Only some algorithms can be parallelized (have num_cpu &gt; 1):
+MPI_COMPATIBLE_ALGOS = [&#39;vpg&#39;, &#39;trpo&#39;, &#39;ppo&#39;]
+
+# Algo names (used in a few places)
+BASE_ALGO_NAMES = [&#39;vpg&#39;, &#39;trpo&#39;, &#39;ppo&#39;, &#39;ddpg&#39;, &#39;td3&#39;, &#39;sac&#39;]
+
+
+def add_with_backends(algo_list):
+    # helper function to build lists with backend-specific function names
+    algo_list_with_backends = deepcopy(algo_list)
+    for algo in algo_list:
+        algo_list_with_backends += [algo + &#39;_tf1&#39;, algo + &#39;_pytorch&#39;]
+    return algo_list_with_backends
+
+
+def friendly_err(err_msg):
+    # add whitespace to error message to make it more readable
+    return &#39;\n\n&#39; + err_msg + &#39;\n\n&#39;
+
+
+def parse_and_execute_grid_search(cmd, args):
+    &#34;&#34;&#34;Interprets algorithm name and cmd line args into an ExperimentGrid.&#34;&#34;&#34;
+
+    if cmd in BASE_ALGO_NAMES:
+        backend = DEFAULT_BACKEND[cmd]
+        print(&#39;\n\nUsing default backend (%s) for %s.\n&#39;%(backend, cmd))
+        cmd = cmd + &#39;_&#39; + backend
+
+    algo = eval(&#39;TeachMyAgent.students.spinup.&#39;+cmd)
+
+    # Before all else, check to see if any of the flags is &#39;help&#39;.
+    valid_help = [&#39;--help&#39;, &#39;-h&#39;, &#39;help&#39;]
+    if any([arg in valid_help for arg in args]):
+        print(&#39;\n\nShowing docstring for students.&#39;+cmd+&#39;:\n&#39;)
+        print(algo.__doc__)
+        sys.exit()
+
+    def process(arg):
+        # Process an arg by eval-ing it, so users can specify more
+        # than just strings at the command line (eg allows for
+        # users to give functions as args).
+        try:
+            return eval(arg)
+        except:
+            return arg
+
+    # Make first pass through args to build base arg_dict. Anything
+    # with a &#39;--&#39; in front of it is an argument flag and everything after,
+    # until the next flag, is a possible value.
+    arg_dict = dict()
+    for i, arg in enumerate(args):
+        assert i &gt; 0 or &#39;--&#39; in arg, \
+            friendly_err(&#34;You didn&#39;t specify a first flag.&#34;)
+        if &#39;--&#39; in arg:
+            arg_key = arg.lstrip(&#39;-&#39;)
+            arg_dict[arg_key] = []
+        else:
+            arg_dict[arg_key].append(process(arg))
+
+    # Make second pass through, to catch flags that have no vals.
+    # Assume such flags indicate that a boolean parameter should have
+    # value True.
+    for k,v in arg_dict.items():
+        if len(v) == 0:
+            v.append(True)
+
+    # Third pass: check for user-supplied shorthands, where a key has
+    # the form --keyname[kn]. The thing in brackets, &#39;kn&#39;, is the
+    # shorthand. NOTE: modifying a dict while looping through its
+    # contents is dangerous, and breaks in 3.6+. We loop over a fixed list
+    # of keys to avoid this issue.
+    given_shorthands = dict()
+    fixed_keys = list(arg_dict.keys())
+    for k in fixed_keys:
+        p1, p2 = k.find(&#39;[&#39;), k.find(&#39;]&#39;)
+        if p1 &gt;= 0 and p2 &gt;= 0:
+            # Both &#39;[&#39; and &#39;]&#39; found, so shorthand has been given
+            k_new = k[:p1]
+            shorthand = k[p1+1:p2]
+            given_shorthands[k_new] = shorthand
+            arg_dict[k_new] = arg_dict[k]
+            del arg_dict[k]
+
+    # Penultimate pass: sugar. Allow some special shortcuts in arg naming,
+    # eg treat &#34;env&#34; the same as &#34;env_name&#34;. This is super specific
+    # to Spinning Up implementations, and may be hard to maintain.
+    # These special shortcuts are described by SUBSTITUTIONS.
+    for special_name, true_name in SUBSTITUTIONS.items():
+        if special_name in arg_dict:
+            # swap it in arg dict
+            arg_dict[true_name] = arg_dict[special_name]
+            del arg_dict[special_name]
+
+        if special_name in given_shorthands:
+            # point the shortcut to the right name
+            given_shorthands[true_name] = given_shorthands[special_name]
+            del given_shorthands[special_name]
+
+    # Final pass: check for the special args that go to the &#39;run&#39; command
+    # for an experiment grid, separate them from the arg dict, and make sure
+    # that they have unique values. The special args are given by RUN_KEYS.
+    run_kwargs = dict()
+    for k in RUN_KEYS:
+        if k in arg_dict:
+            val = arg_dict[k]
+            assert len(val) == 1, \
+                friendly_err(&#34;You can only provide one value for %s.&#34;%k)
+            run_kwargs[k] = val[0]
+            del arg_dict[k]
+
+    # Determine experiment name. If not given by user, will be determined
+    # by the algorithm name.
+    if &#39;exp_name&#39; in arg_dict:
+        assert len(arg_dict[&#39;exp_name&#39;]) == 1, \
+            friendly_err(&#34;You can only provide one value for exp_name.&#34;)
+        exp_name = arg_dict[&#39;exp_name&#39;][0]
+        del arg_dict[&#39;exp_name&#39;]
+    else:
+        exp_name = &#39;cmd_&#39; + cmd
+
+    # Make sure that if num_cpu &gt; 1, the algorithm being used is compatible
+    # with MPI.
+    if &#39;num_cpu&#39; in run_kwargs and not(run_kwargs[&#39;num_cpu&#39;] == 1):
+        assert cmd in add_with_backends(MPI_COMPATIBLE_ALGOS), \
+            friendly_err(&#34;This algorithm can&#39;t be run with num_cpu &gt; 1.&#34;)
+
+    # Special handling for environment: make sure that env_name is a real,
+    # registered gym environment.
+    valid_envs = [e.id for e in list(gym.envs.registry.all())]
+    assert &#39;env_name&#39; in arg_dict, \
+        friendly_err(&#34;You did not give a value for --env_name! Add one and try again.&#34;)
+    for env_name in arg_dict[&#39;env_name&#39;]:
+        err_msg = dedent(&#34;&#34;&#34;
+
+            %s is not registered with Gym.
+
+            Recommendations:
+
+                * Check for a typo (did you include the version tag?)
+
+                * View the complete list of valid Gym environments at
+
+                    https://gym.openai.com/envs/
+
+            &#34;&#34;&#34;%env_name)
+        assert env_name in valid_envs, err_msg
+
+
+    # Construct and execute the experiment grid.
+    eg = ExperimentGrid(name=exp_name)
+    for k,v in arg_dict.items():
+        eg.add(k, v, shorthand=given_shorthands.get(k))
+    eg.run(algo, **run_kwargs)
+
+
+if __name__ == &#39;__main__&#39;:
+    &#34;&#34;&#34;
+    This is a wrapper allowing command-line interfaces to individual
+    algorithms and the plot / test_policy utilities.
+
+    For utilities, it only checks which thing to run, and calls the
+    appropriate file, passing all arguments through.
+
+    For algorithms, it sets up an ExperimentGrid object and uses the
+    ExperimentGrid run routine to execute each possible experiment.
+    &#34;&#34;&#34;
+
+    cmd = sys.argv[1] if len(sys.argv) &gt; 1 else &#39;help&#39;
+    valid_algos = add_with_backends(BASE_ALGO_NAMES)
+    valid_utils = [&#39;plot&#39;, &#39;test_policy&#39;]
+    valid_help = [&#39;--help&#39;, &#39;-h&#39;, &#39;help&#39;]
+    valid_cmds = valid_algos + valid_utils + valid_help
+    assert cmd in valid_cmds, \
+        &#34;Select an algorithm or utility which is implemented in Spinning Up.&#34;
+
+    if cmd in valid_help:
+        # Before all else, check to see if any of the flags is &#39;help&#39;.
+
+        # List commands that are available.
+        str_valid_cmds = &#39;\n\t&#39; + &#39;\n\t&#39;.join(valid_algos+valid_utils)
+        help_msg = dedent(&#34;&#34;&#34;
+            Experiment in Spinning Up from the command line with
+
+            \tpython -m students.run CMD [ARGS...]
+
+            where CMD is a valid command. Current valid commands are:
+            &#34;&#34;&#34;) + str_valid_cmds
+        print(help_msg)
+
+        # Provide some useful details for algorithm running.
+        subs_list = [&#39;--&#39; + k.ljust(10) + &#39;for&#39;.ljust(10) + &#39;--&#39; + v \
+                     for k,v in SUBSTITUTIONS.items()]
+        str_valid_subs = &#39;\n\t&#39; + &#39;\n\t&#39;.join(subs_list)
+        special_info = dedent(&#34;&#34;&#34;
+            FYI: When running an algorithm, any keyword argument to the
+            algorithm function can be used as a flag, eg
+
+            \tpython -m students.run ppo --env HalfCheetah-v2 --clip_ratio 0.1
+
+            If you need a quick refresher on valid kwargs, get the docstring
+            with
+
+            \tpython -m students.run [algo] --help
+
+            See the &#34;Running Experiments&#34; docs page for more details.
+
+            Also: Some common but long flags can be substituted for shorter
+            ones. Valid substitutions are:
+            &#34;&#34;&#34;) + str_valid_subs
+        print(special_info)
+
+    elif cmd in valid_utils:
+        # Execute the correct utility file.
+        runfile = osp.join(osp.abspath(osp.dirname(__file__)), &#39;utils&#39;, cmd +&#39;.py&#39;)
+        args = [sys.executable if sys.executable else &#39;python&#39;, runfile] + sys.argv[2:]
+        subprocess.check_call(args, env=os.environ)
+    else:
+        # Assume that the user plans to execute an algorithm. Run custom
+        # parsing on the arguments and build a grid search to execute.
+        args = sys.argv[2:]
+        parse_and_execute_grid_search(cmd, args)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="TeachMyAgent.students.spinup.run.add_with_backends"><code class="name flex">
+<span>def <span class="ident">add_with_backends</span></span>(<span>algo_list)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_with_backends(algo_list):
+    # helper function to build lists with backend-specific function names
+    algo_list_with_backends = deepcopy(algo_list)
+    for algo in algo_list:
+        algo_list_with_backends += [algo + &#39;_tf1&#39;, algo + &#39;_pytorch&#39;]
+    return algo_list_with_backends</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.spinup.run.friendly_err"><code class="name flex">
+<span>def <span class="ident">friendly_err</span></span>(<span>err_msg)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def friendly_err(err_msg):
+    # add whitespace to error message to make it more readable
+    return &#39;\n\n&#39; + err_msg + &#39;\n\n&#39;</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.spinup.run.parse_and_execute_grid_search"><code class="name flex">
+<span>def <span class="ident">parse_and_execute_grid_search</span></span>(<span>cmd, args)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Interprets algorithm name and cmd line args into an ExperimentGrid.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def parse_and_execute_grid_search(cmd, args):
+    &#34;&#34;&#34;Interprets algorithm name and cmd line args into an ExperimentGrid.&#34;&#34;&#34;
+
+    if cmd in BASE_ALGO_NAMES:
+        backend = DEFAULT_BACKEND[cmd]
+        print(&#39;\n\nUsing default backend (%s) for %s.\n&#39;%(backend, cmd))
+        cmd = cmd + &#39;_&#39; + backend
+
+    algo = eval(&#39;TeachMyAgent.students.spinup.&#39;+cmd)
+
+    # Before all else, check to see if any of the flags is &#39;help&#39;.
+    valid_help = [&#39;--help&#39;, &#39;-h&#39;, &#39;help&#39;]
+    if any([arg in valid_help for arg in args]):
+        print(&#39;\n\nShowing docstring for students.&#39;+cmd+&#39;:\n&#39;)
+        print(algo.__doc__)
+        sys.exit()
+
+    def process(arg):
+        # Process an arg by eval-ing it, so users can specify more
+        # than just strings at the command line (eg allows for
+        # users to give functions as args).
+        try:
+            return eval(arg)
+        except:
+            return arg
+
+    # Make first pass through args to build base arg_dict. Anything
+    # with a &#39;--&#39; in front of it is an argument flag and everything after,
+    # until the next flag, is a possible value.
+    arg_dict = dict()
+    for i, arg in enumerate(args):
+        assert i &gt; 0 or &#39;--&#39; in arg, \
+            friendly_err(&#34;You didn&#39;t specify a first flag.&#34;)
+        if &#39;--&#39; in arg:
+            arg_key = arg.lstrip(&#39;-&#39;)
+            arg_dict[arg_key] = []
+        else:
+            arg_dict[arg_key].append(process(arg))
+
+    # Make second pass through, to catch flags that have no vals.
+    # Assume such flags indicate that a boolean parameter should have
+    # value True.
+    for k,v in arg_dict.items():
+        if len(v) == 0:
+            v.append(True)
+
+    # Third pass: check for user-supplied shorthands, where a key has
+    # the form --keyname[kn]. The thing in brackets, &#39;kn&#39;, is the
+    # shorthand. NOTE: modifying a dict while looping through its
+    # contents is dangerous, and breaks in 3.6+. We loop over a fixed list
+    # of keys to avoid this issue.
+    given_shorthands = dict()
+    fixed_keys = list(arg_dict.keys())
+    for k in fixed_keys:
+        p1, p2 = k.find(&#39;[&#39;), k.find(&#39;]&#39;)
+        if p1 &gt;= 0 and p2 &gt;= 0:
+            # Both &#39;[&#39; and &#39;]&#39; found, so shorthand has been given
+            k_new = k[:p1]
+            shorthand = k[p1+1:p2]
+            given_shorthands[k_new] = shorthand
+            arg_dict[k_new] = arg_dict[k]
+            del arg_dict[k]
+
+    # Penultimate pass: sugar. Allow some special shortcuts in arg naming,
+    # eg treat &#34;env&#34; the same as &#34;env_name&#34;. This is super specific
+    # to Spinning Up implementations, and may be hard to maintain.
+    # These special shortcuts are described by SUBSTITUTIONS.
+    for special_name, true_name in SUBSTITUTIONS.items():
+        if special_name in arg_dict:
+            # swap it in arg dict
+            arg_dict[true_name] = arg_dict[special_name]
+            del arg_dict[special_name]
+
+        if special_name in given_shorthands:
+            # point the shortcut to the right name
+            given_shorthands[true_name] = given_shorthands[special_name]
+            del given_shorthands[special_name]
+
+    # Final pass: check for the special args that go to the &#39;run&#39; command
+    # for an experiment grid, separate them from the arg dict, and make sure
+    # that they have unique values. The special args are given by RUN_KEYS.
+    run_kwargs = dict()
+    for k in RUN_KEYS:
+        if k in arg_dict:
+            val = arg_dict[k]
+            assert len(val) == 1, \
+                friendly_err(&#34;You can only provide one value for %s.&#34;%k)
+            run_kwargs[k] = val[0]
+            del arg_dict[k]
+
+    # Determine experiment name. If not given by user, will be determined
+    # by the algorithm name.
+    if &#39;exp_name&#39; in arg_dict:
+        assert len(arg_dict[&#39;exp_name&#39;]) == 1, \
+            friendly_err(&#34;You can only provide one value for exp_name.&#34;)
+        exp_name = arg_dict[&#39;exp_name&#39;][0]
+        del arg_dict[&#39;exp_name&#39;]
+    else:
+        exp_name = &#39;cmd_&#39; + cmd
+
+    # Make sure that if num_cpu &gt; 1, the algorithm being used is compatible
+    # with MPI.
+    if &#39;num_cpu&#39; in run_kwargs and not(run_kwargs[&#39;num_cpu&#39;] == 1):
+        assert cmd in add_with_backends(MPI_COMPATIBLE_ALGOS), \
+            friendly_err(&#34;This algorithm can&#39;t be run with num_cpu &gt; 1.&#34;)
+
+    # Special handling for environment: make sure that env_name is a real,
+    # registered gym environment.
+    valid_envs = [e.id for e in list(gym.envs.registry.all())]
+    assert &#39;env_name&#39; in arg_dict, \
+        friendly_err(&#34;You did not give a value for --env_name! Add one and try again.&#34;)
+    for env_name in arg_dict[&#39;env_name&#39;]:
+        err_msg = dedent(&#34;&#34;&#34;
+
+            %s is not registered with Gym.
+
+            Recommendations:
+
+                * Check for a typo (did you include the version tag?)
+
+                * View the complete list of valid Gym environments at
+
+                    https://gym.openai.com/envs/
+
+            &#34;&#34;&#34;%env_name)
+        assert env_name in valid_envs, err_msg
+
+
+    # Construct and execute the experiment grid.
+    eg = ExperimentGrid(name=exp_name)
+    for k,v in arg_dict.items():
+        eg.add(k, v, shorthand=given_shorthands.get(k))
+    eg.run(algo, **run_kwargs)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<a href="https://teachmyagent.github.io/doc/index.html">
+<img src="https://teachmyagent.github.io/images/home/head-image.png" style="display: block; margin: 1em auto">
+</a>
+<a href="https://teachmyagent.github.io/index.html">Website</a>
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="TeachMyAgent.students.spinup" href="index.html">TeachMyAgent.students.spinup</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="TeachMyAgent.students.spinup.run.add_with_backends" href="#TeachMyAgent.students.spinup.run.add_with_backends">add_with_backends</a></code></li>
+<li><code><a title="TeachMyAgent.students.spinup.run.friendly_err" href="#TeachMyAgent.students.spinup.run.friendly_err">friendly_err</a></code></li>
+<li><code><a title="TeachMyAgent.students.spinup.run.parse_and_execute_grid_search" href="#TeachMyAgent.students.spinup.run.parse_and_execute_grid_search">parse_and_execute_grid_search</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

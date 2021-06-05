@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>TeachMyAgent.teachers.algos.adr API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>TeachMyAgent.teachers.algos.adr</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Automatic Domain Randomization, see https://arxiv.org/abs/1910.07113 for details
+# Implemented by Rémy Portelas and Clément Romac
+
+import numpy as np
+from gym.spaces import Box
+from collections import deque
+from TeachMyAgent.teachers.algos.AbstractTeacher import AbstractTeacher
+
+class ADR(AbstractTeacher):
+    def __init__(self, mins, maxs, seed, env_reward_lb, env_reward_ub, step_size, max_reward_thr, min_reward_thr,
+                 initial_dist=None, boundary_sampling_p=0.5, queue_len=10, scale_reward=False):
+        &#39;&#39;&#39;
+            Automatic Domain Randomization (https://arxiv.org/abs/1910.07113).
+
+            Args:
+                step_size: Size of the growth (or decrease) of a bound at update
+                max_reward_thr: Upper reward threshold used to inflate distribution
+                min_reward_thr: Lowers reward threshold used to deflate distribution
+                initial_dist: The mean of this initial distribution is used as the initial task used by ADR
+                boundary_sampling_p: Probability to sample a dimension at a bound
+                queue_len: Size of the queue associated to each bound. Once reached, ADR increases or decreases the bound.
+        &#39;&#39;&#39;
+        AbstractTeacher.__init__(self, mins, maxs, env_reward_lb, env_reward_ub, seed)
+        self.nb_dims = len(self.mins)
+
+        # Boundary sampling probability p_r
+        self.bound_sampling_p = boundary_sampling_p
+
+        # ADR step size
+        self.step_size = step_size
+
+        # Max reward threshold, sampling distribution inflates if mean reward above this
+        self.max_reward_threshold = max_reward_thr
+        if scale_reward:
+            self.max_reward_threshold = np.interp(self.max_reward_threshold,
+                                                  (self.env_reward_lb, self.env_reward_ub),
+                                                  (0, 1))
+
+        # Min reward threshold, sampling distribution deflates if mean reward below this
+        self.min_reward_threshold = min_reward_thr
+        if scale_reward:
+            self.min_reward_threshold = np.interp(self.min_reward_threshold,
+                                                  (self.env_reward_lb, self.env_reward_ub),
+                                                  (0, 1))
+
+        # max queue length
+        self.window_len = queue_len
+
+        # Set initial task space to predefined calibrated task
+        initial_mean, initial_variance = self.get_or_create_dist(initial_dist, mins, maxs, subspace=True)
+
+        # Single task version (as the original paper)
+        self.cur_mins = initial_mean
+        self.cur_maxs = initial_mean
+
+        self.cur_mins = np.array(self.cur_mins, dtype=np.float32)  # current min bounds
+        self.cur_maxs = np.array(self.cur_maxs, dtype=np.float32)  # current max bounds
+        self.task_space = Box(self.cur_mins, self.cur_maxs, dtype=np.float32)
+        self.task_space.seed(self.seed)
+
+        # Init queues, one per task space dimension
+        self.min_queues = [deque(maxlen=self.window_len) for _ in range(self.nb_dims)]
+        self.max_queues = [deque(maxlen=self.window_len) for _ in range(self.nb_dims)]
+
+        # Boring book-keeping
+        self.episode_nb = 0
+        self.bk = {&#39;task_space&#39;: [(self.cur_mins.copy(),self.cur_maxs.copy())],
+                   &#39;episodes&#39;: []}
+
+    def episodic_update(self, task, reward, is_success):
+        self.episode_nb += 1
+
+        # check for updates
+        for i, (min_q, max_q, cur_min, cur_max) in enumerate(zip(self.min_queues, self.max_queues, self.cur_mins, self.cur_maxs)):
+            if task[i] == cur_min:  # if the proposed task has the i^th dimension set to min boundary
+                min_q.append(reward)
+                if len(min_q) == self.window_len:
+                    if np.mean(min_q) &gt;= self.max_reward_threshold:  # decrease min boundary (inflate sampling space)
+                        self.cur_mins[i] = max(self.cur_mins[i] - self.step_size, self.mins[i])
+                    elif np.mean(min_q) &lt;= self.min_reward_threshold:  # increase min boundary (deflate sampling space)
+                        self.cur_mins[i] = min(self.cur_mins[i] + self.step_size, self.cur_maxs[i])
+                    self.min_queues[i] = deque(maxlen=self.window_len)  # reset queue
+            if task[i] == cur_max:  # if the proposed task has the i^th dimension set to max boundary
+                max_q.append(reward)
+                if len(max_q) == self.window_len:  # queue is full, time to update
+                    if np.mean(max_q) &gt;= self.max_reward_threshold:  # increase max boundary
+                        self.cur_maxs[i] = min(self.cur_maxs[i] + self.step_size, self.maxs[i])
+                    elif np.mean(max_q) &lt;= self.min_reward_threshold:  # decrease max boundary
+                        self.cur_maxs[i] = max(self.cur_maxs[i] - self.step_size, self.cur_mins[i])
+                    self.max_queues[i] = deque(maxlen=self.window_len)  # reset queue
+
+        prev_cur_mins, prev_cur_maxs = self.bk[&#39;task_space&#39;][-1]
+        if (prev_cur_mins != self.cur_mins).any() or (prev_cur_maxs != self.cur_maxs).any():  # were boundaries changed ?
+            self.task_space = Box(self.cur_mins, self.cur_maxs, dtype=np.float32)
+            self.task_space.seed(self.seed)
+            # book-keeping only if boundaries were updates
+            self.bk[&#39;task_space&#39;].append((self.cur_mins.copy(), self.cur_maxs.copy()))
+            self.bk[&#39;episodes&#39;].append(self.episode_nb)
+
+    def sample_task(self):
+        new_task = self.non_exploratory_task_sampling()[&#34;task&#34;]
+        if self.random_state.random() &lt; self.bound_sampling_p:  # set random dimension to min or max bound
+            idx = self.random_state.randint(0, self.nb_dims)
+            is_min_max_capped = np.array([self.cur_mins[idx] == self.mins[idx], self.cur_maxs[idx] == self.maxs[idx]])
+            if not is_min_max_capped.all():  # both min and max bounds can increase, choose extremum randomly
+                if self.random_state.random() &lt; 0.5:  # skip min bound if already
+                    new_task[idx] = self.cur_mins[idx]
+                else:
+                    new_task[idx] = self.cur_maxs[idx]
+            elif not is_min_max_capped[0]:
+                new_task[idx] = self.cur_mins[idx]
+            elif not is_min_max_capped[1]:
+                new_task[idx] = self.cur_maxs[idx]
+        return new_task
+
+    def non_exploratory_task_sampling(self):
+        return {&#34;task&#34;: self.task_space.sample(),
+                &#34;infos&#34;: {
+                    &#34;bk_index&#34;: len(self.bk[list(self.bk.keys())[0]]) - 1,
+                    &#34;task_infos&#34;: None}
+                }</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="TeachMyAgent.teachers.algos.adr.ADR"><code class="flex name class">
+<span>class <span class="ident">ADR</span></span>
+<span>(</span><span>mins, maxs, seed, env_reward_lb, env_reward_ub, step_size, max_reward_thr, min_reward_thr, initial_dist=None, boundary_sampling_p=0.5, queue_len=10, scale_reward=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Base class for ACL methods.</p>
+<p>This will be used to sample tasks for the DeepRL student given a task space provided at the beginning of training.</p>
+<p>Automatic Domain Randomization (<a href="https://arxiv.org/abs/1910.07113">https://arxiv.org/abs/1910.07113</a>).</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>step_size</code></strong></dt>
+<dd>Size of the growth (or decrease) of a bound at update</dd>
+<dt><strong><code>max_reward_thr</code></strong></dt>
+<dd>Upper reward threshold used to inflate distribution</dd>
+<dt><strong><code>min_reward_thr</code></strong></dt>
+<dd>Lowers reward threshold used to deflate distribution</dd>
+<dt><strong><code>initial_dist</code></strong></dt>
+<dd>The mean of this initial distribution is used as the initial task used by ADR</dd>
+<dt><strong><code>boundary_sampling_p</code></strong></dt>
+<dd>Probability to sample a dimension at a bound</dd>
+<dt><strong><code>queue_len</code></strong></dt>
+<dd>Size of the queue associated to each bound. Once reached, ADR increases or decreases the bound.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ADR(AbstractTeacher):
+    def __init__(self, mins, maxs, seed, env_reward_lb, env_reward_ub, step_size, max_reward_thr, min_reward_thr,
+                 initial_dist=None, boundary_sampling_p=0.5, queue_len=10, scale_reward=False):
+        &#39;&#39;&#39;
+            Automatic Domain Randomization (https://arxiv.org/abs/1910.07113).
+
+            Args:
+                step_size: Size of the growth (or decrease) of a bound at update
+                max_reward_thr: Upper reward threshold used to inflate distribution
+                min_reward_thr: Lowers reward threshold used to deflate distribution
+                initial_dist: The mean of this initial distribution is used as the initial task used by ADR
+                boundary_sampling_p: Probability to sample a dimension at a bound
+                queue_len: Size of the queue associated to each bound. Once reached, ADR increases or decreases the bound.
+        &#39;&#39;&#39;
+        AbstractTeacher.__init__(self, mins, maxs, env_reward_lb, env_reward_ub, seed)
+        self.nb_dims = len(self.mins)
+
+        # Boundary sampling probability p_r
+        self.bound_sampling_p = boundary_sampling_p
+
+        # ADR step size
+        self.step_size = step_size
+
+        # Max reward threshold, sampling distribution inflates if mean reward above this
+        self.max_reward_threshold = max_reward_thr
+        if scale_reward:
+            self.max_reward_threshold = np.interp(self.max_reward_threshold,
+                                                  (self.env_reward_lb, self.env_reward_ub),
+                                                  (0, 1))
+
+        # Min reward threshold, sampling distribution deflates if mean reward below this
+        self.min_reward_threshold = min_reward_thr
+        if scale_reward:
+            self.min_reward_threshold = np.interp(self.min_reward_threshold,
+                                                  (self.env_reward_lb, self.env_reward_ub),
+                                                  (0, 1))
+
+        # max queue length
+        self.window_len = queue_len
+
+        # Set initial task space to predefined calibrated task
+        initial_mean, initial_variance = self.get_or_create_dist(initial_dist, mins, maxs, subspace=True)
+
+        # Single task version (as the original paper)
+        self.cur_mins = initial_mean
+        self.cur_maxs = initial_mean
+
+        self.cur_mins = np.array(self.cur_mins, dtype=np.float32)  # current min bounds
+        self.cur_maxs = np.array(self.cur_maxs, dtype=np.float32)  # current max bounds
+        self.task_space = Box(self.cur_mins, self.cur_maxs, dtype=np.float32)
+        self.task_space.seed(self.seed)
+
+        # Init queues, one per task space dimension
+        self.min_queues = [deque(maxlen=self.window_len) for _ in range(self.nb_dims)]
+        self.max_queues = [deque(maxlen=self.window_len) for _ in range(self.nb_dims)]
+
+        # Boring book-keeping
+        self.episode_nb = 0
+        self.bk = {&#39;task_space&#39;: [(self.cur_mins.copy(),self.cur_maxs.copy())],
+                   &#39;episodes&#39;: []}
+
+    def episodic_update(self, task, reward, is_success):
+        self.episode_nb += 1
+
+        # check for updates
+        for i, (min_q, max_q, cur_min, cur_max) in enumerate(zip(self.min_queues, self.max_queues, self.cur_mins, self.cur_maxs)):
+            if task[i] == cur_min:  # if the proposed task has the i^th dimension set to min boundary
+                min_q.append(reward)
+                if len(min_q) == self.window_len:
+                    if np.mean(min_q) &gt;= self.max_reward_threshold:  # decrease min boundary (inflate sampling space)
+                        self.cur_mins[i] = max(self.cur_mins[i] - self.step_size, self.mins[i])
+                    elif np.mean(min_q) &lt;= self.min_reward_threshold:  # increase min boundary (deflate sampling space)
+                        self.cur_mins[i] = min(self.cur_mins[i] + self.step_size, self.cur_maxs[i])
+                    self.min_queues[i] = deque(maxlen=self.window_len)  # reset queue
+            if task[i] == cur_max:  # if the proposed task has the i^th dimension set to max boundary
+                max_q.append(reward)
+                if len(max_q) == self.window_len:  # queue is full, time to update
+                    if np.mean(max_q) &gt;= self.max_reward_threshold:  # increase max boundary
+                        self.cur_maxs[i] = min(self.cur_maxs[i] + self.step_size, self.maxs[i])
+                    elif np.mean(max_q) &lt;= self.min_reward_threshold:  # decrease max boundary
+                        self.cur_maxs[i] = max(self.cur_maxs[i] - self.step_size, self.cur_mins[i])
+                    self.max_queues[i] = deque(maxlen=self.window_len)  # reset queue
+
+        prev_cur_mins, prev_cur_maxs = self.bk[&#39;task_space&#39;][-1]
+        if (prev_cur_mins != self.cur_mins).any() or (prev_cur_maxs != self.cur_maxs).any():  # were boundaries changed ?
+            self.task_space = Box(self.cur_mins, self.cur_maxs, dtype=np.float32)
+            self.task_space.seed(self.seed)
+            # book-keeping only if boundaries were updates
+            self.bk[&#39;task_space&#39;].append((self.cur_mins.copy(), self.cur_maxs.copy()))
+            self.bk[&#39;episodes&#39;].append(self.episode_nb)
+
+    def sample_task(self):
+        new_task = self.non_exploratory_task_sampling()[&#34;task&#34;]
+        if self.random_state.random() &lt; self.bound_sampling_p:  # set random dimension to min or max bound
+            idx = self.random_state.randint(0, self.nb_dims)
+            is_min_max_capped = np.array([self.cur_mins[idx] == self.mins[idx], self.cur_maxs[idx] == self.maxs[idx]])
+            if not is_min_max_capped.all():  # both min and max bounds can increase, choose extremum randomly
+                if self.random_state.random() &lt; 0.5:  # skip min bound if already
+                    new_task[idx] = self.cur_mins[idx]
+                else:
+                    new_task[idx] = self.cur_maxs[idx]
+            elif not is_min_max_capped[0]:
+                new_task[idx] = self.cur_mins[idx]
+            elif not is_min_max_capped[1]:
+                new_task[idx] = self.cur_maxs[idx]
+        return new_task
+
+    def non_exploratory_task_sampling(self):
+        return {&#34;task&#34;: self.task_space.sample(),
+                &#34;infos&#34;: {
+                    &#34;bk_index&#34;: len(self.bk[list(self.bk.keys())[0]]) - 1,
+                    &#34;task_infos&#34;: None}
+                }</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher">AbstractTeacher</a></li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher">AbstractTeacher</a></b></code>:
+<ul class="hlist">
+<li><code><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.create_dist_from_bounds" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.create_dist_from_bounds">create_dist_from_bounds</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.dump" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.dump">dump</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.episodic_update" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.episodic_update">episodic_update</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.get_or_create_dist" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.get_or_create_dist">get_or_create_dist</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.inverse_rescale_task" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.inverse_rescale_task">inverse_rescale_task</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.is_non_exploratory_task_sampling_available" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.is_non_exploratory_task_sampling_available">is_non_exploratory_task_sampling_available</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.non_exploratory_task_sampling" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.non_exploratory_task_sampling">non_exploratory_task_sampling</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.record_initial_state" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.record_initial_state">record_initial_state</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.rescale_task" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.rescale_task">rescale_task</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.sample_task" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.sample_task">sample_task</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.step_update" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.step_update">step_update</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<a href="https://teachmyagent.github.io/doc/index.html">
+<img src="https://teachmyagent.github.io/images/home/head-image.png" style="display: block; margin: 1em auto">
+</a>
+<a href="https://teachmyagent.github.io/index.html">Website</a>
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="TeachMyAgent.teachers.algos" href="index.html">TeachMyAgent.teachers.algos</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="TeachMyAgent.teachers.algos.adr.ADR" href="#TeachMyAgent.teachers.algos.adr.ADR">ADR</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

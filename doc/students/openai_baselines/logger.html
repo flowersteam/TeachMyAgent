@@ -1,0 +1,1845 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>TeachMyAgent.students.openai_baselines.logger API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>TeachMyAgent.students.openai_baselines.logger</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import os
+import sys
+import shutil
+import os.path as osp
+import json
+import time
+import datetime
+import tempfile
+from collections import defaultdict
+from contextlib import contextmanager
+
+DEBUG = 10
+INFO = 20
+WARN = 30
+ERROR = 40
+
+DISABLED = 50
+
+class KVWriter(object):
+    def writekvs(self, kvs):
+        raise NotImplementedError
+
+class SeqWriter(object):
+    def writeseq(self, seq):
+        raise NotImplementedError
+
+class HumanOutputFormat(KVWriter, SeqWriter):
+    def __init__(self, filename_or_file):
+        if isinstance(filename_or_file, str):
+            self.file = open(filename_or_file, &#39;wt&#39;)
+            self.own_file = True
+        else:
+            assert hasattr(filename_or_file, &#39;read&#39;), &#39;expected file or str, got %s&#39;%filename_or_file
+            self.file = filename_or_file
+            self.own_file = False
+
+    def writekvs(self, kvs):
+        # Create strings for printing
+        key2str = {}
+        for (key, val) in sorted(kvs.items()):
+            if hasattr(val, &#39;__float__&#39;):
+                valstr = &#39;%-8.3g&#39; % val
+            else:
+                valstr = str(val)
+            key2str[self._truncate(key)] = self._truncate(valstr)
+
+        # Find max widths
+        if len(key2str) == 0:
+            print(&#39;WARNING: tried to write empty key-value dict&#39;)
+            return
+        else:
+            keywidth = max(map(len, key2str.keys()))
+            valwidth = max(map(len, key2str.values()))
+
+        # Write out the data
+        dashes = &#39;-&#39; * (keywidth + valwidth + 7)
+        lines = [dashes]
+        for (key, val) in sorted(key2str.items(), key=lambda kv: kv[0].lower()):
+            lines.append(&#39;| %s%s | %s%s |&#39; % (
+                key,
+                &#39; &#39; * (keywidth - len(key)),
+                val,
+                &#39; &#39; * (valwidth - len(val)),
+            ))
+        lines.append(dashes)
+        self.file.write(&#39;\n&#39;.join(lines) + &#39;\n&#39;)
+
+        # Flush the output to the file
+        self.file.flush()
+
+    def _truncate(self, s):
+        maxlen = 30
+        return s[:maxlen-3] + &#39;...&#39; if len(s) &gt; maxlen else s
+
+    def writeseq(self, seq):
+        seq = list(seq)
+        for (i, elem) in enumerate(seq):
+            self.file.write(elem)
+            if i &lt; len(seq) - 1: # add space unless this is the last one
+                self.file.write(&#39; &#39;)
+        self.file.write(&#39;\n&#39;)
+        self.file.flush()
+
+    def close(self):
+        if self.own_file:
+            self.file.close()
+
+class JSONOutputFormat(KVWriter):
+    def __init__(self, filename):
+        self.file = open(filename, &#39;wt&#39;)
+
+    def writekvs(self, kvs):
+        for k, v in sorted(kvs.items()):
+            if hasattr(v, &#39;dtype&#39;):
+                kvs[k] = float(v)
+        self.file.write(json.dumps(kvs) + &#39;\n&#39;)
+        self.file.flush()
+
+    def close(self):
+        self.file.close()
+
+class CSVOutputFormat(KVWriter):
+    def __init__(self, filename):
+        self.file = open(filename, &#39;w+t&#39;)
+        self.keys = []
+        self.sep = &#39;,&#39;
+
+    def writekvs(self, kvs):
+        # Add our current row to the history
+        extra_keys = list(kvs.keys() - self.keys)
+        extra_keys.sort()
+        if extra_keys:
+            self.keys.extend(extra_keys)
+            self.file.seek(0)
+            lines = self.file.readlines()
+            self.file.seek(0)
+            for (i, k) in enumerate(self.keys):
+                if i &gt; 0:
+                    self.file.write(&#39;,&#39;)
+                self.file.write(k)
+            self.file.write(&#39;\n&#39;)
+            for line in lines[1:]:
+                self.file.write(line[:-1])
+                self.file.write(self.sep * len(extra_keys))
+                self.file.write(&#39;\n&#39;)
+        for (i, k) in enumerate(self.keys):
+            if i &gt; 0:
+                self.file.write(&#39;,&#39;)
+            v = kvs.get(k)
+            if v is not None:
+                self.file.write(str(v))
+        self.file.write(&#39;\n&#39;)
+        self.file.flush()
+
+    def close(self):
+        self.file.close()
+
+
+class TensorBoardOutputFormat(KVWriter):
+    &#34;&#34;&#34;
+    Dumps key/value pairs into TensorBoard&#39;s numeric format.
+    &#34;&#34;&#34;
+    def __init__(self, dir):
+        os.makedirs(dir, exist_ok=True)
+        self.dir = dir
+        self.step = 1
+        prefix = &#39;events&#39;
+        path = osp.join(osp.abspath(dir), prefix)
+        import tensorflow as tf
+        from tensorflow.python import pywrap_tensorflow
+        from tensorflow.core.util import event_pb2
+        from tensorflow.python.util import compat
+        self.tf = tf
+        self.event_pb2 = event_pb2
+        self.pywrap_tensorflow = pywrap_tensorflow
+        self.writer = pywrap_tensorflow.EventsWriter(compat.as_bytes(path))
+
+    def writekvs(self, kvs):
+        def summary_val(k, v):
+            kwargs = {&#39;tag&#39;: k, &#39;simple_value&#39;: float(v)}
+            return self.tf.Summary.Value(**kwargs)
+        summary = self.tf.Summary(value=[summary_val(k, v) for k, v in kvs.items()])
+        event = self.event_pb2.Event(wall_time=time.time(), summary=summary)
+        event.step = self.step # is there any reason why you&#39;d want to specify the step?
+        self.writer.WriteEvent(event)
+        self.writer.Flush()
+        self.step += 1
+
+    def close(self):
+        if self.writer:
+            self.writer.Close()
+            self.writer = None
+
+def make_output_format(format, ev_dir, log_suffix=&#39;&#39;):
+    os.makedirs(ev_dir, exist_ok=True)
+    if format == &#39;stdout&#39;:
+        return HumanOutputFormat(sys.stdout)
+    elif format == &#39;log&#39;:
+        return HumanOutputFormat(osp.join(ev_dir, &#39;log%s.txt&#39; % log_suffix))
+    elif format == &#39;json&#39;:
+        return JSONOutputFormat(osp.join(ev_dir, &#39;progress%s.json&#39; % log_suffix))
+    elif format == &#39;csv&#39;:
+        return CSVOutputFormat(osp.join(ev_dir, &#39;progress%s.csv&#39; % log_suffix))
+    elif format == &#39;tensorboard&#39;:
+        return TensorBoardOutputFormat(osp.join(ev_dir, &#39;tb%s&#39; % log_suffix))
+    else:
+        raise ValueError(&#39;Unknown format specified: %s&#39; % (format,))
+
+# ================================================================
+# API
+# ================================================================
+
+def logkv(key, val):
+    &#34;&#34;&#34;
+    Log a value of some diagnostic
+    Call this once for each diagnostic quantity, each iteration
+    If called many times, last value will be used.
+    &#34;&#34;&#34;
+    get_current().logkv(key, val)
+
+def logkv_mean(key, val):
+    &#34;&#34;&#34;
+    The same as logkv(), but if called many times, values averaged.
+    &#34;&#34;&#34;
+    get_current().logkv_mean(key, val)
+
+def logkvs(d):
+    &#34;&#34;&#34;
+    Log a dictionary of key-value pairs
+    &#34;&#34;&#34;
+    for (k, v) in d.items():
+        logkv(k, v)
+
+def dumpkvs():
+    &#34;&#34;&#34;
+    Write all of the diagnostics from the current iteration
+    &#34;&#34;&#34;
+    return get_current().dumpkvs()
+
+def getkvs():
+    return get_current().name2val
+
+
+def log(*args, level=INFO):
+    &#34;&#34;&#34;
+    Write the sequence of args, with no separators, to the console and output files (if you&#39;ve configured an output file).
+    &#34;&#34;&#34;
+    get_current().log(*args, level=level)
+
+def debug(*args):
+    log(*args, level=DEBUG)
+
+def info(*args):
+    log(*args, level=INFO)
+
+def warn(*args):
+    log(*args, level=WARN)
+
+def error(*args):
+    log(*args, level=ERROR)
+
+
+def set_level(level):
+    &#34;&#34;&#34;
+    Set logging threshold on current logger.
+    &#34;&#34;&#34;
+    get_current().set_level(level)
+
+def set_comm(comm):
+    get_current().set_comm(comm)
+
+def get_dir():
+    &#34;&#34;&#34;
+    Get directory that log files are being written to.
+    will be None if there is no output directory (i.e., if you didn&#39;t call start)
+    &#34;&#34;&#34;
+    return get_current().get_dir()
+
+record_tabular = logkv
+dump_tabular = dumpkvs
+
+@contextmanager
+def profile_kv(scopename):
+    logkey = &#39;wait_&#39; + scopename
+    tstart = time.time()
+    try:
+        yield
+    finally:
+        get_current().name2val[logkey] += time.time() - tstart
+
+def profile(n):
+    &#34;&#34;&#34;
+    Usage:
+    @profile(&#34;my_func&#34;)
+    def my_func(): code
+    &#34;&#34;&#34;
+    def decorator_with_name(func):
+        def func_wrapper(*args, **kwargs):
+            with profile_kv(n):
+                return func(*args, **kwargs)
+        return func_wrapper
+    return decorator_with_name
+
+
+# ================================================================
+# Backend
+# ================================================================
+
+def get_current():
+    if Logger.CURRENT is None:
+        _configure_default_logger()
+
+    return Logger.CURRENT
+
+
+class Logger(object):
+    DEFAULT = None  # A logger with no output files. (See right below class definition)
+                    # So that you can still log to the terminal without setting up any output files
+    CURRENT = None  # Current logger being used by the free functions above
+
+    def __init__(self, dir, output_formats, comm=None):
+        self.name2val = defaultdict(float)  # values this iteration
+        self.name2cnt = defaultdict(int)
+        self.level = INFO
+        self.dir = dir
+        self.output_formats = output_formats
+        self.comm = comm
+
+    # Logging API, forwarded
+    # ----------------------------------------
+    def logkv(self, key, val):
+        self.name2val[key] = val
+
+    def logkv_mean(self, key, val):
+        oldval, cnt = self.name2val[key], self.name2cnt[key]
+        self.name2val[key] = oldval*cnt/(cnt+1) + val/(cnt+1)
+        self.name2cnt[key] = cnt + 1
+
+    def dumpkvs(self):
+        if self.comm is None:
+            d = self.name2val
+        else:
+            from TeachMyAgent.students.openai_baselines.common import mpi_util
+            d = mpi_util.mpi_weighted_mean(self.comm,
+                {name : (val, self.name2cnt.get(name, 1))
+                    for (name, val) in self.name2val.items()})
+            if self.comm.rank != 0:
+                d[&#39;dummy&#39;] = 1 # so we don&#39;t get a warning about empty dict
+        out = d.copy() # Return the dict for unit testing purposes
+        for fmt in self.output_formats:
+            if isinstance(fmt, KVWriter):
+                fmt.writekvs(d)
+        self.name2val.clear()
+        self.name2cnt.clear()
+        return out
+
+    def log(self, *args, level=INFO):
+        if self.level &lt;= level:
+            self._do_log(args)
+
+    # Configuration
+    # ----------------------------------------
+    def set_level(self, level):
+        self.level = level
+
+    def set_comm(self, comm):
+        self.comm = comm
+
+    def get_dir(self):
+        return self.dir
+
+    def close(self):
+        for fmt in self.output_formats:
+            fmt.close()
+
+    # Misc
+    # ----------------------------------------
+    def _do_log(self, args):
+        for fmt in self.output_formats:
+            if isinstance(fmt, SeqWriter):
+                fmt.writeseq(map(str, args))
+
+def get_rank_without_mpi_import():
+    # check environment variables here instead of importing mpi4py
+    # to avoid calling MPI_Init() when this module is imported
+    for varname in [&#39;PMI_RANK&#39;, &#39;OMPI_COMM_WORLD_RANK&#39;]:
+        if varname in os.environ:
+            return int(os.environ[varname])
+    return 0
+
+
+def configure(dir=None, format_strs=None, comm=None, log_suffix=&#39;&#39;):
+    &#34;&#34;&#34;
+    If comm is provided, average all numerical stats across that comm
+    &#34;&#34;&#34;
+    if dir is None:
+        dir = os.getenv(&#39;OPENAI_LOGDIR&#39;)
+    if dir is None:
+        dir = osp.join(tempfile.gettempdir(),
+            datetime.datetime.now().strftime(&#34;openai-%Y-%m-%d-%H-%M-%S-%f&#34;))
+    assert isinstance(dir, str)
+    dir = os.path.expanduser(dir)
+    os.makedirs(os.path.expanduser(dir), exist_ok=True)
+
+    rank = get_rank_without_mpi_import()
+    if rank &gt; 0:
+        log_suffix = log_suffix + &#34;-rank%03i&#34; % rank
+
+    if format_strs is None:
+        if rank == 0:
+            format_strs = os.getenv(&#39;OPENAI_LOG_FORMAT&#39;, &#39;stdout,log,csv&#39;).split(&#39;,&#39;)
+        else:
+            format_strs = os.getenv(&#39;OPENAI_LOG_FORMAT_MPI&#39;, &#39;log&#39;).split(&#39;,&#39;)
+    format_strs = filter(None, format_strs)
+    output_formats = [make_output_format(f, dir, log_suffix) for f in format_strs]
+
+    Logger.CURRENT = Logger(dir=dir, output_formats=output_formats, comm=comm)
+    if output_formats:
+        log(&#39;Logging to %s&#39;%dir)
+
+def _configure_default_logger():
+    configure()
+    Logger.DEFAULT = Logger.CURRENT
+
+def reset():
+    if Logger.CURRENT is not Logger.DEFAULT:
+        Logger.CURRENT.close()
+        Logger.CURRENT = Logger.DEFAULT
+        log(&#39;Reset logger&#39;)
+
+@contextmanager
+def scoped_configure(dir=None, format_strs=None, comm=None):
+    prevlogger = Logger.CURRENT
+    configure(dir=dir, format_strs=format_strs, comm=comm)
+    try:
+        yield
+    finally:
+        Logger.CURRENT.close()
+        Logger.CURRENT = prevlogger
+
+# ================================================================
+
+def _demo():
+    info(&#34;hi&#34;)
+    debug(&#34;shouldn&#39;t appear&#34;)
+    set_level(DEBUG)
+    debug(&#34;should appear&#34;)
+    dir = &#34;/tmp/testlogging&#34;
+    if os.path.exists(dir):
+        shutil.rmtree(dir)
+    configure(dir=dir)
+    logkv(&#34;a&#34;, 3)
+    logkv(&#34;b&#34;, 2.5)
+    dumpkvs()
+    logkv(&#34;b&#34;, -2.5)
+    logkv(&#34;a&#34;, 5.5)
+    dumpkvs()
+    info(&#34;^^^ should see a = 5.5&#34;)
+    logkv_mean(&#34;b&#34;, -22.5)
+    logkv_mean(&#34;b&#34;, -44.4)
+    logkv(&#34;a&#34;, 5.5)
+    dumpkvs()
+    info(&#34;^^^ should see b = -33.3&#34;)
+
+    logkv(&#34;b&#34;, -2.5)
+    dumpkvs()
+
+    logkv(&#34;a&#34;, &#34;longasslongasslongasslongasslongasslongassvalue&#34;)
+    dumpkvs()
+
+
+# ================================================================
+# Readers
+# ================================================================
+
+def read_json(fname):
+    import pandas
+    ds = []
+    with open(fname, &#39;rt&#39;) as fh:
+        for line in fh:
+            ds.append(json.loads(line))
+    return pandas.DataFrame(ds)
+
+def read_csv(fname):
+    import pandas
+    return pandas.read_csv(fname, index_col=None, comment=&#39;#&#39;)
+
+def read_tb(path):
+    &#34;&#34;&#34;
+    path : a tensorboard file OR a directory, where we will find all TB files
+           of the form events.*
+    &#34;&#34;&#34;
+    import pandas
+    import numpy as np
+    from glob import glob
+    import tensorflow as tf
+    if osp.isdir(path):
+        fnames = glob(osp.join(path, &#34;events.*&#34;))
+    elif osp.basename(path).startswith(&#34;events.&#34;):
+        fnames = [path]
+    else:
+        raise NotImplementedError(&#34;Expected tensorboard file or directory containing them. Got %s&#34;%path)
+    tag2pairs = defaultdict(list)
+    maxstep = 0
+    for fname in fnames:
+        for summary in tf.train.summary_iterator(fname):
+            if summary.step &gt; 0:
+                for v in summary.summary.value:
+                    pair = (summary.step, v.simple_value)
+                    tag2pairs[v.tag].append(pair)
+                maxstep = max(summary.step, maxstep)
+    data = np.empty((maxstep, len(tag2pairs)))
+    data[:] = np.nan
+    tags = sorted(tag2pairs.keys())
+    for (colidx,tag) in enumerate(tags):
+        pairs = tag2pairs[tag]
+        for (step, value) in pairs:
+            data[step-1, colidx] = value
+    return pandas.DataFrame(data, columns=tags)
+
+if __name__ == &#34;__main__&#34;:
+    _demo()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="TeachMyAgent.students.openai_baselines.logger.configure"><code class="name flex">
+<span>def <span class="ident">configure</span></span>(<span>dir=None, format_strs=None, comm=None, log_suffix='')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>If comm is provided, average all numerical stats across that comm</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def configure(dir=None, format_strs=None, comm=None, log_suffix=&#39;&#39;):
+    &#34;&#34;&#34;
+    If comm is provided, average all numerical stats across that comm
+    &#34;&#34;&#34;
+    if dir is None:
+        dir = os.getenv(&#39;OPENAI_LOGDIR&#39;)
+    if dir is None:
+        dir = osp.join(tempfile.gettempdir(),
+            datetime.datetime.now().strftime(&#34;openai-%Y-%m-%d-%H-%M-%S-%f&#34;))
+    assert isinstance(dir, str)
+    dir = os.path.expanduser(dir)
+    os.makedirs(os.path.expanduser(dir), exist_ok=True)
+
+    rank = get_rank_without_mpi_import()
+    if rank &gt; 0:
+        log_suffix = log_suffix + &#34;-rank%03i&#34; % rank
+
+    if format_strs is None:
+        if rank == 0:
+            format_strs = os.getenv(&#39;OPENAI_LOG_FORMAT&#39;, &#39;stdout,log,csv&#39;).split(&#39;,&#39;)
+        else:
+            format_strs = os.getenv(&#39;OPENAI_LOG_FORMAT_MPI&#39;, &#39;log&#39;).split(&#39;,&#39;)
+    format_strs = filter(None, format_strs)
+    output_formats = [make_output_format(f, dir, log_suffix) for f in format_strs]
+
+    Logger.CURRENT = Logger(dir=dir, output_formats=output_formats, comm=comm)
+    if output_formats:
+        log(&#39;Logging to %s&#39;%dir)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.debug"><code class="name flex">
+<span>def <span class="ident">debug</span></span>(<span>*args)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def debug(*args):
+    log(*args, level=DEBUG)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.dump_tabular"><code class="name flex">
+<span>def <span class="ident">dump_tabular</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Write all of the diagnostics from the current iteration</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def dumpkvs():
+    &#34;&#34;&#34;
+    Write all of the diagnostics from the current iteration
+    &#34;&#34;&#34;
+    return get_current().dumpkvs()</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.dumpkvs"><code class="name flex">
+<span>def <span class="ident">dumpkvs</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Write all of the diagnostics from the current iteration</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def dumpkvs():
+    &#34;&#34;&#34;
+    Write all of the diagnostics from the current iteration
+    &#34;&#34;&#34;
+    return get_current().dumpkvs()</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.error"><code class="name flex">
+<span>def <span class="ident">error</span></span>(<span>*args)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def error(*args):
+    log(*args, level=ERROR)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.get_current"><code class="name flex">
+<span>def <span class="ident">get_current</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_current():
+    if Logger.CURRENT is None:
+        _configure_default_logger()
+
+    return Logger.CURRENT</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.get_dir"><code class="name flex">
+<span>def <span class="ident">get_dir</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get directory that log files are being written to.
+will be None if there is no output directory (i.e., if you didn't call start)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_dir():
+    &#34;&#34;&#34;
+    Get directory that log files are being written to.
+    will be None if there is no output directory (i.e., if you didn&#39;t call start)
+    &#34;&#34;&#34;
+    return get_current().get_dir()</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.get_rank_without_mpi_import"><code class="name flex">
+<span>def <span class="ident">get_rank_without_mpi_import</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_rank_without_mpi_import():
+    # check environment variables here instead of importing mpi4py
+    # to avoid calling MPI_Init() when this module is imported
+    for varname in [&#39;PMI_RANK&#39;, &#39;OMPI_COMM_WORLD_RANK&#39;]:
+        if varname in os.environ:
+            return int(os.environ[varname])
+    return 0</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.getkvs"><code class="name flex">
+<span>def <span class="ident">getkvs</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getkvs():
+    return get_current().name2val</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.info"><code class="name flex">
+<span>def <span class="ident">info</span></span>(<span>*args)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def info(*args):
+    log(*args, level=INFO)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.log"><code class="name flex">
+<span>def <span class="ident">log</span></span>(<span>*args, level=20)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Write the sequence of args, with no separators, to the console and output files (if you've configured an output file).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def log(*args, level=INFO):
+    &#34;&#34;&#34;
+    Write the sequence of args, with no separators, to the console and output files (if you&#39;ve configured an output file).
+    &#34;&#34;&#34;
+    get_current().log(*args, level=level)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.logkv"><code class="name flex">
+<span>def <span class="ident">logkv</span></span>(<span>key, val)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Log a value of some diagnostic
+Call this once for each diagnostic quantity, each iteration
+If called many times, last value will be used.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def logkv(key, val):
+    &#34;&#34;&#34;
+    Log a value of some diagnostic
+    Call this once for each diagnostic quantity, each iteration
+    If called many times, last value will be used.
+    &#34;&#34;&#34;
+    get_current().logkv(key, val)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.logkv_mean"><code class="name flex">
+<span>def <span class="ident">logkv_mean</span></span>(<span>key, val)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>The same as logkv(), but if called many times, values averaged.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def logkv_mean(key, val):
+    &#34;&#34;&#34;
+    The same as logkv(), but if called many times, values averaged.
+    &#34;&#34;&#34;
+    get_current().logkv_mean(key, val)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.logkvs"><code class="name flex">
+<span>def <span class="ident">logkvs</span></span>(<span>d)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Log a dictionary of key-value pairs</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def logkvs(d):
+    &#34;&#34;&#34;
+    Log a dictionary of key-value pairs
+    &#34;&#34;&#34;
+    for (k, v) in d.items():
+        logkv(k, v)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.make_output_format"><code class="name flex">
+<span>def <span class="ident">make_output_format</span></span>(<span>format, ev_dir, log_suffix='')</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def make_output_format(format, ev_dir, log_suffix=&#39;&#39;):
+    os.makedirs(ev_dir, exist_ok=True)
+    if format == &#39;stdout&#39;:
+        return HumanOutputFormat(sys.stdout)
+    elif format == &#39;log&#39;:
+        return HumanOutputFormat(osp.join(ev_dir, &#39;log%s.txt&#39; % log_suffix))
+    elif format == &#39;json&#39;:
+        return JSONOutputFormat(osp.join(ev_dir, &#39;progress%s.json&#39; % log_suffix))
+    elif format == &#39;csv&#39;:
+        return CSVOutputFormat(osp.join(ev_dir, &#39;progress%s.csv&#39; % log_suffix))
+    elif format == &#39;tensorboard&#39;:
+        return TensorBoardOutputFormat(osp.join(ev_dir, &#39;tb%s&#39; % log_suffix))
+    else:
+        raise ValueError(&#39;Unknown format specified: %s&#39; % (format,))</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.profile"><code class="name flex">
+<span>def <span class="ident">profile</span></span>(<span>n)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Usage:
+@profile("my_func")
+def my_func(): code</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def profile(n):
+    &#34;&#34;&#34;
+    Usage:
+    @profile(&#34;my_func&#34;)
+    def my_func(): code
+    &#34;&#34;&#34;
+    def decorator_with_name(func):
+        def func_wrapper(*args, **kwargs):
+            with profile_kv(n):
+                return func(*args, **kwargs)
+        return func_wrapper
+    return decorator_with_name</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.profile_kv"><code class="name flex">
+<span>def <span class="ident">profile_kv</span></span>(<span>scopename)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@contextmanager
+def profile_kv(scopename):
+    logkey = &#39;wait_&#39; + scopename
+    tstart = time.time()
+    try:
+        yield
+    finally:
+        get_current().name2val[logkey] += time.time() - tstart</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.read_csv"><code class="name flex">
+<span>def <span class="ident">read_csv</span></span>(<span>fname)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def read_csv(fname):
+    import pandas
+    return pandas.read_csv(fname, index_col=None, comment=&#39;#&#39;)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.read_json"><code class="name flex">
+<span>def <span class="ident">read_json</span></span>(<span>fname)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def read_json(fname):
+    import pandas
+    ds = []
+    with open(fname, &#39;rt&#39;) as fh:
+        for line in fh:
+            ds.append(json.loads(line))
+    return pandas.DataFrame(ds)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.read_tb"><code class="name flex">
+<span>def <span class="ident">read_tb</span></span>(<span>path)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>path : a tensorboard file OR a directory, where we will find all TB files
+of the form events.*</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def read_tb(path):
+    &#34;&#34;&#34;
+    path : a tensorboard file OR a directory, where we will find all TB files
+           of the form events.*
+    &#34;&#34;&#34;
+    import pandas
+    import numpy as np
+    from glob import glob
+    import tensorflow as tf
+    if osp.isdir(path):
+        fnames = glob(osp.join(path, &#34;events.*&#34;))
+    elif osp.basename(path).startswith(&#34;events.&#34;):
+        fnames = [path]
+    else:
+        raise NotImplementedError(&#34;Expected tensorboard file or directory containing them. Got %s&#34;%path)
+    tag2pairs = defaultdict(list)
+    maxstep = 0
+    for fname in fnames:
+        for summary in tf.train.summary_iterator(fname):
+            if summary.step &gt; 0:
+                for v in summary.summary.value:
+                    pair = (summary.step, v.simple_value)
+                    tag2pairs[v.tag].append(pair)
+                maxstep = max(summary.step, maxstep)
+    data = np.empty((maxstep, len(tag2pairs)))
+    data[:] = np.nan
+    tags = sorted(tag2pairs.keys())
+    for (colidx,tag) in enumerate(tags):
+        pairs = tag2pairs[tag]
+        for (step, value) in pairs:
+            data[step-1, colidx] = value
+    return pandas.DataFrame(data, columns=tags)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.record_tabular"><code class="name flex">
+<span>def <span class="ident">record_tabular</span></span>(<span>key, val)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Log a value of some diagnostic
+Call this once for each diagnostic quantity, each iteration
+If called many times, last value will be used.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def logkv(key, val):
+    &#34;&#34;&#34;
+    Log a value of some diagnostic
+    Call this once for each diagnostic quantity, each iteration
+    If called many times, last value will be used.
+    &#34;&#34;&#34;
+    get_current().logkv(key, val)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.reset"><code class="name flex">
+<span>def <span class="ident">reset</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def reset():
+    if Logger.CURRENT is not Logger.DEFAULT:
+        Logger.CURRENT.close()
+        Logger.CURRENT = Logger.DEFAULT
+        log(&#39;Reset logger&#39;)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.scoped_configure"><code class="name flex">
+<span>def <span class="ident">scoped_configure</span></span>(<span>dir=None, format_strs=None, comm=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@contextmanager
+def scoped_configure(dir=None, format_strs=None, comm=None):
+    prevlogger = Logger.CURRENT
+    configure(dir=dir, format_strs=format_strs, comm=comm)
+    try:
+        yield
+    finally:
+        Logger.CURRENT.close()
+        Logger.CURRENT = prevlogger</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.set_comm"><code class="name flex">
+<span>def <span class="ident">set_comm</span></span>(<span>comm)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_comm(comm):
+    get_current().set_comm(comm)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.set_level"><code class="name flex">
+<span>def <span class="ident">set_level</span></span>(<span>level)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set logging threshold on current logger.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_level(level):
+    &#34;&#34;&#34;
+    Set logging threshold on current logger.
+    &#34;&#34;&#34;
+    get_current().set_level(level)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.warn"><code class="name flex">
+<span>def <span class="ident">warn</span></span>(<span>*args)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def warn(*args):
+    log(*args, level=WARN)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="TeachMyAgent.students.openai_baselines.logger.CSVOutputFormat"><code class="flex name class">
+<span>class <span class="ident">CSVOutputFormat</span></span>
+<span>(</span><span>filename)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CSVOutputFormat(KVWriter):
+    def __init__(self, filename):
+        self.file = open(filename, &#39;w+t&#39;)
+        self.keys = []
+        self.sep = &#39;,&#39;
+
+    def writekvs(self, kvs):
+        # Add our current row to the history
+        extra_keys = list(kvs.keys() - self.keys)
+        extra_keys.sort()
+        if extra_keys:
+            self.keys.extend(extra_keys)
+            self.file.seek(0)
+            lines = self.file.readlines()
+            self.file.seek(0)
+            for (i, k) in enumerate(self.keys):
+                if i &gt; 0:
+                    self.file.write(&#39;,&#39;)
+                self.file.write(k)
+            self.file.write(&#39;\n&#39;)
+            for line in lines[1:]:
+                self.file.write(line[:-1])
+                self.file.write(self.sep * len(extra_keys))
+                self.file.write(&#39;\n&#39;)
+        for (i, k) in enumerate(self.keys):
+            if i &gt; 0:
+                self.file.write(&#39;,&#39;)
+            v = kvs.get(k)
+            if v is not None:
+                self.file.write(str(v))
+        self.file.write(&#39;\n&#39;)
+        self.file.flush()
+
+    def close(self):
+        self.file.close()</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="TeachMyAgent.students.openai_baselines.logger.KVWriter" href="#TeachMyAgent.students.openai_baselines.logger.KVWriter">KVWriter</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="TeachMyAgent.students.openai_baselines.logger.CSVOutputFormat.close"><code class="name flex">
+<span>def <span class="ident">close</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def close(self):
+    self.file.close()</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.CSVOutputFormat.writekvs"><code class="name flex">
+<span>def <span class="ident">writekvs</span></span>(<span>self, kvs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def writekvs(self, kvs):
+    # Add our current row to the history
+    extra_keys = list(kvs.keys() - self.keys)
+    extra_keys.sort()
+    if extra_keys:
+        self.keys.extend(extra_keys)
+        self.file.seek(0)
+        lines = self.file.readlines()
+        self.file.seek(0)
+        for (i, k) in enumerate(self.keys):
+            if i &gt; 0:
+                self.file.write(&#39;,&#39;)
+            self.file.write(k)
+        self.file.write(&#39;\n&#39;)
+        for line in lines[1:]:
+            self.file.write(line[:-1])
+            self.file.write(self.sep * len(extra_keys))
+            self.file.write(&#39;\n&#39;)
+    for (i, k) in enumerate(self.keys):
+        if i &gt; 0:
+            self.file.write(&#39;,&#39;)
+        v = kvs.get(k)
+        if v is not None:
+            self.file.write(str(v))
+    self.file.write(&#39;\n&#39;)
+    self.file.flush()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.HumanOutputFormat"><code class="flex name class">
+<span>class <span class="ident">HumanOutputFormat</span></span>
+<span>(</span><span>filename_or_file)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class HumanOutputFormat(KVWriter, SeqWriter):
+    def __init__(self, filename_or_file):
+        if isinstance(filename_or_file, str):
+            self.file = open(filename_or_file, &#39;wt&#39;)
+            self.own_file = True
+        else:
+            assert hasattr(filename_or_file, &#39;read&#39;), &#39;expected file or str, got %s&#39;%filename_or_file
+            self.file = filename_or_file
+            self.own_file = False
+
+    def writekvs(self, kvs):
+        # Create strings for printing
+        key2str = {}
+        for (key, val) in sorted(kvs.items()):
+            if hasattr(val, &#39;__float__&#39;):
+                valstr = &#39;%-8.3g&#39; % val
+            else:
+                valstr = str(val)
+            key2str[self._truncate(key)] = self._truncate(valstr)
+
+        # Find max widths
+        if len(key2str) == 0:
+            print(&#39;WARNING: tried to write empty key-value dict&#39;)
+            return
+        else:
+            keywidth = max(map(len, key2str.keys()))
+            valwidth = max(map(len, key2str.values()))
+
+        # Write out the data
+        dashes = &#39;-&#39; * (keywidth + valwidth + 7)
+        lines = [dashes]
+        for (key, val) in sorted(key2str.items(), key=lambda kv: kv[0].lower()):
+            lines.append(&#39;| %s%s | %s%s |&#39; % (
+                key,
+                &#39; &#39; * (keywidth - len(key)),
+                val,
+                &#39; &#39; * (valwidth - len(val)),
+            ))
+        lines.append(dashes)
+        self.file.write(&#39;\n&#39;.join(lines) + &#39;\n&#39;)
+
+        # Flush the output to the file
+        self.file.flush()
+
+    def _truncate(self, s):
+        maxlen = 30
+        return s[:maxlen-3] + &#39;...&#39; if len(s) &gt; maxlen else s
+
+    def writeseq(self, seq):
+        seq = list(seq)
+        for (i, elem) in enumerate(seq):
+            self.file.write(elem)
+            if i &lt; len(seq) - 1: # add space unless this is the last one
+                self.file.write(&#39; &#39;)
+        self.file.write(&#39;\n&#39;)
+        self.file.flush()
+
+    def close(self):
+        if self.own_file:
+            self.file.close()</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="TeachMyAgent.students.openai_baselines.logger.KVWriter" href="#TeachMyAgent.students.openai_baselines.logger.KVWriter">KVWriter</a></li>
+<li><a title="TeachMyAgent.students.openai_baselines.logger.SeqWriter" href="#TeachMyAgent.students.openai_baselines.logger.SeqWriter">SeqWriter</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="TeachMyAgent.students.openai_baselines.logger.HumanOutputFormat.close"><code class="name flex">
+<span>def <span class="ident">close</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def close(self):
+    if self.own_file:
+        self.file.close()</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.HumanOutputFormat.writekvs"><code class="name flex">
+<span>def <span class="ident">writekvs</span></span>(<span>self, kvs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def writekvs(self, kvs):
+    # Create strings for printing
+    key2str = {}
+    for (key, val) in sorted(kvs.items()):
+        if hasattr(val, &#39;__float__&#39;):
+            valstr = &#39;%-8.3g&#39; % val
+        else:
+            valstr = str(val)
+        key2str[self._truncate(key)] = self._truncate(valstr)
+
+    # Find max widths
+    if len(key2str) == 0:
+        print(&#39;WARNING: tried to write empty key-value dict&#39;)
+        return
+    else:
+        keywidth = max(map(len, key2str.keys()))
+        valwidth = max(map(len, key2str.values()))
+
+    # Write out the data
+    dashes = &#39;-&#39; * (keywidth + valwidth + 7)
+    lines = [dashes]
+    for (key, val) in sorted(key2str.items(), key=lambda kv: kv[0].lower()):
+        lines.append(&#39;| %s%s | %s%s |&#39; % (
+            key,
+            &#39; &#39; * (keywidth - len(key)),
+            val,
+            &#39; &#39; * (valwidth - len(val)),
+        ))
+    lines.append(dashes)
+    self.file.write(&#39;\n&#39;.join(lines) + &#39;\n&#39;)
+
+    # Flush the output to the file
+    self.file.flush()</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.HumanOutputFormat.writeseq"><code class="name flex">
+<span>def <span class="ident">writeseq</span></span>(<span>self, seq)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def writeseq(self, seq):
+    seq = list(seq)
+    for (i, elem) in enumerate(seq):
+        self.file.write(elem)
+        if i &lt; len(seq) - 1: # add space unless this is the last one
+            self.file.write(&#39; &#39;)
+    self.file.write(&#39;\n&#39;)
+    self.file.flush()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.JSONOutputFormat"><code class="flex name class">
+<span>class <span class="ident">JSONOutputFormat</span></span>
+<span>(</span><span>filename)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class JSONOutputFormat(KVWriter):
+    def __init__(self, filename):
+        self.file = open(filename, &#39;wt&#39;)
+
+    def writekvs(self, kvs):
+        for k, v in sorted(kvs.items()):
+            if hasattr(v, &#39;dtype&#39;):
+                kvs[k] = float(v)
+        self.file.write(json.dumps(kvs) + &#39;\n&#39;)
+        self.file.flush()
+
+    def close(self):
+        self.file.close()</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="TeachMyAgent.students.openai_baselines.logger.KVWriter" href="#TeachMyAgent.students.openai_baselines.logger.KVWriter">KVWriter</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="TeachMyAgent.students.openai_baselines.logger.JSONOutputFormat.close"><code class="name flex">
+<span>def <span class="ident">close</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def close(self):
+    self.file.close()</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.JSONOutputFormat.writekvs"><code class="name flex">
+<span>def <span class="ident">writekvs</span></span>(<span>self, kvs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def writekvs(self, kvs):
+    for k, v in sorted(kvs.items()):
+        if hasattr(v, &#39;dtype&#39;):
+            kvs[k] = float(v)
+    self.file.write(json.dumps(kvs) + &#39;\n&#39;)
+    self.file.flush()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.KVWriter"><code class="flex name class">
+<span>class <span class="ident">KVWriter</span></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class KVWriter(object):
+    def writekvs(self, kvs):
+        raise NotImplementedError</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="TeachMyAgent.students.openai_baselines.logger.CSVOutputFormat" href="#TeachMyAgent.students.openai_baselines.logger.CSVOutputFormat">CSVOutputFormat</a></li>
+<li><a title="TeachMyAgent.students.openai_baselines.logger.HumanOutputFormat" href="#TeachMyAgent.students.openai_baselines.logger.HumanOutputFormat">HumanOutputFormat</a></li>
+<li><a title="TeachMyAgent.students.openai_baselines.logger.JSONOutputFormat" href="#TeachMyAgent.students.openai_baselines.logger.JSONOutputFormat">JSONOutputFormat</a></li>
+<li><a title="TeachMyAgent.students.openai_baselines.logger.TensorBoardOutputFormat" href="#TeachMyAgent.students.openai_baselines.logger.TensorBoardOutputFormat">TensorBoardOutputFormat</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="TeachMyAgent.students.openai_baselines.logger.KVWriter.writekvs"><code class="name flex">
+<span>def <span class="ident">writekvs</span></span>(<span>self, kvs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def writekvs(self, kvs):
+    raise NotImplementedError</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.Logger"><code class="flex name class">
+<span>class <span class="ident">Logger</span></span>
+<span>(</span><span>dir, output_formats, comm=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Logger(object):
+    DEFAULT = None  # A logger with no output files. (See right below class definition)
+                    # So that you can still log to the terminal without setting up any output files
+    CURRENT = None  # Current logger being used by the free functions above
+
+    def __init__(self, dir, output_formats, comm=None):
+        self.name2val = defaultdict(float)  # values this iteration
+        self.name2cnt = defaultdict(int)
+        self.level = INFO
+        self.dir = dir
+        self.output_formats = output_formats
+        self.comm = comm
+
+    # Logging API, forwarded
+    # ----------------------------------------
+    def logkv(self, key, val):
+        self.name2val[key] = val
+
+    def logkv_mean(self, key, val):
+        oldval, cnt = self.name2val[key], self.name2cnt[key]
+        self.name2val[key] = oldval*cnt/(cnt+1) + val/(cnt+1)
+        self.name2cnt[key] = cnt + 1
+
+    def dumpkvs(self):
+        if self.comm is None:
+            d = self.name2val
+        else:
+            from TeachMyAgent.students.openai_baselines.common import mpi_util
+            d = mpi_util.mpi_weighted_mean(self.comm,
+                {name : (val, self.name2cnt.get(name, 1))
+                    for (name, val) in self.name2val.items()})
+            if self.comm.rank != 0:
+                d[&#39;dummy&#39;] = 1 # so we don&#39;t get a warning about empty dict
+        out = d.copy() # Return the dict for unit testing purposes
+        for fmt in self.output_formats:
+            if isinstance(fmt, KVWriter):
+                fmt.writekvs(d)
+        self.name2val.clear()
+        self.name2cnt.clear()
+        return out
+
+    def log(self, *args, level=INFO):
+        if self.level &lt;= level:
+            self._do_log(args)
+
+    # Configuration
+    # ----------------------------------------
+    def set_level(self, level):
+        self.level = level
+
+    def set_comm(self, comm):
+        self.comm = comm
+
+    def get_dir(self):
+        return self.dir
+
+    def close(self):
+        for fmt in self.output_formats:
+            fmt.close()
+
+    # Misc
+    # ----------------------------------------
+    def _do_log(self, args):
+        for fmt in self.output_formats:
+            if isinstance(fmt, SeqWriter):
+                fmt.writeseq(map(str, args))</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="TeachMyAgent.students.openai_baselines.logger.Logger.CURRENT"><code class="name">var <span class="ident">CURRENT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.Logger.DEFAULT"><code class="name">var <span class="ident">DEFAULT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="TeachMyAgent.students.openai_baselines.logger.Logger.close"><code class="name flex">
+<span>def <span class="ident">close</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def close(self):
+    for fmt in self.output_formats:
+        fmt.close()</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.Logger.dumpkvs"><code class="name flex">
+<span>def <span class="ident">dumpkvs</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def dumpkvs(self):
+    if self.comm is None:
+        d = self.name2val
+    else:
+        from TeachMyAgent.students.openai_baselines.common import mpi_util
+        d = mpi_util.mpi_weighted_mean(self.comm,
+            {name : (val, self.name2cnt.get(name, 1))
+                for (name, val) in self.name2val.items()})
+        if self.comm.rank != 0:
+            d[&#39;dummy&#39;] = 1 # so we don&#39;t get a warning about empty dict
+    out = d.copy() # Return the dict for unit testing purposes
+    for fmt in self.output_formats:
+        if isinstance(fmt, KVWriter):
+            fmt.writekvs(d)
+    self.name2val.clear()
+    self.name2cnt.clear()
+    return out</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.Logger.get_dir"><code class="name flex">
+<span>def <span class="ident">get_dir</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_dir(self):
+    return self.dir</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.Logger.log"><code class="name flex">
+<span>def <span class="ident">log</span></span>(<span>self, *args, level=20)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def log(self, *args, level=INFO):
+    if self.level &lt;= level:
+        self._do_log(args)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.Logger.logkv"><code class="name flex">
+<span>def <span class="ident">logkv</span></span>(<span>self, key, val)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def logkv(self, key, val):
+    self.name2val[key] = val</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.Logger.logkv_mean"><code class="name flex">
+<span>def <span class="ident">logkv_mean</span></span>(<span>self, key, val)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def logkv_mean(self, key, val):
+    oldval, cnt = self.name2val[key], self.name2cnt[key]
+    self.name2val[key] = oldval*cnt/(cnt+1) + val/(cnt+1)
+    self.name2cnt[key] = cnt + 1</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.Logger.set_comm"><code class="name flex">
+<span>def <span class="ident">set_comm</span></span>(<span>self, comm)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_comm(self, comm):
+    self.comm = comm</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.Logger.set_level"><code class="name flex">
+<span>def <span class="ident">set_level</span></span>(<span>self, level)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_level(self, level):
+    self.level = level</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.SeqWriter"><code class="flex name class">
+<span>class <span class="ident">SeqWriter</span></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SeqWriter(object):
+    def writeseq(self, seq):
+        raise NotImplementedError</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="TeachMyAgent.students.openai_baselines.logger.HumanOutputFormat" href="#TeachMyAgent.students.openai_baselines.logger.HumanOutputFormat">HumanOutputFormat</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="TeachMyAgent.students.openai_baselines.logger.SeqWriter.writeseq"><code class="name flex">
+<span>def <span class="ident">writeseq</span></span>(<span>self, seq)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def writeseq(self, seq):
+    raise NotImplementedError</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.TensorBoardOutputFormat"><code class="flex name class">
+<span>class <span class="ident">TensorBoardOutputFormat</span></span>
+<span>(</span><span>dir)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Dumps key/value pairs into TensorBoard's numeric format.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TensorBoardOutputFormat(KVWriter):
+    &#34;&#34;&#34;
+    Dumps key/value pairs into TensorBoard&#39;s numeric format.
+    &#34;&#34;&#34;
+    def __init__(self, dir):
+        os.makedirs(dir, exist_ok=True)
+        self.dir = dir
+        self.step = 1
+        prefix = &#39;events&#39;
+        path = osp.join(osp.abspath(dir), prefix)
+        import tensorflow as tf
+        from tensorflow.python import pywrap_tensorflow
+        from tensorflow.core.util import event_pb2
+        from tensorflow.python.util import compat
+        self.tf = tf
+        self.event_pb2 = event_pb2
+        self.pywrap_tensorflow = pywrap_tensorflow
+        self.writer = pywrap_tensorflow.EventsWriter(compat.as_bytes(path))
+
+    def writekvs(self, kvs):
+        def summary_val(k, v):
+            kwargs = {&#39;tag&#39;: k, &#39;simple_value&#39;: float(v)}
+            return self.tf.Summary.Value(**kwargs)
+        summary = self.tf.Summary(value=[summary_val(k, v) for k, v in kvs.items()])
+        event = self.event_pb2.Event(wall_time=time.time(), summary=summary)
+        event.step = self.step # is there any reason why you&#39;d want to specify the step?
+        self.writer.WriteEvent(event)
+        self.writer.Flush()
+        self.step += 1
+
+    def close(self):
+        if self.writer:
+            self.writer.Close()
+            self.writer = None</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="TeachMyAgent.students.openai_baselines.logger.KVWriter" href="#TeachMyAgent.students.openai_baselines.logger.KVWriter">KVWriter</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="TeachMyAgent.students.openai_baselines.logger.TensorBoardOutputFormat.close"><code class="name flex">
+<span>def <span class="ident">close</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def close(self):
+    if self.writer:
+        self.writer.Close()
+        self.writer = None</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.logger.TensorBoardOutputFormat.writekvs"><code class="name flex">
+<span>def <span class="ident">writekvs</span></span>(<span>self, kvs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def writekvs(self, kvs):
+    def summary_val(k, v):
+        kwargs = {&#39;tag&#39;: k, &#39;simple_value&#39;: float(v)}
+        return self.tf.Summary.Value(**kwargs)
+    summary = self.tf.Summary(value=[summary_val(k, v) for k, v in kvs.items()])
+    event = self.event_pb2.Event(wall_time=time.time(), summary=summary)
+    event.step = self.step # is there any reason why you&#39;d want to specify the step?
+    self.writer.WriteEvent(event)
+    self.writer.Flush()
+    self.step += 1</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<a href="https://teachmyagent.github.io/doc/index.html">
+<img src="https://teachmyagent.github.io/images/home/head-image.png" style="display: block; margin: 1em auto">
+</a>
+<a href="https://teachmyagent.github.io/index.html">Website</a>
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="TeachMyAgent.students.openai_baselines" href="index.html">TeachMyAgent.students.openai_baselines</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.configure" href="#TeachMyAgent.students.openai_baselines.logger.configure">configure</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.debug" href="#TeachMyAgent.students.openai_baselines.logger.debug">debug</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.dump_tabular" href="#TeachMyAgent.students.openai_baselines.logger.dump_tabular">dump_tabular</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.dumpkvs" href="#TeachMyAgent.students.openai_baselines.logger.dumpkvs">dumpkvs</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.error" href="#TeachMyAgent.students.openai_baselines.logger.error">error</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.get_current" href="#TeachMyAgent.students.openai_baselines.logger.get_current">get_current</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.get_dir" href="#TeachMyAgent.students.openai_baselines.logger.get_dir">get_dir</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.get_rank_without_mpi_import" href="#TeachMyAgent.students.openai_baselines.logger.get_rank_without_mpi_import">get_rank_without_mpi_import</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.getkvs" href="#TeachMyAgent.students.openai_baselines.logger.getkvs">getkvs</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.info" href="#TeachMyAgent.students.openai_baselines.logger.info">info</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.log" href="#TeachMyAgent.students.openai_baselines.logger.log">log</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.logkv" href="#TeachMyAgent.students.openai_baselines.logger.logkv">logkv</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.logkv_mean" href="#TeachMyAgent.students.openai_baselines.logger.logkv_mean">logkv_mean</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.logkvs" href="#TeachMyAgent.students.openai_baselines.logger.logkvs">logkvs</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.make_output_format" href="#TeachMyAgent.students.openai_baselines.logger.make_output_format">make_output_format</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.profile" href="#TeachMyAgent.students.openai_baselines.logger.profile">profile</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.profile_kv" href="#TeachMyAgent.students.openai_baselines.logger.profile_kv">profile_kv</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.read_csv" href="#TeachMyAgent.students.openai_baselines.logger.read_csv">read_csv</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.read_json" href="#TeachMyAgent.students.openai_baselines.logger.read_json">read_json</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.read_tb" href="#TeachMyAgent.students.openai_baselines.logger.read_tb">read_tb</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.record_tabular" href="#TeachMyAgent.students.openai_baselines.logger.record_tabular">record_tabular</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.reset" href="#TeachMyAgent.students.openai_baselines.logger.reset">reset</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.scoped_configure" href="#TeachMyAgent.students.openai_baselines.logger.scoped_configure">scoped_configure</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.set_comm" href="#TeachMyAgent.students.openai_baselines.logger.set_comm">set_comm</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.set_level" href="#TeachMyAgent.students.openai_baselines.logger.set_level">set_level</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.warn" href="#TeachMyAgent.students.openai_baselines.logger.warn">warn</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="TeachMyAgent.students.openai_baselines.logger.CSVOutputFormat" href="#TeachMyAgent.students.openai_baselines.logger.CSVOutputFormat">CSVOutputFormat</a></code></h4>
+<ul class="">
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.CSVOutputFormat.close" href="#TeachMyAgent.students.openai_baselines.logger.CSVOutputFormat.close">close</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.CSVOutputFormat.writekvs" href="#TeachMyAgent.students.openai_baselines.logger.CSVOutputFormat.writekvs">writekvs</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="TeachMyAgent.students.openai_baselines.logger.HumanOutputFormat" href="#TeachMyAgent.students.openai_baselines.logger.HumanOutputFormat">HumanOutputFormat</a></code></h4>
+<ul class="">
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.HumanOutputFormat.close" href="#TeachMyAgent.students.openai_baselines.logger.HumanOutputFormat.close">close</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.HumanOutputFormat.writekvs" href="#TeachMyAgent.students.openai_baselines.logger.HumanOutputFormat.writekvs">writekvs</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.HumanOutputFormat.writeseq" href="#TeachMyAgent.students.openai_baselines.logger.HumanOutputFormat.writeseq">writeseq</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="TeachMyAgent.students.openai_baselines.logger.JSONOutputFormat" href="#TeachMyAgent.students.openai_baselines.logger.JSONOutputFormat">JSONOutputFormat</a></code></h4>
+<ul class="">
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.JSONOutputFormat.close" href="#TeachMyAgent.students.openai_baselines.logger.JSONOutputFormat.close">close</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.JSONOutputFormat.writekvs" href="#TeachMyAgent.students.openai_baselines.logger.JSONOutputFormat.writekvs">writekvs</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="TeachMyAgent.students.openai_baselines.logger.KVWriter" href="#TeachMyAgent.students.openai_baselines.logger.KVWriter">KVWriter</a></code></h4>
+<ul class="">
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.KVWriter.writekvs" href="#TeachMyAgent.students.openai_baselines.logger.KVWriter.writekvs">writekvs</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="TeachMyAgent.students.openai_baselines.logger.Logger" href="#TeachMyAgent.students.openai_baselines.logger.Logger">Logger</a></code></h4>
+<ul class="two-column">
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.Logger.CURRENT" href="#TeachMyAgent.students.openai_baselines.logger.Logger.CURRENT">CURRENT</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.Logger.DEFAULT" href="#TeachMyAgent.students.openai_baselines.logger.Logger.DEFAULT">DEFAULT</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.Logger.close" href="#TeachMyAgent.students.openai_baselines.logger.Logger.close">close</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.Logger.dumpkvs" href="#TeachMyAgent.students.openai_baselines.logger.Logger.dumpkvs">dumpkvs</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.Logger.get_dir" href="#TeachMyAgent.students.openai_baselines.logger.Logger.get_dir">get_dir</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.Logger.log" href="#TeachMyAgent.students.openai_baselines.logger.Logger.log">log</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.Logger.logkv" href="#TeachMyAgent.students.openai_baselines.logger.Logger.logkv">logkv</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.Logger.logkv_mean" href="#TeachMyAgent.students.openai_baselines.logger.Logger.logkv_mean">logkv_mean</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.Logger.set_comm" href="#TeachMyAgent.students.openai_baselines.logger.Logger.set_comm">set_comm</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.Logger.set_level" href="#TeachMyAgent.students.openai_baselines.logger.Logger.set_level">set_level</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="TeachMyAgent.students.openai_baselines.logger.SeqWriter" href="#TeachMyAgent.students.openai_baselines.logger.SeqWriter">SeqWriter</a></code></h4>
+<ul class="">
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.SeqWriter.writeseq" href="#TeachMyAgent.students.openai_baselines.logger.SeqWriter.writeseq">writeseq</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="TeachMyAgent.students.openai_baselines.logger.TensorBoardOutputFormat" href="#TeachMyAgent.students.openai_baselines.logger.TensorBoardOutputFormat">TensorBoardOutputFormat</a></code></h4>
+<ul class="">
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.TensorBoardOutputFormat.close" href="#TeachMyAgent.students.openai_baselines.logger.TensorBoardOutputFormat.close">close</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.logger.TensorBoardOutputFormat.writekvs" href="#TeachMyAgent.students.openai_baselines.logger.TensorBoardOutputFormat.writekvs">writekvs</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

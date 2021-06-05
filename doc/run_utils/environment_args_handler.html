@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>TeachMyAgent.run_utils.environment_args_handler API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>TeachMyAgent.run_utils.environment_args_handler</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from collections import OrderedDict
+import numpy as np
+import gym
+import TeachMyAgent.environments
+from TeachMyAgent.run_utils.abstract_args_handler import AbstractArgsHandler
+from TeachMyAgent.environments.envs.bodies.BodyTypesEnum import BodyTypesEnum
+from TeachMyAgent.environments.envs.bodies.BodiesEnum import BodiesEnum
+
+
+class EnvironmentArgsHandler(AbstractArgsHandler):
+    &#39;&#39;&#39;
+        Handling arguments controlling the environment (including the embodiment).
+    &#39;&#39;&#39;
+    @staticmethod
+    def get_body_wargs(args):
+        &#39;&#39;&#39;
+            Parse kwargs controlling embodiment specific options.
+        &#39;&#39;&#39;
+        body_args = {}
+        if args.motors_torque is not None:
+            body_args[&#34;motors_torque&#34;] = args.motors_torque
+
+        if args.embodiment == &#34;millepede&#34; and args.nb_of_bodies is not None:
+            body_args[&#34;nb_of_bodies&#34;] = args.nb_of_bodies
+        elif args.embodiment == &#34;spider&#34; and args.nb_pairs_of_legs is not None:
+            body_args[&#34;nb_pairs_of_legs&#34;] = args.nb_pairs_of_legs
+        elif args.embodiment == &#34;wheel&#34; and args.body_scale is not None:
+            body_args[&#34;body_scale&#34;] = args.body_scale
+
+        body_type = BodiesEnum.get_body_type(args.embodiment)
+        if body_type == BodyTypesEnum.SWIMMER and args.outside_water is not None:
+            body_args[&#34;nb_steps_outside_water&#34;] = args.outside_water
+        elif (body_type == BodyTypesEnum.WALKER or body_type == BodyTypesEnum.CLIMBER) and args.under_water is not None:
+            body_args[&#34;nb_steps_under_water&#34;] = args.under_water
+
+        return body_args
+
+    @staticmethod
+    def set_parser_arguments(parser):
+        &#39;&#39;&#39;
+            Declaration of arguments for each environment and embodiment.
+        &#39;&#39;&#39;
+        parser.add_argument(&#39;--env&#39;, type=str, default=&#34;parametric-continuous-stump-tracks-v0&#34;)
+
+        # Choose student&#39;s embodiment
+        parser.add_argument(&#39;--embodiment&#39;, type=str, default=&#34;old_classic_bipedal&#34;)  # choose morphology
+        parser.add_argument(&#39;--motors_torque&#39;, type=float, default=None)
+        parser.add_argument(&#39;--nb_of_bodies&#39;, type=float, default=None) # Millipede
+        parser.add_argument(&#39;--nb_pairs_of_legs&#39;, type=float, default=None) # Spider
+        parser.add_argument(&#39;--body_scale&#39;, type=float, default=None)  # Wheel
+        parser.add_argument(&#39;--outside_water&#39;, type=float, default=None)  # Fish
+        parser.add_argument(&#39;--under_water&#39;, type=float, default=None)
+
+        ##### Stump Tracks Env #####
+        parser.add_argument(&#39;--min_stump_h&#39;, type=float, default=0.0)
+        parser.add_argument(&#39;--max_stump_h&#39;, type=float, default=3.0)
+        parser.add_argument(&#39;--max_stump_w&#39;, type=float, default=None)
+        parser.add_argument(&#39;--max_stump_r&#39;, type=float, default=None)
+        parser.add_argument(&#39;--roughness&#39;, type=float, default=None)
+        parser.add_argument(&#39;--max_obstacle_spacing&#39;, type=float, default=6.0)
+        parser.add_argument(&#39;--max_gap_w&#39;, type=float, default=None)
+        parser.add_argument(&#39;--step_h&#39;, type=float, default=None)
+        parser.add_argument(&#39;--step_nb&#39;, type=float, default=None)
+        parser.add_argument(&#39;--hexa_shape&#39;, &#39;-hexa&#39;, action=&#39;store_true&#39;)
+        parser.add_argument(&#39;--stump_seq&#39;, &#39;-seq&#39;, action=&#39;store_true&#39;)
+
+        ##### Parkour Env #####
+        # Selection of parameter space
+        parser.add_argument(&#39;--CPPN_weights_path&#39;, type=str, default=None)
+        parser.add_argument(&#39;--input_CPPN_dim&#39;, type=int, default=3)
+        parser.add_argument(&#39;--ceiling_offset&#39;, type=float, default=200)
+        parser.add_argument(&#39;--ceiling_clip_offset&#39;, type=float, default=0)
+        parser.add_argument(&#39;--terrain_cppn_scale&#39;, type=float, default=10)
+        parser.add_argument(&#39;--water_clip_push&#39;, type=float, default=20)
+        parser.add_argument(&#39;--CPPN_input_space&#39;, type=str, default=&#39;medium&#39;)
+        parser.add_argument(&#39;--min_input_CPPN&#39;, type=float, default=-1.0)
+        parser.add_argument(&#39;--max_input_CPPN&#39;, type=float, default=1.0)
+        parser.add_argument(&#39;--min_water_level&#39;, type=float, default=0.0)
+        parser.add_argument(&#39;--max_water_level&#39;, type=float, default=1.0)
+        parser.add_argument(&#39;--min_creepers_w&#39;, type=float, default=0.25)
+        parser.add_argument(&#39;--max_creepers_w&#39;, type=float, default=0.25)
+        parser.add_argument(&#39;--max_creepers_h&#39;, type=float, default=4)
+        parser.add_argument(&#39;--max_creepers_spacing&#39;, type=float, default=5)
+        parser.add_argument(&#39;--lidars_type&#39;,  type=str, default=None)
+        parser.add_argument(&#39;--movable_creepers&#39;, action=&#39;store_true&#39;)
+
+
+    @classmethod
+    def get_object_from_arguments(cls, args):
+        &#39;&#39;&#39;
+            Create an environment given arguments.
+
+            Returns:
+                env_f (function creating the environment),
+                param_env_bounds (bounds of the task space controlling PCG),
+                initial_dist (Distribution of easy tasks to start with),
+                target_dist (Target task distribution)
+        &#39;&#39;&#39;
+        param_env_bounds = OrderedDict()
+        # For teachers using an initial distribution of easy tasks
+        initial_dist = None
+        # For teachers using a target distribution of tasks
+        target_dist = None
+
+        if args.env == &#34;parametric-continuous-stump-tracks-v0&#34;:
+            args.env_reward_lb = -150
+            args.env_reward_ub = 350
+            if args.hexa_shape:
+                print(&#39;hexa env&#39;)
+                # adjust default parameters
+                args.steps_per_ep = 2000000
+                args.nb_test_episodes = 400
+
+            initial_dist = {
+                &#34;mean&#34;: [],
+                &#34;variance&#34;: []
+            }
+
+            if args.max_stump_h is not None:
+                param_env_bounds[&#39;stump_height&#39;] = [args.min_stump_h, args.max_stump_h]
+                initial_dist[&#34;mean&#34;].append(0)
+                initial_dist[&#34;variance&#34;].append((abs(args.max_stump_h - args.min_stump_h) * 0.1)**2) # std = 10% of dimension
+            if args.max_stump_w is not None:
+                param_env_bounds[&#39;stump_width&#39;] = [0, args.max_stump_w]
+                initial_dist[&#34;mean&#34;].append(0)
+                initial_dist[&#34;variance&#34;].append((args.max_stump_w * 0.1)**2) # std = 10% of dimension
+            if args.max_stump_r is not None:
+                param_env_bounds[&#39;stump_rot&#39;] = [0, args.max_stump_r]
+                initial_dist[&#34;mean&#34;].append(0)
+                initial_dist[&#34;variance&#34;].append((args.max_stump_r * 0.1)**2) # std = 10% of dimension
+            if args.max_obstacle_spacing is not None:
+                param_env_bounds[&#39;obstacle_spacing&#39;] = [0, args.max_obstacle_spacing]
+                initial_dist[&#34;mean&#34;].append(args.max_obstacle_spacing)
+                initial_dist[&#34;variance&#34;].append((args.max_obstacle_spacing * 0.1)**2) # std = 10% of dimension
+            if args.hexa_shape:
+                param_env_bounds[&#39;poly_shape&#39;] = [0, 4.0, 12]
+                initial_dist[&#34;mean&#34;].extend([0 for _ in range(12)])
+                initial_dist[&#34;variance&#34;].extend([0.01 for _ in range(12)])
+            if args.stump_seq:
+                param_env_bounds[&#39;stump_seq&#39;] = [0, 6.0, 10]
+                initial_dist[&#34;mean&#34;].extend([0 for _ in range(10)])
+                initial_dist[&#34;variance&#34;].extend([0.01 for _ in range(10)])
+
+            initial_dist[&#34;mean&#34;] = np.array(initial_dist[&#34;mean&#34;])
+            initial_dist[&#34;variance&#34;] = np.diag(initial_dist[&#34;variance&#34;])
+
+            env_f = lambda: gym.make(args.env, walker_type=args.embodiment, **cls.get_body_wargs(args))
+
+        elif args.env == &#34;parametric-continuous-parkour-v0&#34;:
+            args.env_reward_lb = -150
+            args.env_reward_ub = 360
+            if args.CPPN_input_space == &#34;easy&#34;:
+                param_env_bounds[&#34;input_vector&#34;] = [[-0.25, -0.05],
+                                                    [0.8, 1.0],
+                                                    [0.0, 0.2]]
+            elif args.CPPN_input_space == &#34;medium&#34;:
+                param_env_bounds[&#34;input_vector&#34;] = [[-0.35, 0.05],
+                                                    [0.6, 1.0],
+                                                    [-0.1, 0.3]]
+            else:
+                param_env_bounds[&#34;input_vector&#34;] = [args.min_input_CPPN,
+                                                    args.max_input_CPPN,
+                                                    args.input_CPPN_dim]
+
+            param_env_bounds[&#34;water_level&#34;] = [args.min_water_level, args.max_water_level]
+            param_env_bounds[&#39;creepers_width&#39;] = [args.min_creepers_w, args.max_creepers_w]
+            param_env_bounds[&#39;creepers_height&#39;] = [0, args.max_creepers_h]
+            param_env_bounds[&#39;creepers_spacing&#39;] = [0, args.max_creepers_spacing]
+            param_env_bounds[&#39;terrain_cppn_scale&#39;] = [args.terrain_cppn_scale, args.terrain_cppn_scale]
+            if args.movable_creepers:
+                movable_creepers = True
+            else:
+                movable_creepers = False
+
+            body_type = BodiesEnum.get_body_type(args.embodiment)
+            if body_type == BodyTypesEnum.WALKER:
+                if args.lidars_type is None:
+                    args.lidars_type = &#34;down&#34;
+            elif body_type == BodyTypesEnum.CLIMBER:
+                if args.lidars_type is None:
+                    args.lidars_type = &#34;up&#34;
+            if body_type == BodyTypesEnum.SWIMMER:
+                if args.lidars_type is None:
+                    args.lidars_type = &#34;full&#34;
+
+            env_f = lambda: gym.make(args.env,
+                                     agent_body_type=args.embodiment,
+                                     CPPN_weights_path=args.CPPN_weights_path,
+                                     input_CPPN_dim=args.input_CPPN_dim,
+                                     ceiling_offset=args.ceiling_offset,
+                                     ceiling_clip_offset=args.ceiling_clip_offset,
+                                     terrain_cppn_scale=args.terrain_cppn_scale,
+                                     lidars_type=args.lidars_type,
+                                     water_clip=args.water_clip_push,
+                                     movable_creepers=movable_creepers,
+                                     **cls.get_body_wargs(args))
+
+        else:
+            print(&#34;Using an unknown env with no parameters...&#34;)
+            args.env_reward_lb = -100
+            args.env_reward_ub = 100
+            env_f = lambda: gym.make(args.env)
+            # raise Exception(&#34;No such an environment !&#34;)
+
+        return env_f, param_env_bounds, initial_dist, target_dist</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="TeachMyAgent.run_utils.environment_args_handler.EnvironmentArgsHandler"><code class="flex name class">
+<span>class <span class="ident">EnvironmentArgsHandler</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Handling arguments controlling the environment (including the embodiment).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class EnvironmentArgsHandler(AbstractArgsHandler):
+    &#39;&#39;&#39;
+        Handling arguments controlling the environment (including the embodiment).
+    &#39;&#39;&#39;
+    @staticmethod
+    def get_body_wargs(args):
+        &#39;&#39;&#39;
+            Parse kwargs controlling embodiment specific options.
+        &#39;&#39;&#39;
+        body_args = {}
+        if args.motors_torque is not None:
+            body_args[&#34;motors_torque&#34;] = args.motors_torque
+
+        if args.embodiment == &#34;millepede&#34; and args.nb_of_bodies is not None:
+            body_args[&#34;nb_of_bodies&#34;] = args.nb_of_bodies
+        elif args.embodiment == &#34;spider&#34; and args.nb_pairs_of_legs is not None:
+            body_args[&#34;nb_pairs_of_legs&#34;] = args.nb_pairs_of_legs
+        elif args.embodiment == &#34;wheel&#34; and args.body_scale is not None:
+            body_args[&#34;body_scale&#34;] = args.body_scale
+
+        body_type = BodiesEnum.get_body_type(args.embodiment)
+        if body_type == BodyTypesEnum.SWIMMER and args.outside_water is not None:
+            body_args[&#34;nb_steps_outside_water&#34;] = args.outside_water
+        elif (body_type == BodyTypesEnum.WALKER or body_type == BodyTypesEnum.CLIMBER) and args.under_water is not None:
+            body_args[&#34;nb_steps_under_water&#34;] = args.under_water
+
+        return body_args
+
+    @staticmethod
+    def set_parser_arguments(parser):
+        &#39;&#39;&#39;
+            Declaration of arguments for each environment and embodiment.
+        &#39;&#39;&#39;
+        parser.add_argument(&#39;--env&#39;, type=str, default=&#34;parametric-continuous-stump-tracks-v0&#34;)
+
+        # Choose student&#39;s embodiment
+        parser.add_argument(&#39;--embodiment&#39;, type=str, default=&#34;old_classic_bipedal&#34;)  # choose morphology
+        parser.add_argument(&#39;--motors_torque&#39;, type=float, default=None)
+        parser.add_argument(&#39;--nb_of_bodies&#39;, type=float, default=None) # Millipede
+        parser.add_argument(&#39;--nb_pairs_of_legs&#39;, type=float, default=None) # Spider
+        parser.add_argument(&#39;--body_scale&#39;, type=float, default=None)  # Wheel
+        parser.add_argument(&#39;--outside_water&#39;, type=float, default=None)  # Fish
+        parser.add_argument(&#39;--under_water&#39;, type=float, default=None)
+
+        ##### Stump Tracks Env #####
+        parser.add_argument(&#39;--min_stump_h&#39;, type=float, default=0.0)
+        parser.add_argument(&#39;--max_stump_h&#39;, type=float, default=3.0)
+        parser.add_argument(&#39;--max_stump_w&#39;, type=float, default=None)
+        parser.add_argument(&#39;--max_stump_r&#39;, type=float, default=None)
+        parser.add_argument(&#39;--roughness&#39;, type=float, default=None)
+        parser.add_argument(&#39;--max_obstacle_spacing&#39;, type=float, default=6.0)
+        parser.add_argument(&#39;--max_gap_w&#39;, type=float, default=None)
+        parser.add_argument(&#39;--step_h&#39;, type=float, default=None)
+        parser.add_argument(&#39;--step_nb&#39;, type=float, default=None)
+        parser.add_argument(&#39;--hexa_shape&#39;, &#39;-hexa&#39;, action=&#39;store_true&#39;)
+        parser.add_argument(&#39;--stump_seq&#39;, &#39;-seq&#39;, action=&#39;store_true&#39;)
+
+        ##### Parkour Env #####
+        # Selection of parameter space
+        parser.add_argument(&#39;--CPPN_weights_path&#39;, type=str, default=None)
+        parser.add_argument(&#39;--input_CPPN_dim&#39;, type=int, default=3)
+        parser.add_argument(&#39;--ceiling_offset&#39;, type=float, default=200)
+        parser.add_argument(&#39;--ceiling_clip_offset&#39;, type=float, default=0)
+        parser.add_argument(&#39;--terrain_cppn_scale&#39;, type=float, default=10)
+        parser.add_argument(&#39;--water_clip_push&#39;, type=float, default=20)
+        parser.add_argument(&#39;--CPPN_input_space&#39;, type=str, default=&#39;medium&#39;)
+        parser.add_argument(&#39;--min_input_CPPN&#39;, type=float, default=-1.0)
+        parser.add_argument(&#39;--max_input_CPPN&#39;, type=float, default=1.0)
+        parser.add_argument(&#39;--min_water_level&#39;, type=float, default=0.0)
+        parser.add_argument(&#39;--max_water_level&#39;, type=float, default=1.0)
+        parser.add_argument(&#39;--min_creepers_w&#39;, type=float, default=0.25)
+        parser.add_argument(&#39;--max_creepers_w&#39;, type=float, default=0.25)
+        parser.add_argument(&#39;--max_creepers_h&#39;, type=float, default=4)
+        parser.add_argument(&#39;--max_creepers_spacing&#39;, type=float, default=5)
+        parser.add_argument(&#39;--lidars_type&#39;,  type=str, default=None)
+        parser.add_argument(&#39;--movable_creepers&#39;, action=&#39;store_true&#39;)
+
+
+    @classmethod
+    def get_object_from_arguments(cls, args):
+        &#39;&#39;&#39;
+            Create an environment given arguments.
+
+            Returns:
+                env_f (function creating the environment),
+                param_env_bounds (bounds of the task space controlling PCG),
+                initial_dist (Distribution of easy tasks to start with),
+                target_dist (Target task distribution)
+        &#39;&#39;&#39;
+        param_env_bounds = OrderedDict()
+        # For teachers using an initial distribution of easy tasks
+        initial_dist = None
+        # For teachers using a target distribution of tasks
+        target_dist = None
+
+        if args.env == &#34;parametric-continuous-stump-tracks-v0&#34;:
+            args.env_reward_lb = -150
+            args.env_reward_ub = 350
+            if args.hexa_shape:
+                print(&#39;hexa env&#39;)
+                # adjust default parameters
+                args.steps_per_ep = 2000000
+                args.nb_test_episodes = 400
+
+            initial_dist = {
+                &#34;mean&#34;: [],
+                &#34;variance&#34;: []
+            }
+
+            if args.max_stump_h is not None:
+                param_env_bounds[&#39;stump_height&#39;] = [args.min_stump_h, args.max_stump_h]
+                initial_dist[&#34;mean&#34;].append(0)
+                initial_dist[&#34;variance&#34;].append((abs(args.max_stump_h - args.min_stump_h) * 0.1)**2) # std = 10% of dimension
+            if args.max_stump_w is not None:
+                param_env_bounds[&#39;stump_width&#39;] = [0, args.max_stump_w]
+                initial_dist[&#34;mean&#34;].append(0)
+                initial_dist[&#34;variance&#34;].append((args.max_stump_w * 0.1)**2) # std = 10% of dimension
+            if args.max_stump_r is not None:
+                param_env_bounds[&#39;stump_rot&#39;] = [0, args.max_stump_r]
+                initial_dist[&#34;mean&#34;].append(0)
+                initial_dist[&#34;variance&#34;].append((args.max_stump_r * 0.1)**2) # std = 10% of dimension
+            if args.max_obstacle_spacing is not None:
+                param_env_bounds[&#39;obstacle_spacing&#39;] = [0, args.max_obstacle_spacing]
+                initial_dist[&#34;mean&#34;].append(args.max_obstacle_spacing)
+                initial_dist[&#34;variance&#34;].append((args.max_obstacle_spacing * 0.1)**2) # std = 10% of dimension
+            if args.hexa_shape:
+                param_env_bounds[&#39;poly_shape&#39;] = [0, 4.0, 12]
+                initial_dist[&#34;mean&#34;].extend([0 for _ in range(12)])
+                initial_dist[&#34;variance&#34;].extend([0.01 for _ in range(12)])
+            if args.stump_seq:
+                param_env_bounds[&#39;stump_seq&#39;] = [0, 6.0, 10]
+                initial_dist[&#34;mean&#34;].extend([0 for _ in range(10)])
+                initial_dist[&#34;variance&#34;].extend([0.01 for _ in range(10)])
+
+            initial_dist[&#34;mean&#34;] = np.array(initial_dist[&#34;mean&#34;])
+            initial_dist[&#34;variance&#34;] = np.diag(initial_dist[&#34;variance&#34;])
+
+            env_f = lambda: gym.make(args.env, walker_type=args.embodiment, **cls.get_body_wargs(args))
+
+        elif args.env == &#34;parametric-continuous-parkour-v0&#34;:
+            args.env_reward_lb = -150
+            args.env_reward_ub = 360
+            if args.CPPN_input_space == &#34;easy&#34;:
+                param_env_bounds[&#34;input_vector&#34;] = [[-0.25, -0.05],
+                                                    [0.8, 1.0],
+                                                    [0.0, 0.2]]
+            elif args.CPPN_input_space == &#34;medium&#34;:
+                param_env_bounds[&#34;input_vector&#34;] = [[-0.35, 0.05],
+                                                    [0.6, 1.0],
+                                                    [-0.1, 0.3]]
+            else:
+                param_env_bounds[&#34;input_vector&#34;] = [args.min_input_CPPN,
+                                                    args.max_input_CPPN,
+                                                    args.input_CPPN_dim]
+
+            param_env_bounds[&#34;water_level&#34;] = [args.min_water_level, args.max_water_level]
+            param_env_bounds[&#39;creepers_width&#39;] = [args.min_creepers_w, args.max_creepers_w]
+            param_env_bounds[&#39;creepers_height&#39;] = [0, args.max_creepers_h]
+            param_env_bounds[&#39;creepers_spacing&#39;] = [0, args.max_creepers_spacing]
+            param_env_bounds[&#39;terrain_cppn_scale&#39;] = [args.terrain_cppn_scale, args.terrain_cppn_scale]
+            if args.movable_creepers:
+                movable_creepers = True
+            else:
+                movable_creepers = False
+
+            body_type = BodiesEnum.get_body_type(args.embodiment)
+            if body_type == BodyTypesEnum.WALKER:
+                if args.lidars_type is None:
+                    args.lidars_type = &#34;down&#34;
+            elif body_type == BodyTypesEnum.CLIMBER:
+                if args.lidars_type is None:
+                    args.lidars_type = &#34;up&#34;
+            if body_type == BodyTypesEnum.SWIMMER:
+                if args.lidars_type is None:
+                    args.lidars_type = &#34;full&#34;
+
+            env_f = lambda: gym.make(args.env,
+                                     agent_body_type=args.embodiment,
+                                     CPPN_weights_path=args.CPPN_weights_path,
+                                     input_CPPN_dim=args.input_CPPN_dim,
+                                     ceiling_offset=args.ceiling_offset,
+                                     ceiling_clip_offset=args.ceiling_clip_offset,
+                                     terrain_cppn_scale=args.terrain_cppn_scale,
+                                     lidars_type=args.lidars_type,
+                                     water_clip=args.water_clip_push,
+                                     movable_creepers=movable_creepers,
+                                     **cls.get_body_wargs(args))
+
+        else:
+            print(&#34;Using an unknown env with no parameters...&#34;)
+            args.env_reward_lb = -100
+            args.env_reward_ub = 100
+            env_f = lambda: gym.make(args.env)
+            # raise Exception(&#34;No such an environment !&#34;)
+
+        return env_f, param_env_bounds, initial_dist, target_dist</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="TeachMyAgent.run_utils.abstract_args_handler.AbstractArgsHandler" href="abstract_args_handler.html#TeachMyAgent.run_utils.abstract_args_handler.AbstractArgsHandler">AbstractArgsHandler</a></li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="TeachMyAgent.run_utils.environment_args_handler.EnvironmentArgsHandler.get_body_wargs"><code class="name flex">
+<span>def <span class="ident">get_body_wargs</span></span>(<span>args)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Parse kwargs controlling embodiment specific options.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def get_body_wargs(args):
+    &#39;&#39;&#39;
+        Parse kwargs controlling embodiment specific options.
+    &#39;&#39;&#39;
+    body_args = {}
+    if args.motors_torque is not None:
+        body_args[&#34;motors_torque&#34;] = args.motors_torque
+
+    if args.embodiment == &#34;millepede&#34; and args.nb_of_bodies is not None:
+        body_args[&#34;nb_of_bodies&#34;] = args.nb_of_bodies
+    elif args.embodiment == &#34;spider&#34; and args.nb_pairs_of_legs is not None:
+        body_args[&#34;nb_pairs_of_legs&#34;] = args.nb_pairs_of_legs
+    elif args.embodiment == &#34;wheel&#34; and args.body_scale is not None:
+        body_args[&#34;body_scale&#34;] = args.body_scale
+
+    body_type = BodiesEnum.get_body_type(args.embodiment)
+    if body_type == BodyTypesEnum.SWIMMER and args.outside_water is not None:
+        body_args[&#34;nb_steps_outside_water&#34;] = args.outside_water
+    elif (body_type == BodyTypesEnum.WALKER or body_type == BodyTypesEnum.CLIMBER) and args.under_water is not None:
+        body_args[&#34;nb_steps_under_water&#34;] = args.under_water
+
+    return body_args</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.run_utils.environment_args_handler.EnvironmentArgsHandler.get_object_from_arguments"><code class="name flex">
+<span>def <span class="ident">get_object_from_arguments</span></span>(<span>args)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create an environment given arguments.</p>
+<h2 id="returns">Returns</h2>
+<p>env_f (function creating the environment),
+param_env_bounds (bounds of the task space controlling PCG),
+initial_dist (Distribution of easy tasks to start with),
+target_dist (Target task distribution)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def get_object_from_arguments(cls, args):
+    &#39;&#39;&#39;
+        Create an environment given arguments.
+
+        Returns:
+            env_f (function creating the environment),
+            param_env_bounds (bounds of the task space controlling PCG),
+            initial_dist (Distribution of easy tasks to start with),
+            target_dist (Target task distribution)
+    &#39;&#39;&#39;
+    param_env_bounds = OrderedDict()
+    # For teachers using an initial distribution of easy tasks
+    initial_dist = None
+    # For teachers using a target distribution of tasks
+    target_dist = None
+
+    if args.env == &#34;parametric-continuous-stump-tracks-v0&#34;:
+        args.env_reward_lb = -150
+        args.env_reward_ub = 350
+        if args.hexa_shape:
+            print(&#39;hexa env&#39;)
+            # adjust default parameters
+            args.steps_per_ep = 2000000
+            args.nb_test_episodes = 400
+
+        initial_dist = {
+            &#34;mean&#34;: [],
+            &#34;variance&#34;: []
+        }
+
+        if args.max_stump_h is not None:
+            param_env_bounds[&#39;stump_height&#39;] = [args.min_stump_h, args.max_stump_h]
+            initial_dist[&#34;mean&#34;].append(0)
+            initial_dist[&#34;variance&#34;].append((abs(args.max_stump_h - args.min_stump_h) * 0.1)**2) # std = 10% of dimension
+        if args.max_stump_w is not None:
+            param_env_bounds[&#39;stump_width&#39;] = [0, args.max_stump_w]
+            initial_dist[&#34;mean&#34;].append(0)
+            initial_dist[&#34;variance&#34;].append((args.max_stump_w * 0.1)**2) # std = 10% of dimension
+        if args.max_stump_r is not None:
+            param_env_bounds[&#39;stump_rot&#39;] = [0, args.max_stump_r]
+            initial_dist[&#34;mean&#34;].append(0)
+            initial_dist[&#34;variance&#34;].append((args.max_stump_r * 0.1)**2) # std = 10% of dimension
+        if args.max_obstacle_spacing is not None:
+            param_env_bounds[&#39;obstacle_spacing&#39;] = [0, args.max_obstacle_spacing]
+            initial_dist[&#34;mean&#34;].append(args.max_obstacle_spacing)
+            initial_dist[&#34;variance&#34;].append((args.max_obstacle_spacing * 0.1)**2) # std = 10% of dimension
+        if args.hexa_shape:
+            param_env_bounds[&#39;poly_shape&#39;] = [0, 4.0, 12]
+            initial_dist[&#34;mean&#34;].extend([0 for _ in range(12)])
+            initial_dist[&#34;variance&#34;].extend([0.01 for _ in range(12)])
+        if args.stump_seq:
+            param_env_bounds[&#39;stump_seq&#39;] = [0, 6.0, 10]
+            initial_dist[&#34;mean&#34;].extend([0 for _ in range(10)])
+            initial_dist[&#34;variance&#34;].extend([0.01 for _ in range(10)])
+
+        initial_dist[&#34;mean&#34;] = np.array(initial_dist[&#34;mean&#34;])
+        initial_dist[&#34;variance&#34;] = np.diag(initial_dist[&#34;variance&#34;])
+
+        env_f = lambda: gym.make(args.env, walker_type=args.embodiment, **cls.get_body_wargs(args))
+
+    elif args.env == &#34;parametric-continuous-parkour-v0&#34;:
+        args.env_reward_lb = -150
+        args.env_reward_ub = 360
+        if args.CPPN_input_space == &#34;easy&#34;:
+            param_env_bounds[&#34;input_vector&#34;] = [[-0.25, -0.05],
+                                                [0.8, 1.0],
+                                                [0.0, 0.2]]
+        elif args.CPPN_input_space == &#34;medium&#34;:
+            param_env_bounds[&#34;input_vector&#34;] = [[-0.35, 0.05],
+                                                [0.6, 1.0],
+                                                [-0.1, 0.3]]
+        else:
+            param_env_bounds[&#34;input_vector&#34;] = [args.min_input_CPPN,
+                                                args.max_input_CPPN,
+                                                args.input_CPPN_dim]
+
+        param_env_bounds[&#34;water_level&#34;] = [args.min_water_level, args.max_water_level]
+        param_env_bounds[&#39;creepers_width&#39;] = [args.min_creepers_w, args.max_creepers_w]
+        param_env_bounds[&#39;creepers_height&#39;] = [0, args.max_creepers_h]
+        param_env_bounds[&#39;creepers_spacing&#39;] = [0, args.max_creepers_spacing]
+        param_env_bounds[&#39;terrain_cppn_scale&#39;] = [args.terrain_cppn_scale, args.terrain_cppn_scale]
+        if args.movable_creepers:
+            movable_creepers = True
+        else:
+            movable_creepers = False
+
+        body_type = BodiesEnum.get_body_type(args.embodiment)
+        if body_type == BodyTypesEnum.WALKER:
+            if args.lidars_type is None:
+                args.lidars_type = &#34;down&#34;
+        elif body_type == BodyTypesEnum.CLIMBER:
+            if args.lidars_type is None:
+                args.lidars_type = &#34;up&#34;
+        if body_type == BodyTypesEnum.SWIMMER:
+            if args.lidars_type is None:
+                args.lidars_type = &#34;full&#34;
+
+        env_f = lambda: gym.make(args.env,
+                                 agent_body_type=args.embodiment,
+                                 CPPN_weights_path=args.CPPN_weights_path,
+                                 input_CPPN_dim=args.input_CPPN_dim,
+                                 ceiling_offset=args.ceiling_offset,
+                                 ceiling_clip_offset=args.ceiling_clip_offset,
+                                 terrain_cppn_scale=args.terrain_cppn_scale,
+                                 lidars_type=args.lidars_type,
+                                 water_clip=args.water_clip_push,
+                                 movable_creepers=movable_creepers,
+                                 **cls.get_body_wargs(args))
+
+    else:
+        print(&#34;Using an unknown env with no parameters...&#34;)
+        args.env_reward_lb = -100
+        args.env_reward_ub = 100
+        env_f = lambda: gym.make(args.env)
+        # raise Exception(&#34;No such an environment !&#34;)
+
+    return env_f, param_env_bounds, initial_dist, target_dist</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.run_utils.environment_args_handler.EnvironmentArgsHandler.set_parser_arguments"><code class="name flex">
+<span>def <span class="ident">set_parser_arguments</span></span>(<span>parser)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Declaration of arguments for each environment and embodiment.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def set_parser_arguments(parser):
+    &#39;&#39;&#39;
+        Declaration of arguments for each environment and embodiment.
+    &#39;&#39;&#39;
+    parser.add_argument(&#39;--env&#39;, type=str, default=&#34;parametric-continuous-stump-tracks-v0&#34;)
+
+    # Choose student&#39;s embodiment
+    parser.add_argument(&#39;--embodiment&#39;, type=str, default=&#34;old_classic_bipedal&#34;)  # choose morphology
+    parser.add_argument(&#39;--motors_torque&#39;, type=float, default=None)
+    parser.add_argument(&#39;--nb_of_bodies&#39;, type=float, default=None) # Millipede
+    parser.add_argument(&#39;--nb_pairs_of_legs&#39;, type=float, default=None) # Spider
+    parser.add_argument(&#39;--body_scale&#39;, type=float, default=None)  # Wheel
+    parser.add_argument(&#39;--outside_water&#39;, type=float, default=None)  # Fish
+    parser.add_argument(&#39;--under_water&#39;, type=float, default=None)
+
+    ##### Stump Tracks Env #####
+    parser.add_argument(&#39;--min_stump_h&#39;, type=float, default=0.0)
+    parser.add_argument(&#39;--max_stump_h&#39;, type=float, default=3.0)
+    parser.add_argument(&#39;--max_stump_w&#39;, type=float, default=None)
+    parser.add_argument(&#39;--max_stump_r&#39;, type=float, default=None)
+    parser.add_argument(&#39;--roughness&#39;, type=float, default=None)
+    parser.add_argument(&#39;--max_obstacle_spacing&#39;, type=float, default=6.0)
+    parser.add_argument(&#39;--max_gap_w&#39;, type=float, default=None)
+    parser.add_argument(&#39;--step_h&#39;, type=float, default=None)
+    parser.add_argument(&#39;--step_nb&#39;, type=float, default=None)
+    parser.add_argument(&#39;--hexa_shape&#39;, &#39;-hexa&#39;, action=&#39;store_true&#39;)
+    parser.add_argument(&#39;--stump_seq&#39;, &#39;-seq&#39;, action=&#39;store_true&#39;)
+
+    ##### Parkour Env #####
+    # Selection of parameter space
+    parser.add_argument(&#39;--CPPN_weights_path&#39;, type=str, default=None)
+    parser.add_argument(&#39;--input_CPPN_dim&#39;, type=int, default=3)
+    parser.add_argument(&#39;--ceiling_offset&#39;, type=float, default=200)
+    parser.add_argument(&#39;--ceiling_clip_offset&#39;, type=float, default=0)
+    parser.add_argument(&#39;--terrain_cppn_scale&#39;, type=float, default=10)
+    parser.add_argument(&#39;--water_clip_push&#39;, type=float, default=20)
+    parser.add_argument(&#39;--CPPN_input_space&#39;, type=str, default=&#39;medium&#39;)
+    parser.add_argument(&#39;--min_input_CPPN&#39;, type=float, default=-1.0)
+    parser.add_argument(&#39;--max_input_CPPN&#39;, type=float, default=1.0)
+    parser.add_argument(&#39;--min_water_level&#39;, type=float, default=0.0)
+    parser.add_argument(&#39;--max_water_level&#39;, type=float, default=1.0)
+    parser.add_argument(&#39;--min_creepers_w&#39;, type=float, default=0.25)
+    parser.add_argument(&#39;--max_creepers_w&#39;, type=float, default=0.25)
+    parser.add_argument(&#39;--max_creepers_h&#39;, type=float, default=4)
+    parser.add_argument(&#39;--max_creepers_spacing&#39;, type=float, default=5)
+    parser.add_argument(&#39;--lidars_type&#39;,  type=str, default=None)
+    parser.add_argument(&#39;--movable_creepers&#39;, action=&#39;store_true&#39;)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<a href="https://teachmyagent.github.io/doc/index.html">
+<img src="https://teachmyagent.github.io/images/home/head-image.png" style="display: block; margin: 1em auto">
+</a>
+<a href="https://teachmyagent.github.io/index.html">Website</a>
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="TeachMyAgent.run_utils" href="index.html">TeachMyAgent.run_utils</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="TeachMyAgent.run_utils.environment_args_handler.EnvironmentArgsHandler" href="#TeachMyAgent.run_utils.environment_args_handler.EnvironmentArgsHandler">EnvironmentArgsHandler</a></code></h4>
+<ul class="">
+<li><code><a title="TeachMyAgent.run_utils.environment_args_handler.EnvironmentArgsHandler.get_body_wargs" href="#TeachMyAgent.run_utils.environment_args_handler.EnvironmentArgsHandler.get_body_wargs">get_body_wargs</a></code></li>
+<li><code><a title="TeachMyAgent.run_utils.environment_args_handler.EnvironmentArgsHandler.get_object_from_arguments" href="#TeachMyAgent.run_utils.environment_args_handler.EnvironmentArgsHandler.get_object_from_arguments">get_object_from_arguments</a></code></li>
+<li><code><a title="TeachMyAgent.run_utils.environment_args_handler.EnvironmentArgsHandler.set_parser_arguments" href="#TeachMyAgent.run_utils.environment_args_handler.EnvironmentArgsHandler.set_parser_arguments">set_parser_arguments</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,1219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>TeachMyAgent.students.openai_baselines.common.tf_util API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>TeachMyAgent.students.openai_baselines.common.tf_util</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import numpy as np
+import tensorflow as tf  # pylint: ignore-module
+import copy
+import os
+import functools
+import collections
+import multiprocessing
+
+def switch(condition, then_expression, else_expression):
+    &#34;&#34;&#34;Switches between two operations depending on a scalar value (int or bool).
+    Note that both `then_expression` and `else_expression`
+    should be symbolic tensors of the *same shape*.
+
+    # Arguments
+        condition: scalar tensor.
+        then_expression: TensorFlow operation.
+        else_expression: TensorFlow operation.
+    &#34;&#34;&#34;
+    x_shape = copy.copy(then_expression.get_shape())
+    x = tf.cond(tf.cast(condition, &#39;bool&#39;),
+                lambda: then_expression,
+                lambda: else_expression)
+    x.set_shape(x_shape)
+    return x
+
+# ================================================================
+# Extras
+# ================================================================
+
+def lrelu(x, leak=0.2):
+    f1 = 0.5 * (1 + leak)
+    f2 = 0.5 * (1 - leak)
+    return f1 * x + f2 * abs(x)
+
+# ================================================================
+# Mathematical utils
+# ================================================================
+
+def huber_loss(x, delta=1.0):
+    &#34;&#34;&#34;Reference: https://en.wikipedia.org/wiki/Huber_loss&#34;&#34;&#34;
+    return tf.where(
+        tf.abs(x) &lt; delta,
+        tf.square(x) * 0.5,
+        delta * (tf.abs(x) - 0.5 * delta)
+    )
+
+# ================================================================
+# Global session
+# ================================================================
+
+def get_session(config=None):
+    &#34;&#34;&#34;Get default session or create one with a given config&#34;&#34;&#34;
+    sess = tf.get_default_session()
+    if sess is None:
+        sess = make_session(config=config, make_default=True)
+    return sess
+
+def make_session(config=None, num_cpu=None, make_default=False, graph=None):
+    &#34;&#34;&#34;Returns a session that will use &lt;num_cpu&gt; CPU&#39;s only&#34;&#34;&#34;
+    if num_cpu is None:
+        num_cpu = int(os.getenv(&#39;RCALL_NUM_CPU&#39;, multiprocessing.cpu_count()))
+    if config is None:
+        config = tf.ConfigProto(
+            allow_soft_placement=True,
+            inter_op_parallelism_threads=num_cpu,
+            intra_op_parallelism_threads=num_cpu)
+        config.gpu_options.allow_growth = True
+
+    if make_default:
+        return tf.InteractiveSession(config=config, graph=graph)
+    else:
+        return tf.Session(config=config, graph=graph)
+
+def single_threaded_session():
+    &#34;&#34;&#34;Returns a session which will only use a single CPU&#34;&#34;&#34;
+    return make_session(num_cpu=1)
+
+def in_session(f):
+    @functools.wraps(f)
+    def newfunc(*args, **kwargs):
+        with tf.Session():
+            f(*args, **kwargs)
+    return newfunc
+
+ALREADY_INITIALIZED = set()
+
+def initialize():
+    &#34;&#34;&#34;Initialize all the uninitialized variables in the global scope.&#34;&#34;&#34;
+    new_variables = set(tf.global_variables()) - ALREADY_INITIALIZED
+    get_session().run(tf.variables_initializer(new_variables))
+    ALREADY_INITIALIZED.update(new_variables)
+
+# ================================================================
+# Model components
+# ================================================================
+
+def normc_initializer(std=1.0, axis=0):
+    def _initializer(shape, dtype=None, partition_info=None):  # pylint: disable=W0613
+        out = np.random.randn(*shape).astype(dtype.as_numpy_dtype)
+        out *= std / np.sqrt(np.square(out).sum(axis=axis, keepdims=True))
+        return tf.constant(out)
+    return _initializer
+
+def conv2d(x, num_filters, name, filter_size=(3, 3), stride=(1, 1), pad=&#34;SAME&#34;, dtype=tf.float32, collections=None,
+           summary_tag=None):
+    with tf.variable_scope(name):
+        stride_shape = [1, stride[0], stride[1], 1]
+        filter_shape = [filter_size[0], filter_size[1], int(x.get_shape()[3]), num_filters]
+
+        # there are &#34;num input feature maps * filter height * filter width&#34;
+        # inputs to each hidden unit
+        fan_in = intprod(filter_shape[:3])
+        # each unit in the lower layer receives a gradient from:
+        # &#34;num output feature maps * filter height * filter width&#34; /
+        #   pooling size
+        fan_out = intprod(filter_shape[:2]) * num_filters
+        # initialize weights with random weights
+        w_bound = np.sqrt(6. / (fan_in + fan_out))
+
+        w = tf.get_variable(&#34;W&#34;, filter_shape, dtype, tf.random_uniform_initializer(-w_bound, w_bound),
+                            collections=collections)
+        b = tf.get_variable(&#34;b&#34;, [1, 1, 1, num_filters], initializer=tf.zeros_initializer(),
+                            collections=collections)
+
+        if summary_tag is not None:
+            tf.summary.image(summary_tag,
+                             tf.transpose(tf.reshape(w, [filter_size[0], filter_size[1], -1, 1]),
+                                          [2, 0, 1, 3]),
+                             max_images=10)
+
+        return tf.nn.conv2d(x, w, stride_shape, pad) + b
+
+# ================================================================
+# Theano-like Function
+# ================================================================
+
+def function(inputs, outputs, updates=None, givens=None):
+    &#34;&#34;&#34;Just like Theano function. Take a bunch of tensorflow placeholders and expressions
+    computed based on those placeholders and produces f(inputs) -&gt; outputs. Function f takes
+    values to be fed to the input&#39;s placeholders and produces the values of the expressions
+    in outputs.
+
+    Input values can be passed in the same order as inputs or can be provided as kwargs based
+    on placeholder name (passed to constructor or accessible via placeholder.op.name).
+
+    Example:
+        x = tf.placeholder(tf.int32, (), name=&#34;x&#34;)
+        y = tf.placeholder(tf.int32, (), name=&#34;y&#34;)
+        z = 3 * x + 2 * y
+        lin = function([x, y], z, givens={y: 0})
+
+        with single_threaded_session():
+            initialize()
+
+            assert lin(2) == 6
+            assert lin(x=3) == 9
+            assert lin(2, 2) == 10
+            assert lin(x=2, y=3) == 12
+
+    Parameters
+    ----------
+    inputs: [tf.placeholder, tf.constant, or object with make_feed_dict method]
+        list of input arguments
+    outputs: [tf.Variable] or tf.Variable
+        list of outputs or a single output to be returned from function. Returned
+        value will also have the same shape.
+    updates: [tf.Operation] or tf.Operation
+        list of update functions or single update function that will be run whenever
+        the function is called. The return is ignored.
+
+    &#34;&#34;&#34;
+    if isinstance(outputs, list):
+        return _Function(inputs, outputs, updates, givens=givens)
+    elif isinstance(outputs, (dict, collections.OrderedDict)):
+        f = _Function(inputs, outputs.values(), updates, givens=givens)
+        return lambda *args, **kwargs: type(outputs)(zip(outputs.keys(), f(*args, **kwargs)))
+    else:
+        f = _Function(inputs, [outputs], updates, givens=givens)
+        return lambda *args, **kwargs: f(*args, **kwargs)[0]
+
+
+class _Function(object):
+    def __init__(self, inputs, outputs, updates, givens):
+        for inpt in inputs:
+            if not hasattr(inpt, &#39;make_feed_dict&#39;) and not (type(inpt) is tf.Tensor and len(inpt.op.inputs) == 0):
+                assert False, &#34;inputs should all be placeholders, constants, or have a make_feed_dict method&#34;
+        self.inputs = inputs
+        self.input_names = {inp.name.split(&#34;/&#34;)[-1].split(&#34;:&#34;)[0]: inp for inp in inputs}
+        updates = updates or []
+        self.update_group = tf.group(*updates)
+        self.outputs_update = list(outputs) + [self.update_group]
+        self.givens = {} if givens is None else givens
+
+    def _feed_input(self, feed_dict, inpt, value):
+        if hasattr(inpt, &#39;make_feed_dict&#39;):
+            feed_dict.update(inpt.make_feed_dict(value))
+        else:
+            feed_dict[inpt] = adjust_shape(inpt, value)
+
+    def __call__(self, *args, **kwargs):
+        assert len(args) + len(kwargs) &lt;= len(self.inputs), &#34;Too many arguments provided&#34;
+        feed_dict = {}
+        # Update feed dict with givens.
+        for inpt in self.givens:
+            feed_dict[inpt] = adjust_shape(inpt, feed_dict.get(inpt, self.givens[inpt]))
+        # Update the args
+        for inpt, value in zip(self.inputs, args):
+            self._feed_input(feed_dict, inpt, value)
+        for inpt_name, value in kwargs.items():
+            self._feed_input(feed_dict, self.input_names[inpt_name], value)
+        results = get_session().run(self.outputs_update, feed_dict=feed_dict)[:-1]
+        return results
+
+# ================================================================
+# Flat vectors
+# ================================================================
+
+def var_shape(x):
+    out = x.get_shape().as_list()
+    assert all(isinstance(a, int) for a in out), \
+        &#34;shape function assumes that shape is fully known&#34;
+    return out
+
+def numel(x):
+    return intprod(var_shape(x))
+
+def intprod(x):
+    return int(np.prod(x))
+
+def flatgrad(loss, var_list, clip_norm=None):
+    grads = tf.gradients(loss, var_list)
+    if clip_norm is not None:
+        grads = [tf.clip_by_norm(grad, clip_norm=clip_norm) for grad in grads]
+    return tf.concat(axis=0, values=[
+        tf.reshape(grad if grad is not None else tf.zeros_like(v), [numel(v)])
+        for (v, grad) in zip(var_list, grads)
+    ])
+
+class SetFromFlat(object):
+    def __init__(self, var_list, dtype=tf.float32):
+        assigns = []
+        shapes = list(map(var_shape, var_list))
+        total_size = np.sum([intprod(shape) for shape in shapes])
+
+        self.theta = theta = tf.placeholder(dtype, [total_size])
+        start = 0
+        assigns = []
+        for (shape, v) in zip(shapes, var_list):
+            size = intprod(shape)
+            assigns.append(tf.assign(v, tf.reshape(theta[start:start + size], shape)))
+            start += size
+        self.op = tf.group(*assigns)
+
+    def __call__(self, theta):
+        tf.get_default_session().run(self.op, feed_dict={self.theta: theta})
+
+class GetFlat(object):
+    def __init__(self, var_list):
+        self.op = tf.concat(axis=0, values=[tf.reshape(v, [numel(v)]) for v in var_list])
+
+    def __call__(self):
+        return tf.get_default_session().run(self.op)
+
+def flattenallbut0(x):
+    return tf.reshape(x, [-1, intprod(x.get_shape().as_list()[1:])])
+
+# =============================================================
+# TF placeholders management
+# ============================================================
+
+_PLACEHOLDER_CACHE = {}  # name -&gt; (placeholder, dtype, shape)
+
+def get_placeholder(name, dtype, shape):
+    if name in _PLACEHOLDER_CACHE:
+        out, dtype1, shape1 = _PLACEHOLDER_CACHE[name]
+        if out.graph == tf.get_default_graph():
+            assert dtype1 == dtype and shape1 == shape, \
+                &#39;Placeholder with name {} has already been registered and has shape {}, different from requested {}&#39;.format(name, shape1, shape)
+            return out
+
+    out = tf.placeholder(dtype=dtype, shape=shape, name=name)
+    _PLACEHOLDER_CACHE[name] = (out, dtype, shape)
+    return out
+
+def get_placeholder_cached(name):
+    return _PLACEHOLDER_CACHE[name][0]
+
+
+
+# ================================================================
+# Diagnostics
+# ================================================================
+
+def display_var_info(vars):
+    from TeachMyAgent.students.openai_baselines import logger
+    count_params = 0
+    for v in vars:
+        name = v.name
+        if &#34;/Adam&#34; in name or &#34;beta1_power&#34; in name or &#34;beta2_power&#34; in name: continue
+        v_params = np.prod(v.shape.as_list())
+        count_params += v_params
+        if &#34;/b:&#34; in name or &#34;/bias&#34; in name: continue    # Wx+b, bias is not interesting to look at =&gt; count params, but not print
+        logger.info(&#34;   %s%s %i params %s&#34; % (name, &#34; &#34;*(55-len(name)), v_params, str(v.shape)))
+
+    logger.info(&#34;Total model parameters: %0.2f million&#34; % (count_params*1e-6))
+
+
+def get_available_gpus(session_config=None):
+    # based on recipe from https://stackoverflow.com/a/38580201
+
+    # Unless we allocate a session here, subsequent attempts to create one
+    # will ignore our custom config (in particular, allow_growth=True will have
+    # no effect).
+    if session_config is None:
+        session_config = get_session()._config
+
+    from tensorflow.python.client import device_lib
+    local_device_protos = device_lib.list_local_devices(session_config)
+    return [x.name for x in local_device_protos if x.device_type == &#39;GPU&#39;]
+
+# ================================================================
+# Saving variables
+# ================================================================
+
+def load_state(fname, sess=None):
+    from TeachMyAgent.students.openai_baselines import logger
+    logger.warn(&#39;load_state method is deprecated, please use load_variables instead&#39;)
+    sess = sess or get_session()
+    saver = tf.train.Saver()
+    saver.restore(tf.get_default_session(), fname)
+
+def save_state(fname, sess=None):
+    from TeachMyAgent.students.openai_baselines import logger
+    logger.warn(&#39;save_state method is deprecated, please use save_variables instead&#39;)
+    sess = sess or get_session()
+    dirname = os.path.dirname(fname)
+    if any(dirname):
+        os.makedirs(dirname, exist_ok=True)
+    saver = tf.train.Saver()
+    saver.save(tf.get_default_session(), fname)
+
+# The methods above and below are clearly doing the same thing, and in a rather similar way
+# TODO: ensure there is no subtle differences and remove one
+
+def save_variables(save_path, variables=None, sess=None):
+    import joblib
+    sess = sess or get_session()
+    variables = variables or tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES)
+
+    ps = sess.run(variables)
+    save_dict = {v.name: value for v, value in zip(variables, ps)}
+    dirname = os.path.dirname(save_path)
+    if any(dirname):
+        os.makedirs(dirname, exist_ok=True)
+    joblib.dump(save_dict, save_path)
+
+def load_variables(load_path, variables=None, sess=None):
+    import joblib
+    sess = sess or get_session()
+    variables = variables or tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES)
+
+    loaded_params = joblib.load(os.path.expanduser(load_path))
+    restores = []
+    if isinstance(loaded_params, list):
+        assert len(loaded_params) == len(variables), &#39;number of variables loaded mismatches len(variables)&#39;
+        for d, v in zip(loaded_params, variables):
+            restores.append(v.assign(d))
+    else:
+        for v in variables:
+            restores.append(v.assign(loaded_params[v.name]))
+
+    sess.run(restores)
+
+# ================================================================
+# Shape adjustment for feeding into tf placeholders
+# ================================================================
+def adjust_shape(placeholder, data):
+    &#39;&#39;&#39;
+    adjust shape of the data to the shape of the placeholder if possible.
+    If shape is incompatible, AssertionError is thrown
+
+    Parameters:
+        placeholder     tensorflow input placeholder
+
+        data            input data to be (potentially) reshaped to be fed into placeholder
+
+    Returns:
+        reshaped data
+    &#39;&#39;&#39;
+
+    if not isinstance(data, np.ndarray) and not isinstance(data, list):
+        return data
+    if isinstance(data, list):
+        data = np.array(data)
+
+    placeholder_shape = [x or -1 for x in placeholder.shape.as_list()]
+
+    assert _check_shape(placeholder_shape, data.shape), \
+        &#39;Shape of data {} is not compatible with shape of the placeholder {}&#39;.format(data.shape, placeholder_shape)
+
+    return np.reshape(data, placeholder_shape)
+
+
+def _check_shape(placeholder_shape, data_shape):
+    &#39;&#39;&#39; check if two shapes are compatible (i.e. differ only by dimensions of size 1, or by the batch dimension)&#39;&#39;&#39;
+
+    return True
+    squeezed_placeholder_shape = _squeeze_shape(placeholder_shape)
+    squeezed_data_shape = _squeeze_shape(data_shape)
+
+    for i, s_data in enumerate(squeezed_data_shape):
+        s_placeholder = squeezed_placeholder_shape[i]
+        if s_placeholder != -1 and s_data != s_placeholder:
+            return False
+
+    return True
+
+
+def _squeeze_shape(shape):
+    return [x for x in shape if x != 1]
+
+# ================================================================
+# Tensorboard interfacing
+# ================================================================
+
+def launch_tensorboard_in_background(log_dir):
+    &#39;&#39;&#39;
+    To log the Tensorflow graph when using rl-algs
+    algorithms, you can run the following code
+    in your main script:
+        import threading, time
+        def start_tensorboard(session):
+            time.sleep(10) # Wait until graph is setup
+            tb_path = osp.join(logger.get_dir(), &#39;tb&#39;)
+            summary_writer = tf.summary.FileWriter(tb_path, graph=session.graph)
+            summary_op = tf.summary.merge_all()
+            launch_tensorboard_in_background(tb_path)
+        session = tf.get_default_session()
+        t = threading.Thread(target=start_tensorboard, args=([session]))
+        t.start()
+    &#39;&#39;&#39;
+    import subprocess
+    subprocess.Popen([&#39;tensorboard&#39;, &#39;--logdir&#39;, log_dir])</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="TeachMyAgent.students.openai_baselines.common.tf_util.adjust_shape"><code class="name flex">
+<span>def <span class="ident">adjust_shape</span></span>(<span>placeholder, data)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>adjust shape of the data to the shape of the placeholder if possible.
+If shape is incompatible, AssertionError is thrown</p>
+<h2 id="parameters">Parameters</h2>
+<p>placeholder
+tensorflow input placeholder</p>
+<p>data
+input data to be (potentially) reshaped to be fed into placeholder</p>
+<h2 id="returns">Returns</h2>
+<p>reshaped data</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def adjust_shape(placeholder, data):
+    &#39;&#39;&#39;
+    adjust shape of the data to the shape of the placeholder if possible.
+    If shape is incompatible, AssertionError is thrown
+
+    Parameters:
+        placeholder     tensorflow input placeholder
+
+        data            input data to be (potentially) reshaped to be fed into placeholder
+
+    Returns:
+        reshaped data
+    &#39;&#39;&#39;
+
+    if not isinstance(data, np.ndarray) and not isinstance(data, list):
+        return data
+    if isinstance(data, list):
+        data = np.array(data)
+
+    placeholder_shape = [x or -1 for x in placeholder.shape.as_list()]
+
+    assert _check_shape(placeholder_shape, data.shape), \
+        &#39;Shape of data {} is not compatible with shape of the placeholder {}&#39;.format(data.shape, placeholder_shape)
+
+    return np.reshape(data, placeholder_shape)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.tf_util.conv2d"><code class="name flex">
+<span>def <span class="ident">conv2d</span></span>(<span>x, num_filters, name, filter_size=(3, 3), stride=(1, 1), pad='SAME', dtype=tf.float32, collections=None, summary_tag=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def conv2d(x, num_filters, name, filter_size=(3, 3), stride=(1, 1), pad=&#34;SAME&#34;, dtype=tf.float32, collections=None,
+           summary_tag=None):
+    with tf.variable_scope(name):
+        stride_shape = [1, stride[0], stride[1], 1]
+        filter_shape = [filter_size[0], filter_size[1], int(x.get_shape()[3]), num_filters]
+
+        # there are &#34;num input feature maps * filter height * filter width&#34;
+        # inputs to each hidden unit
+        fan_in = intprod(filter_shape[:3])
+        # each unit in the lower layer receives a gradient from:
+        # &#34;num output feature maps * filter height * filter width&#34; /
+        #   pooling size
+        fan_out = intprod(filter_shape[:2]) * num_filters
+        # initialize weights with random weights
+        w_bound = np.sqrt(6. / (fan_in + fan_out))
+
+        w = tf.get_variable(&#34;W&#34;, filter_shape, dtype, tf.random_uniform_initializer(-w_bound, w_bound),
+                            collections=collections)
+        b = tf.get_variable(&#34;b&#34;, [1, 1, 1, num_filters], initializer=tf.zeros_initializer(),
+                            collections=collections)
+
+        if summary_tag is not None:
+            tf.summary.image(summary_tag,
+                             tf.transpose(tf.reshape(w, [filter_size[0], filter_size[1], -1, 1]),
+                                          [2, 0, 1, 3]),
+                             max_images=10)
+
+        return tf.nn.conv2d(x, w, stride_shape, pad) + b</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.tf_util.display_var_info"><code class="name flex">
+<span>def <span class="ident">display_var_info</span></span>(<span>vars)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def display_var_info(vars):
+    from TeachMyAgent.students.openai_baselines import logger
+    count_params = 0
+    for v in vars:
+        name = v.name
+        if &#34;/Adam&#34; in name or &#34;beta1_power&#34; in name or &#34;beta2_power&#34; in name: continue
+        v_params = np.prod(v.shape.as_list())
+        count_params += v_params
+        if &#34;/b:&#34; in name or &#34;/bias&#34; in name: continue    # Wx+b, bias is not interesting to look at =&gt; count params, but not print
+        logger.info(&#34;   %s%s %i params %s&#34; % (name, &#34; &#34;*(55-len(name)), v_params, str(v.shape)))
+
+    logger.info(&#34;Total model parameters: %0.2f million&#34; % (count_params*1e-6))</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.tf_util.flatgrad"><code class="name flex">
+<span>def <span class="ident">flatgrad</span></span>(<span>loss, var_list, clip_norm=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def flatgrad(loss, var_list, clip_norm=None):
+    grads = tf.gradients(loss, var_list)
+    if clip_norm is not None:
+        grads = [tf.clip_by_norm(grad, clip_norm=clip_norm) for grad in grads]
+    return tf.concat(axis=0, values=[
+        tf.reshape(grad if grad is not None else tf.zeros_like(v), [numel(v)])
+        for (v, grad) in zip(var_list, grads)
+    ])</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.tf_util.flattenallbut0"><code class="name flex">
+<span>def <span class="ident">flattenallbut0</span></span>(<span>x)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def flattenallbut0(x):
+    return tf.reshape(x, [-1, intprod(x.get_shape().as_list()[1:])])</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.tf_util.function"><code class="name flex">
+<span>def <span class="ident">function</span></span>(<span>inputs, outputs, updates=None, givens=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Just like Theano function. Take a bunch of tensorflow placeholders and expressions
+computed based on those placeholders and produces f(inputs) -&gt; outputs. Function f takes
+values to be fed to the input's placeholders and produces the values of the expressions
+in outputs.</p>
+<p>Input values can be passed in the same order as inputs or can be provided as kwargs based
+on placeholder name (passed to constructor or accessible via placeholder.op.name).</p>
+<h2 id="example">Example</h2>
+<p>x = tf.placeholder(tf.int32, (), name="x")
+y = tf.placeholder(tf.int32, (), name="y")
+z = 3 * x + 2 * y
+lin = function([x, y], z, givens={y: 0})</p>
+<p>with single_threaded_session():
+initialize()</p>
+<pre><code>assert lin(2) == 6
+assert lin(x=3) == 9
+assert lin(2, 2) == 10
+assert lin(x=2, y=3) == 12
+</code></pre>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>inputs</code></strong> :&ensp;<code>[tf.placeholder, tf.constant,</code> or <code>object with make_feed_dict method]</code></dt>
+<dd>list of input arguments</dd>
+<dt><strong><code>outputs</code></strong> :&ensp;<code>[tf.Variable]</code> or <code>tf.Variable</code></dt>
+<dd>list of outputs or a single output to be returned from function. Returned
+value will also have the same shape.</dd>
+<dt><strong><code>updates</code></strong> :&ensp;<code>[tf.Operation]</code> or <code>tf.Operation</code></dt>
+<dd>list of update functions or single update function that will be run whenever
+the function is called. The return is ignored.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def function(inputs, outputs, updates=None, givens=None):
+    &#34;&#34;&#34;Just like Theano function. Take a bunch of tensorflow placeholders and expressions
+    computed based on those placeholders and produces f(inputs) -&gt; outputs. Function f takes
+    values to be fed to the input&#39;s placeholders and produces the values of the expressions
+    in outputs.
+
+    Input values can be passed in the same order as inputs or can be provided as kwargs based
+    on placeholder name (passed to constructor or accessible via placeholder.op.name).
+
+    Example:
+        x = tf.placeholder(tf.int32, (), name=&#34;x&#34;)
+        y = tf.placeholder(tf.int32, (), name=&#34;y&#34;)
+        z = 3 * x + 2 * y
+        lin = function([x, y], z, givens={y: 0})
+
+        with single_threaded_session():
+            initialize()
+
+            assert lin(2) == 6
+            assert lin(x=3) == 9
+            assert lin(2, 2) == 10
+            assert lin(x=2, y=3) == 12
+
+    Parameters
+    ----------
+    inputs: [tf.placeholder, tf.constant, or object with make_feed_dict method]
+        list of input arguments
+    outputs: [tf.Variable] or tf.Variable
+        list of outputs or a single output to be returned from function. Returned
+        value will also have the same shape.
+    updates: [tf.Operation] or tf.Operation
+        list of update functions or single update function that will be run whenever
+        the function is called. The return is ignored.
+
+    &#34;&#34;&#34;
+    if isinstance(outputs, list):
+        return _Function(inputs, outputs, updates, givens=givens)
+    elif isinstance(outputs, (dict, collections.OrderedDict)):
+        f = _Function(inputs, outputs.values(), updates, givens=givens)
+        return lambda *args, **kwargs: type(outputs)(zip(outputs.keys(), f(*args, **kwargs)))
+    else:
+        f = _Function(inputs, [outputs], updates, givens=givens)
+        return lambda *args, **kwargs: f(*args, **kwargs)[0]</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.tf_util.get_available_gpus"><code class="name flex">
+<span>def <span class="ident">get_available_gpus</span></span>(<span>session_config=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_available_gpus(session_config=None):
+    # based on recipe from https://stackoverflow.com/a/38580201
+
+    # Unless we allocate a session here, subsequent attempts to create one
+    # will ignore our custom config (in particular, allow_growth=True will have
+    # no effect).
+    if session_config is None:
+        session_config = get_session()._config
+
+    from tensorflow.python.client import device_lib
+    local_device_protos = device_lib.list_local_devices(session_config)
+    return [x.name for x in local_device_protos if x.device_type == &#39;GPU&#39;]</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.tf_util.get_placeholder"><code class="name flex">
+<span>def <span class="ident">get_placeholder</span></span>(<span>name, dtype, shape)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_placeholder(name, dtype, shape):
+    if name in _PLACEHOLDER_CACHE:
+        out, dtype1, shape1 = _PLACEHOLDER_CACHE[name]
+        if out.graph == tf.get_default_graph():
+            assert dtype1 == dtype and shape1 == shape, \
+                &#39;Placeholder with name {} has already been registered and has shape {}, different from requested {}&#39;.format(name, shape1, shape)
+            return out
+
+    out = tf.placeholder(dtype=dtype, shape=shape, name=name)
+    _PLACEHOLDER_CACHE[name] = (out, dtype, shape)
+    return out</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.tf_util.get_placeholder_cached"><code class="name flex">
+<span>def <span class="ident">get_placeholder_cached</span></span>(<span>name)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_placeholder_cached(name):
+    return _PLACEHOLDER_CACHE[name][0]</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.tf_util.get_session"><code class="name flex">
+<span>def <span class="ident">get_session</span></span>(<span>config=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get default session or create one with a given config</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_session(config=None):
+    &#34;&#34;&#34;Get default session or create one with a given config&#34;&#34;&#34;
+    sess = tf.get_default_session()
+    if sess is None:
+        sess = make_session(config=config, make_default=True)
+    return sess</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.tf_util.huber_loss"><code class="name flex">
+<span>def <span class="ident">huber_loss</span></span>(<span>x, delta=1.0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Reference: <a href="https://en.wikipedia.org/wiki/Huber_loss">https://en.wikipedia.org/wiki/Huber_loss</a></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def huber_loss(x, delta=1.0):
+    &#34;&#34;&#34;Reference: https://en.wikipedia.org/wiki/Huber_loss&#34;&#34;&#34;
+    return tf.where(
+        tf.abs(x) &lt; delta,
+        tf.square(x) * 0.5,
+        delta * (tf.abs(x) - 0.5 * delta)
+    )</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.tf_util.in_session"><code class="name flex">
+<span>def <span class="ident">in_session</span></span>(<span>f)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def in_session(f):
+    @functools.wraps(f)
+    def newfunc(*args, **kwargs):
+        with tf.Session():
+            f(*args, **kwargs)
+    return newfunc</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.tf_util.initialize"><code class="name flex">
+<span>def <span class="ident">initialize</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Initialize all the uninitialized variables in the global scope.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def initialize():
+    &#34;&#34;&#34;Initialize all the uninitialized variables in the global scope.&#34;&#34;&#34;
+    new_variables = set(tf.global_variables()) - ALREADY_INITIALIZED
+    get_session().run(tf.variables_initializer(new_variables))
+    ALREADY_INITIALIZED.update(new_variables)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.tf_util.intprod"><code class="name flex">
+<span>def <span class="ident">intprod</span></span>(<span>x)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def intprod(x):
+    return int(np.prod(x))</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.tf_util.launch_tensorboard_in_background"><code class="name flex">
+<span>def <span class="ident">launch_tensorboard_in_background</span></span>(<span>log_dir)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>To log the Tensorflow graph when using rl-algs
+algorithms, you can run the following code
+in your main script:
+import threading, time
+def start_tensorboard(session):
+time.sleep(10) # Wait until graph is setup
+tb_path = osp.join(logger.get_dir(), 'tb')
+summary_writer = tf.summary.FileWriter(tb_path, graph=session.graph)
+summary_op = tf.summary.merge_all()
+launch_tensorboard_in_background(tb_path)
+session = tf.get_default_session()
+t = threading.Thread(target=start_tensorboard, args=([session]))
+t.start()</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def launch_tensorboard_in_background(log_dir):
+    &#39;&#39;&#39;
+    To log the Tensorflow graph when using rl-algs
+    algorithms, you can run the following code
+    in your main script:
+        import threading, time
+        def start_tensorboard(session):
+            time.sleep(10) # Wait until graph is setup
+            tb_path = osp.join(logger.get_dir(), &#39;tb&#39;)
+            summary_writer = tf.summary.FileWriter(tb_path, graph=session.graph)
+            summary_op = tf.summary.merge_all()
+            launch_tensorboard_in_background(tb_path)
+        session = tf.get_default_session()
+        t = threading.Thread(target=start_tensorboard, args=([session]))
+        t.start()
+    &#39;&#39;&#39;
+    import subprocess
+    subprocess.Popen([&#39;tensorboard&#39;, &#39;--logdir&#39;, log_dir])</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.tf_util.load_state"><code class="name flex">
+<span>def <span class="ident">load_state</span></span>(<span>fname, sess=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def load_state(fname, sess=None):
+    from TeachMyAgent.students.openai_baselines import logger
+    logger.warn(&#39;load_state method is deprecated, please use load_variables instead&#39;)
+    sess = sess or get_session()
+    saver = tf.train.Saver()
+    saver.restore(tf.get_default_session(), fname)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.tf_util.load_variables"><code class="name flex">
+<span>def <span class="ident">load_variables</span></span>(<span>load_path, variables=None, sess=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def load_variables(load_path, variables=None, sess=None):
+    import joblib
+    sess = sess or get_session()
+    variables = variables or tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES)
+
+    loaded_params = joblib.load(os.path.expanduser(load_path))
+    restores = []
+    if isinstance(loaded_params, list):
+        assert len(loaded_params) == len(variables), &#39;number of variables loaded mismatches len(variables)&#39;
+        for d, v in zip(loaded_params, variables):
+            restores.append(v.assign(d))
+    else:
+        for v in variables:
+            restores.append(v.assign(loaded_params[v.name]))
+
+    sess.run(restores)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.tf_util.lrelu"><code class="name flex">
+<span>def <span class="ident">lrelu</span></span>(<span>x, leak=0.2)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def lrelu(x, leak=0.2):
+    f1 = 0.5 * (1 + leak)
+    f2 = 0.5 * (1 - leak)
+    return f1 * x + f2 * abs(x)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.tf_util.make_session"><code class="name flex">
+<span>def <span class="ident">make_session</span></span>(<span>config=None, num_cpu=None, make_default=False, graph=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a session that will use <num_cpu> CPU's only</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def make_session(config=None, num_cpu=None, make_default=False, graph=None):
+    &#34;&#34;&#34;Returns a session that will use &lt;num_cpu&gt; CPU&#39;s only&#34;&#34;&#34;
+    if num_cpu is None:
+        num_cpu = int(os.getenv(&#39;RCALL_NUM_CPU&#39;, multiprocessing.cpu_count()))
+    if config is None:
+        config = tf.ConfigProto(
+            allow_soft_placement=True,
+            inter_op_parallelism_threads=num_cpu,
+            intra_op_parallelism_threads=num_cpu)
+        config.gpu_options.allow_growth = True
+
+    if make_default:
+        return tf.InteractiveSession(config=config, graph=graph)
+    else:
+        return tf.Session(config=config, graph=graph)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.tf_util.normc_initializer"><code class="name flex">
+<span>def <span class="ident">normc_initializer</span></span>(<span>std=1.0, axis=0)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def normc_initializer(std=1.0, axis=0):
+    def _initializer(shape, dtype=None, partition_info=None):  # pylint: disable=W0613
+        out = np.random.randn(*shape).astype(dtype.as_numpy_dtype)
+        out *= std / np.sqrt(np.square(out).sum(axis=axis, keepdims=True))
+        return tf.constant(out)
+    return _initializer</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.tf_util.numel"><code class="name flex">
+<span>def <span class="ident">numel</span></span>(<span>x)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def numel(x):
+    return intprod(var_shape(x))</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.tf_util.save_state"><code class="name flex">
+<span>def <span class="ident">save_state</span></span>(<span>fname, sess=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save_state(fname, sess=None):
+    from TeachMyAgent.students.openai_baselines import logger
+    logger.warn(&#39;save_state method is deprecated, please use save_variables instead&#39;)
+    sess = sess or get_session()
+    dirname = os.path.dirname(fname)
+    if any(dirname):
+        os.makedirs(dirname, exist_ok=True)
+    saver = tf.train.Saver()
+    saver.save(tf.get_default_session(), fname)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.tf_util.save_variables"><code class="name flex">
+<span>def <span class="ident">save_variables</span></span>(<span>save_path, variables=None, sess=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save_variables(save_path, variables=None, sess=None):
+    import joblib
+    sess = sess or get_session()
+    variables = variables or tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES)
+
+    ps = sess.run(variables)
+    save_dict = {v.name: value for v, value in zip(variables, ps)}
+    dirname = os.path.dirname(save_path)
+    if any(dirname):
+        os.makedirs(dirname, exist_ok=True)
+    joblib.dump(save_dict, save_path)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.tf_util.single_threaded_session"><code class="name flex">
+<span>def <span class="ident">single_threaded_session</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a session which will only use a single CPU</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def single_threaded_session():
+    &#34;&#34;&#34;Returns a session which will only use a single CPU&#34;&#34;&#34;
+    return make_session(num_cpu=1)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.tf_util.switch"><code class="name flex">
+<span>def <span class="ident">switch</span></span>(<span>condition, then_expression, else_expression)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Switches between two operations depending on a scalar value (int or bool).
+Note that both <code>then_expression</code> and <code>else_expression</code>
+should be symbolic tensors of the <em>same shape</em>.</p>
+<h1 id="arguments">Arguments</h1>
+<pre><code>condition: scalar tensor.
+then_expression: TensorFlow operation.
+else_expression: TensorFlow operation.
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def switch(condition, then_expression, else_expression):
+    &#34;&#34;&#34;Switches between two operations depending on a scalar value (int or bool).
+    Note that both `then_expression` and `else_expression`
+    should be symbolic tensors of the *same shape*.
+
+    # Arguments
+        condition: scalar tensor.
+        then_expression: TensorFlow operation.
+        else_expression: TensorFlow operation.
+    &#34;&#34;&#34;
+    x_shape = copy.copy(then_expression.get_shape())
+    x = tf.cond(tf.cast(condition, &#39;bool&#39;),
+                lambda: then_expression,
+                lambda: else_expression)
+    x.set_shape(x_shape)
+    return x</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.tf_util.var_shape"><code class="name flex">
+<span>def <span class="ident">var_shape</span></span>(<span>x)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def var_shape(x):
+    out = x.get_shape().as_list()
+    assert all(isinstance(a, int) for a in out), \
+        &#34;shape function assumes that shape is fully known&#34;
+    return out</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="TeachMyAgent.students.openai_baselines.common.tf_util.GetFlat"><code class="flex name class">
+<span>class <span class="ident">GetFlat</span></span>
+<span>(</span><span>var_list)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class GetFlat(object):
+    def __init__(self, var_list):
+        self.op = tf.concat(axis=0, values=[tf.reshape(v, [numel(v)]) for v in var_list])
+
+    def __call__(self):
+        return tf.get_default_session().run(self.op)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.tf_util.SetFromFlat"><code class="flex name class">
+<span>class <span class="ident">SetFromFlat</span></span>
+<span>(</span><span>var_list, dtype=tf.float32)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SetFromFlat(object):
+    def __init__(self, var_list, dtype=tf.float32):
+        assigns = []
+        shapes = list(map(var_shape, var_list))
+        total_size = np.sum([intprod(shape) for shape in shapes])
+
+        self.theta = theta = tf.placeholder(dtype, [total_size])
+        start = 0
+        assigns = []
+        for (shape, v) in zip(shapes, var_list):
+            size = intprod(shape)
+            assigns.append(tf.assign(v, tf.reshape(theta[start:start + size], shape)))
+            start += size
+        self.op = tf.group(*assigns)
+
+    def __call__(self, theta):
+        tf.get_default_session().run(self.op, feed_dict={self.theta: theta})</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<a href="https://teachmyagent.github.io/doc/index.html">
+<img src="https://teachmyagent.github.io/images/home/head-image.png" style="display: block; margin: 1em auto">
+</a>
+<a href="https://teachmyagent.github.io/index.html">Website</a>
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common" href="index.html">TeachMyAgent.students.openai_baselines.common</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.tf_util.adjust_shape" href="#TeachMyAgent.students.openai_baselines.common.tf_util.adjust_shape">adjust_shape</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.tf_util.conv2d" href="#TeachMyAgent.students.openai_baselines.common.tf_util.conv2d">conv2d</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.tf_util.display_var_info" href="#TeachMyAgent.students.openai_baselines.common.tf_util.display_var_info">display_var_info</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.tf_util.flatgrad" href="#TeachMyAgent.students.openai_baselines.common.tf_util.flatgrad">flatgrad</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.tf_util.flattenallbut0" href="#TeachMyAgent.students.openai_baselines.common.tf_util.flattenallbut0">flattenallbut0</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.tf_util.function" href="#TeachMyAgent.students.openai_baselines.common.tf_util.function">function</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.tf_util.get_available_gpus" href="#TeachMyAgent.students.openai_baselines.common.tf_util.get_available_gpus">get_available_gpus</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.tf_util.get_placeholder" href="#TeachMyAgent.students.openai_baselines.common.tf_util.get_placeholder">get_placeholder</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.tf_util.get_placeholder_cached" href="#TeachMyAgent.students.openai_baselines.common.tf_util.get_placeholder_cached">get_placeholder_cached</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.tf_util.get_session" href="#TeachMyAgent.students.openai_baselines.common.tf_util.get_session">get_session</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.tf_util.huber_loss" href="#TeachMyAgent.students.openai_baselines.common.tf_util.huber_loss">huber_loss</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.tf_util.in_session" href="#TeachMyAgent.students.openai_baselines.common.tf_util.in_session">in_session</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.tf_util.initialize" href="#TeachMyAgent.students.openai_baselines.common.tf_util.initialize">initialize</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.tf_util.intprod" href="#TeachMyAgent.students.openai_baselines.common.tf_util.intprod">intprod</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.tf_util.launch_tensorboard_in_background" href="#TeachMyAgent.students.openai_baselines.common.tf_util.launch_tensorboard_in_background">launch_tensorboard_in_background</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.tf_util.load_state" href="#TeachMyAgent.students.openai_baselines.common.tf_util.load_state">load_state</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.tf_util.load_variables" href="#TeachMyAgent.students.openai_baselines.common.tf_util.load_variables">load_variables</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.tf_util.lrelu" href="#TeachMyAgent.students.openai_baselines.common.tf_util.lrelu">lrelu</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.tf_util.make_session" href="#TeachMyAgent.students.openai_baselines.common.tf_util.make_session">make_session</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.tf_util.normc_initializer" href="#TeachMyAgent.students.openai_baselines.common.tf_util.normc_initializer">normc_initializer</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.tf_util.numel" href="#TeachMyAgent.students.openai_baselines.common.tf_util.numel">numel</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.tf_util.save_state" href="#TeachMyAgent.students.openai_baselines.common.tf_util.save_state">save_state</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.tf_util.save_variables" href="#TeachMyAgent.students.openai_baselines.common.tf_util.save_variables">save_variables</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.tf_util.single_threaded_session" href="#TeachMyAgent.students.openai_baselines.common.tf_util.single_threaded_session">single_threaded_session</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.tf_util.switch" href="#TeachMyAgent.students.openai_baselines.common.tf_util.switch">switch</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.tf_util.var_shape" href="#TeachMyAgent.students.openai_baselines.common.tf_util.var_shape">var_shape</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="TeachMyAgent.students.openai_baselines.common.tf_util.GetFlat" href="#TeachMyAgent.students.openai_baselines.common.tf_util.GetFlat">GetFlat</a></code></h4>
+</li>
+<li>
+<h4><code><a title="TeachMyAgent.students.openai_baselines.common.tf_util.SetFromFlat" href="#TeachMyAgent.students.openai_baselines.common.tf_util.SetFromFlat">SetFromFlat</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

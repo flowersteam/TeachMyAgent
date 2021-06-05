@@ -1,0 +1,807 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>TeachMyAgent.students.openai_baselines.common.models API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>TeachMyAgent.students.openai_baselines.common.models</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import numpy as np
+import tensorflow as tf
+from TeachMyAgent.students.openai_baselines.a2c import utils
+from TeachMyAgent.students.openai_baselines.a2c.utils import conv, fc, conv_to_fc, batch_to_seq, seq_to_batch
+from TeachMyAgent.students.openai_baselines.common.mpi_running_mean_std import RunningMeanStd
+
+mapping = {}
+
+def register(name):
+    def _thunk(func):
+        mapping[name] = func
+        return func
+    return _thunk
+
+def nature_cnn(unscaled_images, **conv_kwargs):
+    &#34;&#34;&#34;
+    CNN from Nature paper.
+    &#34;&#34;&#34;
+    scaled_images = tf.cast(unscaled_images, tf.float32) / 255.
+    activ = tf.nn.relu
+    h = activ(conv(scaled_images, &#39;c1&#39;, nf=32, rf=8, stride=4, init_scale=np.sqrt(2),
+                   **conv_kwargs))
+    h2 = activ(conv(h, &#39;c2&#39;, nf=64, rf=4, stride=2, init_scale=np.sqrt(2), **conv_kwargs))
+    h3 = activ(conv(h2, &#39;c3&#39;, nf=64, rf=3, stride=1, init_scale=np.sqrt(2), **conv_kwargs))
+    h3 = conv_to_fc(h3)
+    return activ(fc(h3, &#39;fc1&#39;, nh=512, init_scale=np.sqrt(2)))
+
+def build_impala_cnn(unscaled_images, depths=[16,32,32], **conv_kwargs):
+    &#34;&#34;&#34;
+    Model used in the paper &#34;IMPALA: Scalable Distributed Deep-RL with
+    Importance Weighted Actor-Learner Architectures&#34; https://arxiv.org/abs/1802.01561
+    &#34;&#34;&#34;
+
+    layer_num = 0
+
+    def get_layer_num_str():
+        nonlocal layer_num
+        num_str = str(layer_num)
+        layer_num += 1
+        return num_str
+
+    def conv_layer(out, depth):
+        return tf.layers.conv2d(out, depth, 3, padding=&#39;same&#39;, name=&#39;layer_&#39; + get_layer_num_str())
+
+    def residual_block(inputs):
+        depth = inputs.get_shape()[-1].value
+
+        out = tf.nn.relu(inputs)
+
+        out = conv_layer(out, depth)
+        out = tf.nn.relu(out)
+        out = conv_layer(out, depth)
+        return out + inputs
+
+    def conv_sequence(inputs, depth):
+        out = conv_layer(inputs, depth)
+        out = tf.layers.max_pooling2d(out, pool_size=3, strides=2, padding=&#39;same&#39;)
+        out = residual_block(out)
+        out = residual_block(out)
+        return out
+
+    out = tf.cast(unscaled_images, tf.float32) / 255.
+
+    for depth in depths:
+        out = conv_sequence(out, depth)
+
+    out = tf.layers.flatten(out)
+    out = tf.nn.relu(out)
+    out = tf.layers.dense(out, 256, activation=tf.nn.relu, name=&#39;layer_&#39; + get_layer_num_str())
+
+    return out
+
+
+@register(&#34;mlp&#34;)
+def mlp(num_layers=2, num_hidden=64, activation=tf.tanh, layer_norm=False):
+    &#34;&#34;&#34;
+    Stack of fully-connected layers to be used in a policy / q-function approximator
+
+    Parameters:
+    ----------
+
+    num_layers: int                 number of fully-connected layers (default: 2)
+
+    num_hidden: int                 size of fully-connected layers (default: 64)
+
+    activation:                     activation function (default: tf.tanh)
+
+    Returns:
+    -------
+
+    function that builds fully connected network with a given input tensor / placeholder
+    &#34;&#34;&#34;
+    def network_fn(X):
+        h = tf.layers.flatten(X)
+        for i in range(num_layers):
+            h = fc(h, &#39;mlp_fc{}&#39;.format(i), nh=num_hidden, init_scale=np.sqrt(2))
+            if layer_norm:
+                h = tf.contrib.layers.layer_norm(h, center=True, scale=True)
+            h = activation(h)
+
+        return h
+
+    return network_fn
+
+@register(&#34;custom_mlp&#34;)
+def mlp(hidden_sizes=[64, 64], activation=tf.tanh, layer_norm=False):
+    &#34;&#34;&#34;
+    Stack of fully-connected layers to be used in a policy / q-function approximator
+
+    Parameters:
+    ----------
+
+    hidden_sizes: list              list of layers&#39; size
+
+    activation:                     activation function (default: tf.tanh)
+
+    Returns:
+    -------
+
+    function that builds fully connected network with a given input tensor / placeholder
+    &#34;&#34;&#34;
+    def network_fn(X):
+        h = tf.layers.flatten(X)
+        for i in range(len(hidden_sizes)):
+            h = fc(h, &#39;mlp_fc{}&#39;.format(i), nh=hidden_sizes[i], init_scale=np.sqrt(2))
+            if layer_norm:
+                h = tf.contrib.layers.layer_norm(h, center=True, scale=True)
+            h = activation(h)
+
+        return h
+
+    return network_fn
+
+
+@register(&#34;cnn&#34;)
+def cnn(**conv_kwargs):
+    def network_fn(X):
+        return nature_cnn(X, **conv_kwargs)
+    return network_fn
+
+@register(&#34;impala_cnn&#34;)
+def impala_cnn(**conv_kwargs):
+    def network_fn(X):
+        return build_impala_cnn(X)
+    return network_fn
+
+@register(&#34;cnn_small&#34;)
+def cnn_small(**conv_kwargs):
+    def network_fn(X):
+        h = tf.cast(X, tf.float32) / 255.
+
+        activ = tf.nn.relu
+        h = activ(conv(h, &#39;c1&#39;, nf=8, rf=8, stride=4, init_scale=np.sqrt(2), **conv_kwargs))
+        h = activ(conv(h, &#39;c2&#39;, nf=16, rf=4, stride=2, init_scale=np.sqrt(2), **conv_kwargs))
+        h = conv_to_fc(h)
+        h = activ(fc(h, &#39;fc1&#39;, nh=128, init_scale=np.sqrt(2)))
+        return h
+    return network_fn
+
+@register(&#34;lstm&#34;)
+def lstm(hidden_sizes=128, layer_norm=False):
+    &#34;&#34;&#34;
+    Builds LSTM (Long-Short Term Memory) network to be used in a policy.
+    Note that the resulting function returns not only the output of the LSTM
+    (i.e. hidden state of lstm for each step in the sequence), but also a dictionary
+    with auxiliary tensors to be set as policy attributes.
+
+    Specifically,
+        S is a placeholder to feed current state (LSTM state has to be managed outside policy)
+        M is a placeholder for the mask (used to mask out observations after the end of the episode, but can be used for other purposes too)
+        initial_state is a numpy array containing initial lstm state (usually zeros)
+        state is the output LSTM state (to be fed into S at the next call)
+
+
+    An example of usage of lstm-based policy can be found here: common/tests/test_doc_examples.py/test_lstm_example
+
+    Parameters:
+    ----------
+
+    nlstm: int          LSTM hidden state size
+
+    layer_norm: bool    if True, layer-normalized version of LSTM is used
+
+    Returns:
+    -------
+
+    function that builds LSTM with a given input tensor / placeholder
+    &#34;&#34;&#34;
+
+    def network_fn(X, nenv=1):
+        nbatch = X.shape[0]
+        nsteps = nbatch // nenv
+
+        h = tf.layers.flatten(X)
+
+        M = tf.placeholder(tf.float32, [nbatch]) #mask (done t-1)
+        S = tf.placeholder(tf.float32, [nenv, 2*hidden_sizes]) #states
+
+        xs = batch_to_seq(h, nenv, nsteps)
+        ms = batch_to_seq(M, nenv, nsteps)
+
+        if layer_norm:
+            h5, snew = utils.lnlstm(xs, ms, S, scope=&#39;lnlstm&#39;, nh=hidden_sizes)
+        else:
+            h5, snew = utils.lstm(xs, ms, S, scope=&#39;lstm&#39;, nh=hidden_sizes)
+
+        h = seq_to_batch(h5)
+        initial_state = np.zeros(S.shape.as_list(), dtype=float)
+
+        return h, {&#39;S&#39;:S, &#39;M&#39;:M, &#39;state&#39;:snew, &#39;initial_state&#39;:initial_state}
+
+    return network_fn
+
+
+@register(&#34;cnn_lstm&#34;)
+def cnn_lstm(nlstm=128, layer_norm=False, conv_fn=nature_cnn, **conv_kwargs):
+    def network_fn(X, nenv=1):
+        nbatch = X.shape[0]
+        nsteps = nbatch // nenv
+
+        h = conv_fn(X, **conv_kwargs)
+
+        M = tf.placeholder(tf.float32, [nbatch]) #mask (done t-1)
+        S = tf.placeholder(tf.float32, [nenv, 2*nlstm]) #states
+
+        xs = batch_to_seq(h, nenv, nsteps)
+        ms = batch_to_seq(M, nenv, nsteps)
+
+        if layer_norm:
+            h5, snew = utils.lnlstm(xs, ms, S, scope=&#39;lnlstm&#39;, nh=nlstm)
+        else:
+            h5, snew = utils.lstm(xs, ms, S, scope=&#39;lstm&#39;, nh=nlstm)
+
+        h = seq_to_batch(h5)
+        initial_state = np.zeros(S.shape.as_list(), dtype=float)
+
+        return h, {&#39;S&#39;:S, &#39;M&#39;:M, &#39;state&#39;:snew, &#39;initial_state&#39;:initial_state}
+
+    return network_fn
+
+@register(&#34;impala_cnn_lstm&#34;)
+def impala_cnn_lstm():
+    return cnn_lstm(nlstm=256, conv_fn=build_impala_cnn)
+
+@register(&#34;cnn_lnlstm&#34;)
+def cnn_lnlstm(nlstm=128, **conv_kwargs):
+    return cnn_lstm(nlstm, layer_norm=True, **conv_kwargs)
+
+
+@register(&#34;conv_only&#34;)
+def conv_only(convs=[(32, 8, 4), (64, 4, 2), (64, 3, 1)], **conv_kwargs):
+    &#39;&#39;&#39;
+    convolutions-only net
+
+    Parameters:
+    ----------
+
+    conv:       list of triples (filter_number, filter_size, stride) specifying parameters for each layer.
+
+    Returns:
+
+    function that takes tensorflow tensor as input and returns the output of the last convolutional layer
+
+    &#39;&#39;&#39;
+
+    def network_fn(X):
+        out = tf.cast(X, tf.float32) / 255.
+        with tf.variable_scope(&#34;convnet&#34;):
+            for num_outputs, kernel_size, stride in convs:
+                out = tf.contrib.layers.convolution2d(out,
+                                           num_outputs=num_outputs,
+                                           kernel_size=kernel_size,
+                                           stride=stride,
+                                           activation_fn=tf.nn.relu,
+                                           **conv_kwargs)
+
+        return out
+    return network_fn
+
+def _normalize_clip_observation(x, clip_range=[-5.0, 5.0]):
+    rms = RunningMeanStd(shape=x.shape[1:])
+    norm_x = tf.clip_by_value((x - rms.mean) / rms.std, min(clip_range), max(clip_range))
+    return norm_x, rms
+
+
+def get_network_builder(name):
+    &#34;&#34;&#34;
+    If you want to register your own network outside models.py, you just need:
+
+    Usage Example:
+    -------------
+    from TeachMyAgent.students.openai_baselines.common.models import register
+    @register(&#34;your_network_name&#34;)
+    def your_network_define(**net_kwargs):
+        ...
+        return network_fn
+
+    &#34;&#34;&#34;
+    if callable(name):
+        return name
+    elif name in mapping:
+        return mapping[name]
+    else:
+        raise ValueError(&#39;Unknown network type: {}&#39;.format(name))</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="TeachMyAgent.students.openai_baselines.common.models.build_impala_cnn"><code class="name flex">
+<span>def <span class="ident">build_impala_cnn</span></span>(<span>unscaled_images, depths=[16, 32, 32], **conv_kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Model used in the paper "IMPALA: Scalable Distributed Deep-RL with
+Importance Weighted Actor-Learner Architectures" <a href="https://arxiv.org/abs/1802.01561">https://arxiv.org/abs/1802.01561</a></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def build_impala_cnn(unscaled_images, depths=[16,32,32], **conv_kwargs):
+    &#34;&#34;&#34;
+    Model used in the paper &#34;IMPALA: Scalable Distributed Deep-RL with
+    Importance Weighted Actor-Learner Architectures&#34; https://arxiv.org/abs/1802.01561
+    &#34;&#34;&#34;
+
+    layer_num = 0
+
+    def get_layer_num_str():
+        nonlocal layer_num
+        num_str = str(layer_num)
+        layer_num += 1
+        return num_str
+
+    def conv_layer(out, depth):
+        return tf.layers.conv2d(out, depth, 3, padding=&#39;same&#39;, name=&#39;layer_&#39; + get_layer_num_str())
+
+    def residual_block(inputs):
+        depth = inputs.get_shape()[-1].value
+
+        out = tf.nn.relu(inputs)
+
+        out = conv_layer(out, depth)
+        out = tf.nn.relu(out)
+        out = conv_layer(out, depth)
+        return out + inputs
+
+    def conv_sequence(inputs, depth):
+        out = conv_layer(inputs, depth)
+        out = tf.layers.max_pooling2d(out, pool_size=3, strides=2, padding=&#39;same&#39;)
+        out = residual_block(out)
+        out = residual_block(out)
+        return out
+
+    out = tf.cast(unscaled_images, tf.float32) / 255.
+
+    for depth in depths:
+        out = conv_sequence(out, depth)
+
+    out = tf.layers.flatten(out)
+    out = tf.nn.relu(out)
+    out = tf.layers.dense(out, 256, activation=tf.nn.relu, name=&#39;layer_&#39; + get_layer_num_str())
+
+    return out</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.models.cnn"><code class="name flex">
+<span>def <span class="ident">cnn</span></span>(<span>**conv_kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@register(&#34;cnn&#34;)
+def cnn(**conv_kwargs):
+    def network_fn(X):
+        return nature_cnn(X, **conv_kwargs)
+    return network_fn</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.models.cnn_lnlstm"><code class="name flex">
+<span>def <span class="ident">cnn_lnlstm</span></span>(<span>nlstm=128, **conv_kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@register(&#34;cnn_lnlstm&#34;)
+def cnn_lnlstm(nlstm=128, **conv_kwargs):
+    return cnn_lstm(nlstm, layer_norm=True, **conv_kwargs)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.models.cnn_lstm"><code class="name flex">
+<span>def <span class="ident">cnn_lstm</span></span>(<span>nlstm=128, layer_norm=False, conv_fn=&lt;function nature_cnn&gt;, **conv_kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@register(&#34;cnn_lstm&#34;)
+def cnn_lstm(nlstm=128, layer_norm=False, conv_fn=nature_cnn, **conv_kwargs):
+    def network_fn(X, nenv=1):
+        nbatch = X.shape[0]
+        nsteps = nbatch // nenv
+
+        h = conv_fn(X, **conv_kwargs)
+
+        M = tf.placeholder(tf.float32, [nbatch]) #mask (done t-1)
+        S = tf.placeholder(tf.float32, [nenv, 2*nlstm]) #states
+
+        xs = batch_to_seq(h, nenv, nsteps)
+        ms = batch_to_seq(M, nenv, nsteps)
+
+        if layer_norm:
+            h5, snew = utils.lnlstm(xs, ms, S, scope=&#39;lnlstm&#39;, nh=nlstm)
+        else:
+            h5, snew = utils.lstm(xs, ms, S, scope=&#39;lstm&#39;, nh=nlstm)
+
+        h = seq_to_batch(h5)
+        initial_state = np.zeros(S.shape.as_list(), dtype=float)
+
+        return h, {&#39;S&#39;:S, &#39;M&#39;:M, &#39;state&#39;:snew, &#39;initial_state&#39;:initial_state}
+
+    return network_fn</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.models.cnn_small"><code class="name flex">
+<span>def <span class="ident">cnn_small</span></span>(<span>**conv_kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@register(&#34;cnn_small&#34;)
+def cnn_small(**conv_kwargs):
+    def network_fn(X):
+        h = tf.cast(X, tf.float32) / 255.
+
+        activ = tf.nn.relu
+        h = activ(conv(h, &#39;c1&#39;, nf=8, rf=8, stride=4, init_scale=np.sqrt(2), **conv_kwargs))
+        h = activ(conv(h, &#39;c2&#39;, nf=16, rf=4, stride=2, init_scale=np.sqrt(2), **conv_kwargs))
+        h = conv_to_fc(h)
+        h = activ(fc(h, &#39;fc1&#39;, nh=128, init_scale=np.sqrt(2)))
+        return h
+    return network_fn</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.models.conv_only"><code class="name flex">
+<span>def <span class="ident">conv_only</span></span>(<span>convs=[(32, 8, 4), (64, 4, 2), (64, 3, 1)], **conv_kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>convolutions-only net</p>
+<h2 id="parameters">Parameters:</h2>
+<p>conv:
+list of triples (filter_number, filter_size, stride) specifying parameters for each layer.</p>
+<p>Returns:</p>
+<p>function that takes tensorflow tensor as input and returns the output of the last convolutional layer</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@register(&#34;conv_only&#34;)
+def conv_only(convs=[(32, 8, 4), (64, 4, 2), (64, 3, 1)], **conv_kwargs):
+    &#39;&#39;&#39;
+    convolutions-only net
+
+    Parameters:
+    ----------
+
+    conv:       list of triples (filter_number, filter_size, stride) specifying parameters for each layer.
+
+    Returns:
+
+    function that takes tensorflow tensor as input and returns the output of the last convolutional layer
+
+    &#39;&#39;&#39;
+
+    def network_fn(X):
+        out = tf.cast(X, tf.float32) / 255.
+        with tf.variable_scope(&#34;convnet&#34;):
+            for num_outputs, kernel_size, stride in convs:
+                out = tf.contrib.layers.convolution2d(out,
+                                           num_outputs=num_outputs,
+                                           kernel_size=kernel_size,
+                                           stride=stride,
+                                           activation_fn=tf.nn.relu,
+                                           **conv_kwargs)
+
+        return out
+    return network_fn</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.models.get_network_builder"><code class="name flex">
+<span>def <span class="ident">get_network_builder</span></span>(<span>name)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>If you want to register your own network outside models.py, you just need:</p>
+<h2 id="usage-example">Usage Example:</h2>
+<p>from TeachMyAgent.students.openai_baselines.common.models import register
+@register("your_network_name")
+def your_network_define(**net_kwargs):
+&hellip;
+return network_fn</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_network_builder(name):
+    &#34;&#34;&#34;
+    If you want to register your own network outside models.py, you just need:
+
+    Usage Example:
+    -------------
+    from TeachMyAgent.students.openai_baselines.common.models import register
+    @register(&#34;your_network_name&#34;)
+    def your_network_define(**net_kwargs):
+        ...
+        return network_fn
+
+    &#34;&#34;&#34;
+    if callable(name):
+        return name
+    elif name in mapping:
+        return mapping[name]
+    else:
+        raise ValueError(&#39;Unknown network type: {}&#39;.format(name))</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.models.impala_cnn"><code class="name flex">
+<span>def <span class="ident">impala_cnn</span></span>(<span>**conv_kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@register(&#34;impala_cnn&#34;)
+def impala_cnn(**conv_kwargs):
+    def network_fn(X):
+        return build_impala_cnn(X)
+    return network_fn</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.models.impala_cnn_lstm"><code class="name flex">
+<span>def <span class="ident">impala_cnn_lstm</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@register(&#34;impala_cnn_lstm&#34;)
+def impala_cnn_lstm():
+    return cnn_lstm(nlstm=256, conv_fn=build_impala_cnn)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.models.lstm"><code class="name flex">
+<span>def <span class="ident">lstm</span></span>(<span>hidden_sizes=128, layer_norm=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Builds LSTM (Long-Short Term Memory) network to be used in a policy.
+Note that the resulting function returns not only the output of the LSTM
+(i.e. hidden state of lstm for each step in the sequence), but also a dictionary
+with auxiliary tensors to be set as policy attributes.</p>
+<p>Specifically,
+S is a placeholder to feed current state (LSTM state has to be managed outside policy)
+M is a placeholder for the mask (used to mask out observations after the end of the episode, but can be used for other purposes too)
+initial_state is a numpy array containing initial lstm state (usually zeros)
+state is the output LSTM state (to be fed into S at the next call)</p>
+<p>An example of usage of lstm-based policy can be found here: common/tests/test_doc_examples.py/test_lstm_example</p>
+<h2 id="parameters">Parameters:</h2>
+<p>nlstm: int
+LSTM hidden state size</p>
+<p>layer_norm: bool
+if True, layer-normalized version of LSTM is used</p>
+<h2 id="returns">Returns:</h2>
+<p>function that builds LSTM with a given input tensor / placeholder</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@register(&#34;lstm&#34;)
+def lstm(hidden_sizes=128, layer_norm=False):
+    &#34;&#34;&#34;
+    Builds LSTM (Long-Short Term Memory) network to be used in a policy.
+    Note that the resulting function returns not only the output of the LSTM
+    (i.e. hidden state of lstm for each step in the sequence), but also a dictionary
+    with auxiliary tensors to be set as policy attributes.
+
+    Specifically,
+        S is a placeholder to feed current state (LSTM state has to be managed outside policy)
+        M is a placeholder for the mask (used to mask out observations after the end of the episode, but can be used for other purposes too)
+        initial_state is a numpy array containing initial lstm state (usually zeros)
+        state is the output LSTM state (to be fed into S at the next call)
+
+
+    An example of usage of lstm-based policy can be found here: common/tests/test_doc_examples.py/test_lstm_example
+
+    Parameters:
+    ----------
+
+    nlstm: int          LSTM hidden state size
+
+    layer_norm: bool    if True, layer-normalized version of LSTM is used
+
+    Returns:
+    -------
+
+    function that builds LSTM with a given input tensor / placeholder
+    &#34;&#34;&#34;
+
+    def network_fn(X, nenv=1):
+        nbatch = X.shape[0]
+        nsteps = nbatch // nenv
+
+        h = tf.layers.flatten(X)
+
+        M = tf.placeholder(tf.float32, [nbatch]) #mask (done t-1)
+        S = tf.placeholder(tf.float32, [nenv, 2*hidden_sizes]) #states
+
+        xs = batch_to_seq(h, nenv, nsteps)
+        ms = batch_to_seq(M, nenv, nsteps)
+
+        if layer_norm:
+            h5, snew = utils.lnlstm(xs, ms, S, scope=&#39;lnlstm&#39;, nh=hidden_sizes)
+        else:
+            h5, snew = utils.lstm(xs, ms, S, scope=&#39;lstm&#39;, nh=hidden_sizes)
+
+        h = seq_to_batch(h5)
+        initial_state = np.zeros(S.shape.as_list(), dtype=float)
+
+        return h, {&#39;S&#39;:S, &#39;M&#39;:M, &#39;state&#39;:snew, &#39;initial_state&#39;:initial_state}
+
+    return network_fn</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.models.mlp"><code class="name flex">
+<span>def <span class="ident">mlp</span></span>(<span>hidden_sizes=[64, 64], activation=&lt;function tanh&gt;, layer_norm=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Stack of fully-connected layers to be used in a policy / q-function approximator</p>
+<h2 id="parameters">Parameters:</h2>
+<p>hidden_sizes: list
+list of layers' size</p>
+<p>activation:
+activation function (default: tf.tanh)</p>
+<h2 id="returns">Returns:</h2>
+<p>function that builds fully connected network with a given input tensor / placeholder</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@register(&#34;custom_mlp&#34;)
+def mlp(hidden_sizes=[64, 64], activation=tf.tanh, layer_norm=False):
+    &#34;&#34;&#34;
+    Stack of fully-connected layers to be used in a policy / q-function approximator
+
+    Parameters:
+    ----------
+
+    hidden_sizes: list              list of layers&#39; size
+
+    activation:                     activation function (default: tf.tanh)
+
+    Returns:
+    -------
+
+    function that builds fully connected network with a given input tensor / placeholder
+    &#34;&#34;&#34;
+    def network_fn(X):
+        h = tf.layers.flatten(X)
+        for i in range(len(hidden_sizes)):
+            h = fc(h, &#39;mlp_fc{}&#39;.format(i), nh=hidden_sizes[i], init_scale=np.sqrt(2))
+            if layer_norm:
+                h = tf.contrib.layers.layer_norm(h, center=True, scale=True)
+            h = activation(h)
+
+        return h
+
+    return network_fn</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.models.nature_cnn"><code class="name flex">
+<span>def <span class="ident">nature_cnn</span></span>(<span>unscaled_images, **conv_kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>CNN from Nature paper.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def nature_cnn(unscaled_images, **conv_kwargs):
+    &#34;&#34;&#34;
+    CNN from Nature paper.
+    &#34;&#34;&#34;
+    scaled_images = tf.cast(unscaled_images, tf.float32) / 255.
+    activ = tf.nn.relu
+    h = activ(conv(scaled_images, &#39;c1&#39;, nf=32, rf=8, stride=4, init_scale=np.sqrt(2),
+                   **conv_kwargs))
+    h2 = activ(conv(h, &#39;c2&#39;, nf=64, rf=4, stride=2, init_scale=np.sqrt(2), **conv_kwargs))
+    h3 = activ(conv(h2, &#39;c3&#39;, nf=64, rf=3, stride=1, init_scale=np.sqrt(2), **conv_kwargs))
+    h3 = conv_to_fc(h3)
+    return activ(fc(h3, &#39;fc1&#39;, nh=512, init_scale=np.sqrt(2)))</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.models.register"><code class="name flex">
+<span>def <span class="ident">register</span></span>(<span>name)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def register(name):
+    def _thunk(func):
+        mapping[name] = func
+        return func
+    return _thunk</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<a href="https://teachmyagent.github.io/doc/index.html">
+<img src="https://teachmyagent.github.io/images/home/head-image.png" style="display: block; margin: 1em auto">
+</a>
+<a href="https://teachmyagent.github.io/index.html">Website</a>
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common" href="index.html">TeachMyAgent.students.openai_baselines.common</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="two-column">
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.models.build_impala_cnn" href="#TeachMyAgent.students.openai_baselines.common.models.build_impala_cnn">build_impala_cnn</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.models.cnn" href="#TeachMyAgent.students.openai_baselines.common.models.cnn">cnn</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.models.cnn_lnlstm" href="#TeachMyAgent.students.openai_baselines.common.models.cnn_lnlstm">cnn_lnlstm</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.models.cnn_lstm" href="#TeachMyAgent.students.openai_baselines.common.models.cnn_lstm">cnn_lstm</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.models.cnn_small" href="#TeachMyAgent.students.openai_baselines.common.models.cnn_small">cnn_small</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.models.conv_only" href="#TeachMyAgent.students.openai_baselines.common.models.conv_only">conv_only</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.models.get_network_builder" href="#TeachMyAgent.students.openai_baselines.common.models.get_network_builder">get_network_builder</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.models.impala_cnn" href="#TeachMyAgent.students.openai_baselines.common.models.impala_cnn">impala_cnn</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.models.impala_cnn_lstm" href="#TeachMyAgent.students.openai_baselines.common.models.impala_cnn_lstm">impala_cnn_lstm</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.models.lstm" href="#TeachMyAgent.students.openai_baselines.common.models.lstm">lstm</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.models.mlp" href="#TeachMyAgent.students.openai_baselines.common.models.mlp">mlp</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.models.nature_cnn" href="#TeachMyAgent.students.openai_baselines.common.models.nature_cnn">nature_cnn</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.models.register" href="#TeachMyAgent.students.openai_baselines.common.models.register">register</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

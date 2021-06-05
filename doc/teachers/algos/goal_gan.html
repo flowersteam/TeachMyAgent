@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>TeachMyAgent.teachers.algos.goal_gan API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>TeachMyAgent.teachers.algos.goal_gan</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Taken from https://github.com/psclklnk/spdl and wrapped in our architecture
+# Modified by Clément Romac, copy of the license at TeachMyAgent/teachers/LICENSES/SPDL
+
+import os
+import numpy as np
+
+# os.environ[&#39;TF_CPP_MIN_LOG_LEVEL&#39;] = &#39;3&#39;
+import tensorflow as tf
+from queue import Queue
+from TeachMyAgent.teachers.algos.AbstractTeacher import AbstractTeacher
+from TeachMyAgent.teachers.utils.gan.generator import StateGAN, StateCollection
+
+
+class GoalGAN(AbstractTeacher):
+    def __init__(self, mins, maxs, seed, env_reward_lb, env_reward_ub, state_noise_level, success_distance_threshold,
+                 update_size,  n_rollouts=2, goid_lb=0.25, goid_ub=0.75, p_old=0.2, use_pretrained_samples=False,
+                 initial_dist=None):
+        &#39;&#39;&#39;
+            GoalGAN (http://proceedings.mlr.press/v80/florensa18a.html).
+
+            Code taken from https://github.com/psclklnk/spdl + minor updates.
+
+            Args:
+                state_noise_level: Proportion of noise added to goal sampled by the GAN (used on each dimension)
+                success_distance_threshold: How far a &#39;Goal Of Intermediate Difficulty&#39; must be from the others to be
+                                               added to the buffer (expressed percentage of each dimension)
+                update_size: How many new goals must be sampled before training the GAN
+                n_rollouts: How many times a goal must be proposed to the student before calculating its mean success
+                goid_lb: Lower bound to consider the mean success of a goal of &#39;Intermediate Difficulty&#39;
+                goid_ub: Upper bound to consider the mean success of a goal of &#39;Intermediate Difficulty&#39;
+                p_old: Probability to sample a goal from the buffer of old goals
+                use_pretrained_samples: Whether the GAN should be pretrained using samples from `initial_dist`
+                initial_dist Initial distribution from which samples should be generated to pretrain the GAN
+        &#39;&#39;&#39;
+        AbstractTeacher.__init__(self, mins, maxs, env_reward_lb, env_reward_ub, seed)
+
+        np.random.seed(self.seed) # To seed the GAN (sufficient ?)
+        tf.set_random_seed(
+            seed
+        )
+
+        tf_config = tf.ConfigProto(
+            allow_soft_placement=True,
+            inter_op_parallelism_threads=1,
+            intra_op_parallelism_threads=1)
+        # Prevent tensorflow from taking all the gpu memory
+        tf_config.gpu_options.allow_growth = True
+        self.tf_session = tf.Session(config=tf_config)
+        self.gan = StateGAN(
+            state_size=len(mins),
+            evaluater_size=1,
+            state_range=0.5 * (self.maxs - self.mins) + 1e-6, # avoid normalization issues for dimensions where min==max
+            state_center=mins + 0.5 * (self.maxs - self.mins),
+            state_noise_level=(state_noise_level * (self.maxs - self.mins))[None, :],
+            generator_layers=[256, 256],
+            discriminator_layers=[128, 128],
+            noise_size=self.mins.shape[0],
+            tf_session=self.tf_session,
+            configs={&#34;supress_all_logging&#34;: True}
+        )
+        self.tf_session.run(tf.initialize_local_variables())
+        self.replay_noise = state_noise_level * (self.maxs - self.mins)
+        self.success_buffer = StateCollection(1, success_distance_threshold * np.linalg.norm(self.maxs - self.mins))
+
+        self.update_size = update_size
+        self.contexts = []
+        self.labels = []
+
+        self.p_old = p_old
+        self.n_rollouts = n_rollouts
+        self.goid_lb = goid_lb
+        self.goid_ub = goid_ub
+
+        self.pending_contexts = {}
+        self.context_queue = Queue()
+        self.episode_counter = 0
+
+        if use_pretrained_samples:
+            print(&#34;Pretraining GAN...&#34;)
+            initial_mean, initial_variance = self.get_or_create_dist(initial_dist, mins, maxs, subspace=True)
+            pretrain_samples = self.random_state.multivariate_normal(initial_mean, initial_variance, size=1000)
+            pretrain_samples = np.clip(pretrain_samples, mins, maxs, dtype=np.float32)
+            self.gan.pretrain(pretrain_samples)
+
+        self.bk = {&#39;dis_log_loss&#39;: [],
+                   &#39;gen_log_loss&#39;: [],
+                   &#39;episodes&#39;: []}
+
+    def sample_task(self):
+        if self.context_queue.empty():
+            if self.random_state.random() &gt; self.p_old or self.success_buffer.size == 0:
+                context = np.float32(self.gan.sample_states_with_noise(1)[0][0, :])
+                context = np.clip(context, self.mins, self.maxs, dtype=np.float32) # added because the generators uses mins - 1e-6 and maxs - 1-6
+                context_key = context.tobytes()
+
+                # Either extend or create the list - note that this is a nested list to support the case when an
+                # identical context is sampled twice (Happens e.g. due to clipping)
+                if context_key in self.pending_contexts:
+                    self.pending_contexts[context_key].append([])
+                else:
+                    self.pending_contexts[context_key] = [[]]
+
+                # Store the contexts in the buffer for being sampled
+                for i in range(0, self.n_rollouts - 1):
+                    self.context_queue.put(context.copy())
+            else:
+                context = self.success_buffer.sample(size=1, replay_noise=self.replay_noise)[0, :]
+                context = np.clip(context, self.mins, self.maxs, dtype=np.float32)
+        else:
+            context = self.context_queue.get()
+
+        return context
+
+    def non_exploratory_task_sampling(self):
+        return {&#34;task&#34;: np.float32(self.gan.sample_states(1)[0][0, :]),
+                &#34;infos&#34;: {
+                    &#34;bk_index&#34;: len(self.bk[list(self.bk.keys())[0]]) - 1,
+                    &#34;task_infos&#34;: None}
+                }
+
+    def episodic_update(self, task, reward, is_success):
+        self.episode_counter += 1
+        context_key = task.tobytes()
+        if context_key in self.pending_contexts:
+            # Always append to the first list
+            self.pending_contexts[context_key][0].append(is_success)
+
+            if len(self.pending_contexts[context_key][0]) &gt;= self.n_rollouts:
+                mean_success = np.mean(self.pending_contexts[context_key][0])
+                self.labels.append(self.goid_lb &lt;= mean_success &lt;= self.goid_ub)
+                self.contexts.append(task.copy())
+
+                if mean_success &gt; self.goid_ub:
+                    self.success_buffer.append(task.copy()[None, :])
+
+                # Delete the first entry of the nested list
+                del self.pending_contexts[context_key][0]
+
+                # If the list is now empty, we can remove the whole entry in the map
+                if len(self.pending_contexts[context_key]) == 0:
+                    del self.pending_contexts[context_key]
+
+        if len(self.contexts) &gt;= self.update_size:
+            labels = np.array(self.labels, dtype=np.float)[:, None]
+            if np.any(labels):
+                print(&#34;Training GoalGAN with &#34; + str(len(self.contexts)) + &#34; contexts&#34;)
+                dis_log_loss, gen_log_loss = self.gan.train(np.array(self.contexts), labels, 250)
+                self.bk[&#34;dis_log_loss&#34;].append(dis_log_loss)
+                self.bk[&#34;gen_log_loss&#34;].append(gen_log_loss)
+                self.bk[&#34;episodes&#34;].append(self.episode_counter)
+            else:
+                print(&#34;No positive samples in &#34; + str(len(self.contexts)) + &#34; contexts - skipping GoalGAN training&#34;)
+
+            self.contexts = []
+            self.labels = []</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="TeachMyAgent.teachers.algos.goal_gan.GoalGAN"><code class="flex name class">
+<span>class <span class="ident">GoalGAN</span></span>
+<span>(</span><span>mins, maxs, seed, env_reward_lb, env_reward_ub, state_noise_level, success_distance_threshold, update_size, n_rollouts=2, goid_lb=0.25, goid_ub=0.75, p_old=0.2, use_pretrained_samples=False, initial_dist=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Base class for ACL methods.</p>
+<p>This will be used to sample tasks for the DeepRL student given a task space provided at the beginning of training.</p>
+<p>GoalGAN (<a href="http://proceedings.mlr.press/v80/florensa18a.html">http://proceedings.mlr.press/v80/florensa18a.html</a>).</p>
+<p>Code taken from <a href="https://github.com/psclklnk/spdl">https://github.com/psclklnk/spdl</a> + minor updates.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>state_noise_level</code></strong></dt>
+<dd>Proportion of noise added to goal sampled by the GAN (used on each dimension)</dd>
+<dt><strong><code>success_distance_threshold</code></strong></dt>
+<dd>How far a 'Goal Of Intermediate Difficulty' must be from the others to be
+added to the buffer (expressed percentage of each dimension)</dd>
+<dt><strong><code>update_size</code></strong></dt>
+<dd>How many new goals must be sampled before training the GAN</dd>
+<dt><strong><code>n_rollouts</code></strong></dt>
+<dd>How many times a goal must be proposed to the student before calculating its mean success</dd>
+<dt><strong><code>goid_lb</code></strong></dt>
+<dd>Lower bound to consider the mean success of a goal of 'Intermediate Difficulty'</dd>
+<dt><strong><code>goid_ub</code></strong></dt>
+<dd>Upper bound to consider the mean success of a goal of 'Intermediate Difficulty'</dd>
+<dt><strong><code>p_old</code></strong></dt>
+<dd>Probability to sample a goal from the buffer of old goals</dd>
+<dt><strong><code>use_pretrained_samples</code></strong></dt>
+<dd>Whether the GAN should be pretrained using samples from <code>initial_dist</code></dd>
+</dl>
+<p>initial_dist Initial distribution from which samples should be generated to pretrain the GAN</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class GoalGAN(AbstractTeacher):
+    def __init__(self, mins, maxs, seed, env_reward_lb, env_reward_ub, state_noise_level, success_distance_threshold,
+                 update_size,  n_rollouts=2, goid_lb=0.25, goid_ub=0.75, p_old=0.2, use_pretrained_samples=False,
+                 initial_dist=None):
+        &#39;&#39;&#39;
+            GoalGAN (http://proceedings.mlr.press/v80/florensa18a.html).
+
+            Code taken from https://github.com/psclklnk/spdl + minor updates.
+
+            Args:
+                state_noise_level: Proportion of noise added to goal sampled by the GAN (used on each dimension)
+                success_distance_threshold: How far a &#39;Goal Of Intermediate Difficulty&#39; must be from the others to be
+                                               added to the buffer (expressed percentage of each dimension)
+                update_size: How many new goals must be sampled before training the GAN
+                n_rollouts: How many times a goal must be proposed to the student before calculating its mean success
+                goid_lb: Lower bound to consider the mean success of a goal of &#39;Intermediate Difficulty&#39;
+                goid_ub: Upper bound to consider the mean success of a goal of &#39;Intermediate Difficulty&#39;
+                p_old: Probability to sample a goal from the buffer of old goals
+                use_pretrained_samples: Whether the GAN should be pretrained using samples from `initial_dist`
+                initial_dist Initial distribution from which samples should be generated to pretrain the GAN
+        &#39;&#39;&#39;
+        AbstractTeacher.__init__(self, mins, maxs, env_reward_lb, env_reward_ub, seed)
+
+        np.random.seed(self.seed) # To seed the GAN (sufficient ?)
+        tf.set_random_seed(
+            seed
+        )
+
+        tf_config = tf.ConfigProto(
+            allow_soft_placement=True,
+            inter_op_parallelism_threads=1,
+            intra_op_parallelism_threads=1)
+        # Prevent tensorflow from taking all the gpu memory
+        tf_config.gpu_options.allow_growth = True
+        self.tf_session = tf.Session(config=tf_config)
+        self.gan = StateGAN(
+            state_size=len(mins),
+            evaluater_size=1,
+            state_range=0.5 * (self.maxs - self.mins) + 1e-6, # avoid normalization issues for dimensions where min==max
+            state_center=mins + 0.5 * (self.maxs - self.mins),
+            state_noise_level=(state_noise_level * (self.maxs - self.mins))[None, :],
+            generator_layers=[256, 256],
+            discriminator_layers=[128, 128],
+            noise_size=self.mins.shape[0],
+            tf_session=self.tf_session,
+            configs={&#34;supress_all_logging&#34;: True}
+        )
+        self.tf_session.run(tf.initialize_local_variables())
+        self.replay_noise = state_noise_level * (self.maxs - self.mins)
+        self.success_buffer = StateCollection(1, success_distance_threshold * np.linalg.norm(self.maxs - self.mins))
+
+        self.update_size = update_size
+        self.contexts = []
+        self.labels = []
+
+        self.p_old = p_old
+        self.n_rollouts = n_rollouts
+        self.goid_lb = goid_lb
+        self.goid_ub = goid_ub
+
+        self.pending_contexts = {}
+        self.context_queue = Queue()
+        self.episode_counter = 0
+
+        if use_pretrained_samples:
+            print(&#34;Pretraining GAN...&#34;)
+            initial_mean, initial_variance = self.get_or_create_dist(initial_dist, mins, maxs, subspace=True)
+            pretrain_samples = self.random_state.multivariate_normal(initial_mean, initial_variance, size=1000)
+            pretrain_samples = np.clip(pretrain_samples, mins, maxs, dtype=np.float32)
+            self.gan.pretrain(pretrain_samples)
+
+        self.bk = {&#39;dis_log_loss&#39;: [],
+                   &#39;gen_log_loss&#39;: [],
+                   &#39;episodes&#39;: []}
+
+    def sample_task(self):
+        if self.context_queue.empty():
+            if self.random_state.random() &gt; self.p_old or self.success_buffer.size == 0:
+                context = np.float32(self.gan.sample_states_with_noise(1)[0][0, :])
+                context = np.clip(context, self.mins, self.maxs, dtype=np.float32) # added because the generators uses mins - 1e-6 and maxs - 1-6
+                context_key = context.tobytes()
+
+                # Either extend or create the list - note that this is a nested list to support the case when an
+                # identical context is sampled twice (Happens e.g. due to clipping)
+                if context_key in self.pending_contexts:
+                    self.pending_contexts[context_key].append([])
+                else:
+                    self.pending_contexts[context_key] = [[]]
+
+                # Store the contexts in the buffer for being sampled
+                for i in range(0, self.n_rollouts - 1):
+                    self.context_queue.put(context.copy())
+            else:
+                context = self.success_buffer.sample(size=1, replay_noise=self.replay_noise)[0, :]
+                context = np.clip(context, self.mins, self.maxs, dtype=np.float32)
+        else:
+            context = self.context_queue.get()
+
+        return context
+
+    def non_exploratory_task_sampling(self):
+        return {&#34;task&#34;: np.float32(self.gan.sample_states(1)[0][0, :]),
+                &#34;infos&#34;: {
+                    &#34;bk_index&#34;: len(self.bk[list(self.bk.keys())[0]]) - 1,
+                    &#34;task_infos&#34;: None}
+                }
+
+    def episodic_update(self, task, reward, is_success):
+        self.episode_counter += 1
+        context_key = task.tobytes()
+        if context_key in self.pending_contexts:
+            # Always append to the first list
+            self.pending_contexts[context_key][0].append(is_success)
+
+            if len(self.pending_contexts[context_key][0]) &gt;= self.n_rollouts:
+                mean_success = np.mean(self.pending_contexts[context_key][0])
+                self.labels.append(self.goid_lb &lt;= mean_success &lt;= self.goid_ub)
+                self.contexts.append(task.copy())
+
+                if mean_success &gt; self.goid_ub:
+                    self.success_buffer.append(task.copy()[None, :])
+
+                # Delete the first entry of the nested list
+                del self.pending_contexts[context_key][0]
+
+                # If the list is now empty, we can remove the whole entry in the map
+                if len(self.pending_contexts[context_key]) == 0:
+                    del self.pending_contexts[context_key]
+
+        if len(self.contexts) &gt;= self.update_size:
+            labels = np.array(self.labels, dtype=np.float)[:, None]
+            if np.any(labels):
+                print(&#34;Training GoalGAN with &#34; + str(len(self.contexts)) + &#34; contexts&#34;)
+                dis_log_loss, gen_log_loss = self.gan.train(np.array(self.contexts), labels, 250)
+                self.bk[&#34;dis_log_loss&#34;].append(dis_log_loss)
+                self.bk[&#34;gen_log_loss&#34;].append(gen_log_loss)
+                self.bk[&#34;episodes&#34;].append(self.episode_counter)
+            else:
+                print(&#34;No positive samples in &#34; + str(len(self.contexts)) + &#34; contexts - skipping GoalGAN training&#34;)
+
+            self.contexts = []
+            self.labels = []</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher">AbstractTeacher</a></li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher">AbstractTeacher</a></b></code>:
+<ul class="hlist">
+<li><code><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.create_dist_from_bounds" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.create_dist_from_bounds">create_dist_from_bounds</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.dump" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.dump">dump</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.episodic_update" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.episodic_update">episodic_update</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.get_or_create_dist" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.get_or_create_dist">get_or_create_dist</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.inverse_rescale_task" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.inverse_rescale_task">inverse_rescale_task</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.is_non_exploratory_task_sampling_available" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.is_non_exploratory_task_sampling_available">is_non_exploratory_task_sampling_available</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.non_exploratory_task_sampling" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.non_exploratory_task_sampling">non_exploratory_task_sampling</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.record_initial_state" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.record_initial_state">record_initial_state</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.rescale_task" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.rescale_task">rescale_task</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.sample_task" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.sample_task">sample_task</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.step_update" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.step_update">step_update</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<a href="https://teachmyagent.github.io/doc/index.html">
+<img src="https://teachmyagent.github.io/images/home/head-image.png" style="display: block; margin: 1em auto">
+</a>
+<a href="https://teachmyagent.github.io/index.html">Website</a>
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="TeachMyAgent.teachers.algos" href="index.html">TeachMyAgent.teachers.algos</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="TeachMyAgent.teachers.algos.goal_gan.GoalGAN" href="#TeachMyAgent.teachers.algos.goal_gan.GoalGAN">GoalGAN</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,1076 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>TeachMyAgent.teachers.utils.gan.generator API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>TeachMyAgent.teachers.utils.gan.generator</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># The following code was obtained from https://github.com/florensacc/rllab-curriculum
+# and only slightly modified to fit the project structure. The original license of
+# the software is the following:
+
+# The MIT License (MIT)
+
+# Copyright (c) 2016 rllab contributors
+
+# rllab uses a shared copyright model: each contributor holds copyright over
+# their contributions to rllab. The project versioning records all such
+# contribution and copyright details.
+# By contributing to the rllab repository through pull-request, comment,
+# or otherwise, the contributor releases their content to the license and
+# copyright terms herein.
+
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the &#34;Software&#34;), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+
+# THE SOFTWARE IS PROVIDED &#34;AS IS&#34;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+import numpy as np
+from TeachMyAgent.teachers.utils.gan.gan import FCGAN
+import multiprocessing
+import scipy.misc
+
+
+def sample_matrix_row(M, size, replace=False):
+    if size &gt; M.shape[0]:
+        return M
+    if replace:
+        indices = np.random.randint(0, M.shape[0], size)
+    else:
+        indices = np.random.choice(M.shape[0], size, replace=replace)
+    return M[indices, :]
+
+
+class StateGenerator(object):
+    &#34;&#34;&#34;A base class for state generation.&#34;&#34;&#34;
+
+    def pretrain_uniform(self):
+        &#34;&#34;&#34;Pretrain the generator distribution to uniform distribution in the limit.&#34;&#34;&#34;
+        raise NotImplementedError
+
+    def pretrain(self, states):
+        &#34;&#34;&#34;Pretrain with state distribution in the states list.&#34;&#34;&#34;
+        raise NotImplementedError
+
+    def sample_states(self, size):
+        &#34;&#34;&#34;Sample states with given size.&#34;&#34;&#34;
+        raise NotImplementedError
+
+    def sample_states_with_noise(self, size):
+        &#34;&#34;&#34;Sample states with noise.&#34;&#34;&#34;
+        raise NotImplementedError
+
+    def train(self, states, labels, outer_iters, generator_iters=None, discriminator_iters=None):
+        &#34;&#34;&#34;Train with respect to given states and labels.&#34;&#34;&#34;
+        raise NotImplementedError
+
+
+class CrossEntropyStateGenerator(StateGenerator):
+    &#34;&#34;&#34;Maintain a state list and add noise to current states to generate new states.&#34;&#34;&#34;
+
+    def __init__(self, state_size, state_range, noise_std=1.0,
+                 state_center=None):
+        self.state_list = np.array([])
+        self.state_range = state_range
+        self.noise_std = noise_std
+        self.state_center = np.array(state_center) if state_center is not None else np.zeros(state_size)
+
+    def pretrain_uniform(self, size=1000):
+        states = self.state_center + np.random.uniform(
+            -self.state_range, self.state_range, size=(size, self.state_size)
+        )
+        return self.pretrain(states)
+
+    def pretrain(self, states):
+        self.state_list = np.array(states)
+
+    def sample_states(self, size):
+        if len(self.state_list) == 0:
+            raise ValueError(&#39;Generator uninitialized!&#39;)
+
+        states = sample_matrix_row(self.state_list, size)
+        return np.clip(
+            states + np.random.randn(*states.shape) * self.noise_std,
+            self.state_center - self.state_range, self.state_center + self.state_range
+        )
+
+    def sample_states_with_noise(self, size):
+        return self.sample_states(size)
+
+    def train(self, states, labels, outer_iters, generator_iters=None, discriminator_iters=None):
+        labels = np.mean(labels, axis=1) &gt;= 1
+        good_states = np.array(states)[labels, :]
+        if len(good_states) != 0:
+            self.state_list = good_states
+
+
+class StateGAN(StateGenerator):
+    &#34;&#34;&#34;A GAN for generating states. It is just a wrapper for clgan.GAN.FCGAN&#34;&#34;&#34;
+
+    def __init__(self, state_size, evaluater_size,
+                 state_noise_level, state_range=None, state_center=None, state_bounds=None, *args, **kwargs):
+        self.gan = FCGAN(
+            generator_output_size=state_size,
+            discriminator_output_size=evaluater_size,
+            *args,
+            **kwargs
+        )
+        self.state_size = state_size
+        self.evaluater_size = evaluater_size
+        self.state_center = np.array(state_center) if state_center is not None else np.zeros(state_size)
+        if state_range is not None:
+            self.state_range = state_range
+            self.state_bounds = np.vstack(
+                [-self.state_range * np.ones(self.state_size), self.state_range * np.ones(self.state_size)])
+        elif state_bounds is not None:
+            self.state_bounds = np.array(state_bounds)
+            self.state_range = self.state_bounds[1] - self.state_bounds[0]
+        self.state_noise_level = state_noise_level
+        print(&#39;state_center is : &#39;, self.state_center, &#39;state_range: &#39;, self.state_range,
+              &#39;state_bounds: &#39;, self.state_bounds)
+
+    def pretrain_uniform(self, size=10000, report=None, *args, **kwargs):
+        &#34;&#34;&#34;
+        :param size: number of uniformly sampled states (that we will try to fit as output of the GAN)
+        :param outer_iters: of the GAN
+        &#34;&#34;&#34;
+        states = np.random.uniform(
+            self.state_center + self.state_bounds[0], self.state_center + self.state_bounds[1],
+            size=(size, self.state_size)
+        )
+        return self.pretrain(states, *args, **kwargs)
+
+    def pretrain(self, states, outer_iters=500, generator_iters=None, discriminator_iters=None):
+        &#34;&#34;&#34;
+        Pretrain the state GAN to match the distribution of given states.
+        :param states: the state distribution to match
+        :param outer_iters: of the GAN
+        &#34;&#34;&#34;
+        labels = np.ones((states.shape[0], self.evaluater_size))  # all state same label --&gt; uniform
+        return self.train(
+            states, labels, outer_iters, generator_iters, discriminator_iters
+        )
+
+    def _add_noise_to_states(self, states):
+        noise = np.random.randn(*states.shape) * self.state_noise_level
+        states += noise
+        return np.clip(states, self.state_center + self.state_bounds[0], self.state_center + self.state_bounds[1])
+
+    def sample_states(self, size):  # un-normalizes the states
+        normalized_states, noise = self.gan.sample_generator(size)
+        states = self.state_center + normalized_states * (self.state_bounds[1] - self.state_bounds[0])
+        return states, noise
+
+    def sample_states_with_noise(self, size):
+        states, noise = self.sample_states(size)
+        states = self._add_noise_to_states(states)
+        return states, noise
+
+    def train(self, states, labels, outer_iters, generator_iters=None, discriminator_iters=None):
+        normalized_states = (states - self.state_center) / (self.state_bounds[1] - self.state_bounds[0])
+        return self.gan.train(
+            normalized_states, labels, outer_iters, generator_iters, discriminator_iters
+        )
+
+    def discriminator_predict(self, states):
+        return self.gan.discriminator_predict(states)
+
+
+class StateCollection(object):
+    &#34;&#34;&#34; A collection of states, with minimum distance threshold for new states. &#34;&#34;&#34;
+
+    def __init__(self, n_processes, distance_threshold=None, states_transform=None, idx_lim=None):
+        self.distance_threshold = distance_threshold
+        self.state_list = []
+        self.states_transform = states_transform
+        self.idx_lim = idx_lim
+        self.pool = multiprocessing.Pool(n_processes)
+        self.n_processes = n_processes
+        if self.states_transform:
+            self.transformed_state_list = []
+
+    @property
+    def size(self):
+        return len(self.state_list)
+
+    def empty(self):
+        self.state_list = []
+
+    def sample(self, size, replace=False, replay_noise=0):
+        states = sample_matrix_row(np.array(self.state_list), size, replace)
+        if len(states) != 0:
+            states += replay_noise[None, :] * np.random.randn(*states.shape)
+        return states
+
+    def append(self, states):
+        if self.states_transform:
+            return self.append_states_transform(states)
+        if len(states) &gt; 0:
+            states = np.array(states)
+            if self.distance_threshold is not None and self.distance_threshold &gt; 0:
+                states = self._process_states(states)
+            if states.shape[0] &gt;= self.n_processes &gt; 1:
+                states_per_process = states.shape[0] // self.n_processes
+                list_of_states = [states[i * states_per_process: (i + 1) * states_per_process, :] for i in
+                                  range(self.n_processes)]
+                states = self.pool.map(SelectStatesWrapper(self.idx_lim, self.state_list, self.distance_threshold),
+                                       list_of_states)
+                states = np.concatenate(states)
+            else:
+                states = self._select_states(states)
+            self.state_list.extend(states.tolist())
+            return states
+
+    def _select_states(self, states):
+        # print(&#39;selecting states from shape: &#39;, states.shape)
+        selected_states = states
+        selected_states_idx_lim = np.array([state[:self.idx_lim] for state in states])
+        # print(&#39;selecting states from shape (after idx_lim of &#39;, self.idx_lim, &#39;: &#39;, selected_states_idx_lim.shape)
+        state_list_idx_lim = np.array([state[:self.idx_lim] for state in self.state_list])
+        # print(&#39;the state_list_idx_lim shape: &#39;, np.shape(self.state_list))
+        if self.distance_threshold is not None and self.distance_threshold &gt; 0:
+            if len(self.state_list) &gt; 0:
+                dists = scipy.spatial.distance.cdist(state_list_idx_lim, selected_states_idx_lim)
+                indices = np.amin(dists, axis=0) &gt; self.distance_threshold
+                selected_states = selected_states[indices, :]
+        # print(&#39;the selected states are: {}&#39;.format(selected_states.shape))
+        return selected_states
+
+    def _process_states(self, states):
+        &#34;keep only the states that are at more than dist_threshold from each other&#34;
+        # adding a states transform allows you to maintain full state information while possibly disregarding some dim
+        states = np.array(states)
+        results = [states[0]]
+        results_idx_lim = [states[0][:self.idx_lim]]
+        for i, state in enumerate(states[1:]):
+            # print(&#34;analyzing state : &#34;, i)
+            if np.amin(scipy.spatial.distance.cdist(results_idx_lim,
+                                                    state.reshape(1, -1)[:self.idx_lim])) &gt; self.distance_threshold:
+                results.append(state)
+                results_idx_lim.append(state[:self.idx_lim])
+        return np.array(results)
+
+    def _process_states_transform(self, states, transformed_states):
+        &#34;keep only the states that are at more than dist_threshold from each other&#34;
+        # adding a states transform allows you to maintain full state information while possibly disregarding some dim
+        results = [states[0]]
+        transformed_results = [transformed_states[0]]
+        for i in range(1, len(states)):
+            # checks if valid in transformed space
+            if np.amin(scipy.spatial.distance.cdist(transformed_results,
+                                                    transformed_states[i].reshape(1, -1))) &gt; self.distance_threshold:
+                results.append(states[i])
+                transformed_results.append(transformed_states[i])
+        return np.array(results), np.array(transformed_results)
+
+    def append_states_transform(self, states):
+        assert self.idx_lim is None, &#34;Can&#39;t use state transform and idx_lim with StateCollection!&#34;
+        if len(states) &gt; 0:
+            states = np.array(states)
+            transformed_states = self.states_transform(states)
+            if self.distance_threshold is not None and self.distance_threshold &gt; 0:
+                states, transformed_states = self._process_states_transform(states, transformed_states)
+                if len(self.state_list) &gt; 0:
+                    print(&#34;hi&#34;)
+                    dists = scipy.spatial.distance.cdist(self.transformed_state_list, transformed_states)
+                    indices = np.amin(dists, axis=0) &gt; self.distance_threshold
+                    states = states[indices, :]
+                    transformed_states = transformed_states[indices, :]
+            self.state_list.extend(states)
+            self.transformed_state_list.extend(transformed_states)
+            assert (len(self.state_list) == len(self.transformed_state_list))
+        return states  # modifed to return added states
+
+    # def append(self, states):
+    #     if self.states_transform:
+    #         return self.append_states_transform(states)
+    #     if len(states) &gt; 0:
+    #         states = np.array(states)
+    #         if self.distance_threshold is not None and self.distance_threshold &gt; 0:
+    #             states = self._process_states(states)
+    #             if len(self.state_list) &gt; 0:
+    #                 dists = scipy.spatial.distance.cdist(self.state_list, states)
+    #                 indices = np.amin(dists, axis=0) &gt; self.distance_threshold
+    #                 states = states[indices, :]
+    #         self.state_list.extend(states)
+    #     return states # modifed to return added states
+
+    @property
+    def states(self):
+        return np.array(self.state_list)
+
+
+class SelectStatesWrapper:
+
+    def __init__(self, idx_lim, state_list, distance_threshold):
+        self.idx_lim = idx_lim
+        self.state_list = state_list
+        self.distance_threshold = distance_threshold
+
+    def __call__(self, states):
+        # print(&#39;selecting states from shape: &#39;, states.shape)
+        selected_states = states
+        selected_states_idx_lim = np.array([state[:self.idx_lim] for state in states])
+        # print(&#39;selecting states from shape (after idx_lim of &#39;, self.idx_lim, &#39;: &#39;, selected_states_idx_lim.shape)
+        state_list_idx_lim = np.array([state[:self.idx_lim] for state in self.state_list])
+        # print(&#39;the state_list_idx_lim shape: &#39;, np.shape(self.state_list))
+        if self.distance_threshold is not None and self.distance_threshold &gt; 0:
+            if len(self.state_list) &gt; 0:
+                dists = scipy.spatial.distance.cdist(state_list_idx_lim, selected_states_idx_lim)
+                indices = np.amin(dists, axis=0) &gt; self.distance_threshold
+                selected_states = selected_states[indices, :]
+        # print(&#39;the selected states are: {}&#39;.format(selected_states.shape))
+        return selected_states</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="TeachMyAgent.teachers.utils.gan.generator.sample_matrix_row"><code class="name flex">
+<span>def <span class="ident">sample_matrix_row</span></span>(<span>M, size, replace=False)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def sample_matrix_row(M, size, replace=False):
+    if size &gt; M.shape[0]:
+        return M
+    if replace:
+        indices = np.random.randint(0, M.shape[0], size)
+    else:
+        indices = np.random.choice(M.shape[0], size, replace=replace)
+    return M[indices, :]</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="TeachMyAgent.teachers.utils.gan.generator.CrossEntropyStateGenerator"><code class="flex name class">
+<span>class <span class="ident">CrossEntropyStateGenerator</span></span>
+<span>(</span><span>state_size, state_range, noise_std=1.0, state_center=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Maintain a state list and add noise to current states to generate new states.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CrossEntropyStateGenerator(StateGenerator):
+    &#34;&#34;&#34;Maintain a state list and add noise to current states to generate new states.&#34;&#34;&#34;
+
+    def __init__(self, state_size, state_range, noise_std=1.0,
+                 state_center=None):
+        self.state_list = np.array([])
+        self.state_range = state_range
+        self.noise_std = noise_std
+        self.state_center = np.array(state_center) if state_center is not None else np.zeros(state_size)
+
+    def pretrain_uniform(self, size=1000):
+        states = self.state_center + np.random.uniform(
+            -self.state_range, self.state_range, size=(size, self.state_size)
+        )
+        return self.pretrain(states)
+
+    def pretrain(self, states):
+        self.state_list = np.array(states)
+
+    def sample_states(self, size):
+        if len(self.state_list) == 0:
+            raise ValueError(&#39;Generator uninitialized!&#39;)
+
+        states = sample_matrix_row(self.state_list, size)
+        return np.clip(
+            states + np.random.randn(*states.shape) * self.noise_std,
+            self.state_center - self.state_range, self.state_center + self.state_range
+        )
+
+    def sample_states_with_noise(self, size):
+        return self.sample_states(size)
+
+    def train(self, states, labels, outer_iters, generator_iters=None, discriminator_iters=None):
+        labels = np.mean(labels, axis=1) &gt;= 1
+        good_states = np.array(states)[labels, :]
+        if len(good_states) != 0:
+            self.state_list = good_states</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="TeachMyAgent.teachers.utils.gan.generator.StateGenerator" href="#TeachMyAgent.teachers.utils.gan.generator.StateGenerator">StateGenerator</a></li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="TeachMyAgent.teachers.utils.gan.generator.StateGenerator" href="#TeachMyAgent.teachers.utils.gan.generator.StateGenerator">StateGenerator</a></b></code>:
+<ul class="hlist">
+<li><code><a title="TeachMyAgent.teachers.utils.gan.generator.StateGenerator.pretrain" href="#TeachMyAgent.teachers.utils.gan.generator.StateGenerator.pretrain">pretrain</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.utils.gan.generator.StateGenerator.pretrain_uniform" href="#TeachMyAgent.teachers.utils.gan.generator.StateGenerator.pretrain_uniform">pretrain_uniform</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.utils.gan.generator.StateGenerator.sample_states" href="#TeachMyAgent.teachers.utils.gan.generator.StateGenerator.sample_states">sample_states</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.utils.gan.generator.StateGenerator.sample_states_with_noise" href="#TeachMyAgent.teachers.utils.gan.generator.StateGenerator.sample_states_with_noise">sample_states_with_noise</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.utils.gan.generator.StateGenerator.train" href="#TeachMyAgent.teachers.utils.gan.generator.StateGenerator.train">train</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="TeachMyAgent.teachers.utils.gan.generator.SelectStatesWrapper"><code class="flex name class">
+<span>class <span class="ident">SelectStatesWrapper</span></span>
+<span>(</span><span>idx_lim, state_list, distance_threshold)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SelectStatesWrapper:
+
+    def __init__(self, idx_lim, state_list, distance_threshold):
+        self.idx_lim = idx_lim
+        self.state_list = state_list
+        self.distance_threshold = distance_threshold
+
+    def __call__(self, states):
+        # print(&#39;selecting states from shape: &#39;, states.shape)
+        selected_states = states
+        selected_states_idx_lim = np.array([state[:self.idx_lim] for state in states])
+        # print(&#39;selecting states from shape (after idx_lim of &#39;, self.idx_lim, &#39;: &#39;, selected_states_idx_lim.shape)
+        state_list_idx_lim = np.array([state[:self.idx_lim] for state in self.state_list])
+        # print(&#39;the state_list_idx_lim shape: &#39;, np.shape(self.state_list))
+        if self.distance_threshold is not None and self.distance_threshold &gt; 0:
+            if len(self.state_list) &gt; 0:
+                dists = scipy.spatial.distance.cdist(state_list_idx_lim, selected_states_idx_lim)
+                indices = np.amin(dists, axis=0) &gt; self.distance_threshold
+                selected_states = selected_states[indices, :]
+        # print(&#39;the selected states are: {}&#39;.format(selected_states.shape))
+        return selected_states</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.teachers.utils.gan.generator.StateCollection"><code class="flex name class">
+<span>class <span class="ident">StateCollection</span></span>
+<span>(</span><span>n_processes, distance_threshold=None, states_transform=None, idx_lim=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A collection of states, with minimum distance threshold for new states.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class StateCollection(object):
+    &#34;&#34;&#34; A collection of states, with minimum distance threshold for new states. &#34;&#34;&#34;
+
+    def __init__(self, n_processes, distance_threshold=None, states_transform=None, idx_lim=None):
+        self.distance_threshold = distance_threshold
+        self.state_list = []
+        self.states_transform = states_transform
+        self.idx_lim = idx_lim
+        self.pool = multiprocessing.Pool(n_processes)
+        self.n_processes = n_processes
+        if self.states_transform:
+            self.transformed_state_list = []
+
+    @property
+    def size(self):
+        return len(self.state_list)
+
+    def empty(self):
+        self.state_list = []
+
+    def sample(self, size, replace=False, replay_noise=0):
+        states = sample_matrix_row(np.array(self.state_list), size, replace)
+        if len(states) != 0:
+            states += replay_noise[None, :] * np.random.randn(*states.shape)
+        return states
+
+    def append(self, states):
+        if self.states_transform:
+            return self.append_states_transform(states)
+        if len(states) &gt; 0:
+            states = np.array(states)
+            if self.distance_threshold is not None and self.distance_threshold &gt; 0:
+                states = self._process_states(states)
+            if states.shape[0] &gt;= self.n_processes &gt; 1:
+                states_per_process = states.shape[0] // self.n_processes
+                list_of_states = [states[i * states_per_process: (i + 1) * states_per_process, :] for i in
+                                  range(self.n_processes)]
+                states = self.pool.map(SelectStatesWrapper(self.idx_lim, self.state_list, self.distance_threshold),
+                                       list_of_states)
+                states = np.concatenate(states)
+            else:
+                states = self._select_states(states)
+            self.state_list.extend(states.tolist())
+            return states
+
+    def _select_states(self, states):
+        # print(&#39;selecting states from shape: &#39;, states.shape)
+        selected_states = states
+        selected_states_idx_lim = np.array([state[:self.idx_lim] for state in states])
+        # print(&#39;selecting states from shape (after idx_lim of &#39;, self.idx_lim, &#39;: &#39;, selected_states_idx_lim.shape)
+        state_list_idx_lim = np.array([state[:self.idx_lim] for state in self.state_list])
+        # print(&#39;the state_list_idx_lim shape: &#39;, np.shape(self.state_list))
+        if self.distance_threshold is not None and self.distance_threshold &gt; 0:
+            if len(self.state_list) &gt; 0:
+                dists = scipy.spatial.distance.cdist(state_list_idx_lim, selected_states_idx_lim)
+                indices = np.amin(dists, axis=0) &gt; self.distance_threshold
+                selected_states = selected_states[indices, :]
+        # print(&#39;the selected states are: {}&#39;.format(selected_states.shape))
+        return selected_states
+
+    def _process_states(self, states):
+        &#34;keep only the states that are at more than dist_threshold from each other&#34;
+        # adding a states transform allows you to maintain full state information while possibly disregarding some dim
+        states = np.array(states)
+        results = [states[0]]
+        results_idx_lim = [states[0][:self.idx_lim]]
+        for i, state in enumerate(states[1:]):
+            # print(&#34;analyzing state : &#34;, i)
+            if np.amin(scipy.spatial.distance.cdist(results_idx_lim,
+                                                    state.reshape(1, -1)[:self.idx_lim])) &gt; self.distance_threshold:
+                results.append(state)
+                results_idx_lim.append(state[:self.idx_lim])
+        return np.array(results)
+
+    def _process_states_transform(self, states, transformed_states):
+        &#34;keep only the states that are at more than dist_threshold from each other&#34;
+        # adding a states transform allows you to maintain full state information while possibly disregarding some dim
+        results = [states[0]]
+        transformed_results = [transformed_states[0]]
+        for i in range(1, len(states)):
+            # checks if valid in transformed space
+            if np.amin(scipy.spatial.distance.cdist(transformed_results,
+                                                    transformed_states[i].reshape(1, -1))) &gt; self.distance_threshold:
+                results.append(states[i])
+                transformed_results.append(transformed_states[i])
+        return np.array(results), np.array(transformed_results)
+
+    def append_states_transform(self, states):
+        assert self.idx_lim is None, &#34;Can&#39;t use state transform and idx_lim with StateCollection!&#34;
+        if len(states) &gt; 0:
+            states = np.array(states)
+            transformed_states = self.states_transform(states)
+            if self.distance_threshold is not None and self.distance_threshold &gt; 0:
+                states, transformed_states = self._process_states_transform(states, transformed_states)
+                if len(self.state_list) &gt; 0:
+                    print(&#34;hi&#34;)
+                    dists = scipy.spatial.distance.cdist(self.transformed_state_list, transformed_states)
+                    indices = np.amin(dists, axis=0) &gt; self.distance_threshold
+                    states = states[indices, :]
+                    transformed_states = transformed_states[indices, :]
+            self.state_list.extend(states)
+            self.transformed_state_list.extend(transformed_states)
+            assert (len(self.state_list) == len(self.transformed_state_list))
+        return states  # modifed to return added states
+
+    # def append(self, states):
+    #     if self.states_transform:
+    #         return self.append_states_transform(states)
+    #     if len(states) &gt; 0:
+    #         states = np.array(states)
+    #         if self.distance_threshold is not None and self.distance_threshold &gt; 0:
+    #             states = self._process_states(states)
+    #             if len(self.state_list) &gt; 0:
+    #                 dists = scipy.spatial.distance.cdist(self.state_list, states)
+    #                 indices = np.amin(dists, axis=0) &gt; self.distance_threshold
+    #                 states = states[indices, :]
+    #         self.state_list.extend(states)
+    #     return states # modifed to return added states
+
+    @property
+    def states(self):
+        return np.array(self.state_list)</code></pre>
+</details>
+<h3>Instance variables</h3>
+<dl>
+<dt id="TeachMyAgent.teachers.utils.gan.generator.StateCollection.size"><code class="name">var <span class="ident">size</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def size(self):
+    return len(self.state_list)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.teachers.utils.gan.generator.StateCollection.states"><code class="name">var <span class="ident">states</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def states(self):
+    return np.array(self.state_list)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="TeachMyAgent.teachers.utils.gan.generator.StateCollection.append"><code class="name flex">
+<span>def <span class="ident">append</span></span>(<span>self, states)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def append(self, states):
+    if self.states_transform:
+        return self.append_states_transform(states)
+    if len(states) &gt; 0:
+        states = np.array(states)
+        if self.distance_threshold is not None and self.distance_threshold &gt; 0:
+            states = self._process_states(states)
+        if states.shape[0] &gt;= self.n_processes &gt; 1:
+            states_per_process = states.shape[0] // self.n_processes
+            list_of_states = [states[i * states_per_process: (i + 1) * states_per_process, :] for i in
+                              range(self.n_processes)]
+            states = self.pool.map(SelectStatesWrapper(self.idx_lim, self.state_list, self.distance_threshold),
+                                   list_of_states)
+            states = np.concatenate(states)
+        else:
+            states = self._select_states(states)
+        self.state_list.extend(states.tolist())
+        return states</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.teachers.utils.gan.generator.StateCollection.append_states_transform"><code class="name flex">
+<span>def <span class="ident">append_states_transform</span></span>(<span>self, states)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def append_states_transform(self, states):
+    assert self.idx_lim is None, &#34;Can&#39;t use state transform and idx_lim with StateCollection!&#34;
+    if len(states) &gt; 0:
+        states = np.array(states)
+        transformed_states = self.states_transform(states)
+        if self.distance_threshold is not None and self.distance_threshold &gt; 0:
+            states, transformed_states = self._process_states_transform(states, transformed_states)
+            if len(self.state_list) &gt; 0:
+                print(&#34;hi&#34;)
+                dists = scipy.spatial.distance.cdist(self.transformed_state_list, transformed_states)
+                indices = np.amin(dists, axis=0) &gt; self.distance_threshold
+                states = states[indices, :]
+                transformed_states = transformed_states[indices, :]
+        self.state_list.extend(states)
+        self.transformed_state_list.extend(transformed_states)
+        assert (len(self.state_list) == len(self.transformed_state_list))
+    return states  # modifed to return added states</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.teachers.utils.gan.generator.StateCollection.empty"><code class="name flex">
+<span>def <span class="ident">empty</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def empty(self):
+    self.state_list = []</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.teachers.utils.gan.generator.StateCollection.sample"><code class="name flex">
+<span>def <span class="ident">sample</span></span>(<span>self, size, replace=False, replay_noise=0)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def sample(self, size, replace=False, replay_noise=0):
+    states = sample_matrix_row(np.array(self.state_list), size, replace)
+    if len(states) != 0:
+        states += replay_noise[None, :] * np.random.randn(*states.shape)
+    return states</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="TeachMyAgent.teachers.utils.gan.generator.StateGAN"><code class="flex name class">
+<span>class <span class="ident">StateGAN</span></span>
+<span>(</span><span>state_size, evaluater_size, state_noise_level, state_range=None, state_center=None, state_bounds=None, *args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A GAN for generating states. It is just a wrapper for clgan.GAN.FCGAN</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class StateGAN(StateGenerator):
+    &#34;&#34;&#34;A GAN for generating states. It is just a wrapper for clgan.GAN.FCGAN&#34;&#34;&#34;
+
+    def __init__(self, state_size, evaluater_size,
+                 state_noise_level, state_range=None, state_center=None, state_bounds=None, *args, **kwargs):
+        self.gan = FCGAN(
+            generator_output_size=state_size,
+            discriminator_output_size=evaluater_size,
+            *args,
+            **kwargs
+        )
+        self.state_size = state_size
+        self.evaluater_size = evaluater_size
+        self.state_center = np.array(state_center) if state_center is not None else np.zeros(state_size)
+        if state_range is not None:
+            self.state_range = state_range
+            self.state_bounds = np.vstack(
+                [-self.state_range * np.ones(self.state_size), self.state_range * np.ones(self.state_size)])
+        elif state_bounds is not None:
+            self.state_bounds = np.array(state_bounds)
+            self.state_range = self.state_bounds[1] - self.state_bounds[0]
+        self.state_noise_level = state_noise_level
+        print(&#39;state_center is : &#39;, self.state_center, &#39;state_range: &#39;, self.state_range,
+              &#39;state_bounds: &#39;, self.state_bounds)
+
+    def pretrain_uniform(self, size=10000, report=None, *args, **kwargs):
+        &#34;&#34;&#34;
+        :param size: number of uniformly sampled states (that we will try to fit as output of the GAN)
+        :param outer_iters: of the GAN
+        &#34;&#34;&#34;
+        states = np.random.uniform(
+            self.state_center + self.state_bounds[0], self.state_center + self.state_bounds[1],
+            size=(size, self.state_size)
+        )
+        return self.pretrain(states, *args, **kwargs)
+
+    def pretrain(self, states, outer_iters=500, generator_iters=None, discriminator_iters=None):
+        &#34;&#34;&#34;
+        Pretrain the state GAN to match the distribution of given states.
+        :param states: the state distribution to match
+        :param outer_iters: of the GAN
+        &#34;&#34;&#34;
+        labels = np.ones((states.shape[0], self.evaluater_size))  # all state same label --&gt; uniform
+        return self.train(
+            states, labels, outer_iters, generator_iters, discriminator_iters
+        )
+
+    def _add_noise_to_states(self, states):
+        noise = np.random.randn(*states.shape) * self.state_noise_level
+        states += noise
+        return np.clip(states, self.state_center + self.state_bounds[0], self.state_center + self.state_bounds[1])
+
+    def sample_states(self, size):  # un-normalizes the states
+        normalized_states, noise = self.gan.sample_generator(size)
+        states = self.state_center + normalized_states * (self.state_bounds[1] - self.state_bounds[0])
+        return states, noise
+
+    def sample_states_with_noise(self, size):
+        states, noise = self.sample_states(size)
+        states = self._add_noise_to_states(states)
+        return states, noise
+
+    def train(self, states, labels, outer_iters, generator_iters=None, discriminator_iters=None):
+        normalized_states = (states - self.state_center) / (self.state_bounds[1] - self.state_bounds[0])
+        return self.gan.train(
+            normalized_states, labels, outer_iters, generator_iters, discriminator_iters
+        )
+
+    def discriminator_predict(self, states):
+        return self.gan.discriminator_predict(states)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="TeachMyAgent.teachers.utils.gan.generator.StateGenerator" href="#TeachMyAgent.teachers.utils.gan.generator.StateGenerator">StateGenerator</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="TeachMyAgent.teachers.utils.gan.generator.StateGAN.discriminator_predict"><code class="name flex">
+<span>def <span class="ident">discriminator_predict</span></span>(<span>self, states)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def discriminator_predict(self, states):
+    return self.gan.discriminator_predict(states)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.teachers.utils.gan.generator.StateGAN.pretrain"><code class="name flex">
+<span>def <span class="ident">pretrain</span></span>(<span>self, states, outer_iters=500, generator_iters=None, discriminator_iters=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Pretrain the state GAN to match the distribution of given states.
+:param states: the state distribution to match
+:param outer_iters: of the GAN</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pretrain(self, states, outer_iters=500, generator_iters=None, discriminator_iters=None):
+    &#34;&#34;&#34;
+    Pretrain the state GAN to match the distribution of given states.
+    :param states: the state distribution to match
+    :param outer_iters: of the GAN
+    &#34;&#34;&#34;
+    labels = np.ones((states.shape[0], self.evaluater_size))  # all state same label --&gt; uniform
+    return self.train(
+        states, labels, outer_iters, generator_iters, discriminator_iters
+    )</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.teachers.utils.gan.generator.StateGAN.pretrain_uniform"><code class="name flex">
+<span>def <span class="ident">pretrain_uniform</span></span>(<span>self, size=10000, report=None, *args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>:param size: number of uniformly sampled states (that we will try to fit as output of the GAN)
+:param outer_iters: of the GAN</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pretrain_uniform(self, size=10000, report=None, *args, **kwargs):
+    &#34;&#34;&#34;
+    :param size: number of uniformly sampled states (that we will try to fit as output of the GAN)
+    :param outer_iters: of the GAN
+    &#34;&#34;&#34;
+    states = np.random.uniform(
+        self.state_center + self.state_bounds[0], self.state_center + self.state_bounds[1],
+        size=(size, self.state_size)
+    )
+    return self.pretrain(states, *args, **kwargs)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="TeachMyAgent.teachers.utils.gan.generator.StateGenerator" href="#TeachMyAgent.teachers.utils.gan.generator.StateGenerator">StateGenerator</a></b></code>:
+<ul class="hlist">
+<li><code><a title="TeachMyAgent.teachers.utils.gan.generator.StateGenerator.sample_states" href="#TeachMyAgent.teachers.utils.gan.generator.StateGenerator.sample_states">sample_states</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.utils.gan.generator.StateGenerator.sample_states_with_noise" href="#TeachMyAgent.teachers.utils.gan.generator.StateGenerator.sample_states_with_noise">sample_states_with_noise</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.utils.gan.generator.StateGenerator.train" href="#TeachMyAgent.teachers.utils.gan.generator.StateGenerator.train">train</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="TeachMyAgent.teachers.utils.gan.generator.StateGenerator"><code class="flex name class">
+<span>class <span class="ident">StateGenerator</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>A base class for state generation.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class StateGenerator(object):
+    &#34;&#34;&#34;A base class for state generation.&#34;&#34;&#34;
+
+    def pretrain_uniform(self):
+        &#34;&#34;&#34;Pretrain the generator distribution to uniform distribution in the limit.&#34;&#34;&#34;
+        raise NotImplementedError
+
+    def pretrain(self, states):
+        &#34;&#34;&#34;Pretrain with state distribution in the states list.&#34;&#34;&#34;
+        raise NotImplementedError
+
+    def sample_states(self, size):
+        &#34;&#34;&#34;Sample states with given size.&#34;&#34;&#34;
+        raise NotImplementedError
+
+    def sample_states_with_noise(self, size):
+        &#34;&#34;&#34;Sample states with noise.&#34;&#34;&#34;
+        raise NotImplementedError
+
+    def train(self, states, labels, outer_iters, generator_iters=None, discriminator_iters=None):
+        &#34;&#34;&#34;Train with respect to given states and labels.&#34;&#34;&#34;
+        raise NotImplementedError</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="TeachMyAgent.teachers.utils.gan.generator.CrossEntropyStateGenerator" href="#TeachMyAgent.teachers.utils.gan.generator.CrossEntropyStateGenerator">CrossEntropyStateGenerator</a></li>
+<li><a title="TeachMyAgent.teachers.utils.gan.generator.StateGAN" href="#TeachMyAgent.teachers.utils.gan.generator.StateGAN">StateGAN</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="TeachMyAgent.teachers.utils.gan.generator.StateGenerator.pretrain"><code class="name flex">
+<span>def <span class="ident">pretrain</span></span>(<span>self, states)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Pretrain with state distribution in the states list.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pretrain(self, states):
+    &#34;&#34;&#34;Pretrain with state distribution in the states list.&#34;&#34;&#34;
+    raise NotImplementedError</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.teachers.utils.gan.generator.StateGenerator.pretrain_uniform"><code class="name flex">
+<span>def <span class="ident">pretrain_uniform</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Pretrain the generator distribution to uniform distribution in the limit.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pretrain_uniform(self):
+    &#34;&#34;&#34;Pretrain the generator distribution to uniform distribution in the limit.&#34;&#34;&#34;
+    raise NotImplementedError</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.teachers.utils.gan.generator.StateGenerator.sample_states"><code class="name flex">
+<span>def <span class="ident">sample_states</span></span>(<span>self, size)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Sample states with given size.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def sample_states(self, size):
+    &#34;&#34;&#34;Sample states with given size.&#34;&#34;&#34;
+    raise NotImplementedError</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.teachers.utils.gan.generator.StateGenerator.sample_states_with_noise"><code class="name flex">
+<span>def <span class="ident">sample_states_with_noise</span></span>(<span>self, size)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Sample states with noise.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def sample_states_with_noise(self, size):
+    &#34;&#34;&#34;Sample states with noise.&#34;&#34;&#34;
+    raise NotImplementedError</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.teachers.utils.gan.generator.StateGenerator.train"><code class="name flex">
+<span>def <span class="ident">train</span></span>(<span>self, states, labels, outer_iters, generator_iters=None, discriminator_iters=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Train with respect to given states and labels.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def train(self, states, labels, outer_iters, generator_iters=None, discriminator_iters=None):
+    &#34;&#34;&#34;Train with respect to given states and labels.&#34;&#34;&#34;
+    raise NotImplementedError</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<a href="https://teachmyagent.github.io/doc/index.html">
+<img src="https://teachmyagent.github.io/images/home/head-image.png" style="display: block; margin: 1em auto">
+</a>
+<a href="https://teachmyagent.github.io/index.html">Website</a>
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="TeachMyAgent.teachers.utils.gan" href="index.html">TeachMyAgent.teachers.utils.gan</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="TeachMyAgent.teachers.utils.gan.generator.sample_matrix_row" href="#TeachMyAgent.teachers.utils.gan.generator.sample_matrix_row">sample_matrix_row</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="TeachMyAgent.teachers.utils.gan.generator.CrossEntropyStateGenerator" href="#TeachMyAgent.teachers.utils.gan.generator.CrossEntropyStateGenerator">CrossEntropyStateGenerator</a></code></h4>
+</li>
+<li>
+<h4><code><a title="TeachMyAgent.teachers.utils.gan.generator.SelectStatesWrapper" href="#TeachMyAgent.teachers.utils.gan.generator.SelectStatesWrapper">SelectStatesWrapper</a></code></h4>
+</li>
+<li>
+<h4><code><a title="TeachMyAgent.teachers.utils.gan.generator.StateCollection" href="#TeachMyAgent.teachers.utils.gan.generator.StateCollection">StateCollection</a></code></h4>
+<ul class="">
+<li><code><a title="TeachMyAgent.teachers.utils.gan.generator.StateCollection.append" href="#TeachMyAgent.teachers.utils.gan.generator.StateCollection.append">append</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.utils.gan.generator.StateCollection.append_states_transform" href="#TeachMyAgent.teachers.utils.gan.generator.StateCollection.append_states_transform">append_states_transform</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.utils.gan.generator.StateCollection.empty" href="#TeachMyAgent.teachers.utils.gan.generator.StateCollection.empty">empty</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.utils.gan.generator.StateCollection.sample" href="#TeachMyAgent.teachers.utils.gan.generator.StateCollection.sample">sample</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.utils.gan.generator.StateCollection.size" href="#TeachMyAgent.teachers.utils.gan.generator.StateCollection.size">size</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.utils.gan.generator.StateCollection.states" href="#TeachMyAgent.teachers.utils.gan.generator.StateCollection.states">states</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="TeachMyAgent.teachers.utils.gan.generator.StateGAN" href="#TeachMyAgent.teachers.utils.gan.generator.StateGAN">StateGAN</a></code></h4>
+<ul class="">
+<li><code><a title="TeachMyAgent.teachers.utils.gan.generator.StateGAN.discriminator_predict" href="#TeachMyAgent.teachers.utils.gan.generator.StateGAN.discriminator_predict">discriminator_predict</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.utils.gan.generator.StateGAN.pretrain" href="#TeachMyAgent.teachers.utils.gan.generator.StateGAN.pretrain">pretrain</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.utils.gan.generator.StateGAN.pretrain_uniform" href="#TeachMyAgent.teachers.utils.gan.generator.StateGAN.pretrain_uniform">pretrain_uniform</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="TeachMyAgent.teachers.utils.gan.generator.StateGenerator" href="#TeachMyAgent.teachers.utils.gan.generator.StateGenerator">StateGenerator</a></code></h4>
+<ul class="">
+<li><code><a title="TeachMyAgent.teachers.utils.gan.generator.StateGenerator.pretrain" href="#TeachMyAgent.teachers.utils.gan.generator.StateGenerator.pretrain">pretrain</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.utils.gan.generator.StateGenerator.pretrain_uniform" href="#TeachMyAgent.teachers.utils.gan.generator.StateGenerator.pretrain_uniform">pretrain_uniform</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.utils.gan.generator.StateGenerator.sample_states" href="#TeachMyAgent.teachers.utils.gan.generator.StateGenerator.sample_states">sample_states</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.utils.gan.generator.StateGenerator.sample_states_with_noise" href="#TeachMyAgent.teachers.utils.gan.generator.StateGenerator.sample_states_with_noise">sample_states_with_noise</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.utils.gan.generator.StateGenerator.train" href="#TeachMyAgent.teachers.utils.gan.generator.StateGenerator.train">train</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

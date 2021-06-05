@@ -1,0 +1,754 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>TeachMyAgent.teachers.algos.self_paced_teacher API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>TeachMyAgent.teachers.algos.self_paced_teacher</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Taken from https://github.com/psclklnk/spdl and wrapped to our architecture
+# Modified by Clément Romac, copy of the license at TeachMyAgent/teachers/LICENSES/SPDL
+
+import torch
+import numpy as np
+from copy import deepcopy
+from functools import partial
+from TeachMyAgent.teachers.algos.AbstractTeacher import AbstractTeacher
+from TeachMyAgent.teachers.utils.conjugate_gradient import cg_step
+from TeachMyAgent.teachers.utils.torch import to_float_tensor
+from TeachMyAgent.teachers.utils.gaussian_torch_distribution import GaussianTorchDistribution
+
+class Buffer:
+    def __init__(self, n_elements, max_buffer_size, reset_on_query):
+        self.reset_on_query = reset_on_query
+        self.max_buffer_size = max_buffer_size
+        self.buffers = [list() for i in range(0, n_elements)]
+
+    def update_buffer(self, datas):
+        if isinstance(datas[0], list):
+            for buffer, data in zip(self.buffers, datas):
+                buffer.extend(data)
+        else:
+            for buffer, data in zip(self.buffers, datas):
+                buffer.append(data)
+
+        while len(self.buffers[0]) &gt; self.max_buffer_size:
+            for buffer in self.buffers:
+                del buffer[0]
+
+    def read_buffer(self, reset=None):
+        if reset is None:
+            reset = self.reset_on_query
+
+        res = tuple([buffer for buffer in self.buffers])
+
+        if reset:
+            for i in range(0, len(self.buffers)):
+                self.buffers[i] = []
+
+        return res
+
+    def __len__(self):
+        return len(self.buffers[0])
+
+
+class AbstractSelfPacedTeacher():
+    &#39;&#39;&#39;
+        Base SPDL Teacher
+    &#39;&#39;&#39;
+    def __init__(self, init_mean, flat_init_chol, target_mean, flat_target_chol, alpha_function, max_kl, cg_parameters):
+        self.context_dist = GaussianTorchDistribution(init_mean, flat_init_chol, use_cuda=False)
+        self.target_dist = GaussianTorchDistribution(target_mean, flat_target_chol, use_cuda=False)
+
+        self.alpha_function = alpha_function
+        self.max_kl = max_kl
+        self.cg_parameters = {&#34;n_epochs_line_search&#34;: 10, &#34;n_epochs_cg&#34;: 10, &#34;cg_damping&#34;: 1e-2,
+                              &#34;cg_residual_tol&#34;: 1e-10}
+        if cg_parameters is not None:
+            self.cg_parameters.update(cg_parameters)
+
+        self.task = None
+        self.iteration = 0
+
+    def target_context_kl(self, numpy=True):
+        kl_div = torch.distributions.kl.kl_divergence(self.context_dist.distribution_t,
+                                                      self.target_dist.distribution_t).detach()
+        if numpy:
+            kl_div = kl_div.numpy()
+
+        return kl_div
+
+    def save(self, path):
+        weights = self.context_dist.get_weights()
+        np.save(path, weights)
+
+    def load(self, path):
+        self.context_dist.set_weights(np.load(path))
+
+    def _compute_context_kl(self, old_context_dist):
+        return torch.distributions.kl.kl_divergence(old_context_dist.distribution_t, self.context_dist.distribution_t)
+
+    def _compute_context_loss(self, cons_t, old_c_log_prob_t, c_val_t, alpha_cur_t):
+        con_ratio_t = torch.exp(self.context_dist.log_pdf_t(cons_t) - old_c_log_prob_t)
+        kl_div = torch.distributions.kl.kl_divergence(self.context_dist.distribution_t, self.target_dist.distribution_t)
+        return torch.mean(con_ratio_t * c_val_t) - alpha_cur_t * kl_div
+
+
+class SelfPacedTeacher(AbstractTeacher, AbstractSelfPacedTeacher):
+    def __init__(self, mins, maxs, seed, env_reward_lb, env_reward_ub, update_frequency, update_offset, alpha_function, initial_dist=None,
+                 target_dist=None, max_kl=0.1, std_lower_bound=None, kl_threshold=None,  cg_parameters=None,
+                 use_avg_performance=False, max_context_buffer_size=1000, reset_contexts=True, discount_factor=0.99):
+        &#39;&#39;&#39;
+            Self-paced Deep Reinforcement Learning (https://papers.nips.cc/paper/2020/hash/68a9750337a418a86fe06c1991a1d64c-Abstract.html).
+            Taken from https://github.com/psclklnk/spdl and wrapped to our architecture.
+
+            Works in a non-episodic setup, updates are thus made in the `step_update` method.
+
+            Args:
+                update_frequency: Update frequency of the sampling distribution (in steps)
+                update_offset: How many steps must be done before the starting to update the distribution
+                alpha_function: Function calculating the alpha parameter
+                initial_dist: Initial distribution to start from
+                target_dist: Target distribution to reach
+                max_kl: Maximum KL-divergence authorized between the old and new distributions when updating
+                std_lower_bound: Minimum std authorized on the sampling distribution if the KL-divergence between
+                                    the latter and the target distribution is greater than `kl_threshold`. Set this to
+                                    `None` if no constraint on the std must be applied
+                kl_threshold: Threshold enforcing the std constraint
+                cg_parameters: Additional parameters for the Conjugate Gradient method
+                use_avg_performance: Whether the alpha function must used the averaged performance
+                max_context_buffer_size: Maximum size of the buffer storing sampled tasks
+                reset_contexts: Whether the buffer should be reset when queried
+                discount_factor: Discount factor used in the Universal Value Function
+        &#39;&#39;&#39;
+        AbstractTeacher.__init__(self, mins, maxs, env_reward_lb, env_reward_ub, seed)
+        torch.manual_seed(self.seed)
+
+        initial_mean, initial_variance = self.get_or_create_dist(initial_dist, mins, maxs, subspace=True) # Random subspace of the task space if no intial dist
+        target_mean, target_variance = self.get_or_create_dist(target_dist, mins, maxs, subspace=False) # Full task space if no intial dist
+
+        context_bounds = (np.array(mins), np.array(maxs))
+
+        self.update_frequency = update_frequency
+        self.update_offset = update_offset
+        self.step_counter = 0
+        self.discounted_sum_reward = 0
+        self.discount_factor = discount_factor
+        self.discounted_sum_rewards = []
+        self.current_disc = 1
+        self.pending_initial_state = None
+        self.algorithm_iterations = 0
+
+        # The bounds that we show to the outside are limited to the interval [-1, 1], as this is typically better for
+        # neural nets to deal with
+        self.context_buffer = Buffer(2, max_context_buffer_size, reset_contexts)
+        self.context_dim = target_mean.shape[0]
+        self.context_bounds = context_bounds
+        self.use_avg_performance = use_avg_performance
+
+        if std_lower_bound is not None and kl_threshold is None:
+            raise RuntimeError(&#34;Error! Both Lower Bound on standard deviation and kl threshold need to be set&#34;)
+        else:
+            if std_lower_bound is not None:
+                if isinstance(std_lower_bound, np.ndarray):
+                    if std_lower_bound.shape[0] != self.context_dim:
+                        raise RuntimeError(&#34;Error! Wrong dimension of the standard deviation lower bound&#34;)
+                elif std_lower_bound is not None:
+                    std_lower_bound = np.ones(self.context_dim) * std_lower_bound
+            self.std_lower_bound = std_lower_bound
+            self.kl_threshold = kl_threshold
+
+        # Create the initial context distribution
+        if isinstance(initial_variance, np.ndarray):
+            flat_init_chol = GaussianTorchDistribution.flatten_matrix(initial_variance, tril=False)
+        else:
+            flat_init_chol = GaussianTorchDistribution.flatten_matrix(initial_variance * np.eye(self.context_dim),
+                                                                      tril=False)
+
+        # Create the target distribution
+        if isinstance(target_variance, np.ndarray):
+            flat_target_chol = GaussianTorchDistribution.flatten_matrix(target_variance, tril=False)
+        else:
+            flat_target_chol = GaussianTorchDistribution.flatten_matrix(target_variance * np.eye(self.context_dim),
+                                                                        tril=False)
+
+        AbstractSelfPacedTeacher.__init__(self, initial_mean, flat_init_chol, target_mean, flat_target_chol,
+                                               alpha_function, max_kl, cg_parameters)
+        self.bk = {&#39;mean&#39;: [],
+                   &#39;covariance&#39;: [],
+                   &#39;steps&#39;: [],
+                   &#39;algo_iterations&#39;: [],
+                   &#39;kl&#39;: []}
+
+    def record_initial_state(self, task, initial_state):
+        self.pending_initial_state = initial_state
+
+    def episodic_update(self, task, reward, is_success):
+        assert self.pending_initial_state is not None
+
+        self.discounted_sum_rewards.append(self.discounted_sum_reward)
+        self.context_buffer.update_buffer((self.pending_initial_state, task))
+        self.discounted_sum_reward = 0
+        self.current_disc = 1
+        self.pending_initial_state = None
+
+    def step_update(self, state, action, reward, next_state, done):
+        self.step_counter += 1
+        self.discounted_sum_reward += self.current_disc * reward
+        self.current_disc *= self.discount_factor
+
+        if self.step_counter &gt;= self.update_offset and self.step_counter % self.update_frequency == 0:
+            if len(self.discounted_sum_rewards) &gt; 0 and len(self.context_buffer) &gt; 0:
+                self.algorithm_iterations += 1
+                avg_performance = np.mean(self.discounted_sum_rewards)
+                self.discounted_sum_rewards = []
+
+                ins, cons = self.context_buffer.read_buffer()
+                initial_states, contexts = np.array(ins), np.array(cons)
+                values = self.value_estimator(initial_states)
+                if values is None:
+                    raise Exception(&#34;Please define a valid value estimator, this one returns None...&#34;)
+
+                old_context_dist = deepcopy(self.context_dist)
+                contexts_t = to_float_tensor(contexts, use_cuda=False)
+                old_c_log_prob_t = old_context_dist.log_pdf_t(contexts_t).detach()
+
+                # Estimate the value of the state after the policy update
+                c_val_t = to_float_tensor(values, use_cuda=False)
+
+                # Add the penalty term
+                cur_kl_t = self.target_context_kl(numpy=False)
+                if self.use_avg_performance:
+                    alpha_cur_t = self.alpha_function(self.algorithm_iterations, avg_performance, cur_kl_t)
+                else:
+                    alpha_cur_t = self.alpha_function(self.algorithm_iterations, torch.mean(c_val_t).detach(), cur_kl_t)
+
+                cg_step(partial(self._compute_context_loss, contexts_t, old_c_log_prob_t, c_val_t, alpha_cur_t),
+                        partial(self._compute_context_kl, old_context_dist), self.max_kl,
+                        self.context_dist.parameters, self.context_dist.set_weights,
+                        self.context_dist.get_weights, **self.cg_parameters, use_cuda=False)
+
+                cov = self.context_dist._chol_flat.detach().numpy()
+                if self.std_lower_bound is not None and self.target_context_kl() &gt; self.kl_threshold:
+                    cov[0:self.context_dim] = np.log(np.maximum(np.exp(cov[0:self.context_dim]), self.std_lower_bound))
+                    self.context_dist.set_weights(np.concatenate((self.context_dist.mean(), cov)))
+                self.bk[&#34;mean&#34;].append(self.context_dist.mean())
+                self.bk[&#34;covariance&#34;].append(self.context_dist.covariance_matrix())
+                self.bk[&#34;steps&#34;].append(self.step_counter)
+                self.bk[&#34;algo_iterations&#34;].append(self.algorithm_iterations)
+                self.bk[&#34;kl&#34;].append(self.target_context_kl())
+            else:
+                print(&#34;Skipping iteration at step {} because buffers are empty.&#34;.format(self.step_counter))
+
+
+    def sample_task(self):
+        sample = self.context_dist.sample().detach().numpy()
+        return np.clip(sample, self.context_bounds[0], self.context_bounds[1], dtype=np.float32)
+
+    def non_exploratory_task_sampling(self):
+        return {&#34;task&#34;: self.sample_task(),
+                &#34;infos&#34;: {
+                    &#34;bk_index&#34;: len(self.bk[list(self.bk.keys())[0]]) - 1,
+                    &#34;task_infos&#34;: None}
+                }</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="TeachMyAgent.teachers.algos.self_paced_teacher.AbstractSelfPacedTeacher"><code class="flex name class">
+<span>class <span class="ident">AbstractSelfPacedTeacher</span></span>
+<span>(</span><span>init_mean, flat_init_chol, target_mean, flat_target_chol, alpha_function, max_kl, cg_parameters)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Base SPDL Teacher</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class AbstractSelfPacedTeacher():
+    &#39;&#39;&#39;
+        Base SPDL Teacher
+    &#39;&#39;&#39;
+    def __init__(self, init_mean, flat_init_chol, target_mean, flat_target_chol, alpha_function, max_kl, cg_parameters):
+        self.context_dist = GaussianTorchDistribution(init_mean, flat_init_chol, use_cuda=False)
+        self.target_dist = GaussianTorchDistribution(target_mean, flat_target_chol, use_cuda=False)
+
+        self.alpha_function = alpha_function
+        self.max_kl = max_kl
+        self.cg_parameters = {&#34;n_epochs_line_search&#34;: 10, &#34;n_epochs_cg&#34;: 10, &#34;cg_damping&#34;: 1e-2,
+                              &#34;cg_residual_tol&#34;: 1e-10}
+        if cg_parameters is not None:
+            self.cg_parameters.update(cg_parameters)
+
+        self.task = None
+        self.iteration = 0
+
+    def target_context_kl(self, numpy=True):
+        kl_div = torch.distributions.kl.kl_divergence(self.context_dist.distribution_t,
+                                                      self.target_dist.distribution_t).detach()
+        if numpy:
+            kl_div = kl_div.numpy()
+
+        return kl_div
+
+    def save(self, path):
+        weights = self.context_dist.get_weights()
+        np.save(path, weights)
+
+    def load(self, path):
+        self.context_dist.set_weights(np.load(path))
+
+    def _compute_context_kl(self, old_context_dist):
+        return torch.distributions.kl.kl_divergence(old_context_dist.distribution_t, self.context_dist.distribution_t)
+
+    def _compute_context_loss(self, cons_t, old_c_log_prob_t, c_val_t, alpha_cur_t):
+        con_ratio_t = torch.exp(self.context_dist.log_pdf_t(cons_t) - old_c_log_prob_t)
+        kl_div = torch.distributions.kl.kl_divergence(self.context_dist.distribution_t, self.target_dist.distribution_t)
+        return torch.mean(con_ratio_t * c_val_t) - alpha_cur_t * kl_div</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="TeachMyAgent.teachers.algos.self_paced_teacher.SelfPacedTeacher" href="#TeachMyAgent.teachers.algos.self_paced_teacher.SelfPacedTeacher">SelfPacedTeacher</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="TeachMyAgent.teachers.algos.self_paced_teacher.AbstractSelfPacedTeacher.load"><code class="name flex">
+<span>def <span class="ident">load</span></span>(<span>self, path)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def load(self, path):
+    self.context_dist.set_weights(np.load(path))</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.teachers.algos.self_paced_teacher.AbstractSelfPacedTeacher.save"><code class="name flex">
+<span>def <span class="ident">save</span></span>(<span>self, path)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save(self, path):
+    weights = self.context_dist.get_weights()
+    np.save(path, weights)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.teachers.algos.self_paced_teacher.AbstractSelfPacedTeacher.target_context_kl"><code class="name flex">
+<span>def <span class="ident">target_context_kl</span></span>(<span>self, numpy=True)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def target_context_kl(self, numpy=True):
+    kl_div = torch.distributions.kl.kl_divergence(self.context_dist.distribution_t,
+                                                  self.target_dist.distribution_t).detach()
+    if numpy:
+        kl_div = kl_div.numpy()
+
+    return kl_div</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="TeachMyAgent.teachers.algos.self_paced_teacher.Buffer"><code class="flex name class">
+<span>class <span class="ident">Buffer</span></span>
+<span>(</span><span>n_elements, max_buffer_size, reset_on_query)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Buffer:
+    def __init__(self, n_elements, max_buffer_size, reset_on_query):
+        self.reset_on_query = reset_on_query
+        self.max_buffer_size = max_buffer_size
+        self.buffers = [list() for i in range(0, n_elements)]
+
+    def update_buffer(self, datas):
+        if isinstance(datas[0], list):
+            for buffer, data in zip(self.buffers, datas):
+                buffer.extend(data)
+        else:
+            for buffer, data in zip(self.buffers, datas):
+                buffer.append(data)
+
+        while len(self.buffers[0]) &gt; self.max_buffer_size:
+            for buffer in self.buffers:
+                del buffer[0]
+
+    def read_buffer(self, reset=None):
+        if reset is None:
+            reset = self.reset_on_query
+
+        res = tuple([buffer for buffer in self.buffers])
+
+        if reset:
+            for i in range(0, len(self.buffers)):
+                self.buffers[i] = []
+
+        return res
+
+    def __len__(self):
+        return len(self.buffers[0])</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="TeachMyAgent.teachers.algos.self_paced_teacher.Buffer.read_buffer"><code class="name flex">
+<span>def <span class="ident">read_buffer</span></span>(<span>self, reset=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def read_buffer(self, reset=None):
+    if reset is None:
+        reset = self.reset_on_query
+
+    res = tuple([buffer for buffer in self.buffers])
+
+    if reset:
+        for i in range(0, len(self.buffers)):
+            self.buffers[i] = []
+
+    return res</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.teachers.algos.self_paced_teacher.Buffer.update_buffer"><code class="name flex">
+<span>def <span class="ident">update_buffer</span></span>(<span>self, datas)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_buffer(self, datas):
+    if isinstance(datas[0], list):
+        for buffer, data in zip(self.buffers, datas):
+            buffer.extend(data)
+    else:
+        for buffer, data in zip(self.buffers, datas):
+            buffer.append(data)
+
+    while len(self.buffers[0]) &gt; self.max_buffer_size:
+        for buffer in self.buffers:
+            del buffer[0]</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="TeachMyAgent.teachers.algos.self_paced_teacher.SelfPacedTeacher"><code class="flex name class">
+<span>class <span class="ident">SelfPacedTeacher</span></span>
+<span>(</span><span>mins, maxs, seed, env_reward_lb, env_reward_ub, update_frequency, update_offset, alpha_function, initial_dist=None, target_dist=None, max_kl=0.1, std_lower_bound=None, kl_threshold=None, cg_parameters=None, use_avg_performance=False, max_context_buffer_size=1000, reset_contexts=True, discount_factor=0.99)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Base class for ACL methods.</p>
+<p>This will be used to sample tasks for the DeepRL student given a task space provided at the beginning of training.</p>
+<p>Self-paced Deep Reinforcement Learning (<a href="https://papers.nips.cc/paper/2020/hash/68a9750337a418a86fe06c1991a1d64c-Abstract.html">https://papers.nips.cc/paper/2020/hash/68a9750337a418a86fe06c1991a1d64c-Abstract.html</a>).
+Taken from <a href="https://github.com/psclklnk/spdl">https://github.com/psclklnk/spdl</a> and wrapped to our architecture.</p>
+<p>Works in a non-episodic setup, updates are thus made in the <code>step_update</code> method.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>update_frequency</code></strong></dt>
+<dd>Update frequency of the sampling distribution (in steps)</dd>
+<dt><strong><code>update_offset</code></strong></dt>
+<dd>How many steps must be done before the starting to update the distribution</dd>
+<dt><strong><code>alpha_function</code></strong></dt>
+<dd>Function calculating the alpha parameter</dd>
+<dt><strong><code>initial_dist</code></strong></dt>
+<dd>Initial distribution to start from</dd>
+<dt><strong><code>target_dist</code></strong></dt>
+<dd>Target distribution to reach</dd>
+<dt><strong><code>max_kl</code></strong></dt>
+<dd>Maximum KL-divergence authorized between the old and new distributions when updating</dd>
+<dt><strong><code>std_lower_bound</code></strong></dt>
+<dd>Minimum std authorized on the sampling distribution if the KL-divergence between
+the latter and the target distribution is greater than <code>kl_threshold</code>. Set this to
+<code>None</code> if no constraint on the std must be applied</dd>
+<dt><strong><code>kl_threshold</code></strong></dt>
+<dd>Threshold enforcing the std constraint</dd>
+<dt><strong><code>cg_parameters</code></strong></dt>
+<dd>Additional parameters for the Conjugate Gradient method</dd>
+<dt><strong><code>use_avg_performance</code></strong></dt>
+<dd>Whether the alpha function must used the averaged performance</dd>
+<dt><strong><code>max_context_buffer_size</code></strong></dt>
+<dd>Maximum size of the buffer storing sampled tasks</dd>
+<dt><strong><code>reset_contexts</code></strong></dt>
+<dd>Whether the buffer should be reset when queried</dd>
+<dt><strong><code>discount_factor</code></strong></dt>
+<dd>Discount factor used in the Universal Value Function</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SelfPacedTeacher(AbstractTeacher, AbstractSelfPacedTeacher):
+    def __init__(self, mins, maxs, seed, env_reward_lb, env_reward_ub, update_frequency, update_offset, alpha_function, initial_dist=None,
+                 target_dist=None, max_kl=0.1, std_lower_bound=None, kl_threshold=None,  cg_parameters=None,
+                 use_avg_performance=False, max_context_buffer_size=1000, reset_contexts=True, discount_factor=0.99):
+        &#39;&#39;&#39;
+            Self-paced Deep Reinforcement Learning (https://papers.nips.cc/paper/2020/hash/68a9750337a418a86fe06c1991a1d64c-Abstract.html).
+            Taken from https://github.com/psclklnk/spdl and wrapped to our architecture.
+
+            Works in a non-episodic setup, updates are thus made in the `step_update` method.
+
+            Args:
+                update_frequency: Update frequency of the sampling distribution (in steps)
+                update_offset: How many steps must be done before the starting to update the distribution
+                alpha_function: Function calculating the alpha parameter
+                initial_dist: Initial distribution to start from
+                target_dist: Target distribution to reach
+                max_kl: Maximum KL-divergence authorized between the old and new distributions when updating
+                std_lower_bound: Minimum std authorized on the sampling distribution if the KL-divergence between
+                                    the latter and the target distribution is greater than `kl_threshold`. Set this to
+                                    `None` if no constraint on the std must be applied
+                kl_threshold: Threshold enforcing the std constraint
+                cg_parameters: Additional parameters for the Conjugate Gradient method
+                use_avg_performance: Whether the alpha function must used the averaged performance
+                max_context_buffer_size: Maximum size of the buffer storing sampled tasks
+                reset_contexts: Whether the buffer should be reset when queried
+                discount_factor: Discount factor used in the Universal Value Function
+        &#39;&#39;&#39;
+        AbstractTeacher.__init__(self, mins, maxs, env_reward_lb, env_reward_ub, seed)
+        torch.manual_seed(self.seed)
+
+        initial_mean, initial_variance = self.get_or_create_dist(initial_dist, mins, maxs, subspace=True) # Random subspace of the task space if no intial dist
+        target_mean, target_variance = self.get_or_create_dist(target_dist, mins, maxs, subspace=False) # Full task space if no intial dist
+
+        context_bounds = (np.array(mins), np.array(maxs))
+
+        self.update_frequency = update_frequency
+        self.update_offset = update_offset
+        self.step_counter = 0
+        self.discounted_sum_reward = 0
+        self.discount_factor = discount_factor
+        self.discounted_sum_rewards = []
+        self.current_disc = 1
+        self.pending_initial_state = None
+        self.algorithm_iterations = 0
+
+        # The bounds that we show to the outside are limited to the interval [-1, 1], as this is typically better for
+        # neural nets to deal with
+        self.context_buffer = Buffer(2, max_context_buffer_size, reset_contexts)
+        self.context_dim = target_mean.shape[0]
+        self.context_bounds = context_bounds
+        self.use_avg_performance = use_avg_performance
+
+        if std_lower_bound is not None and kl_threshold is None:
+            raise RuntimeError(&#34;Error! Both Lower Bound on standard deviation and kl threshold need to be set&#34;)
+        else:
+            if std_lower_bound is not None:
+                if isinstance(std_lower_bound, np.ndarray):
+                    if std_lower_bound.shape[0] != self.context_dim:
+                        raise RuntimeError(&#34;Error! Wrong dimension of the standard deviation lower bound&#34;)
+                elif std_lower_bound is not None:
+                    std_lower_bound = np.ones(self.context_dim) * std_lower_bound
+            self.std_lower_bound = std_lower_bound
+            self.kl_threshold = kl_threshold
+
+        # Create the initial context distribution
+        if isinstance(initial_variance, np.ndarray):
+            flat_init_chol = GaussianTorchDistribution.flatten_matrix(initial_variance, tril=False)
+        else:
+            flat_init_chol = GaussianTorchDistribution.flatten_matrix(initial_variance * np.eye(self.context_dim),
+                                                                      tril=False)
+
+        # Create the target distribution
+        if isinstance(target_variance, np.ndarray):
+            flat_target_chol = GaussianTorchDistribution.flatten_matrix(target_variance, tril=False)
+        else:
+            flat_target_chol = GaussianTorchDistribution.flatten_matrix(target_variance * np.eye(self.context_dim),
+                                                                        tril=False)
+
+        AbstractSelfPacedTeacher.__init__(self, initial_mean, flat_init_chol, target_mean, flat_target_chol,
+                                               alpha_function, max_kl, cg_parameters)
+        self.bk = {&#39;mean&#39;: [],
+                   &#39;covariance&#39;: [],
+                   &#39;steps&#39;: [],
+                   &#39;algo_iterations&#39;: [],
+                   &#39;kl&#39;: []}
+
+    def record_initial_state(self, task, initial_state):
+        self.pending_initial_state = initial_state
+
+    def episodic_update(self, task, reward, is_success):
+        assert self.pending_initial_state is not None
+
+        self.discounted_sum_rewards.append(self.discounted_sum_reward)
+        self.context_buffer.update_buffer((self.pending_initial_state, task))
+        self.discounted_sum_reward = 0
+        self.current_disc = 1
+        self.pending_initial_state = None
+
+    def step_update(self, state, action, reward, next_state, done):
+        self.step_counter += 1
+        self.discounted_sum_reward += self.current_disc * reward
+        self.current_disc *= self.discount_factor
+
+        if self.step_counter &gt;= self.update_offset and self.step_counter % self.update_frequency == 0:
+            if len(self.discounted_sum_rewards) &gt; 0 and len(self.context_buffer) &gt; 0:
+                self.algorithm_iterations += 1
+                avg_performance = np.mean(self.discounted_sum_rewards)
+                self.discounted_sum_rewards = []
+
+                ins, cons = self.context_buffer.read_buffer()
+                initial_states, contexts = np.array(ins), np.array(cons)
+                values = self.value_estimator(initial_states)
+                if values is None:
+                    raise Exception(&#34;Please define a valid value estimator, this one returns None...&#34;)
+
+                old_context_dist = deepcopy(self.context_dist)
+                contexts_t = to_float_tensor(contexts, use_cuda=False)
+                old_c_log_prob_t = old_context_dist.log_pdf_t(contexts_t).detach()
+
+                # Estimate the value of the state after the policy update
+                c_val_t = to_float_tensor(values, use_cuda=False)
+
+                # Add the penalty term
+                cur_kl_t = self.target_context_kl(numpy=False)
+                if self.use_avg_performance:
+                    alpha_cur_t = self.alpha_function(self.algorithm_iterations, avg_performance, cur_kl_t)
+                else:
+                    alpha_cur_t = self.alpha_function(self.algorithm_iterations, torch.mean(c_val_t).detach(), cur_kl_t)
+
+                cg_step(partial(self._compute_context_loss, contexts_t, old_c_log_prob_t, c_val_t, alpha_cur_t),
+                        partial(self._compute_context_kl, old_context_dist), self.max_kl,
+                        self.context_dist.parameters, self.context_dist.set_weights,
+                        self.context_dist.get_weights, **self.cg_parameters, use_cuda=False)
+
+                cov = self.context_dist._chol_flat.detach().numpy()
+                if self.std_lower_bound is not None and self.target_context_kl() &gt; self.kl_threshold:
+                    cov[0:self.context_dim] = np.log(np.maximum(np.exp(cov[0:self.context_dim]), self.std_lower_bound))
+                    self.context_dist.set_weights(np.concatenate((self.context_dist.mean(), cov)))
+                self.bk[&#34;mean&#34;].append(self.context_dist.mean())
+                self.bk[&#34;covariance&#34;].append(self.context_dist.covariance_matrix())
+                self.bk[&#34;steps&#34;].append(self.step_counter)
+                self.bk[&#34;algo_iterations&#34;].append(self.algorithm_iterations)
+                self.bk[&#34;kl&#34;].append(self.target_context_kl())
+            else:
+                print(&#34;Skipping iteration at step {} because buffers are empty.&#34;.format(self.step_counter))
+
+
+    def sample_task(self):
+        sample = self.context_dist.sample().detach().numpy()
+        return np.clip(sample, self.context_bounds[0], self.context_bounds[1], dtype=np.float32)
+
+    def non_exploratory_task_sampling(self):
+        return {&#34;task&#34;: self.sample_task(),
+                &#34;infos&#34;: {
+                    &#34;bk_index&#34;: len(self.bk[list(self.bk.keys())[0]]) - 1,
+                    &#34;task_infos&#34;: None}
+                }</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher">AbstractTeacher</a></li>
+<li><a title="TeachMyAgent.teachers.algos.self_paced_teacher.AbstractSelfPacedTeacher" href="#TeachMyAgent.teachers.algos.self_paced_teacher.AbstractSelfPacedTeacher">AbstractSelfPacedTeacher</a></li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher">AbstractTeacher</a></b></code>:
+<ul class="hlist">
+<li><code><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.create_dist_from_bounds" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.create_dist_from_bounds">create_dist_from_bounds</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.dump" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.dump">dump</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.episodic_update" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.episodic_update">episodic_update</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.get_or_create_dist" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.get_or_create_dist">get_or_create_dist</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.inverse_rescale_task" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.inverse_rescale_task">inverse_rescale_task</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.is_non_exploratory_task_sampling_available" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.is_non_exploratory_task_sampling_available">is_non_exploratory_task_sampling_available</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.non_exploratory_task_sampling" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.non_exploratory_task_sampling">non_exploratory_task_sampling</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.record_initial_state" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.record_initial_state">record_initial_state</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.rescale_task" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.rescale_task">rescale_task</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.sample_task" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.sample_task">sample_task</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.step_update" href="AbstractTeacher.html#TeachMyAgent.teachers.algos.AbstractTeacher.AbstractTeacher.step_update">step_update</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<a href="https://teachmyagent.github.io/doc/index.html">
+<img src="https://teachmyagent.github.io/images/home/head-image.png" style="display: block; margin: 1em auto">
+</a>
+<a href="https://teachmyagent.github.io/index.html">Website</a>
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="TeachMyAgent.teachers.algos" href="index.html">TeachMyAgent.teachers.algos</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="TeachMyAgent.teachers.algos.self_paced_teacher.AbstractSelfPacedTeacher" href="#TeachMyAgent.teachers.algos.self_paced_teacher.AbstractSelfPacedTeacher">AbstractSelfPacedTeacher</a></code></h4>
+<ul class="">
+<li><code><a title="TeachMyAgent.teachers.algos.self_paced_teacher.AbstractSelfPacedTeacher.load" href="#TeachMyAgent.teachers.algos.self_paced_teacher.AbstractSelfPacedTeacher.load">load</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.algos.self_paced_teacher.AbstractSelfPacedTeacher.save" href="#TeachMyAgent.teachers.algos.self_paced_teacher.AbstractSelfPacedTeacher.save">save</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.algos.self_paced_teacher.AbstractSelfPacedTeacher.target_context_kl" href="#TeachMyAgent.teachers.algos.self_paced_teacher.AbstractSelfPacedTeacher.target_context_kl">target_context_kl</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="TeachMyAgent.teachers.algos.self_paced_teacher.Buffer" href="#TeachMyAgent.teachers.algos.self_paced_teacher.Buffer">Buffer</a></code></h4>
+<ul class="">
+<li><code><a title="TeachMyAgent.teachers.algos.self_paced_teacher.Buffer.read_buffer" href="#TeachMyAgent.teachers.algos.self_paced_teacher.Buffer.read_buffer">read_buffer</a></code></li>
+<li><code><a title="TeachMyAgent.teachers.algos.self_paced_teacher.Buffer.update_buffer" href="#TeachMyAgent.teachers.algos.self_paced_teacher.Buffer.update_buffer">update_buffer</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="TeachMyAgent.teachers.algos.self_paced_teacher.SelfPacedTeacher" href="#TeachMyAgent.teachers.algos.self_paced_teacher.SelfPacedTeacher">SelfPacedTeacher</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>
