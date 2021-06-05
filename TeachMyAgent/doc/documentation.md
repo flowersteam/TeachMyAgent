@@ -1,5 +1,6 @@
 * Our [paper]
 * Our [website]
+* Our [repository]
 ----
 
 `TeachMyAgent` is a testbed platform for **Automatic Curriculum Learning** methods. We leverage Box2D procedurally generated environments to assess the performance of teacher algorithms in continuous task spaces.
@@ -247,4 +248,5 @@ If you use `TeachMyAgent` in your work, please cite the accompanying [paper]:
 ```
 
 [paper]: https://arxiv.org/abs/2103.09815
-[website]: https://sites.google.com/view/teachmyagent/
+[website]: https://teachmyagent.github.io/index.html
+[repository]: https://github.com/flowersteam/TeachMyAgent
