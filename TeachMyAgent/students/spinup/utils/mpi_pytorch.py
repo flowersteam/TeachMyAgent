@@ -1,8 +1,8 @@
 import torch
-from TeachMyAgent.students.spinupimport broadcast, mpi_avg, num_procs
+from TeachMyAgent.students.spinup.utils.mpi_tools import broadcast, mpi_avg, num_procs
 import torch
 
-from TeachMyAgent.students.spinupimport broadcast, mpi_avg, num_procs
+from TeachMyAgent.students.spinup.utils.mpi_tools import broadcast, mpi_avg, num_procs
 
 
 def setup_pytorch_for_mpi():
