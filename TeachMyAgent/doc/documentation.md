@@ -74,9 +74,10 @@ python run.py --exp_name TestExperiment --env parametric-continuous-parkour-v0 -
 ```
 
 All possible arguments can be found in the `run_utils` subpackage (as mentioned in [Code structure](#code-structure)):
-- `environment_args_handler.py`
-- `student_args_handler.py`
-- `teacher_args_handler.py`
+
+- `run_utils.environment_args_handler`
+- `run_utils.student_args_handler`
+- `run_utils.teacher_args_handler`
 
 # Launching a benchmark campaign
 
@@ -145,17 +146,17 @@ while True:
     env.render()
     time.sleep(0.1)
 ```
-Hence, one can easily add a new environment in `TeachMyAgent/environments/envs/` as long as it implements the methods presented above. The new environment must then be added to the registration in `TeachMyAgent/environments/__init__.py`.
-Additionally, we introduced new physics (water and climbing) gathered in `TeachMyAgent/environments/envs/Box2D_dynamics/` which can be reused in your environment. See the `__init__()` and `step()` functions of the `parametric_conitnuous_parkour.py` for an example on how to use them. 
+Hence, one can easily add a new environment in `environments.envs` as long as it implements the methods presented above. The new environment must then be added to the registration in `TeachMyAgent/environments/__init__.py`.
+Additionally, we introduced new physics (water and climbing) gathered in `environments.envs.Box2D_dynamics.` which can be reused in your environment. See the `__init__()` and `step()` functions of the `parametric_conitnuous_parkour.py` for an example on how to use them. 
  
 ## Embodiments
 
-We put our embodiments in `TeachMyAgent/environments/envs/bodies/`. We classify them in three main categories (walkers, climbers, swimmers).
-Each embodiment extends the `AbstractBody.py` class specifying basic methods such as sending actions to motors or creating the observation vector. Additionally, each embodiment extends an abstract class of its type (e.g. walker or swimmer) defining methods related to type-specific behaviour.
-Finally, `BodiesEnum.py` is used to list all embodiments and provide access to their class using a string name. 
+We put our embodiments in `environments.envs.bodies`. We classify them in three main categories (walkers, climbers, swimmers).
+Each embodiment extends the `environments.envs.bodies.AbstractBody` class specifying basic methods such as sending actions to motors or creating the observation vector. Additionally, each embodiment extends an abstract class of its type (e.g. walker or swimmer) defining methods related to type-specific behaviour.
+Finally, `environments.envs.bodies.BodiesEnum` is used to list all embodiments and provide access to their class using a string name. 
 
-One must therefore add its new embodiment in the appropriate folder, extend and implement the methods of its parent abstract class and finally add its new class to the `BodiesEnum.py`.
-Note that if your embodiment has additional parameters, you should add them to the `get_body_wargs` method in `environment_args_handler.py`.
+One must therefore add its new embodiment in the appropriate folder, extend and implement the methods of its parent abstract class and finally add its new class to the `environments.envs.bodies.BodiesEnum`.
+Note that if your embodiment has additional parameters, you should add them to the `get_body_wargs` method in `run_utils.environment_args_handler`.
   
 ## Students
 
@@ -189,12 +190,12 @@ for j in range(n):
     Teacher.record_test_episode(ep_ret, ep_len)
 ```
 
-Your student must then be added to the `students` subpackage as well as in `student_args_handler.py`.
-Note that we provide a `test_policy.py` file which loads a task from a test set, loads a trained policy and use it in the task. This code currently only works for SpinningUp or Baselines models, so you should modify it if your student does not use any of these.
+Your student must then be added to the `students` subpackage as well as in `run_utils.student_args_handler`.
+Note that we provide a `students.test_policy` file which loads a task from a test set, loads a trained policy and use it in the task. This code currently only works for SpinningUp or Baselines models, so you should modify it if your student does not use any of these.
 
 ## Teachers
 
-All our teachers extend the same `AbstractTeacher` class which defines their required methods:
+All our teachers extend the same `teachers.algos.AbstractTeacher` class which defines their required methods:
 
 * `record_initial_state(self, task, state)`: record initial state of the task.
 * `episodic_update(self, task, reward, is_success)`: get episodic reward and binary success reward.
@@ -204,9 +205,9 @@ All our teachers extend the same `AbstractTeacher` class which defines their req
 * (Optional) `is_non_exploratory_task_sampling_available(self)`: whether the method above can be called.
 * (Optional) `dump(self, dump_dict)`: save the teacher.
 
-Teachers are then called through the `TeacherController` class, being the one passed to DeepRL students.
+Teachers are then called through the `teachers.teacher_controller` class, being the one passed to DeepRL students.
 This class handles the storage of sampled tasks, possible reward interpretation as well as test tasks used when the `set_test_env_params` method is called.
-In order to add a new teacher, one must extend the `AbstractTeacher` class and add its class among the possible ones in the following lines of the `TeacherController`:
+In order to add a new teacher, one must extend the `teachers.algos.AbstractTeache` class and add its class among the possible ones in the following lines of the `teachers.teacher_controller`:
 ```python
 # setup tasks generator
 if teacher == 'Random':
@@ -230,7 +231,7 @@ else:
     raise NotImplementedError
 ```
 
-Finally, `teacher_args_handler.py` must be modified to add the teacher as well as its parameters.
+Finally, `run_utils.teacher_args_handler` must be modified to add the teacher as well as its parameters.
 
 # Citing
 
