@@ -96,10 +96,12 @@ pip install -e .
 <p>Using these, the following example shows a 10 millions steps training of PPO with the fish embodiment in Parkour using GoalGAN as teacher:</p>
 <pre><code>python run.py --exp_name TestExperiment --env parametric-continuous-parkour-v0 --embodiment fish --student ppo --nb_env_steps 10 --teacher GoalGAN --use_pretrained_samples
 </code></pre>
-<p>All possible arguments can be found in the <code><a title="TeachMyAgent.run_utils" href="run_utils/index.html">TeachMyAgent.run_utils</a></code> subpackage (as mentioned in <a href="#code-structure">Code structure</a>):
-- <code>environment_args_handler.py</code>
-- <code>student_args_handler.py</code>
-- <code>teacher_args_handler.py</code></p>
+<p>All possible arguments can be found in the <code><a title="TeachMyAgent.run_utils" href="run_utils/index.html">TeachMyAgent.run_utils</a></code> subpackage (as mentioned in <a href="#code-structure">Code structure</a>):</p>
+<ul>
+<li><code><a title="TeachMyAgent.run_utils.environment_args_handler" href="run_utils/environment_args_handler.html">TeachMyAgent.run_utils.environment_args_handler</a></code></li>
+<li><code><a title="TeachMyAgent.run_utils.student_args_handler" href="run_utils/student_args_handler.html">TeachMyAgent.run_utils.student_args_handler</a></code></li>
+<li><code><a title="TeachMyAgent.run_utils.teacher_args_handler" href="run_utils/teacher_args_handler.html">TeachMyAgent.run_utils.teacher_args_handler</a></code></li>
+</ul>
 <h1 id="launching-a-benchmark-campaign">Launching a benchmark campaign</h1>
 <p>Performing a full benchmark campaign on an ACL method (as shown in our <a href="https://arxiv.org/abs/2103.09815">paper</a>) can be done through multiple experiments.
 We provide a way to generate a script containing all the experiments:</p>
@@ -156,14 +158,14 @@ while True:
     env.render()
     time.sleep(0.1)
 </code></pre>
-<p>Hence, one can easily add a new environment in <code>TeachMyAgent/environments/envs/</code> as long as it implements the methods presented above. The new environment must then be added to the registration in <code>TeachMyAgent/environments/__init__.py</code>.
-Additionally, we introduced new physics (water and climbing) gathered in <code>TeachMyAgent/environments/envs/Box2D_dynamics/</code> which can be reused in your environment. See the <code>__init__()</code> and <code>step()</code> functions of the <code>parametric_conitnuous_parkour.py</code> for an example on how to use them. </p>
+<p>Hence, one can easily add a new environment in <code><a title="TeachMyAgent.environments.envs" href="environments/envs/index.html">TeachMyAgent.environments.envs</a></code> as long as it implements the methods presented above. The new environment must then be added to the registration in <code>TeachMyAgent/environments/__init__.py</code>.
+Additionally, we introduced new physics (water and climbing) gathered in <code><a title="TeachMyAgent.environments.envs.Box2D_dynamics" href="environments/envs/Box2D_dynamics/index.html">TeachMyAgent.environments.envs.Box2D_dynamics</a>.</code> which can be reused in your environment. See the <code>__init__()</code> and <code>step()</code> functions of the <code>parametric_conitnuous_parkour.py</code> for an example on how to use them. </p>
 <h2 id="embodiments">Embodiments</h2>
-<p>We put our embodiments in <code>TeachMyAgent/environments/envs/bodies/</code>. We classify them in three main categories (walkers, climbers, swimmers).
-Each embodiment extends the <code>AbstractBody.py</code> class specifying basic methods such as sending actions to motors or creating the observation vector. Additionally, each embodiment extends an abstract class of its type (e.g. walker or swimmer) defining methods related to type-specific behaviour.
-Finally, <code>BodiesEnum.py</code> is used to list all embodiments and provide access to their class using a string name. </p>
-<p>One must therefore add its new embodiment in the appropriate folder, extend and implement the methods of its parent abstract class and finally add its new class to the <code>BodiesEnum.py</code>.
-Note that if your embodiment has additional parameters, you should add them to the <code>get_body_wargs</code> method in <code>environment_args_handler.py</code>.</p>
+<p>We put our embodiments in <code><a title="TeachMyAgent.environments.envs.bodies" href="environments/envs/bodies/index.html">TeachMyAgent.environments.envs.bodies</a></code>. We classify them in three main categories (walkers, climbers, swimmers).
+Each embodiment extends the <code><a title="TeachMyAgent.environments.envs.bodies.AbstractBody" href="environments/envs/bodies/AbstractBody.html">TeachMyAgent.environments.envs.bodies.AbstractBody</a></code> class specifying basic methods such as sending actions to motors or creating the observation vector. Additionally, each embodiment extends an abstract class of its type (e.g. walker or swimmer) defining methods related to type-specific behaviour.
+Finally, <code><a title="TeachMyAgent.environments.envs.bodies.BodiesEnum" href="environments/envs/bodies/BodiesEnum.html">TeachMyAgent.environments.envs.bodies.BodiesEnum</a></code> is used to list all embodiments and provide access to their class using a string name. </p>
+<p>One must therefore add its new embodiment in the appropriate folder, extend and implement the methods of its parent abstract class and finally add its new class to the <code><a title="TeachMyAgent.environments.envs.bodies.BodiesEnum" href="environments/envs/bodies/BodiesEnum.html">TeachMyAgent.environments.envs.bodies.BodiesEnum</a></code>.
+Note that if your embodiment has additional parameters, you should add them to the <code>get_body_wargs</code> method in <code><a title="TeachMyAgent.run_utils.environment_args_handler" href="run_utils/environment_args_handler.html">TeachMyAgent.run_utils.environment_args_handler</a></code>.</p>
 <h2 id="students">Students</h2>
 <p>We modified <a href="https://github.com/openai/spinningup">SpinningUp's</a> implementation of SAC and <a href="https://github.com/openai/baselines">OpenAI Baselines'</a> implementation of PPO in order to make them use a teacher algorithm. For a DeepRL student to be part of <code><a title="TeachMyAgent" href="#TeachMyAgent">TeachMyAgent</a></code>, it must take a teacher as parameter and call its <code>record_train_step</code> method at each step as well as its <code>record_train_episode</code> and <code>set_env_params</code> methods before every reset of the environment. Additionally, it must also take a test environment and use it to test its policy on it.
 Here is an example of the way this must be implemented:</p>
@@ -193,10 +195,10 @@ for j in range(n):
         ep_ret += r
     Teacher.record_test_episode(ep_ret, ep_len)
 </code></pre>
-<p>Your student must then be added to the <code><a title="TeachMyAgent.students" href="students/index.html">TeachMyAgent.students</a></code> subpackage as well as in <code>student_args_handler.py</code>.
-Note that we provide a <code>test_policy.py</code> file which loads a task from a test set, loads a trained policy and use it in the task. This code currently only works for SpinningUp or Baselines models, so you should modify it if your student does not use any of these.</p>
+<p>Your student must then be added to the <code><a title="TeachMyAgent.students" href="students/index.html">TeachMyAgent.students</a></code> subpackage as well as in <code><a title="TeachMyAgent.run_utils.student_args_handler" href="run_utils/student_args_handler.html">TeachMyAgent.run_utils.student_args_handler</a></code>.
+Note that we provide a <code><a title="TeachMyAgent.students.test_policy" href="students/test_policy.html">TeachMyAgent.students.test_policy</a></code> file which loads a task from a test set, loads a trained policy and use it in the task. This code currently only works for SpinningUp or Baselines models, so you should modify it if your student does not use any of these.</p>
 <h2 id="teachers">Teachers</h2>
-<p>All our teachers extend the same <code>AbstractTeacher</code> class which defines their required methods:</p>
+<p>All our teachers extend the same <code><a title="TeachMyAgent.teachers.algos.AbstractTeacher" href="teachers/algos/AbstractTeacher.html">TeachMyAgent.teachers.algos.AbstractTeacher</a></code> class which defines their required methods:</p>
 <ul>
 <li><code>record_initial_state(self, task, state)</code>: record initial state of the task.</li>
 <li><code>episodic_update(self, task, reward, is_success)</code>: get episodic reward and binary success reward.</li>
@@ -206,9 +208,9 @@ Note that we provide a <code>test_policy.py</code> file which loads a task from 
 <li>(Optional) <code>is_non_exploratory_task_sampling_available(self)</code>: whether the method above can be called.</li>
 <li>(Optional) <code>dump(self, dump_dict)</code>: save the teacher.</li>
 </ul>
-<p>Teachers are then called through the <code>TeacherController</code> class, being the one passed to DeepRL students.
+<p>Teachers are then called through the <code><a title="TeachMyAgent.teachers.teacher_controller" href="teachers/teacher_controller.html">TeachMyAgent.teachers.teacher_controller</a></code> class, being the one passed to DeepRL students.
 This class handles the storage of sampled tasks, possible reward interpretation as well as test tasks used when the <code>set_test_env_params</code> method is called.
-In order to add a new teacher, one must extend the <code>AbstractTeacher</code> class and add its class among the possible ones in the following lines of the <code>TeacherController</code>:</p>
+In order to add a new teacher, one must extend the <code>teachers.algos.AbstractTeache</code> class and add its class among the possible ones in the following lines of the <code><a title="TeachMyAgent.teachers.teacher_controller" href="teachers/teacher_controller.html">TeachMyAgent.teachers.teacher_controller</a></code>:</p>
 <pre><code class="language-python"># setup tasks generator
 if teacher == 'Random':
     self.task_generator = RandomTeacher(mins, maxs, seed=seed, **teacher_params)
@@ -230,7 +232,7 @@ else:
     print('Unknown teacher')
     raise NotImplementedError
 </code></pre>
-<p>Finally, <code>teacher_args_handler.py</code> must be modified to add the teacher as well as its parameters.</p>
+<p>Finally, <code><a title="TeachMyAgent.run_utils.teacher_args_handler" href="run_utils/teacher_args_handler.html">TeachMyAgent.run_utils.teacher_args_handler</a></code> must be modified to add the teacher as well as its parameters.</p>
 <h1 id="citing">Citing</h1>
 <p>If you use <code><a title="TeachMyAgent" href="#TeachMyAgent">TeachMyAgent</a></code> in your work, please cite the accompanying <a href="https://arxiv.org/abs/2103.09815">paper</a>:</p>
 <pre><code class="language-bibtex">@misc{romac2021teachmyagent,
@@ -280,10 +282,10 @@ else:
 </section>
 </article>
 <nav id="sidebar">
-<a href="http://developmentalsystems.org/TeachMyAgent/">
+<a href="http://developmentalsystems.org/TeachMyAgent/doc/">
 <img src="https://github.com/flowersteam/TeachMyAgent/blob/gh-pages/images/home/head_image.png?raw=true" style="display: block; margin: 1em auto">
 </a>
-<a href="http://developmentalsystems.org/TeachMyAgent/">Website</a>
+<a href="http://developmentalsystems.org/TeachMyAgent/doc/">Home</a> | <a href="http://developmentalsystems.org/TeachMyAgent/">Website</a>
 <h1>Index</h1>
 <div class="toc">
 <ul>
