@@ -1,1 +1,1 @@
-<link rel="icon" href="../images/favicon-96x96.png" />
+<link rel="icon" href="https://github.com/flowersteam/TeachMyAgent/blob/gh-pages/images/favicon-96x96.png?raw=true" />
