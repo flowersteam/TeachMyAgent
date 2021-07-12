@@ -23,7 +23,7 @@ setup(
         'sklearn',
         'imageio',
         'seaborn==0.8.1',
-        'tensorflow<2',
+        'tensorflow-gpu<2',
         'dm-sonnet<2',
         'tensorflow-probability==0.7.0',
         'torch==1.4.0',
