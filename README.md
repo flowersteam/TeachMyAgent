@@ -58,13 +58,20 @@ See [CONTRIBUTING.md] for details.
 If you use `TeachMyAgent` in your work, please cite the accompanying [paper]:
 
 ```bibtex
-@misc{romac2021teachmyagent,
-      title={TeachMyAgent: a Benchmark for Automatic Curriculum Learning in Deep RL}, 
-      author={Clément Romac and Rémy Portelas and Katja Hofmann and Pierre-Yves Oudeyer},
-      year={2021},
-      eprint={2103.09815},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG}
+@inproceedings{romac2021teachmyagent,
+  author    = {Cl{\'{e}}ment Romac and
+               R{\'{e}}my Portelas and
+               Katja Hofmann and
+               Pierre{-}Yves Oudeyer},
+  title     = {TeachMyAgent: a Benchmark for Automatic Curriculum Learning in Deep
+               {RL}},
+  booktitle = {Proceedings of the 38th International Conference on Machine Learning,
+               {ICML} 2021, 18-24 July 2021, Virtual Event},
+  series    = {Proceedings of Machine Learning Research},
+  volume    = {139},
+  pages     = {9052--9063},
+  publisher = {{PMLR}},
+  year      = {2021}
 }
 ```
 
