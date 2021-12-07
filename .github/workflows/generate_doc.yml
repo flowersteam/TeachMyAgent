@@ -1,0 +1,25 @@
+name: generate_doc
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v2
+
+      - name: Install pdoc3
+        run:
+          pip install pdoc3
+
+      - name: Generate doc
+        run: pdoc --html --output-dir doc TeachMyAgent/ --template-dir TeachMyAgent/doc/templates/ --skip-errors --force
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: doc/TeachMyAgent
+          destination_dir: doc
