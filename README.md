@@ -14,7 +14,7 @@ Our repository provides:
 * **Two benchmark experiments** using elements above: Skill-specific comparison and global performance assessment
 * **Three notebooks for systematic analysis** of results using statistical tests along with visualization tools (plots, videos...) allowing to reproduce our figures
 
-See our [documentation] for an exhaustive list of list.
+See our [documentation] for an exhaustive list.
 
 ![global_schema](TeachMyAgent/graphics/readme_graphics/global_schema.png)
 

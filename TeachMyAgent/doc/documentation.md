@@ -57,7 +57,7 @@ Here is a non-exhaustive list of the arguments you can use:
 * Deep RL students:
     * sac_v0.1.1
     * ppo     
-*Teachers:
+* Teachers:
     * Random
     * ADR
     * ALP-GMM
