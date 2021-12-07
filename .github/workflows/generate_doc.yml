@@ -10,6 +10,11 @@ jobs:
       - name: Git checkout
         uses: actions/checkout@v2
         
+      - name: Setup Python env
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.6'
+          
       - name: Install env
         run: pip3 install -e .
 
