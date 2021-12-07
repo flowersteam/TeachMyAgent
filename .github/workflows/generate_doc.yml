@@ -11,11 +11,11 @@ jobs:
         uses: actions/checkout@v2
         
       - name: Install env
-        run: pip install -e .
+        run: pip3 install -e .
 
       - name: Install pdoc3
         run:
-          pip install pdoc3
+          pip3 install pdoc3
 
       - name: Generate doc
         run: pdoc --html --output-dir doc TeachMyAgent/ --template-dir TeachMyAgent/doc/templates/ --skip-errors --force
