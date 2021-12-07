@@ -11,7 +11,7 @@ information on using pull requests.
 
 ## Documentation improvement
 
-Our [documentation](https://developmentalsystems.org/TeachMyAgent/doc/) is automatically generated using [pdoc3](https://pdoc3.github.io/pdoc/) and then pushed (along with our [website](https://developmentalsystems.org/TeachMyAgent/)) on the `gh-pages` branch of this repository.
+Our [documentation](https://developmentalsystems.org/TeachMyAgent/doc/) is automatically generated using [pdoc3](https://pdoc3.github.io/pdoc/) and deployed (along with our [website](https://developmentalsystems.org/TeachMyAgent/)) on the `gh-pages` branch of this repository (see [`generate_doc.yml`](.github/workflows/generate_doc.yml)
 
 If you want to modify the [home](https://developmentalsystems.org/TeachMyAgent/doc/index.html), use the [`documentation.md`](TeachMyAgent/doc/documentation.md) file.
 
