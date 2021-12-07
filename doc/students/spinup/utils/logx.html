@@ -1,0 +1,1346 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>TeachMyAgent.students.spinup.utils.logx API documentation</title>
+<meta name="description" content="Some simple logging functionality, inspired by rllab&#39;s logging …" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+<link rel="icon" href="https://github.com/flowersteam/TeachMyAgent/blob/gh-pages/images/favicon-96x96.png?raw=true" />
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>TeachMyAgent.students.spinup.utils.logx</code></h1>
+</header>
+<section id="section-intro">
+<p>Some simple logging functionality, inspired by rllab's logging.</p>
+<p>Logs to a tab-separated-values file (path/to/output_directory/progress.txt)</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+
+Some simple logging functionality, inspired by rllab&#39;s logging.
+
+Logs to a tab-separated-values file (path/to/output_directory/progress.txt)
+
+&#34;&#34;&#34;
+import json
+import joblib
+import shutil
+import numpy as np
+import tensorflow as tf
+import torch
+import os.path as osp, time, atexit, os
+import warnings
+from TeachMyAgent.students.spinup.utils.mpi_tools import proc_id, mpi_statistics_scalar
+from TeachMyAgent.students.spinup.utils.serialization_utils import convert_json
+
+color2num = dict(
+    gray=30,
+    red=31,
+    green=32,
+    yellow=33,
+    blue=34,
+    magenta=35,
+    cyan=36,
+    white=37,
+    crimson=38
+)
+
+def colorize(string, color, bold=False, highlight=False):
+    &#34;&#34;&#34;
+    Colorize a string.
+
+    This function was originally written by John Schulman.
+    &#34;&#34;&#34;
+    attr = []
+    num = color2num[color]
+    if highlight: num += 10
+    attr.append(str(num))
+    if bold: attr.append(&#39;1&#39;)
+    return &#39;\x1b[%sm%s\x1b[0m&#39; % (&#39;;&#39;.join(attr), string)
+
+def restore_tf_graph(sess, fpath):
+    &#34;&#34;&#34;
+    Loads graphs saved by Logger.
+
+    Will output a dictionary whose keys and values are from the &#39;inputs&#39; 
+    and &#39;outputs&#39; dict you specified with logger.setup_tf_saver().
+
+    Args:
+        sess: A Tensorflow session.
+        fpath: Filepath to save directory.
+
+    Returns:
+        A dictionary mapping from keys to tensors in the computation graph
+        loaded from ``fpath``. 
+    &#34;&#34;&#34;
+    tf.saved_model.loader.load(
+                sess,
+                [tf.saved_model.tag_constants.SERVING],
+                fpath
+            )
+    model_info = joblib.load(osp.join(fpath, &#39;model_info.pkl&#39;))
+    graph = tf.get_default_graph()
+    model = dict()
+    model.update({k: graph.get_tensor_by_name(v) for k,v in model_info[&#39;inputs&#39;].items()})
+    model.update({k: graph.get_tensor_by_name(v) for k,v in model_info[&#39;outputs&#39;].items()})
+    return model
+
+class Logger:
+    &#34;&#34;&#34;
+    A general-purpose logger.
+
+    Makes it easy to save diagnostics, hyperparameter configurations, the 
+    state of a training run, and the trained model.
+    &#34;&#34;&#34;
+
+    def __init__(self, output_dir=None, output_fname=&#39;progress.txt&#39;, exp_name=None):
+        &#34;&#34;&#34;
+        Initialize a Logger.
+
+        Args:
+            output_dir (string): A directory for saving results to. If 
+                ``None``, defaults to a temp directory of the form
+                ``/tmp/experiments/somerandomnumber``.
+
+            output_fname (string): Name for the tab-separated-value file 
+                containing metrics logged throughout a training run. 
+                Defaults to ``progress.txt``. 
+
+            exp_name (string): Experiment name. If you run multiple training
+                runs and give them all the same ``exp_name``, the plotter
+                will know to group them. (Use case: if you run the same
+                hyperparameter configuration with multiple random seeds, you
+                should give them all the same ``exp_name``.)
+        &#34;&#34;&#34;
+        if proc_id()==0:
+            self.output_dir = output_dir or &#34;/tmp/experiments/%i&#34;%int(time.time())
+            if osp.exists(self.output_dir):
+                print(&#34;Warning: Log dir %s already exists! Storing info there anyway.&#34;%self.output_dir)
+            else:
+                os.makedirs(self.output_dir)
+            self.output_file = open(osp.join(self.output_dir, output_fname), &#39;w&#39;)
+            atexit.register(self.output_file.close)
+            print(colorize(&#34;Logging data to %s&#34;%self.output_file.name, &#39;green&#39;, bold=True))
+        else:
+            self.output_dir = None
+            self.output_file = None
+        self.first_row=True
+        self.log_headers = []
+        self.log_current_row = {}
+        self.exp_name = exp_name
+
+    def log(self, msg, color=&#39;green&#39;):
+        &#34;&#34;&#34;Print a colorized message to stdout.&#34;&#34;&#34;
+        if proc_id()==0:
+            print(colorize(msg, color, bold=True))
+
+    def log_tabular(self, key, val):
+        &#34;&#34;&#34;
+        Log a value of some diagnostic.
+
+        Call this only once for each diagnostic quantity, each iteration.
+        After using ``log_tabular`` to store values for each diagnostic,
+        make sure to call ``dump_tabular`` to write them out to file and
+        stdout (otherwise they will not get saved anywhere).
+        &#34;&#34;&#34;
+        if self.first_row:
+            self.log_headers.append(key)
+        else:
+            assert key in self.log_headers, &#34;Trying to introduce a new key %s that you didn&#39;t include in the first iteration&#34;%key
+        assert key not in self.log_current_row, &#34;You already set %s this iteration. Maybe you forgot to call dump_tabular()&#34;%key
+        self.log_current_row[key] = val
+
+    def save_config(self, config):
+        &#34;&#34;&#34;
+        Log an experiment configuration.
+
+        Call this once at the top of your experiment, passing in all important
+        config vars as a dict. This will serialize the config to JSON, while
+        handling anything which can&#39;t be serialized in a graceful way (writing
+        as informative a string as possible). 
+
+        Example use:
+
+        .. code-block:: python
+
+            logger = EpochLogger(**logger_kwargs)
+            logger.save_config(locals())
+        &#34;&#34;&#34;
+        config_json = convert_json(config)
+        if self.exp_name is not None:
+            config_json[&#39;exp_name&#39;] = self.exp_name
+        if proc_id()==0:
+            output = json.dumps(config_json, separators=(&#39;,&#39;,&#39;:\t&#39;), indent=4, sort_keys=True)
+            print(colorize(&#39;Saving config:\n&#39;, color=&#39;cyan&#39;, bold=True))
+            print(output)
+            with open(osp.join(self.output_dir, &#34;config.json&#34;), &#39;w&#39;) as out:
+                out.write(output)
+
+    def save_state(self, state_dict, itr=None):
+        &#34;&#34;&#34;
+        Saves the state of an experiment.
+
+        To be clear: this is about saving *state*, not logging diagnostics.
+        All diagnostic logging is separate from this function. This function
+        will save whatever is in ``state_dict``---usually just a copy of the
+        environment---and the most recent parameters for the model you 
+        previously set up saving for with ``setup_tf_saver``. 
+
+        Call with any frequency you prefer. If you only want to maintain a
+        single state and overwrite it at each call with the most recent 
+        version, leave ``itr=None``. If you want to keep all of the states you
+        save, provide unique (increasing) values for &#39;itr&#39;.
+
+        Args:
+            state_dict (dict): Dictionary containing essential elements to
+                describe the current state of training.
+
+            itr: An int, or None. Current iteration of training.
+        &#34;&#34;&#34;
+        if proc_id()==0:
+            fname = &#39;vars.pkl&#39; if itr is None else &#39;vars%d.pkl&#39;%itr
+            try:
+                joblib.dump(state_dict, osp.join(self.output_dir, fname))
+            except:
+                self.log(&#39;Warning: could not pickle state_dict.&#39;, color=&#39;red&#39;)
+            if hasattr(self, &#39;tf_saver_elements&#39;):
+                self._tf_simple_save(itr)
+            if hasattr(self, &#39;pytorch_saver_elements&#39;):
+                self._pytorch_simple_save(itr)
+
+    def setup_tf_saver(self, sess, inputs, outputs):
+        &#34;&#34;&#34;
+        Set up easy model saving for tensorflow.
+
+        Call once, after defining your computation graph but before training.
+
+        Args:
+            sess: The Tensorflow session in which you train your computation
+                graph.
+
+            inputs (dict): A dictionary that maps from keys of your choice
+                to the tensorflow placeholders that serve as inputs to the 
+                computation graph. Make sure that *all* of the placeholders
+                needed for your outputs are included!
+
+            outputs (dict): A dictionary that maps from keys of your choice
+                to the outputs from your computation graph.
+        &#34;&#34;&#34;
+        self.tf_saver_elements = dict(session=sess, inputs=inputs, outputs=outputs)
+        self.tf_saver_info = {&#39;inputs&#39;: {k:v.name for k,v in inputs.items()},
+                              &#39;outputs&#39;: {k:v.name for k,v in outputs.items()}}
+
+    def _tf_simple_save(self, itr=None):
+        &#34;&#34;&#34;
+        Uses simple_save to save a trained model, plus info to make it easy
+        to associated tensors to variables after restore. 
+        &#34;&#34;&#34;
+        if proc_id()==0:
+            assert hasattr(self, &#39;tf_saver_elements&#39;), \
+                &#34;First have to setup saving with self.setup_tf_saver&#34;
+            fpath = &#39;tf1_save&#39; + (&#39;%d&#39;%itr if itr is not None else &#39;&#39;)
+            fpath = osp.join(self.output_dir, fpath)
+            if osp.exists(fpath):
+                # simple_save refuses to be useful if fpath already exists,
+                # so just delete fpath if it&#39;s there.
+                shutil.rmtree(fpath)
+            tf.saved_model.simple_save(export_dir=fpath, **self.tf_saver_elements)
+            joblib.dump(self.tf_saver_info, osp.join(fpath, &#39;model_info.pkl&#39;))
+    
+
+    def setup_pytorch_saver(self, what_to_save):
+        &#34;&#34;&#34;
+        Set up easy model saving for a single PyTorch model.
+
+        Because PyTorch saving and loading is especially painless, this is
+        very minimal; we just need references to whatever we would like to 
+        pickle. This is integrated into the logger because the logger
+        knows where the user would like to save information about this
+        training run.
+
+        Args:
+            what_to_save: Any PyTorch model or serializable object containing
+                PyTorch models.
+        &#34;&#34;&#34;
+        self.pytorch_saver_elements = what_to_save
+
+    def _pytorch_simple_save(self, itr=None):
+        &#34;&#34;&#34;
+        Saves the PyTorch model (or models).
+        &#34;&#34;&#34;
+        if proc_id()==0:
+            assert hasattr(self, &#39;pytorch_saver_elements&#39;), \
+                &#34;First have to setup saving with self.setup_pytorch_saver&#34;
+            fpath = &#39;pyt_save&#39;
+            fpath = osp.join(self.output_dir, fpath)
+            fname = &#39;model&#39; + (&#39;%d&#39;%itr if itr is not None else &#39;&#39;) + &#39;.pt&#39;
+            fname = osp.join(fpath, fname)
+            os.makedirs(fpath, exist_ok=True)
+            with warnings.catch_warnings():
+                warnings.simplefilter(&#34;ignore&#34;)
+                # We are using a non-recommended way of saving PyTorch models,
+                # by pickling whole objects (which are dependent on the exact
+                # directory structure at the time of saving) as opposed to
+                # just saving network weights. This works sufficiently well
+                # for the purposes of Spinning Up, but you may want to do 
+                # something different for your personal PyTorch project.
+                # We use a catch_warnings() context to avoid the warnings about
+                # not being able to save the source code.
+                torch.save(self.pytorch_saver_elements, fname)
+
+
+    def dump_tabular(self):
+        &#34;&#34;&#34;
+        Write all of the diagnostics from the current iteration.
+
+        Writes both to stdout, and to the output file.
+        &#34;&#34;&#34;
+        if proc_id()==0:
+            vals = []
+            key_lens = [len(key) for key in self.log_headers]
+            max_key_len = max(15,max(key_lens))
+            keystr = &#39;%&#39;+&#39;%d&#39;%max_key_len
+            fmt = &#34;| &#34; + keystr + &#34;s | %15s |&#34;
+            n_slashes = 22 + max_key_len
+            print(&#34;-&#34;*n_slashes)
+            for key in self.log_headers:
+                val = self.log_current_row.get(key, &#34;&#34;)
+                valstr = &#34;%8.3g&#34;%val if hasattr(val, &#34;__float__&#34;) else val
+                print(fmt%(key, valstr))
+                vals.append(val)
+            print(&#34;-&#34;*n_slashes, flush=True)
+            if self.output_file is not None:
+                if self.first_row:
+                    self.output_file.write(&#34;\t&#34;.join(self.log_headers)+&#34;\n&#34;)
+                self.output_file.write(&#34;\t&#34;.join(map(str,vals))+&#34;\n&#34;)
+                self.output_file.flush()
+        self.log_current_row.clear()
+        self.first_row=False
+
+class EpochLogger(Logger):
+    &#34;&#34;&#34;
+    A variant of Logger tailored for tracking average values over epochs.
+
+    Typical use case: there is some quantity which is calculated many times
+    throughout an epoch, and at the end of the epoch, you would like to 
+    report the average / std / min / max value of that quantity.
+
+    With an EpochLogger, each time the quantity is calculated, you would
+    use 
+
+    .. code-block:: python
+
+        epoch_logger.store(NameOfQuantity=quantity_value)
+
+    to load it into the EpochLogger&#39;s state. Then at the end of the epoch, you 
+    would use 
+
+    .. code-block:: python
+
+        epoch_logger.log_tabular(NameOfQuantity, **options)
+
+    to record the desired values.
+    &#34;&#34;&#34;
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.epoch_dict = dict()
+
+    def store(self, **kwargs):
+        &#34;&#34;&#34;
+        Save something into the epoch_logger&#39;s current state.
+
+        Provide an arbitrary number of keyword arguments with numerical 
+        values.
+        &#34;&#34;&#34;
+        for k,v in kwargs.items():
+            if not(k in self.epoch_dict.keys()):
+                self.epoch_dict[k] = []
+            self.epoch_dict[k].append(v)
+
+    def log_tabular(self, key, val=None, with_min_and_max=False, average_only=False):
+        &#34;&#34;&#34;
+        Log a value or possibly the mean/std/min/max values of a diagnostic.
+
+        Args:
+            key (string): The name of the diagnostic. If you are logging a
+                diagnostic whose state has previously been saved with 
+                ``store``, the key here has to match the key you used there.
+
+            val: A value for the diagnostic. If you have previously saved
+                values for this key via ``store``, do *not* provide a ``val``
+                here.
+
+            with_min_and_max (bool): If true, log min and max values of the 
+                diagnostic over the epoch.
+
+            average_only (bool): If true, do not log the standard deviation
+                of the diagnostic over the epoch.
+        &#34;&#34;&#34;
+        if val is not None:
+            super().log_tabular(key,val)
+        else:
+            v = self.epoch_dict[key]
+            vals = np.concatenate(v) if isinstance(v[0], np.ndarray) and len(v[0].shape)&gt;0 else v
+            stats = mpi_statistics_scalar(vals, with_min_and_max=with_min_and_max)
+            super().log_tabular(key if average_only else &#39;Average&#39; + key, stats[0])
+            if not(average_only):
+                super().log_tabular(&#39;Std&#39;+key, stats[1])
+            if with_min_and_max:
+                super().log_tabular(&#39;Max&#39;+key, stats[3])
+                super().log_tabular(&#39;Min&#39;+key, stats[2])
+        self.epoch_dict[key] = []
+
+    def get_stats(self, key):
+        &#34;&#34;&#34;
+        Lets an algorithm ask the logger for mean/std/min/max of a diagnostic.
+        &#34;&#34;&#34;
+        v = self.epoch_dict[key]
+        vals = np.concatenate(v) if isinstance(v[0], np.ndarray) and len(v[0].shape)&gt;0 else v
+        return mpi_statistics_scalar(vals)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="TeachMyAgent.students.spinup.utils.logx.colorize"><code class="name flex">
+<span>def <span class="ident">colorize</span></span>(<span>string, color, bold=False, highlight=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Colorize a string.</p>
+<p>This function was originally written by John Schulman.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def colorize(string, color, bold=False, highlight=False):
+    &#34;&#34;&#34;
+    Colorize a string.
+
+    This function was originally written by John Schulman.
+    &#34;&#34;&#34;
+    attr = []
+    num = color2num[color]
+    if highlight: num += 10
+    attr.append(str(num))
+    if bold: attr.append(&#39;1&#39;)
+    return &#39;\x1b[%sm%s\x1b[0m&#39; % (&#39;;&#39;.join(attr), string)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.spinup.utils.logx.restore_tf_graph"><code class="name flex">
+<span>def <span class="ident">restore_tf_graph</span></span>(<span>sess, fpath)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Loads graphs saved by Logger.</p>
+<p>Will output a dictionary whose keys and values are from the 'inputs'
+and 'outputs' dict you specified with logger.setup_tf_saver().</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>sess</code></strong></dt>
+<dd>A Tensorflow session.</dd>
+<dt><strong><code>fpath</code></strong></dt>
+<dd>Filepath to save directory.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A dictionary mapping from keys to tensors in the computation graph
+loaded from <code>fpath</code>.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def restore_tf_graph(sess, fpath):
+    &#34;&#34;&#34;
+    Loads graphs saved by Logger.
+
+    Will output a dictionary whose keys and values are from the &#39;inputs&#39; 
+    and &#39;outputs&#39; dict you specified with logger.setup_tf_saver().
+
+    Args:
+        sess: A Tensorflow session.
+        fpath: Filepath to save directory.
+
+    Returns:
+        A dictionary mapping from keys to tensors in the computation graph
+        loaded from ``fpath``. 
+    &#34;&#34;&#34;
+    tf.saved_model.loader.load(
+                sess,
+                [tf.saved_model.tag_constants.SERVING],
+                fpath
+            )
+    model_info = joblib.load(osp.join(fpath, &#39;model_info.pkl&#39;))
+    graph = tf.get_default_graph()
+    model = dict()
+    model.update({k: graph.get_tensor_by_name(v) for k,v in model_info[&#39;inputs&#39;].items()})
+    model.update({k: graph.get_tensor_by_name(v) for k,v in model_info[&#39;outputs&#39;].items()})
+    return model</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="TeachMyAgent.students.spinup.utils.logx.EpochLogger"><code class="flex name class">
+<span>class <span class="ident">EpochLogger</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A variant of Logger tailored for tracking average values over epochs.</p>
+<p>Typical use case: there is some quantity which is calculated many times
+throughout an epoch, and at the end of the epoch, you would like to
+report the average / std / min / max value of that quantity.</p>
+<p>With an EpochLogger, each time the quantity is calculated, you would
+use </p>
+<p>.. code-block:: python</p>
+<pre><code>epoch_logger.store(NameOfQuantity=quantity_value)
+</code></pre>
+<p>to load it into the EpochLogger's state. Then at the end of the epoch, you
+would use </p>
+<p>.. code-block:: python</p>
+<pre><code>epoch_logger.log_tabular(NameOfQuantity, **options)
+</code></pre>
+<p>to record the desired values.</p>
+<p>Initialize a Logger.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>output_dir</code></strong> :&ensp;<code>string</code></dt>
+<dd>A directory for saving results to. If
+<code>None</code>, defaults to a temp directory of the form
+<code>/tmp/experiments/somerandomnumber</code>.</dd>
+<dt><strong><code>output_fname</code></strong> :&ensp;<code>string</code></dt>
+<dd>Name for the tab-separated-value file
+containing metrics logged throughout a training run.
+Defaults to <code>progress.txt</code>. </dd>
+<dt><strong><code>exp_name</code></strong> :&ensp;<code>string</code></dt>
+<dd>Experiment name. If you run multiple training
+runs and give them all the same <code>exp_name</code>, the plotter
+will know to group them. (Use case: if you run the same
+hyperparameter configuration with multiple random seeds, you
+should give them all the same <code>exp_name</code>.)</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class EpochLogger(Logger):
+    &#34;&#34;&#34;
+    A variant of Logger tailored for tracking average values over epochs.
+
+    Typical use case: there is some quantity which is calculated many times
+    throughout an epoch, and at the end of the epoch, you would like to 
+    report the average / std / min / max value of that quantity.
+
+    With an EpochLogger, each time the quantity is calculated, you would
+    use 
+
+    .. code-block:: python
+
+        epoch_logger.store(NameOfQuantity=quantity_value)
+
+    to load it into the EpochLogger&#39;s state. Then at the end of the epoch, you 
+    would use 
+
+    .. code-block:: python
+
+        epoch_logger.log_tabular(NameOfQuantity, **options)
+
+    to record the desired values.
+    &#34;&#34;&#34;
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.epoch_dict = dict()
+
+    def store(self, **kwargs):
+        &#34;&#34;&#34;
+        Save something into the epoch_logger&#39;s current state.
+
+        Provide an arbitrary number of keyword arguments with numerical 
+        values.
+        &#34;&#34;&#34;
+        for k,v in kwargs.items():
+            if not(k in self.epoch_dict.keys()):
+                self.epoch_dict[k] = []
+            self.epoch_dict[k].append(v)
+
+    def log_tabular(self, key, val=None, with_min_and_max=False, average_only=False):
+        &#34;&#34;&#34;
+        Log a value or possibly the mean/std/min/max values of a diagnostic.
+
+        Args:
+            key (string): The name of the diagnostic. If you are logging a
+                diagnostic whose state has previously been saved with 
+                ``store``, the key here has to match the key you used there.
+
+            val: A value for the diagnostic. If you have previously saved
+                values for this key via ``store``, do *not* provide a ``val``
+                here.
+
+            with_min_and_max (bool): If true, log min and max values of the 
+                diagnostic over the epoch.
+
+            average_only (bool): If true, do not log the standard deviation
+                of the diagnostic over the epoch.
+        &#34;&#34;&#34;
+        if val is not None:
+            super().log_tabular(key,val)
+        else:
+            v = self.epoch_dict[key]
+            vals = np.concatenate(v) if isinstance(v[0], np.ndarray) and len(v[0].shape)&gt;0 else v
+            stats = mpi_statistics_scalar(vals, with_min_and_max=with_min_and_max)
+            super().log_tabular(key if average_only else &#39;Average&#39; + key, stats[0])
+            if not(average_only):
+                super().log_tabular(&#39;Std&#39;+key, stats[1])
+            if with_min_and_max:
+                super().log_tabular(&#39;Max&#39;+key, stats[3])
+                super().log_tabular(&#39;Min&#39;+key, stats[2])
+        self.epoch_dict[key] = []
+
+    def get_stats(self, key):
+        &#34;&#34;&#34;
+        Lets an algorithm ask the logger for mean/std/min/max of a diagnostic.
+        &#34;&#34;&#34;
+        v = self.epoch_dict[key]
+        vals = np.concatenate(v) if isinstance(v[0], np.ndarray) and len(v[0].shape)&gt;0 else v
+        return mpi_statistics_scalar(vals)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="TeachMyAgent.students.spinup.utils.logx.Logger" href="#TeachMyAgent.students.spinup.utils.logx.Logger">Logger</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="TeachMyAgent.students.spinup.utils.logx.EpochLogger.get_stats"><code class="name flex">
+<span>def <span class="ident">get_stats</span></span>(<span>self, key)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Lets an algorithm ask the logger for mean/std/min/max of a diagnostic.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_stats(self, key):
+    &#34;&#34;&#34;
+    Lets an algorithm ask the logger for mean/std/min/max of a diagnostic.
+    &#34;&#34;&#34;
+    v = self.epoch_dict[key]
+    vals = np.concatenate(v) if isinstance(v[0], np.ndarray) and len(v[0].shape)&gt;0 else v
+    return mpi_statistics_scalar(vals)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.spinup.utils.logx.EpochLogger.log_tabular"><code class="name flex">
+<span>def <span class="ident">log_tabular</span></span>(<span>self, key, val=None, with_min_and_max=False, average_only=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Log a value or possibly the mean/std/min/max values of a diagnostic.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>key</code></strong> :&ensp;<code>string</code></dt>
+<dd>The name of the diagnostic. If you are logging a
+diagnostic whose state has previously been saved with
+<code>store</code>, the key here has to match the key you used there.</dd>
+<dt><strong><code>val</code></strong></dt>
+<dd>A value for the diagnostic. If you have previously saved
+values for this key via <code>store</code>, do <em>not</em> provide a <code>val</code>
+here.</dd>
+<dt><strong><code>with_min_and_max</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If true, log min and max values of the
+diagnostic over the epoch.</dd>
+<dt><strong><code>average_only</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If true, do not log the standard deviation
+of the diagnostic over the epoch.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def log_tabular(self, key, val=None, with_min_and_max=False, average_only=False):
+    &#34;&#34;&#34;
+    Log a value or possibly the mean/std/min/max values of a diagnostic.
+
+    Args:
+        key (string): The name of the diagnostic. If you are logging a
+            diagnostic whose state has previously been saved with 
+            ``store``, the key here has to match the key you used there.
+
+        val: A value for the diagnostic. If you have previously saved
+            values for this key via ``store``, do *not* provide a ``val``
+            here.
+
+        with_min_and_max (bool): If true, log min and max values of the 
+            diagnostic over the epoch.
+
+        average_only (bool): If true, do not log the standard deviation
+            of the diagnostic over the epoch.
+    &#34;&#34;&#34;
+    if val is not None:
+        super().log_tabular(key,val)
+    else:
+        v = self.epoch_dict[key]
+        vals = np.concatenate(v) if isinstance(v[0], np.ndarray) and len(v[0].shape)&gt;0 else v
+        stats = mpi_statistics_scalar(vals, with_min_and_max=with_min_and_max)
+        super().log_tabular(key if average_only else &#39;Average&#39; + key, stats[0])
+        if not(average_only):
+            super().log_tabular(&#39;Std&#39;+key, stats[1])
+        if with_min_and_max:
+            super().log_tabular(&#39;Max&#39;+key, stats[3])
+            super().log_tabular(&#39;Min&#39;+key, stats[2])
+    self.epoch_dict[key] = []</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.spinup.utils.logx.EpochLogger.store"><code class="name flex">
+<span>def <span class="ident">store</span></span>(<span>self, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Save something into the epoch_logger's current state.</p>
+<p>Provide an arbitrary number of keyword arguments with numerical
+values.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def store(self, **kwargs):
+    &#34;&#34;&#34;
+    Save something into the epoch_logger&#39;s current state.
+
+    Provide an arbitrary number of keyword arguments with numerical 
+    values.
+    &#34;&#34;&#34;
+    for k,v in kwargs.items():
+        if not(k in self.epoch_dict.keys()):
+            self.epoch_dict[k] = []
+        self.epoch_dict[k].append(v)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="TeachMyAgent.students.spinup.utils.logx.Logger" href="#TeachMyAgent.students.spinup.utils.logx.Logger">Logger</a></b></code>:
+<ul class="hlist">
+<li><code><a title="TeachMyAgent.students.spinup.utils.logx.Logger.dump_tabular" href="#TeachMyAgent.students.spinup.utils.logx.Logger.dump_tabular">dump_tabular</a></code></li>
+<li><code><a title="TeachMyAgent.students.spinup.utils.logx.Logger.log" href="#TeachMyAgent.students.spinup.utils.logx.Logger.log">log</a></code></li>
+<li><code><a title="TeachMyAgent.students.spinup.utils.logx.Logger.save_config" href="#TeachMyAgent.students.spinup.utils.logx.Logger.save_config">save_config</a></code></li>
+<li><code><a title="TeachMyAgent.students.spinup.utils.logx.Logger.save_state" href="#TeachMyAgent.students.spinup.utils.logx.Logger.save_state">save_state</a></code></li>
+<li><code><a title="TeachMyAgent.students.spinup.utils.logx.Logger.setup_pytorch_saver" href="#TeachMyAgent.students.spinup.utils.logx.Logger.setup_pytorch_saver">setup_pytorch_saver</a></code></li>
+<li><code><a title="TeachMyAgent.students.spinup.utils.logx.Logger.setup_tf_saver" href="#TeachMyAgent.students.spinup.utils.logx.Logger.setup_tf_saver">setup_tf_saver</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="TeachMyAgent.students.spinup.utils.logx.Logger"><code class="flex name class">
+<span>class <span class="ident">Logger</span></span>
+<span>(</span><span>output_dir=None, output_fname='progress.txt', exp_name=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A general-purpose logger.</p>
+<p>Makes it easy to save diagnostics, hyperparameter configurations, the
+state of a training run, and the trained model.</p>
+<p>Initialize a Logger.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>output_dir</code></strong> :&ensp;<code>string</code></dt>
+<dd>A directory for saving results to. If
+<code>None</code>, defaults to a temp directory of the form
+<code>/tmp/experiments/somerandomnumber</code>.</dd>
+<dt><strong><code>output_fname</code></strong> :&ensp;<code>string</code></dt>
+<dd>Name for the tab-separated-value file
+containing metrics logged throughout a training run.
+Defaults to <code>progress.txt</code>. </dd>
+<dt><strong><code>exp_name</code></strong> :&ensp;<code>string</code></dt>
+<dd>Experiment name. If you run multiple training
+runs and give them all the same <code>exp_name</code>, the plotter
+will know to group them. (Use case: if you run the same
+hyperparameter configuration with multiple random seeds, you
+should give them all the same <code>exp_name</code>.)</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Logger:
+    &#34;&#34;&#34;
+    A general-purpose logger.
+
+    Makes it easy to save diagnostics, hyperparameter configurations, the 
+    state of a training run, and the trained model.
+    &#34;&#34;&#34;
+
+    def __init__(self, output_dir=None, output_fname=&#39;progress.txt&#39;, exp_name=None):
+        &#34;&#34;&#34;
+        Initialize a Logger.
+
+        Args:
+            output_dir (string): A directory for saving results to. If 
+                ``None``, defaults to a temp directory of the form
+                ``/tmp/experiments/somerandomnumber``.
+
+            output_fname (string): Name for the tab-separated-value file 
+                containing metrics logged throughout a training run. 
+                Defaults to ``progress.txt``. 
+
+            exp_name (string): Experiment name. If you run multiple training
+                runs and give them all the same ``exp_name``, the plotter
+                will know to group them. (Use case: if you run the same
+                hyperparameter configuration with multiple random seeds, you
+                should give them all the same ``exp_name``.)
+        &#34;&#34;&#34;
+        if proc_id()==0:
+            self.output_dir = output_dir or &#34;/tmp/experiments/%i&#34;%int(time.time())
+            if osp.exists(self.output_dir):
+                print(&#34;Warning: Log dir %s already exists! Storing info there anyway.&#34;%self.output_dir)
+            else:
+                os.makedirs(self.output_dir)
+            self.output_file = open(osp.join(self.output_dir, output_fname), &#39;w&#39;)
+            atexit.register(self.output_file.close)
+            print(colorize(&#34;Logging data to %s&#34;%self.output_file.name, &#39;green&#39;, bold=True))
+        else:
+            self.output_dir = None
+            self.output_file = None
+        self.first_row=True
+        self.log_headers = []
+        self.log_current_row = {}
+        self.exp_name = exp_name
+
+    def log(self, msg, color=&#39;green&#39;):
+        &#34;&#34;&#34;Print a colorized message to stdout.&#34;&#34;&#34;
+        if proc_id()==0:
+            print(colorize(msg, color, bold=True))
+
+    def log_tabular(self, key, val):
+        &#34;&#34;&#34;
+        Log a value of some diagnostic.
+
+        Call this only once for each diagnostic quantity, each iteration.
+        After using ``log_tabular`` to store values for each diagnostic,
+        make sure to call ``dump_tabular`` to write them out to file and
+        stdout (otherwise they will not get saved anywhere).
+        &#34;&#34;&#34;
+        if self.first_row:
+            self.log_headers.append(key)
+        else:
+            assert key in self.log_headers, &#34;Trying to introduce a new key %s that you didn&#39;t include in the first iteration&#34;%key
+        assert key not in self.log_current_row, &#34;You already set %s this iteration. Maybe you forgot to call dump_tabular()&#34;%key
+        self.log_current_row[key] = val
+
+    def save_config(self, config):
+        &#34;&#34;&#34;
+        Log an experiment configuration.
+
+        Call this once at the top of your experiment, passing in all important
+        config vars as a dict. This will serialize the config to JSON, while
+        handling anything which can&#39;t be serialized in a graceful way (writing
+        as informative a string as possible). 
+
+        Example use:
+
+        .. code-block:: python
+
+            logger = EpochLogger(**logger_kwargs)
+            logger.save_config(locals())
+        &#34;&#34;&#34;
+        config_json = convert_json(config)
+        if self.exp_name is not None:
+            config_json[&#39;exp_name&#39;] = self.exp_name
+        if proc_id()==0:
+            output = json.dumps(config_json, separators=(&#39;,&#39;,&#39;:\t&#39;), indent=4, sort_keys=True)
+            print(colorize(&#39;Saving config:\n&#39;, color=&#39;cyan&#39;, bold=True))
+            print(output)
+            with open(osp.join(self.output_dir, &#34;config.json&#34;), &#39;w&#39;) as out:
+                out.write(output)
+
+    def save_state(self, state_dict, itr=None):
+        &#34;&#34;&#34;
+        Saves the state of an experiment.
+
+        To be clear: this is about saving *state*, not logging diagnostics.
+        All diagnostic logging is separate from this function. This function
+        will save whatever is in ``state_dict``---usually just a copy of the
+        environment---and the most recent parameters for the model you 
+        previously set up saving for with ``setup_tf_saver``. 
+
+        Call with any frequency you prefer. If you only want to maintain a
+        single state and overwrite it at each call with the most recent 
+        version, leave ``itr=None``. If you want to keep all of the states you
+        save, provide unique (increasing) values for &#39;itr&#39;.
+
+        Args:
+            state_dict (dict): Dictionary containing essential elements to
+                describe the current state of training.
+
+            itr: An int, or None. Current iteration of training.
+        &#34;&#34;&#34;
+        if proc_id()==0:
+            fname = &#39;vars.pkl&#39; if itr is None else &#39;vars%d.pkl&#39;%itr
+            try:
+                joblib.dump(state_dict, osp.join(self.output_dir, fname))
+            except:
+                self.log(&#39;Warning: could not pickle state_dict.&#39;, color=&#39;red&#39;)
+            if hasattr(self, &#39;tf_saver_elements&#39;):
+                self._tf_simple_save(itr)
+            if hasattr(self, &#39;pytorch_saver_elements&#39;):
+                self._pytorch_simple_save(itr)
+
+    def setup_tf_saver(self, sess, inputs, outputs):
+        &#34;&#34;&#34;
+        Set up easy model saving for tensorflow.
+
+        Call once, after defining your computation graph but before training.
+
+        Args:
+            sess: The Tensorflow session in which you train your computation
+                graph.
+
+            inputs (dict): A dictionary that maps from keys of your choice
+                to the tensorflow placeholders that serve as inputs to the 
+                computation graph. Make sure that *all* of the placeholders
+                needed for your outputs are included!
+
+            outputs (dict): A dictionary that maps from keys of your choice
+                to the outputs from your computation graph.
+        &#34;&#34;&#34;
+        self.tf_saver_elements = dict(session=sess, inputs=inputs, outputs=outputs)
+        self.tf_saver_info = {&#39;inputs&#39;: {k:v.name for k,v in inputs.items()},
+                              &#39;outputs&#39;: {k:v.name for k,v in outputs.items()}}
+
+    def _tf_simple_save(self, itr=None):
+        &#34;&#34;&#34;
+        Uses simple_save to save a trained model, plus info to make it easy
+        to associated tensors to variables after restore. 
+        &#34;&#34;&#34;
+        if proc_id()==0:
+            assert hasattr(self, &#39;tf_saver_elements&#39;), \
+                &#34;First have to setup saving with self.setup_tf_saver&#34;
+            fpath = &#39;tf1_save&#39; + (&#39;%d&#39;%itr if itr is not None else &#39;&#39;)
+            fpath = osp.join(self.output_dir, fpath)
+            if osp.exists(fpath):
+                # simple_save refuses to be useful if fpath already exists,
+                # so just delete fpath if it&#39;s there.
+                shutil.rmtree(fpath)
+            tf.saved_model.simple_save(export_dir=fpath, **self.tf_saver_elements)
+            joblib.dump(self.tf_saver_info, osp.join(fpath, &#39;model_info.pkl&#39;))
+    
+
+    def setup_pytorch_saver(self, what_to_save):
+        &#34;&#34;&#34;
+        Set up easy model saving for a single PyTorch model.
+
+        Because PyTorch saving and loading is especially painless, this is
+        very minimal; we just need references to whatever we would like to 
+        pickle. This is integrated into the logger because the logger
+        knows where the user would like to save information about this
+        training run.
+
+        Args:
+            what_to_save: Any PyTorch model or serializable object containing
+                PyTorch models.
+        &#34;&#34;&#34;
+        self.pytorch_saver_elements = what_to_save
+
+    def _pytorch_simple_save(self, itr=None):
+        &#34;&#34;&#34;
+        Saves the PyTorch model (or models).
+        &#34;&#34;&#34;
+        if proc_id()==0:
+            assert hasattr(self, &#39;pytorch_saver_elements&#39;), \
+                &#34;First have to setup saving with self.setup_pytorch_saver&#34;
+            fpath = &#39;pyt_save&#39;
+            fpath = osp.join(self.output_dir, fpath)
+            fname = &#39;model&#39; + (&#39;%d&#39;%itr if itr is not None else &#39;&#39;) + &#39;.pt&#39;
+            fname = osp.join(fpath, fname)
+            os.makedirs(fpath, exist_ok=True)
+            with warnings.catch_warnings():
+                warnings.simplefilter(&#34;ignore&#34;)
+                # We are using a non-recommended way of saving PyTorch models,
+                # by pickling whole objects (which are dependent on the exact
+                # directory structure at the time of saving) as opposed to
+                # just saving network weights. This works sufficiently well
+                # for the purposes of Spinning Up, but you may want to do 
+                # something different for your personal PyTorch project.
+                # We use a catch_warnings() context to avoid the warnings about
+                # not being able to save the source code.
+                torch.save(self.pytorch_saver_elements, fname)
+
+
+    def dump_tabular(self):
+        &#34;&#34;&#34;
+        Write all of the diagnostics from the current iteration.
+
+        Writes both to stdout, and to the output file.
+        &#34;&#34;&#34;
+        if proc_id()==0:
+            vals = []
+            key_lens = [len(key) for key in self.log_headers]
+            max_key_len = max(15,max(key_lens))
+            keystr = &#39;%&#39;+&#39;%d&#39;%max_key_len
+            fmt = &#34;| &#34; + keystr + &#34;s | %15s |&#34;
+            n_slashes = 22 + max_key_len
+            print(&#34;-&#34;*n_slashes)
+            for key in self.log_headers:
+                val = self.log_current_row.get(key, &#34;&#34;)
+                valstr = &#34;%8.3g&#34;%val if hasattr(val, &#34;__float__&#34;) else val
+                print(fmt%(key, valstr))
+                vals.append(val)
+            print(&#34;-&#34;*n_slashes, flush=True)
+            if self.output_file is not None:
+                if self.first_row:
+                    self.output_file.write(&#34;\t&#34;.join(self.log_headers)+&#34;\n&#34;)
+                self.output_file.write(&#34;\t&#34;.join(map(str,vals))+&#34;\n&#34;)
+                self.output_file.flush()
+        self.log_current_row.clear()
+        self.first_row=False</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="TeachMyAgent.students.spinup.utils.logx.EpochLogger" href="#TeachMyAgent.students.spinup.utils.logx.EpochLogger">EpochLogger</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="TeachMyAgent.students.spinup.utils.logx.Logger.dump_tabular"><code class="name flex">
+<span>def <span class="ident">dump_tabular</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Write all of the diagnostics from the current iteration.</p>
+<p>Writes both to stdout, and to the output file.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def dump_tabular(self):
+    &#34;&#34;&#34;
+    Write all of the diagnostics from the current iteration.
+
+    Writes both to stdout, and to the output file.
+    &#34;&#34;&#34;
+    if proc_id()==0:
+        vals = []
+        key_lens = [len(key) for key in self.log_headers]
+        max_key_len = max(15,max(key_lens))
+        keystr = &#39;%&#39;+&#39;%d&#39;%max_key_len
+        fmt = &#34;| &#34; + keystr + &#34;s | %15s |&#34;
+        n_slashes = 22 + max_key_len
+        print(&#34;-&#34;*n_slashes)
+        for key in self.log_headers:
+            val = self.log_current_row.get(key, &#34;&#34;)
+            valstr = &#34;%8.3g&#34;%val if hasattr(val, &#34;__float__&#34;) else val
+            print(fmt%(key, valstr))
+            vals.append(val)
+        print(&#34;-&#34;*n_slashes, flush=True)
+        if self.output_file is not None:
+            if self.first_row:
+                self.output_file.write(&#34;\t&#34;.join(self.log_headers)+&#34;\n&#34;)
+            self.output_file.write(&#34;\t&#34;.join(map(str,vals))+&#34;\n&#34;)
+            self.output_file.flush()
+    self.log_current_row.clear()
+    self.first_row=False</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.spinup.utils.logx.Logger.log"><code class="name flex">
+<span>def <span class="ident">log</span></span>(<span>self, msg, color='green')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Print a colorized message to stdout.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def log(self, msg, color=&#39;green&#39;):
+    &#34;&#34;&#34;Print a colorized message to stdout.&#34;&#34;&#34;
+    if proc_id()==0:
+        print(colorize(msg, color, bold=True))</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.spinup.utils.logx.Logger.log_tabular"><code class="name flex">
+<span>def <span class="ident">log_tabular</span></span>(<span>self, key, val)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Log a value of some diagnostic.</p>
+<p>Call this only once for each diagnostic quantity, each iteration.
+After using <code>log_tabular</code> to store values for each diagnostic,
+make sure to call <code>dump_tabular</code> to write them out to file and
+stdout (otherwise they will not get saved anywhere).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def log_tabular(self, key, val):
+    &#34;&#34;&#34;
+    Log a value of some diagnostic.
+
+    Call this only once for each diagnostic quantity, each iteration.
+    After using ``log_tabular`` to store values for each diagnostic,
+    make sure to call ``dump_tabular`` to write them out to file and
+    stdout (otherwise they will not get saved anywhere).
+    &#34;&#34;&#34;
+    if self.first_row:
+        self.log_headers.append(key)
+    else:
+        assert key in self.log_headers, &#34;Trying to introduce a new key %s that you didn&#39;t include in the first iteration&#34;%key
+    assert key not in self.log_current_row, &#34;You already set %s this iteration. Maybe you forgot to call dump_tabular()&#34;%key
+    self.log_current_row[key] = val</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.spinup.utils.logx.Logger.save_config"><code class="name flex">
+<span>def <span class="ident">save_config</span></span>(<span>self, config)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Log an experiment configuration.</p>
+<p>Call this once at the top of your experiment, passing in all important
+config vars as a dict. This will serialize the config to JSON, while
+handling anything which can't be serialized in a graceful way (writing
+as informative a string as possible). </p>
+<p>Example use:</p>
+<p>.. code-block:: python</p>
+<pre><code>logger = EpochLogger(**logger_kwargs)
+logger.save_config(locals())
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save_config(self, config):
+    &#34;&#34;&#34;
+    Log an experiment configuration.
+
+    Call this once at the top of your experiment, passing in all important
+    config vars as a dict. This will serialize the config to JSON, while
+    handling anything which can&#39;t be serialized in a graceful way (writing
+    as informative a string as possible). 
+
+    Example use:
+
+    .. code-block:: python
+
+        logger = EpochLogger(**logger_kwargs)
+        logger.save_config(locals())
+    &#34;&#34;&#34;
+    config_json = convert_json(config)
+    if self.exp_name is not None:
+        config_json[&#39;exp_name&#39;] = self.exp_name
+    if proc_id()==0:
+        output = json.dumps(config_json, separators=(&#39;,&#39;,&#39;:\t&#39;), indent=4, sort_keys=True)
+        print(colorize(&#39;Saving config:\n&#39;, color=&#39;cyan&#39;, bold=True))
+        print(output)
+        with open(osp.join(self.output_dir, &#34;config.json&#34;), &#39;w&#39;) as out:
+            out.write(output)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.spinup.utils.logx.Logger.save_state"><code class="name flex">
+<span>def <span class="ident">save_state</span></span>(<span>self, state_dict, itr=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Saves the state of an experiment.</p>
+<p>To be clear: this is about saving <em>state</em>, not logging diagnostics.
+All diagnostic logging is separate from this function. This function
+will save whatever is in <code>state_dict</code>&mdash;usually just a copy of the
+environment&mdash;and the most recent parameters for the model you
+previously set up saving for with <code>setup_tf_saver</code>. </p>
+<p>Call with any frequency you prefer. If you only want to maintain a
+single state and overwrite it at each call with the most recent
+version, leave <code>itr=None</code>. If you want to keep all of the states you
+save, provide unique (increasing) values for 'itr'.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>state_dict</code></strong> :&ensp;<code>dict</code></dt>
+<dd>Dictionary containing essential elements to
+describe the current state of training.</dd>
+<dt><strong><code>itr</code></strong></dt>
+<dd>An int, or None. Current iteration of training.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save_state(self, state_dict, itr=None):
+    &#34;&#34;&#34;
+    Saves the state of an experiment.
+
+    To be clear: this is about saving *state*, not logging diagnostics.
+    All diagnostic logging is separate from this function. This function
+    will save whatever is in ``state_dict``---usually just a copy of the
+    environment---and the most recent parameters for the model you 
+    previously set up saving for with ``setup_tf_saver``. 
+
+    Call with any frequency you prefer. If you only want to maintain a
+    single state and overwrite it at each call with the most recent 
+    version, leave ``itr=None``. If you want to keep all of the states you
+    save, provide unique (increasing) values for &#39;itr&#39;.
+
+    Args:
+        state_dict (dict): Dictionary containing essential elements to
+            describe the current state of training.
+
+        itr: An int, or None. Current iteration of training.
+    &#34;&#34;&#34;
+    if proc_id()==0:
+        fname = &#39;vars.pkl&#39; if itr is None else &#39;vars%d.pkl&#39;%itr
+        try:
+            joblib.dump(state_dict, osp.join(self.output_dir, fname))
+        except:
+            self.log(&#39;Warning: could not pickle state_dict.&#39;, color=&#39;red&#39;)
+        if hasattr(self, &#39;tf_saver_elements&#39;):
+            self._tf_simple_save(itr)
+        if hasattr(self, &#39;pytorch_saver_elements&#39;):
+            self._pytorch_simple_save(itr)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.spinup.utils.logx.Logger.setup_pytorch_saver"><code class="name flex">
+<span>def <span class="ident">setup_pytorch_saver</span></span>(<span>self, what_to_save)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set up easy model saving for a single PyTorch model.</p>
+<p>Because PyTorch saving and loading is especially painless, this is
+very minimal; we just need references to whatever we would like to
+pickle. This is integrated into the logger because the logger
+knows where the user would like to save information about this
+training run.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>what_to_save</code></strong></dt>
+<dd>Any PyTorch model or serializable object containing
+PyTorch models.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setup_pytorch_saver(self, what_to_save):
+    &#34;&#34;&#34;
+    Set up easy model saving for a single PyTorch model.
+
+    Because PyTorch saving and loading is especially painless, this is
+    very minimal; we just need references to whatever we would like to 
+    pickle. This is integrated into the logger because the logger
+    knows where the user would like to save information about this
+    training run.
+
+    Args:
+        what_to_save: Any PyTorch model or serializable object containing
+            PyTorch models.
+    &#34;&#34;&#34;
+    self.pytorch_saver_elements = what_to_save</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.spinup.utils.logx.Logger.setup_tf_saver"><code class="name flex">
+<span>def <span class="ident">setup_tf_saver</span></span>(<span>self, sess, inputs, outputs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set up easy model saving for tensorflow.</p>
+<p>Call once, after defining your computation graph but before training.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>sess</code></strong></dt>
+<dd>The Tensorflow session in which you train your computation
+graph.</dd>
+<dt><strong><code>inputs</code></strong> :&ensp;<code>dict</code></dt>
+<dd>A dictionary that maps from keys of your choice
+to the tensorflow placeholders that serve as inputs to the
+computation graph. Make sure that <em>all</em> of the placeholders
+needed for your outputs are included!</dd>
+<dt><strong><code>outputs</code></strong> :&ensp;<code>dict</code></dt>
+<dd>A dictionary that maps from keys of your choice
+to the outputs from your computation graph.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setup_tf_saver(self, sess, inputs, outputs):
+    &#34;&#34;&#34;
+    Set up easy model saving for tensorflow.
+
+    Call once, after defining your computation graph but before training.
+
+    Args:
+        sess: The Tensorflow session in which you train your computation
+            graph.
+
+        inputs (dict): A dictionary that maps from keys of your choice
+            to the tensorflow placeholders that serve as inputs to the 
+            computation graph. Make sure that *all* of the placeholders
+            needed for your outputs are included!
+
+        outputs (dict): A dictionary that maps from keys of your choice
+            to the outputs from your computation graph.
+    &#34;&#34;&#34;
+    self.tf_saver_elements = dict(session=sess, inputs=inputs, outputs=outputs)
+    self.tf_saver_info = {&#39;inputs&#39;: {k:v.name for k,v in inputs.items()},
+                          &#39;outputs&#39;: {k:v.name for k,v in outputs.items()}}</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<a href="http://developmentalsystems.org/TeachMyAgent/doc/">
+<img src="https://github.com/flowersteam/TeachMyAgent/blob/gh-pages/images/home/head_image.png?raw=true" style="display: block; margin: 1em auto">
+</a>
+<a href="http://developmentalsystems.org/TeachMyAgent/doc/">Home</a> | <a href="http://developmentalsystems.org/TeachMyAgent/">Website</a>
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="TeachMyAgent.students.spinup.utils" href="index.html">TeachMyAgent.students.spinup.utils</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="TeachMyAgent.students.spinup.utils.logx.colorize" href="#TeachMyAgent.students.spinup.utils.logx.colorize">colorize</a></code></li>
+<li><code><a title="TeachMyAgent.students.spinup.utils.logx.restore_tf_graph" href="#TeachMyAgent.students.spinup.utils.logx.restore_tf_graph">restore_tf_graph</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="TeachMyAgent.students.spinup.utils.logx.EpochLogger" href="#TeachMyAgent.students.spinup.utils.logx.EpochLogger">EpochLogger</a></code></h4>
+<ul class="">
+<li><code><a title="TeachMyAgent.students.spinup.utils.logx.EpochLogger.get_stats" href="#TeachMyAgent.students.spinup.utils.logx.EpochLogger.get_stats">get_stats</a></code></li>
+<li><code><a title="TeachMyAgent.students.spinup.utils.logx.EpochLogger.log_tabular" href="#TeachMyAgent.students.spinup.utils.logx.EpochLogger.log_tabular">log_tabular</a></code></li>
+<li><code><a title="TeachMyAgent.students.spinup.utils.logx.EpochLogger.store" href="#TeachMyAgent.students.spinup.utils.logx.EpochLogger.store">store</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="TeachMyAgent.students.spinup.utils.logx.Logger" href="#TeachMyAgent.students.spinup.utils.logx.Logger">Logger</a></code></h4>
+<ul class="two-column">
+<li><code><a title="TeachMyAgent.students.spinup.utils.logx.Logger.dump_tabular" href="#TeachMyAgent.students.spinup.utils.logx.Logger.dump_tabular">dump_tabular</a></code></li>
+<li><code><a title="TeachMyAgent.students.spinup.utils.logx.Logger.log" href="#TeachMyAgent.students.spinup.utils.logx.Logger.log">log</a></code></li>
+<li><code><a title="TeachMyAgent.students.spinup.utils.logx.Logger.log_tabular" href="#TeachMyAgent.students.spinup.utils.logx.Logger.log_tabular">log_tabular</a></code></li>
+<li><code><a title="TeachMyAgent.students.spinup.utils.logx.Logger.save_config" href="#TeachMyAgent.students.spinup.utils.logx.Logger.save_config">save_config</a></code></li>
+<li><code><a title="TeachMyAgent.students.spinup.utils.logx.Logger.save_state" href="#TeachMyAgent.students.spinup.utils.logx.Logger.save_state">save_state</a></code></li>
+<li><code><a title="TeachMyAgent.students.spinup.utils.logx.Logger.setup_pytorch_saver" href="#TeachMyAgent.students.spinup.utils.logx.Logger.setup_pytorch_saver">setup_pytorch_saver</a></code></li>
+<li><code><a title="TeachMyAgent.students.spinup.utils.logx.Logger.setup_tf_saver" href="#TeachMyAgent.students.spinup.utils.logx.Logger.setup_tf_saver">setup_tf_saver</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

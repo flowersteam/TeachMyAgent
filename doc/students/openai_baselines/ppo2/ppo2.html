@@ -1,0 +1,702 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>TeachMyAgent.students.openai_baselines.ppo2.ppo2 API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+<link rel="icon" href="https://github.com/flowersteam/TeachMyAgent/blob/gh-pages/images/favicon-96x96.png?raw=true" />
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>TeachMyAgent.students.openai_baselines.ppo2.ppo2</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import os
+import time
+import numpy as np
+import os.path as osp
+import joblib
+from TeachMyAgent.students.openai_baselines import logger
+from collections import deque
+from TeachMyAgent.students.openai_baselines.common import explained_variance, set_global_seeds
+from TeachMyAgent.students.openai_baselines.common.policies import build_policy
+import tensorflow as tf
+try:
+    from mpi4py import MPI
+except ImportError:
+    MPI = None
+from TeachMyAgent.students.openai_baselines.ppo2.synchronous_runner import SynchronousRunner
+
+
+def constfn(val):
+    def f(_):
+        return val
+    return f
+
+def get_model(network, env, ob_space, ac_space, nbatch_train, nenvs=1, vf_coef=0.5, ent_coef=0.0, model_fn=None,
+              max_grad_norm=0.5,  mpi_rank_weight=1, comm=None,nsteps=2048, **network_kwargs):
+    policy = build_policy(env, network, **network_kwargs)
+    # Instantiate the model object (that creates act_model and train_model)
+    if model_fn is None:
+        from TeachMyAgent.students.openai_baselines.ppo2.model import Model
+        model_fn = Model
+
+    model = model_fn(policy=policy, ob_space=ob_space, ac_space=ac_space, nbatch_act=nenvs, nbatch_train=nbatch_train,
+                     nsteps=nsteps, ent_coef=ent_coef, vf_coef=vf_coef,
+                     max_grad_norm=max_grad_norm, comm=comm, mpi_rank_weight=mpi_rank_weight)
+    return model
+
+def learn(*, network, env, total_timesteps, eval_env = None, seed=None, nsteps=2048, ent_coef=0.0, lr=3e-4,
+            vf_coef=0.5,  max_grad_norm=0.5, gamma=0.99, lam=0.95,
+            log_interval=10, nminibatches=4, noptepochs=4, cliprange=0.2,
+            save_interval=0, load_path=None, model_fn=None, update_fn=None, init_fn=None, mpi_rank_weight=1, comm=None,
+            Teacher=None, nb_test_episodes=50, max_ep_len=2000, logger_dir=None, reset_frequency=None, **network_kwargs):
+    &#39;&#39;&#39;
+    Learn policy using PPO algorithm (https://arxiv.org/abs/1707.06347)
+
+    With some modifications were made to make it use an ACL teacher and a test env.
+
+    Parameters:
+    ----------
+
+    network:                          policy network architecture. Either string (mlp, lstm, lnlstm, cnn_lstm, cnn, cnn_small, conv_only - see baselines.common/models.py for full list)
+                                      specifying the standard network architecture, or a function that takes tensorflow tensor as input and returns
+                                      tuple (output_tensor, extra_feed) where output tensor is the last network layer output, extra_feed is None for feed-forward
+                                      neural nets, and extra_feed is a dictionary describing how to feed state into the network for recurrent neural nets.
+                                      See common/models.py/lstm for more details on using recurrent nets in policies
+
+    env: baselines.common.vec_env.VecEnv     environment. Needs to be vectorized for parallel environment simulation.
+                                      The environments produced by gym.make can be wrapped using baselines.common.vec_env.DummyVecEnv class.
+
+
+    nsteps: int                       number of steps of the vectorized environment per update (i.e. batch size is nsteps * nenv where
+                                      nenv is number of environment copies simulated in parallel)
+
+    total_timesteps: int              number of timesteps (i.e. number of actions taken in the environment)
+
+    ent_coef: float                   policy entropy coefficient in the optimization objective
+
+    lr: float or function             learning rate, constant or a schedule function [0,1] -&gt; R+ where 1 is beginning of the
+                                      training and 0 is the end of the training.
+
+    vf_coef: float                    value function loss coefficient in the optimization objective
+
+    max_grad_norm: float or None      gradient norm clipping coefficient
+
+    gamma: float                      discounting factor
+
+    lam: float                        advantage estimation discounting factor (lambda in the paper)
+
+    log_interval: int                 number of timesteps between logging events
+
+    nminibatches: int                 number of training minibatches per update. For recurrent policies,
+                                      should be smaller or equal than number of environments run in parallel.
+
+    noptepochs: int                   number of training epochs per update
+
+    cliprange: float or function      clipping range, constant or schedule function [0,1] -&gt; R+ where 1 is beginning of the training
+                                      and 0 is the end of the training
+
+    save_interval: int                number of timesteps between saving events
+
+    load_path: str                    path to load the model from
+
+    **network_kwargs:                 keyword arguments to the policy / network builder. See baselines.common/policies.py/build_policy and arguments to a particular type of network
+                                      For instance, &#39;mlp&#39; network architecture has arguments num_hidden and num_layers.
+
+
+
+    &#39;&#39;&#39;
+
+    set_global_seeds(seed)
+
+    if isinstance(lr, float): lr = constfn(lr)
+    else: assert callable(lr)
+    if isinstance(cliprange, float): cliprange = constfn(cliprange)
+    else: assert callable(cliprange)
+    total_timesteps = int(total_timesteps)
+    if logger_dir is not None:
+        logger.configure(dir=logger_dir)
+
+    # Get the nb of env
+    nenvs = 1 #env.num_envs
+
+    # Get state_space and action_space
+    ob_space = env.observation_space
+    ac_space = env.action_space
+
+    # Calculate the batch_size
+    nbatch = nenvs * nsteps
+    nbatch_train = nbatch // nminibatches
+    is_mpi_root = (MPI is None or MPI.COMM_WORLD.Get_rank() == 0)
+
+    model = get_model(network, env, ob_space, ac_space, nbatch_train, nenvs=nenvs, vf_coef=vf_coef, ent_coef=ent_coef,
+                      model_fn=model_fn, max_grad_norm=max_grad_norm,  mpi_rank_weight=mpi_rank_weight, comm=comm,
+                      nsteps=nsteps, **network_kwargs)
+    value_estimator_fn = lambda states: np.array([model.value(state) for state in states])
+    Teacher.set_value_estimator(value_estimator_fn) # TODO : Check
+
+    if load_path is not None:
+        model.load(load_path)
+
+    # Instantiate the runner object
+    # runner = Runner(env=env, model=model, nsteps=nsteps, gamma=gamma, lam=lam)
+    runner = SynchronousRunner(env=env, model=model, nsteps=nsteps, gamma=gamma, lam=lam, max_ep_len=max_ep_len,
+                               Teacher=Teacher)
+
+    epinfobuf = deque(maxlen=100)
+
+    if init_fn is not None:
+        init_fn()
+
+    def test_agent(n, state=None):
+        # global eval_env
+        ep_returns = []
+        ep_lens = []
+        for j in range(n):
+            if Teacher: Teacher.set_test_env_params(eval_env.get_raw_env())
+            (unscaled_o, o), r, d, ep_ret, ep_len = eval_env.reset(), 0, False, 0, 0
+            while not(d or (ep_len == max_ep_len)):
+                if state is not None:
+                    actions, _, state, _ = model.step(o, S=state, M=np.array([d]))
+                else:
+                    actions, _, _, _ = model.step(o)
+                o, r, d, infos = eval_env.step(actions)
+                unscaled_reward = infos[0][&#34;original_reward&#34;][0]
+                ep_ret += unscaled_reward
+                ep_len += 1
+            if Teacher: Teacher.record_test_episode(ep_ret, ep_len)
+            ep_returns.append(ep_ret)
+            ep_lens.append(ep_len)
+        return ep_returns, ep_lens
+
+    # Start total timer
+    tfirststart = time.perf_counter()
+
+    nupdates = total_timesteps//nbatch
+    for update in range(1, nupdates+1):
+        assert nbatch % nminibatches == 0
+        # Start timer
+        tstart = time.perf_counter()
+        frac = 1.0 - (update - 1.0) / nupdates
+        # Calculate the learning rate
+        lrnow = lr(frac)
+        # Calculate the cliprange
+        cliprangenow = cliprange(frac)
+
+        if update % log_interval == 0 and is_mpi_root: logger.info(&#39;Stepping environment...&#39;)
+
+        # Get minibatch
+        obs, returns, masks, actions, values, neglogpacs, states, epinfos = runner.run(Teacher) #pylint: disable=E0632
+
+        if update % log_interval == 0 and is_mpi_root: logger.info(&#39;Done.&#39;)
+
+        epinfobuf.extend(epinfos)
+
+        # Here what we&#39;re going to do is for each minibatch calculate the loss and append it.
+        mblossvals = []
+        if states is None: # nonrecurrent version
+            # Index of each element of batch_size
+            # Create the indices array
+            inds = np.arange(nbatch)
+            for _ in range(noptepochs):
+                # Randomize the indexes
+                np.random.shuffle(inds)
+                # 0 to batch_size with batch_train_size step
+                for start in range(0, nbatch, nbatch_train):
+                    end = start + nbatch_train
+                    mbinds = inds[start:end]
+                    slices = (arr[mbinds] for arr in (obs, returns, masks, actions, values, neglogpacs))
+                    mblossvals.append(model.train(lrnow, cliprangenow, *slices))
+        else: # recurrent version
+            assert nenvs % nminibatches == 0
+            envsperbatch = nenvs // nminibatches
+            envinds = np.arange(nenvs)
+            flatinds = np.arange(nenvs * nsteps).reshape(nenvs, nsteps)
+            for _ in range(noptepochs):
+                np.random.shuffle(envinds)
+                for start in range(0, nenvs, envsperbatch):
+                    end = start + envsperbatch
+                    mbenvinds = envinds[start:end]
+                    mbflatinds = flatinds[mbenvinds].ravel()
+                    slices = (arr[mbflatinds] for arr in (obs, returns, masks, actions, values, neglogpacs))
+                    mbstates = states[mbenvinds]
+                    mblossvals.append(model.train(lrnow, cliprangenow, *slices, mbstates))
+
+        # Feedforward --&gt; get losses --&gt; update
+        lossvals = np.mean(mblossvals, axis=0)
+        # End timer
+        tnow = time.perf_counter()
+        # Calculate the fps (frame per second)
+        fps = int(nbatch / (tnow - tstart))
+
+        if update_fn is not None:
+            update_fn(update)
+
+        if update % log_interval == 0 or update == 1:
+            # Calculates if value function is a good predicator of the returns (ev &gt; 1)
+            # or if it&#39;s just worse than predicting nothing (ev =&lt; 0)
+            ev = explained_variance(values, returns)
+            logger.logkv(&#34;misc/serial_timesteps&#34;, update*nsteps)
+            logger.logkv(&#34;misc/nupdates&#34;, update)
+            logger.logkv(&#34;misc/total_timesteps&#34;, update*nbatch)
+            logger.logkv(&#34;fps&#34;, fps)
+            logger.logkv(&#34;misc/explained_variance&#34;, float(ev))
+            logger.logkv(&#39;eprewmean&#39;, safemean([epinfo[&#39;r&#39;] for epinfo in epinfobuf]))
+            logger.logkv(&#39;eprewmax&#39;, safemax([epinfo[&#39;r&#39;] for epinfo in epinfobuf]))
+            logger.logkv(&#39;eplenmean&#39;, safemean([epinfo[&#39;l&#39;] for epinfo in epinfobuf]))
+            if eval_env is not None:
+                ep_returns, ep_lens = test_agent(nb_test_episodes, states)
+                logger.logkv(&#39;eval_eprewmean&#39;, safemean(ep_returns))
+                logger.logkv(&#39;eval_eprewmax&#39;, safemax(ep_returns))
+                logger.logkv(&#39;eval_eplenmean&#39;, safemean(ep_lens))
+            logger.logkv(&#39;misc/time_elapsed&#39;, tnow - tfirststart)
+            for (lossval, lossname) in zip(lossvals, model.loss_names):
+                logger.logkv(&#39;loss/&#39; + lossname, lossval)
+
+            logger.dumpkvs()
+
+        if save_interval and (update % save_interval == 0 or update == 1) and logger.get_dir() and is_mpi_root:
+            checkdir = osp.join(logger.get_dir(), &#39;checkpoints&#39;)
+            os.makedirs(checkdir, exist_ok=True)
+            savepath = osp.join(checkdir, &#39;%.5i&#39;%update)
+            print(&#39;Saving to&#39;, savepath)
+            model.save(savepath)
+
+            # Save env
+            try:
+                joblib.dump({
+                    #&#39;env&#39;: env, &#39;test_env&#39;: eval_env,
+                    &#39;ob_rms&#39;: env.ob_rms, &#39;ret_rms&#39;: env.ret_rms},
+                            osp.join(logger.get_dir(), &#39;vars.pkl&#39;))
+            except Exception as err:
+                logger.log(&#39;Warning: could not pickle state_dict.\n{}&#39;.format(err))
+            if Teacher: Teacher.dump(logger.get_dir() + &#39;/env_params_save.pkl&#39;)
+
+        #### RESET ####
+        if reset_frequency is not None and (update*nbatch) % reset_frequency == 0:
+            print(&#34;Reset student.&#34;)
+            model.reset()
+
+    return model
+# Avoid division error when calculate the mean (in our case if epinfo is empty returns np.nan, not return an error)
+def safemean(xs):
+    return np.nan if len(xs) == 0 else np.mean(xs)
+def safemax(xs):
+    return np.nan if len(xs) == 0 else np.max(xs)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="TeachMyAgent.students.openai_baselines.ppo2.ppo2.constfn"><code class="name flex">
+<span>def <span class="ident">constfn</span></span>(<span>val)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def constfn(val):
+    def f(_):
+        return val
+    return f</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.ppo2.ppo2.get_model"><code class="name flex">
+<span>def <span class="ident">get_model</span></span>(<span>network, env, ob_space, ac_space, nbatch_train, nenvs=1, vf_coef=0.5, ent_coef=0.0, model_fn=None, max_grad_norm=0.5, mpi_rank_weight=1, comm=None, nsteps=2048, **network_kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_model(network, env, ob_space, ac_space, nbatch_train, nenvs=1, vf_coef=0.5, ent_coef=0.0, model_fn=None,
+              max_grad_norm=0.5,  mpi_rank_weight=1, comm=None,nsteps=2048, **network_kwargs):
+    policy = build_policy(env, network, **network_kwargs)
+    # Instantiate the model object (that creates act_model and train_model)
+    if model_fn is None:
+        from TeachMyAgent.students.openai_baselines.ppo2.model import Model
+        model_fn = Model
+
+    model = model_fn(policy=policy, ob_space=ob_space, ac_space=ac_space, nbatch_act=nenvs, nbatch_train=nbatch_train,
+                     nsteps=nsteps, ent_coef=ent_coef, vf_coef=vf_coef,
+                     max_grad_norm=max_grad_norm, comm=comm, mpi_rank_weight=mpi_rank_weight)
+    return model</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.ppo2.ppo2.learn"><code class="name flex">
+<span>def <span class="ident">learn</span></span>(<span>*, network, env, total_timesteps, eval_env=None, seed=None, nsteps=2048, ent_coef=0.0, lr=0.0003, vf_coef=0.5, max_grad_norm=0.5, gamma=0.99, lam=0.95, log_interval=10, nminibatches=4, noptepochs=4, cliprange=0.2, save_interval=0, load_path=None, model_fn=None, update_fn=None, init_fn=None, mpi_rank_weight=1, comm=None, Teacher=None, nb_test_episodes=50, max_ep_len=2000, logger_dir=None, reset_frequency=None, **network_kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Learn policy using PPO algorithm (<a href="https://arxiv.org/abs/1707.06347">https://arxiv.org/abs/1707.06347</a>)</p>
+<p>With some modifications were made to make it use an ACL teacher and a test env.</p>
+<h2 id="parameters">Parameters:</h2>
+<p>network:
+policy network architecture. Either string (mlp, lstm, lnlstm, cnn_lstm, cnn, cnn_small, conv_only - see baselines.common/models.py for full list)
+specifying the standard network architecture, or a function that takes tensorflow tensor as input and returns
+tuple (output_tensor, extra_feed) where output tensor is the last network layer output, extra_feed is None for feed-forward
+neural nets, and extra_feed is a dictionary describing how to feed state into the network for recurrent neural nets.
+See common/models.py/lstm for more details on using recurrent nets in policies</p>
+<p>env: baselines.common.vec_env.VecEnv
+environment. Needs to be vectorized for parallel environment simulation.
+The environments produced by gym.make can be wrapped using baselines.common.vec_env.DummyVecEnv class.</p>
+<p>nsteps: int
+number of steps of the vectorized environment per update (i.e. batch size is nsteps * nenv where
+nenv is number of environment copies simulated in parallel)</p>
+<p>total_timesteps: int
+number of timesteps (i.e. number of actions taken in the environment)</p>
+<p>ent_coef: float
+policy entropy coefficient in the optimization objective</p>
+<p>lr: float or function
+learning rate, constant or a schedule function [0,1] -&gt; R+ where 1 is beginning of the
+training and 0 is the end of the training.</p>
+<p>vf_coef: float
+value function loss coefficient in the optimization objective</p>
+<p>max_grad_norm: float or None
+gradient norm clipping coefficient</p>
+<p>gamma: float
+discounting factor</p>
+<p>lam: float
+advantage estimation discounting factor (lambda in the paper)</p>
+<p>log_interval: int
+number of timesteps between logging events</p>
+<p>nminibatches: int
+number of training minibatches per update. For recurrent policies,
+should be smaller or equal than number of environments run in parallel.</p>
+<p>noptepochs: int
+number of training epochs per update</p>
+<p>cliprange: float or function
+clipping range, constant or schedule function [0,1] -&gt; R+ where 1 is beginning of the training
+and 0 is the end of the training</p>
+<p>save_interval: int
+number of timesteps between saving events</p>
+<p>load_path: str
+path to load the model from</p>
+<p>**network_kwargs:
+keyword arguments to the policy / network builder. See baselines.common/policies.py/build_policy and arguments to a particular type of network
+For instance, 'mlp' network architecture has arguments num_hidden and num_layers.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def learn(*, network, env, total_timesteps, eval_env = None, seed=None, nsteps=2048, ent_coef=0.0, lr=3e-4,
+            vf_coef=0.5,  max_grad_norm=0.5, gamma=0.99, lam=0.95,
+            log_interval=10, nminibatches=4, noptepochs=4, cliprange=0.2,
+            save_interval=0, load_path=None, model_fn=None, update_fn=None, init_fn=None, mpi_rank_weight=1, comm=None,
+            Teacher=None, nb_test_episodes=50, max_ep_len=2000, logger_dir=None, reset_frequency=None, **network_kwargs):
+    &#39;&#39;&#39;
+    Learn policy using PPO algorithm (https://arxiv.org/abs/1707.06347)
+
+    With some modifications were made to make it use an ACL teacher and a test env.
+
+    Parameters:
+    ----------
+
+    network:                          policy network architecture. Either string (mlp, lstm, lnlstm, cnn_lstm, cnn, cnn_small, conv_only - see baselines.common/models.py for full list)
+                                      specifying the standard network architecture, or a function that takes tensorflow tensor as input and returns
+                                      tuple (output_tensor, extra_feed) where output tensor is the last network layer output, extra_feed is None for feed-forward
+                                      neural nets, and extra_feed is a dictionary describing how to feed state into the network for recurrent neural nets.
+                                      See common/models.py/lstm for more details on using recurrent nets in policies
+
+    env: baselines.common.vec_env.VecEnv     environment. Needs to be vectorized for parallel environment simulation.
+                                      The environments produced by gym.make can be wrapped using baselines.common.vec_env.DummyVecEnv class.
+
+
+    nsteps: int                       number of steps of the vectorized environment per update (i.e. batch size is nsteps * nenv where
+                                      nenv is number of environment copies simulated in parallel)
+
+    total_timesteps: int              number of timesteps (i.e. number of actions taken in the environment)
+
+    ent_coef: float                   policy entropy coefficient in the optimization objective
+
+    lr: float or function             learning rate, constant or a schedule function [0,1] -&gt; R+ where 1 is beginning of the
+                                      training and 0 is the end of the training.
+
+    vf_coef: float                    value function loss coefficient in the optimization objective
+
+    max_grad_norm: float or None      gradient norm clipping coefficient
+
+    gamma: float                      discounting factor
+
+    lam: float                        advantage estimation discounting factor (lambda in the paper)
+
+    log_interval: int                 number of timesteps between logging events
+
+    nminibatches: int                 number of training minibatches per update. For recurrent policies,
+                                      should be smaller or equal than number of environments run in parallel.
+
+    noptepochs: int                   number of training epochs per update
+
+    cliprange: float or function      clipping range, constant or schedule function [0,1] -&gt; R+ where 1 is beginning of the training
+                                      and 0 is the end of the training
+
+    save_interval: int                number of timesteps between saving events
+
+    load_path: str                    path to load the model from
+
+    **network_kwargs:                 keyword arguments to the policy / network builder. See baselines.common/policies.py/build_policy and arguments to a particular type of network
+                                      For instance, &#39;mlp&#39; network architecture has arguments num_hidden and num_layers.
+
+
+
+    &#39;&#39;&#39;
+
+    set_global_seeds(seed)
+
+    if isinstance(lr, float): lr = constfn(lr)
+    else: assert callable(lr)
+    if isinstance(cliprange, float): cliprange = constfn(cliprange)
+    else: assert callable(cliprange)
+    total_timesteps = int(total_timesteps)
+    if logger_dir is not None:
+        logger.configure(dir=logger_dir)
+
+    # Get the nb of env
+    nenvs = 1 #env.num_envs
+
+    # Get state_space and action_space
+    ob_space = env.observation_space
+    ac_space = env.action_space
+
+    # Calculate the batch_size
+    nbatch = nenvs * nsteps
+    nbatch_train = nbatch // nminibatches
+    is_mpi_root = (MPI is None or MPI.COMM_WORLD.Get_rank() == 0)
+
+    model = get_model(network, env, ob_space, ac_space, nbatch_train, nenvs=nenvs, vf_coef=vf_coef, ent_coef=ent_coef,
+                      model_fn=model_fn, max_grad_norm=max_grad_norm,  mpi_rank_weight=mpi_rank_weight, comm=comm,
+                      nsteps=nsteps, **network_kwargs)
+    value_estimator_fn = lambda states: np.array([model.value(state) for state in states])
+    Teacher.set_value_estimator(value_estimator_fn) # TODO : Check
+
+    if load_path is not None:
+        model.load(load_path)
+
+    # Instantiate the runner object
+    # runner = Runner(env=env, model=model, nsteps=nsteps, gamma=gamma, lam=lam)
+    runner = SynchronousRunner(env=env, model=model, nsteps=nsteps, gamma=gamma, lam=lam, max_ep_len=max_ep_len,
+                               Teacher=Teacher)
+
+    epinfobuf = deque(maxlen=100)
+
+    if init_fn is not None:
+        init_fn()
+
+    def test_agent(n, state=None):
+        # global eval_env
+        ep_returns = []
+        ep_lens = []
+        for j in range(n):
+            if Teacher: Teacher.set_test_env_params(eval_env.get_raw_env())
+            (unscaled_o, o), r, d, ep_ret, ep_len = eval_env.reset(), 0, False, 0, 0
+            while not(d or (ep_len == max_ep_len)):
+                if state is not None:
+                    actions, _, state, _ = model.step(o, S=state, M=np.array([d]))
+                else:
+                    actions, _, _, _ = model.step(o)
+                o, r, d, infos = eval_env.step(actions)
+                unscaled_reward = infos[0][&#34;original_reward&#34;][0]
+                ep_ret += unscaled_reward
+                ep_len += 1
+            if Teacher: Teacher.record_test_episode(ep_ret, ep_len)
+            ep_returns.append(ep_ret)
+            ep_lens.append(ep_len)
+        return ep_returns, ep_lens
+
+    # Start total timer
+    tfirststart = time.perf_counter()
+
+    nupdates = total_timesteps//nbatch
+    for update in range(1, nupdates+1):
+        assert nbatch % nminibatches == 0
+        # Start timer
+        tstart = time.perf_counter()
+        frac = 1.0 - (update - 1.0) / nupdates
+        # Calculate the learning rate
+        lrnow = lr(frac)
+        # Calculate the cliprange
+        cliprangenow = cliprange(frac)
+
+        if update % log_interval == 0 and is_mpi_root: logger.info(&#39;Stepping environment...&#39;)
+
+        # Get minibatch
+        obs, returns, masks, actions, values, neglogpacs, states, epinfos = runner.run(Teacher) #pylint: disable=E0632
+
+        if update % log_interval == 0 and is_mpi_root: logger.info(&#39;Done.&#39;)
+
+        epinfobuf.extend(epinfos)
+
+        # Here what we&#39;re going to do is for each minibatch calculate the loss and append it.
+        mblossvals = []
+        if states is None: # nonrecurrent version
+            # Index of each element of batch_size
+            # Create the indices array
+            inds = np.arange(nbatch)
+            for _ in range(noptepochs):
+                # Randomize the indexes
+                np.random.shuffle(inds)
+                # 0 to batch_size with batch_train_size step
+                for start in range(0, nbatch, nbatch_train):
+                    end = start + nbatch_train
+                    mbinds = inds[start:end]
+                    slices = (arr[mbinds] for arr in (obs, returns, masks, actions, values, neglogpacs))
+                    mblossvals.append(model.train(lrnow, cliprangenow, *slices))
+        else: # recurrent version
+            assert nenvs % nminibatches == 0
+            envsperbatch = nenvs // nminibatches
+            envinds = np.arange(nenvs)
+            flatinds = np.arange(nenvs * nsteps).reshape(nenvs, nsteps)
+            for _ in range(noptepochs):
+                np.random.shuffle(envinds)
+                for start in range(0, nenvs, envsperbatch):
+                    end = start + envsperbatch
+                    mbenvinds = envinds[start:end]
+                    mbflatinds = flatinds[mbenvinds].ravel()
+                    slices = (arr[mbflatinds] for arr in (obs, returns, masks, actions, values, neglogpacs))
+                    mbstates = states[mbenvinds]
+                    mblossvals.append(model.train(lrnow, cliprangenow, *slices, mbstates))
+
+        # Feedforward --&gt; get losses --&gt; update
+        lossvals = np.mean(mblossvals, axis=0)
+        # End timer
+        tnow = time.perf_counter()
+        # Calculate the fps (frame per second)
+        fps = int(nbatch / (tnow - tstart))
+
+        if update_fn is not None:
+            update_fn(update)
+
+        if update % log_interval == 0 or update == 1:
+            # Calculates if value function is a good predicator of the returns (ev &gt; 1)
+            # or if it&#39;s just worse than predicting nothing (ev =&lt; 0)
+            ev = explained_variance(values, returns)
+            logger.logkv(&#34;misc/serial_timesteps&#34;, update*nsteps)
+            logger.logkv(&#34;misc/nupdates&#34;, update)
+            logger.logkv(&#34;misc/total_timesteps&#34;, update*nbatch)
+            logger.logkv(&#34;fps&#34;, fps)
+            logger.logkv(&#34;misc/explained_variance&#34;, float(ev))
+            logger.logkv(&#39;eprewmean&#39;, safemean([epinfo[&#39;r&#39;] for epinfo in epinfobuf]))
+            logger.logkv(&#39;eprewmax&#39;, safemax([epinfo[&#39;r&#39;] for epinfo in epinfobuf]))
+            logger.logkv(&#39;eplenmean&#39;, safemean([epinfo[&#39;l&#39;] for epinfo in epinfobuf]))
+            if eval_env is not None:
+                ep_returns, ep_lens = test_agent(nb_test_episodes, states)
+                logger.logkv(&#39;eval_eprewmean&#39;, safemean(ep_returns))
+                logger.logkv(&#39;eval_eprewmax&#39;, safemax(ep_returns))
+                logger.logkv(&#39;eval_eplenmean&#39;, safemean(ep_lens))
+            logger.logkv(&#39;misc/time_elapsed&#39;, tnow - tfirststart)
+            for (lossval, lossname) in zip(lossvals, model.loss_names):
+                logger.logkv(&#39;loss/&#39; + lossname, lossval)
+
+            logger.dumpkvs()
+
+        if save_interval and (update % save_interval == 0 or update == 1) and logger.get_dir() and is_mpi_root:
+            checkdir = osp.join(logger.get_dir(), &#39;checkpoints&#39;)
+            os.makedirs(checkdir, exist_ok=True)
+            savepath = osp.join(checkdir, &#39;%.5i&#39;%update)
+            print(&#39;Saving to&#39;, savepath)
+            model.save(savepath)
+
+            # Save env
+            try:
+                joblib.dump({
+                    #&#39;env&#39;: env, &#39;test_env&#39;: eval_env,
+                    &#39;ob_rms&#39;: env.ob_rms, &#39;ret_rms&#39;: env.ret_rms},
+                            osp.join(logger.get_dir(), &#39;vars.pkl&#39;))
+            except Exception as err:
+                logger.log(&#39;Warning: could not pickle state_dict.\n{}&#39;.format(err))
+            if Teacher: Teacher.dump(logger.get_dir() + &#39;/env_params_save.pkl&#39;)
+
+        #### RESET ####
+        if reset_frequency is not None and (update*nbatch) % reset_frequency == 0:
+            print(&#34;Reset student.&#34;)
+            model.reset()
+
+    return model</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.ppo2.ppo2.safemax"><code class="name flex">
+<span>def <span class="ident">safemax</span></span>(<span>xs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def safemax(xs):
+    return np.nan if len(xs) == 0 else np.max(xs)</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.ppo2.ppo2.safemean"><code class="name flex">
+<span>def <span class="ident">safemean</span></span>(<span>xs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def safemean(xs):
+    return np.nan if len(xs) == 0 else np.mean(xs)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<a href="http://developmentalsystems.org/TeachMyAgent/doc/">
+<img src="https://github.com/flowersteam/TeachMyAgent/blob/gh-pages/images/home/head_image.png?raw=true" style="display: block; margin: 1em auto">
+</a>
+<a href="http://developmentalsystems.org/TeachMyAgent/doc/">Home</a> | <a href="http://developmentalsystems.org/TeachMyAgent/">Website</a>
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="TeachMyAgent.students.openai_baselines.ppo2" href="index.html">TeachMyAgent.students.openai_baselines.ppo2</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="TeachMyAgent.students.openai_baselines.ppo2.ppo2.constfn" href="#TeachMyAgent.students.openai_baselines.ppo2.ppo2.constfn">constfn</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.ppo2.ppo2.get_model" href="#TeachMyAgent.students.openai_baselines.ppo2.ppo2.get_model">get_model</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.ppo2.ppo2.learn" href="#TeachMyAgent.students.openai_baselines.ppo2.ppo2.learn">learn</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.ppo2.ppo2.safemax" href="#TeachMyAgent.students.openai_baselines.ppo2.ppo2.safemax">safemax</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.ppo2.ppo2.safemean" href="#TeachMyAgent.students.openai_baselines.ppo2.ppo2.safemean">safemean</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>
