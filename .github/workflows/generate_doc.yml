@@ -23,7 +23,7 @@ jobs:
 
       - name: Install pdoc3
         run:
-          pip3 install pdoc3
+          pip3 install pdoc3==0.9.2
 
       - name: Generate doc
         run: pdoc --html --output-dir doc TeachMyAgent/ --template-dir TeachMyAgent/doc/templates/ --skip-errors --force
