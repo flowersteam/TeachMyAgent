@@ -106,15 +106,18 @@ In order to benchmark methods against the ones we evaluated in our [paper](https
 > **_WARNING:_**  This will download a zip weighting approximayely 4.5GB. Then, our script will extract the zip file in `TeachMyAgent/data`. Once extracted, results will weight approximately 15GB. 
 ----
 
-1- Launch a jupyter server:
+## Use visualization notebooks
+1. Launch a jupyter server:
 ```
 cd notebooks;
 jupyter notebook
 ```
 
-2- Open our `Results_analysis.ipynb` notebook for graphs (i.e. figures in our paper)
-3- Open our `Book_keeping_analysis.ipynb` notebook for test set and curriculum analysis
-4- Open our `Policies_visualization.ipynb` notebook to visualize policies learned
+2. Open our `Results_analysis.ipynb` notebook for graphs (i.e. figures in our paper)
+
+3. Open our `Book_keeping_analysis.ipynb` notebook for test set and curriculum analysis
+
+4. Open our `Policies_visualization.ipynb` notebook to visualize policies learned
 
 
 # Code structure
