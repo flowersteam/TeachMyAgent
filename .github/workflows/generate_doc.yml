@@ -2,17 +2,28 @@ name: generate_doc
 on:
   push:
     branches:
-      - main
+      - master
 jobs:
   deploy:
     runs-on: ubuntu-20.04
     steps:
       - name: Git checkout
         uses: actions/checkout@v2
+        
+      - name: Setup Python env
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.7'
+          
+      - name: Install tensorflow
+        run: pip install tensorflow==1.15.4
+          
+      - name: Install env
+        run: pip3 install -e .
 
       - name: Install pdoc3
         run:
-          pip install pdoc3
+          pip3 install pdoc3==0.9.2
 
       - name: Generate doc
         run: pdoc --html --output-dir doc TeachMyAgent/ --template-dir TeachMyAgent/doc/templates/ --skip-errors --force
