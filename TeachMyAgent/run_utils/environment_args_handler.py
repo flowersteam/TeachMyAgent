@@ -1,4 +1,5 @@
 from collections import OrderedDict
+from gym import spaces
 import numpy as np
 import gym
 import TeachMyAgent.environments
@@ -83,6 +84,10 @@ class EnvironmentArgsHandler(AbstractArgsHandler):
         parser.add_argument('--max_creepers_spacing', type=float, default=5)
         parser.add_argument('--lidars_type',  type=str, default=None)
         parser.add_argument('--movable_creepers', action='store_true')
+
+        ##### Coinrun Env #####
+        # Provide the seeds for the levels
+        parser.add_argument('--level_seeds', type=int, nargs='+', help="select a seed sequence used for level generation")
 
 
     @classmethod
@@ -194,6 +199,19 @@ class EnvironmentArgsHandler(AbstractArgsHandler):
                                      water_clip=args.water_clip_push,
                                      movable_creepers=movable_creepers,
                                      **cls.get_body_wargs(args))
+
+        elif args.env == "coinrun":
+            # not actually used, only here for the validation code
+            args.env_reward_lb = -100
+            args.env_reward_ub = 100
+
+            def make_env(level_seeds):
+                env = gym.make('procgen:procgen-coinrun-v0')
+                if level_seeds is not None:
+                    env.unwrapped.env.env.set_environment([level_seeds])
+                return env
+
+            env_f = lambda: make_env(args.level_seeds)
 
         else:
             print("Using an unknown env with no parameters...")

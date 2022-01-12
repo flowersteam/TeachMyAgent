@@ -1,4 +1,5 @@
 import gym
+from gym import spaces
 
 class TimeLimit(gym.Wrapper):
     def __init__(self, env, max_episode_steps=None):
@@ -21,6 +22,9 @@ class TimeLimit(gym.Wrapper):
 class ClipActionsWrapper(gym.Wrapper):
     def step(self, action):
         import numpy as np
+        if isinstance(self.action_space, spaces.Discrete):
+            return self.env.step(action)
+        
         action = np.nan_to_num(action)
         action = np.clip(action, self.action_space.low, self.action_space.high)
         return self.env.step(action)
