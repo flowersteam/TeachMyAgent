@@ -35,7 +35,6 @@ setup(
         'emcee',
         'notebook',
         'huggingface_hub',
-        'tensorflowjs'
     ],
     description="TeachMyAgent: A benchmark to study and compare ACL algorithms for DeepRL in continuous procedural environments.",
     author="Clément Romac",
