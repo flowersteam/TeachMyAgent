@@ -271,14 +271,20 @@ def load_results(dir):
 <span>(</span><span>env, filename, allow_early_resets=False, reset_keywords=(), info_keywords=())</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Wraps the environment to allow a modular transformation.</p>
+<div class="desc"><p>Wraps an environment to allow a modular transformation of the :meth:<code>step</code> and :meth:<code>reset</code> methods.</p>
 <p>This class is the base class for all wrappers. The subclass could override
 some methods to change the behavior of the original environment without touching the
 original code.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<h2 id="note">Note</h2>
 <p>Don't forget to call <code>super().__init__(env)</code> if the subclass overrides :meth:<code>__init__</code>.</p>
-</div></div>
+<p>Wraps an environment to allow a modular transformation of the :meth:<code>step</code> and :meth:<code>reset</code> methods.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>env</code></strong></dt>
+<dd>The environment to wrap</dd>
+<dt><strong><code>new_step_api</code></strong></dt>
+<dd>Whether the wrapper's step method will output in new or old step API</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -373,6 +379,7 @@ original code.</p>
 <ul class="hlist">
 <li>gym.core.Wrapper</li>
 <li>gym.core.Env</li>
+<li>typing.Generic</li>
 </ul>
 <h3>Class variables</h3>
 <dl>
@@ -385,15 +392,59 @@ original code.</p>
 <div class="desc"></div>
 </dd>
 </dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="TeachMyAgent.students.openai_baselines.bench.monitor.Monitor.action_space"><code class="name">var <span class="ident">action_space</span> : gym.spaces.space.Space[~ActType]</code></dt>
+<dd>
+<div class="desc"><p>Returns the action space of the environment.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def action_space(self) -&gt; spaces.Space[ActType]:
+    &#34;&#34;&#34;Returns the action space of the environment.&#34;&#34;&#34;
+    if self._action_space is None:
+        return self.env.action_space
+    return self._action_space</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.bench.monitor.Monitor.observation_space"><code class="name">var <span class="ident">observation_space</span> : gym.spaces.space.Space</code></dt>
+<dd>
+<div class="desc"><p>Returns the observation space of the environment.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def observation_space(self) -&gt; spaces.Space:
+    &#34;&#34;&#34;Returns the observation space of the environment.&#34;&#34;&#34;
+    if self._observation_space is None:
+        return self.env.observation_space
+    return self._observation_space</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.bench.monitor.Monitor.spec"><code class="name">var <span class="ident">spec</span></code></dt>
+<dd>
+<div class="desc"><p>Returns the environment specification.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def spec(self):
+    &#34;&#34;&#34;Returns the environment specification.&#34;&#34;&#34;
+    return self.env.spec</code></pre>
+</details>
+</dd>
+</dl>
 <h3>Methods</h3>
 <dl>
 <dt id="TeachMyAgent.students.openai_baselines.bench.monitor.Monitor.close"><code class="name flex">
 <span>def <span class="ident">close</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Override close in your subclass to perform any necessary cleanup.</p>
-<p>Environments will automatically close() themselves when
-garbage collected or when the program exits.</p></div>
+<div class="desc"><p>Closes the environment.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -460,15 +511,7 @@ garbage collected or when the program exits.</p></div>
 <span>def <span class="ident">reset</span></span>(<span>self, **kwargs)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Resets the environment to an initial state and returns an initial
-observation.</p>
-<p>Note that this function should not reset the environment's random
-number generator(s); random variables in the environment's state should
-be sampled independently between multiple calls to <code>reset()</code>. In other
-words, each call of <code>reset()</code> should yield an environment suitable for
-a new episode, independent of previous episodes.</p>
-<h2 id="returns">Returns</h2>
-<p>observation (object): the initial observation.</p></div>
+<div class="desc"><p>Resets the environment with kwargs.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -503,20 +546,7 @@ a new episode, independent of previous episodes.</p>
 <span>def <span class="ident">step</span></span>(<span>self, action)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Run one timestep of the environment's dynamics. When end of
-episode is reached, you are responsible for calling <code>reset()</code>
-to reset this environment's state.</p>
-<p>Accepts an action and returns a tuple (observation, reward, done, info).</p>
-<h2 id="args">Args</h2>
-<dl>
-<dt><strong><code>action</code></strong> :&ensp;<code>object</code></dt>
-<dd>an action provided by the agent</dd>
-</dl>
-<h2 id="returns">Returns</h2>
-<p>observation (object): agent's observation of the current environment
-reward (float) : amount of reward returned after previous action
-done (bool): whether the episode has ended, in which case further step() calls will return undefined results
-info (dict): contains auxiliary diagnostic information (helpful for debugging, and sometimes learning)</p></div>
+<div class="desc"><p>Steps through the environment with action.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -592,14 +622,17 @@ info (dict): contains auxiliary diagnostic information (helpful for debugging, a
 <h4><code><a title="TeachMyAgent.students.openai_baselines.bench.monitor.Monitor" href="#TeachMyAgent.students.openai_baselines.bench.monitor.Monitor">Monitor</a></code></h4>
 <ul class="two-column">
 <li><code><a title="TeachMyAgent.students.openai_baselines.bench.monitor.Monitor.EXT" href="#TeachMyAgent.students.openai_baselines.bench.monitor.Monitor.EXT">EXT</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.bench.monitor.Monitor.action_space" href="#TeachMyAgent.students.openai_baselines.bench.monitor.Monitor.action_space">action_space</a></code></li>
 <li><code><a title="TeachMyAgent.students.openai_baselines.bench.monitor.Monitor.close" href="#TeachMyAgent.students.openai_baselines.bench.monitor.Monitor.close">close</a></code></li>
 <li><code><a title="TeachMyAgent.students.openai_baselines.bench.monitor.Monitor.f" href="#TeachMyAgent.students.openai_baselines.bench.monitor.Monitor.f">f</a></code></li>
 <li><code><a title="TeachMyAgent.students.openai_baselines.bench.monitor.Monitor.get_episode_lengths" href="#TeachMyAgent.students.openai_baselines.bench.monitor.Monitor.get_episode_lengths">get_episode_lengths</a></code></li>
 <li><code><a title="TeachMyAgent.students.openai_baselines.bench.monitor.Monitor.get_episode_rewards" href="#TeachMyAgent.students.openai_baselines.bench.monitor.Monitor.get_episode_rewards">get_episode_rewards</a></code></li>
 <li><code><a title="TeachMyAgent.students.openai_baselines.bench.monitor.Monitor.get_episode_times" href="#TeachMyAgent.students.openai_baselines.bench.monitor.Monitor.get_episode_times">get_episode_times</a></code></li>
 <li><code><a title="TeachMyAgent.students.openai_baselines.bench.monitor.Monitor.get_total_steps" href="#TeachMyAgent.students.openai_baselines.bench.monitor.Monitor.get_total_steps">get_total_steps</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.bench.monitor.Monitor.observation_space" href="#TeachMyAgent.students.openai_baselines.bench.monitor.Monitor.observation_space">observation_space</a></code></li>
 <li><code><a title="TeachMyAgent.students.openai_baselines.bench.monitor.Monitor.reset" href="#TeachMyAgent.students.openai_baselines.bench.monitor.Monitor.reset">reset</a></code></li>
 <li><code><a title="TeachMyAgent.students.openai_baselines.bench.monitor.Monitor.reset_state" href="#TeachMyAgent.students.openai_baselines.bench.monitor.Monitor.reset_state">reset_state</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.bench.monitor.Monitor.spec" href="#TeachMyAgent.students.openai_baselines.bench.monitor.Monitor.spec">spec</a></code></li>
 <li><code><a title="TeachMyAgent.students.openai_baselines.bench.monitor.Monitor.step" href="#TeachMyAgent.students.openai_baselines.bench.monitor.Monitor.step">step</a></code></li>
 <li><code><a title="TeachMyAgent.students.openai_baselines.bench.monitor.Monitor.update" href="#TeachMyAgent.students.openai_baselines.bench.monitor.Monitor.update">update</a></code></li>
 </ul>

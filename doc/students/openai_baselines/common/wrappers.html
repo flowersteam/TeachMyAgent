@@ -69,17 +69,23 @@ class ClipActionsWrapper(gym.Wrapper):
 <dl>
 <dt id="TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper"><code class="flex name class">
 <span>class <span class="ident">ClipActionsWrapper</span></span>
-<span>(</span><span>env)</span>
+<span>(</span><span>env: gym.core.Env, new_step_api: bool = False)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Wraps the environment to allow a modular transformation.</p>
+<div class="desc"><p>Wraps an environment to allow a modular transformation of the :meth:<code>step</code> and :meth:<code>reset</code> methods.</p>
 <p>This class is the base class for all wrappers. The subclass could override
 some methods to change the behavior of the original environment without touching the
 original code.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<h2 id="note">Note</h2>
 <p>Don't forget to call <code>super().__init__(env)</code> if the subclass overrides :meth:<code>__init__</code>.</p>
-</div></div>
+<p>Wraps an environment to allow a modular transformation of the :meth:<code>step</code> and :meth:<code>reset</code> methods.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>env</code></strong></dt>
+<dd>The environment to wrap</dd>
+<dt><strong><code>new_step_api</code></strong></dt>
+<dd>Whether the wrapper's step method will output in new or old step API</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -98,22 +104,61 @@ original code.</p>
 <ul class="hlist">
 <li>gym.core.Wrapper</li>
 <li>gym.core.Env</li>
+<li>typing.Generic</li>
 </ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper.action_space"><code class="name">var <span class="ident">action_space</span> : gym.spaces.space.Space[~ActType]</code></dt>
+<dd>
+<div class="desc"><p>Returns the action space of the environment.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def action_space(self) -&gt; spaces.Space[ActType]:
+    &#34;&#34;&#34;Returns the action space of the environment.&#34;&#34;&#34;
+    if self._action_space is None:
+        return self.env.action_space
+    return self._action_space</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper.observation_space"><code class="name">var <span class="ident">observation_space</span> : gym.spaces.space.Space</code></dt>
+<dd>
+<div class="desc"><p>Returns the observation space of the environment.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def observation_space(self) -&gt; spaces.Space:
+    &#34;&#34;&#34;Returns the observation space of the environment.&#34;&#34;&#34;
+    if self._observation_space is None:
+        return self.env.observation_space
+    return self._observation_space</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper.spec"><code class="name">var <span class="ident">spec</span></code></dt>
+<dd>
+<div class="desc"><p>Returns the environment specification.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def spec(self):
+    &#34;&#34;&#34;Returns the environment specification.&#34;&#34;&#34;
+    return self.env.spec</code></pre>
+</details>
+</dd>
+</dl>
 <h3>Methods</h3>
 <dl>
 <dt id="TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper.reset"><code class="name flex">
 <span>def <span class="ident">reset</span></span>(<span>self, **kwargs)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Resets the environment to an initial state and returns an initial
-observation.</p>
-<p>Note that this function should not reset the environment's random
-number generator(s); random variables in the environment's state should
-be sampled independently between multiple calls to <code>reset()</code>. In other
-words, each call of <code>reset()</code> should yield an environment suitable for
-a new episode, independent of previous episodes.</p>
-<h2 id="returns">Returns</h2>
-<p>observation (object): the initial observation.</p></div>
+<div class="desc"><p>Resets the environment with kwargs.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -126,20 +171,7 @@ a new episode, independent of previous episodes.</p>
 <span>def <span class="ident">step</span></span>(<span>self, action)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Run one timestep of the environment's dynamics. When end of
-episode is reached, you are responsible for calling <code>reset()</code>
-to reset this environment's state.</p>
-<p>Accepts an action and returns a tuple (observation, reward, done, info).</p>
-<h2 id="args">Args</h2>
-<dl>
-<dt><strong><code>action</code></strong> :&ensp;<code>object</code></dt>
-<dd>an action provided by the agent</dd>
-</dl>
-<h2 id="returns">Returns</h2>
-<p>observation (object): agent's observation of the current environment
-reward (float) : amount of reward returned after previous action
-done (bool): whether the episode has ended, in which case further step() calls will return undefined results
-info (dict): contains auxiliary diagnostic information (helpful for debugging, and sometimes learning)</p></div>
+<div class="desc"><p>Steps through the environment with action.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -158,14 +190,20 @@ info (dict): contains auxiliary diagnostic information (helpful for debugging, a
 <span>(</span><span>env, max_episode_steps=None)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Wraps the environment to allow a modular transformation.</p>
+<div class="desc"><p>Wraps an environment to allow a modular transformation of the :meth:<code>step</code> and :meth:<code>reset</code> methods.</p>
 <p>This class is the base class for all wrappers. The subclass could override
 some methods to change the behavior of the original environment without touching the
 original code.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<h2 id="note">Note</h2>
 <p>Don't forget to call <code>super().__init__(env)</code> if the subclass overrides :meth:<code>__init__</code>.</p>
-</div></div>
+<p>Wraps an environment to allow a modular transformation of the :meth:<code>step</code> and :meth:<code>reset</code> methods.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>env</code></strong></dt>
+<dd>The environment to wrap</dd>
+<dt><strong><code>new_step_api</code></strong></dt>
+<dd>Whether the wrapper's step method will output in new or old step API</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -192,22 +230,61 @@ original code.</p>
 <ul class="hlist">
 <li>gym.core.Wrapper</li>
 <li>gym.core.Env</li>
+<li>typing.Generic</li>
 </ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="TeachMyAgent.students.openai_baselines.common.wrappers.TimeLimit.action_space"><code class="name">var <span class="ident">action_space</span> : gym.spaces.space.Space[~ActType]</code></dt>
+<dd>
+<div class="desc"><p>Returns the action space of the environment.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def action_space(self) -&gt; spaces.Space[ActType]:
+    &#34;&#34;&#34;Returns the action space of the environment.&#34;&#34;&#34;
+    if self._action_space is None:
+        return self.env.action_space
+    return self._action_space</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.wrappers.TimeLimit.observation_space"><code class="name">var <span class="ident">observation_space</span> : gym.spaces.space.Space</code></dt>
+<dd>
+<div class="desc"><p>Returns the observation space of the environment.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def observation_space(self) -&gt; spaces.Space:
+    &#34;&#34;&#34;Returns the observation space of the environment.&#34;&#34;&#34;
+    if self._observation_space is None:
+        return self.env.observation_space
+    return self._observation_space</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.wrappers.TimeLimit.spec"><code class="name">var <span class="ident">spec</span></code></dt>
+<dd>
+<div class="desc"><p>Returns the environment specification.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def spec(self):
+    &#34;&#34;&#34;Returns the environment specification.&#34;&#34;&#34;
+    return self.env.spec</code></pre>
+</details>
+</dd>
+</dl>
 <h3>Methods</h3>
 <dl>
 <dt id="TeachMyAgent.students.openai_baselines.common.wrappers.TimeLimit.reset"><code class="name flex">
 <span>def <span class="ident">reset</span></span>(<span>self, **kwargs)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Resets the environment to an initial state and returns an initial
-observation.</p>
-<p>Note that this function should not reset the environment's random
-number generator(s); random variables in the environment's state should
-be sampled independently between multiple calls to <code>reset()</code>. In other
-words, each call of <code>reset()</code> should yield an environment suitable for
-a new episode, independent of previous episodes.</p>
-<h2 id="returns">Returns</h2>
-<p>observation (object): the initial observation.</p></div>
+<div class="desc"><p>Resets the environment with kwargs.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -221,20 +298,7 @@ a new episode, independent of previous episodes.</p>
 <span>def <span class="ident">step</span></span>(<span>self, ac)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Run one timestep of the environment's dynamics. When end of
-episode is reached, you are responsible for calling <code>reset()</code>
-to reset this environment's state.</p>
-<p>Accepts an action and returns a tuple (observation, reward, done, info).</p>
-<h2 id="args">Args</h2>
-<dl>
-<dt><strong><code>action</code></strong> :&ensp;<code>object</code></dt>
-<dd>an action provided by the agent</dd>
-</dl>
-<h2 id="returns">Returns</h2>
-<p>observation (object): agent's observation of the current environment
-reward (float) : amount of reward returned after previous action
-done (bool): whether the episode has ended, in which case further step() calls will return undefined results
-info (dict): contains auxiliary diagnostic information (helpful for debugging, and sometimes learning)</p></div>
+<div class="desc"><p>Steps through the environment with action.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -273,14 +337,20 @@ info (dict): contains auxiliary diagnostic information (helpful for debugging, a
 <li>
 <h4><code><a title="TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper" href="#TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper">ClipActionsWrapper</a></code></h4>
 <ul class="">
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper.action_space" href="#TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper.action_space">action_space</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper.observation_space" href="#TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper.observation_space">observation_space</a></code></li>
 <li><code><a title="TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper.reset" href="#TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper.reset">reset</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper.spec" href="#TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper.spec">spec</a></code></li>
 <li><code><a title="TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper.step" href="#TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper.step">step</a></code></li>
 </ul>
 </li>
 <li>
 <h4><code><a title="TeachMyAgent.students.openai_baselines.common.wrappers.TimeLimit" href="#TeachMyAgent.students.openai_baselines.common.wrappers.TimeLimit">TimeLimit</a></code></h4>
 <ul class="">
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.wrappers.TimeLimit.action_space" href="#TeachMyAgent.students.openai_baselines.common.wrappers.TimeLimit.action_space">action_space</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.wrappers.TimeLimit.observation_space" href="#TeachMyAgent.students.openai_baselines.common.wrappers.TimeLimit.observation_space">observation_space</a></code></li>
 <li><code><a title="TeachMyAgent.students.openai_baselines.common.wrappers.TimeLimit.reset" href="#TeachMyAgent.students.openai_baselines.common.wrappers.TimeLimit.reset">reset</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.wrappers.TimeLimit.spec" href="#TeachMyAgent.students.openai_baselines.common.wrappers.TimeLimit.spec">spec</a></code></li>
 <li><code><a title="TeachMyAgent.students.openai_baselines.common.wrappers.TimeLimit.step" href="#TeachMyAgent.students.openai_baselines.common.wrappers.TimeLimit.step">step</a></code></li>
 </ul>
 </li>

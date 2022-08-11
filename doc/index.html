@@ -102,8 +102,8 @@ pip install -e .
 <p>All possible arguments can be found in the <code><a title="TeachMyAgent.run_utils" href="run_utils/index.html">TeachMyAgent.run_utils</a></code> subpackage (as mentioned in <a href="#code-structure">Code structure</a>):</p>
 <ul>
 <li><code><a title="TeachMyAgent.run_utils.environment_args_handler" href="run_utils/environment_args_handler.html">TeachMyAgent.run_utils.environment_args_handler</a></code></li>
-<li><code><a title="TeachMyAgent.run_utils.student_args_handler" href="run_utils/student_args_handler.html">TeachMyAgent.run_utils.student_args_handler</a></code></li>
-<li><code><a title="TeachMyAgent.run_utils.teacher_args_handler" href="run_utils/teacher_args_handler.html">TeachMyAgent.run_utils.teacher_args_handler</a></code></li>
+<li><code>run_utils.student_args_handler</code></li>
+<li><code>run_utils.teacher_args_handler</code></li>
 </ul>
 <h1 id="launching-a-benchmark-campaign">Launching a benchmark campaign</h1>
 <p>Performing a full benchmark campaign on an ACL method (as shown in our <a href="https://arxiv.org/abs/2103.09815">paper</a>) can be done through multiple experiments.
@@ -209,8 +209,8 @@ for j in range(n):
         ep_ret += r
     Teacher.record_test_episode(ep_ret, ep_len)
 </code></pre>
-<p>Your student must then be added to the <code><a title="TeachMyAgent.students" href="students/index.html">TeachMyAgent.students</a></code> subpackage as well as in <code><a title="TeachMyAgent.run_utils.student_args_handler" href="run_utils/student_args_handler.html">TeachMyAgent.run_utils.student_args_handler</a></code>.
-Note that we provide a <code><a title="TeachMyAgent.students.test_policy" href="students/test_policy.html">TeachMyAgent.students.test_policy</a></code> file which loads a task from a test set, loads a trained policy and use it in the task. This code currently only works for SpinningUp or Baselines models, so you should modify it if your student does not use any of these.</p>
+<p>Your student must then be added to the <code><a title="TeachMyAgent.students" href="students/index.html">TeachMyAgent.students</a></code> subpackage as well as in <code>run_utils.student_args_handler</code>.
+Note that we provide a <code>students.test_policy</code> file which loads a task from a test set, loads a trained policy and use it in the task. This code currently only works for SpinningUp or Baselines models, so you should modify it if your student does not use any of these.</p>
 <h2 id="teachers">Teachers</h2>
 <p>All our teachers extend the same <code><a title="TeachMyAgent.teachers.algos.AbstractTeacher" href="teachers/algos/AbstractTeacher.html">TeachMyAgent.teachers.algos.AbstractTeacher</a></code> class which defines their required methods:</p>
 <ul>
@@ -222,9 +222,9 @@ Note that we provide a <code><a title="TeachMyAgent.students.test_policy" href="
 <li>(Optional) <code>is_non_exploratory_task_sampling_available(self)</code>: whether the method above can be called.</li>
 <li>(Optional) <code>dump(self, dump_dict)</code>: save the teacher.</li>
 </ul>
-<p>Teachers are then called through the <code><a title="TeachMyAgent.teachers.teacher_controller" href="teachers/teacher_controller.html">TeachMyAgent.teachers.teacher_controller</a></code> class, being the one passed to DeepRL students.
+<p>Teachers are then called through the <code>teachers.teacher_controller</code> class, being the one passed to DeepRL students.
 This class handles the storage of sampled tasks, possible reward interpretation as well as test tasks used when the <code>set_test_env_params</code> method is called.
-In order to add a new teacher, one must extend the <code>teachers.algos.AbstractTeache</code> class and add its class among the possible ones in the following lines of the <code><a title="TeachMyAgent.teachers.teacher_controller" href="teachers/teacher_controller.html">TeachMyAgent.teachers.teacher_controller</a></code>:</p>
+In order to add a new teacher, one must extend the <code>teachers.algos.AbstractTeache</code> class and add its class among the possible ones in the following lines of the <code>teachers.teacher_controller</code>:</p>
 <pre><code class="language-python"># setup tasks generator
 if teacher == 'Random':
     self.task_generator = RandomTeacher(mins, maxs, seed=seed, **teacher_params)
@@ -246,7 +246,7 @@ else:
     print('Unknown teacher')
     raise NotImplementedError
 </code></pre>
-<p>Finally, <code><a title="TeachMyAgent.run_utils.teacher_args_handler" href="run_utils/teacher_args_handler.html">TeachMyAgent.run_utils.teacher_args_handler</a></code> must be modified to add the teacher as well as its parameters.</p>
+<p>Finally, <code>run_utils.teacher_args_handler</code> must be modified to add the teacher as well as its parameters.</p>
 <h1 id="citing">Citing</h1>
 <p>If you use <code><a title="TeachMyAgent" href="#TeachMyAgent">TeachMyAgent</a></code> in your work, please cite the accompanying <a href="https://arxiv.org/abs/2103.09815">paper</a>:</p>
 <pre><code class="language-bibtex">@inproceedings{romac2021teachmyagent,
