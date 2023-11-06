@@ -10,7 +10,7 @@ Our repository provides:
 * **Two parametric Box2D environments**: Stumps Tracks and Parkour
 * **Multiple embodiments** with different locomotion skills (e.g. bipedal walker, spider, climbing chimpanzee, fish)
 * **Two Deep RL students**: SAC and PPO
-* **Several ACL algorithms**: ADR, ALP-GMM, Covar-GMM, SPDL, GoalGAN, Setter-Solver, RIAC
+* **Several ACL algorithms**: ADR, [ALP-GMM](https://github.com/flowersteam/teachDeepRL), Covar-GMM, SPDL, GoalGAN, Setter-Solver, RIAC
 * **Two benchmark experiments** using elements above: Skill-specific comparison and global performance assessment
 * **Three notebooks for systematic analysis** of results using statistical tests along with visualization tools (plots, videos...) allowing to reproduce our figures
 
