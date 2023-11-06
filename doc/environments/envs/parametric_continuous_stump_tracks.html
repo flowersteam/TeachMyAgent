@@ -1288,11 +1288,15 @@ walker_args: kwargs controlling the agent (e.g. number of body for a millipede)<
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="TeachMyAgent.environments.envs.parametric_continuous_stump_tracks.ParametricContinuousStumpTracks.metadata"><code class="name">var <span class="ident">metadata</span></code></dt>
+<dt id="TeachMyAgent.environments.envs.parametric_continuous_stump_tracks.ParametricContinuousStumpTracks.metadata"><code class="name">var <span class="ident">metadata</span> : Dict[str, Any]</code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
 <dt id="TeachMyAgent.environments.envs.parametric_continuous_stump_tracks.ParametricContinuousStumpTracks.observation_space"><code class="name">var <span class="ident">observation_space</span> : gym.spaces.space.Space[~ObsType]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="TeachMyAgent.environments.envs.parametric_continuous_stump_tracks.ParametricContinuousStumpTracks.render_mode"><code class="name">var <span class="ident">render_mode</span> : Union[str, NoneType]</code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -1387,34 +1391,83 @@ garbage collected or when the program exits.</p></div>
 </details>
 </dd>
 <dt id="TeachMyAgent.environments.envs.parametric_continuous_stump_tracks.ParametricContinuousStumpTracks.render"><code class="name flex">
-<span>def <span class="ident">render</span></span>(<span>self: object, *args: Tuple[Any], **kwargs: Dict[str, Any]) ‑> Union[~RenderFrame, List[~RenderFrame], NoneType]</span>
+<span>def <span class="ident">render</span></span>(<span>self, mode='human', draw_lidars=True)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Compute the render frames as specified by render_mode attribute during initialization of the environment.</p>
+<p>The set of supported modes varies per environment. (And some
+third-party environments may not support rendering at all.)
+By convention, if render_mode is:</p>
+<ul>
+<li>None (default): no render is computed.</li>
+<li>human: render return None.
+The environment is continuously rendered in the current display or terminal. Usually for human consumption.</li>
+<li>rgb_array: return a single frame representing the current state of the environment.
+A frame is a numpy.ndarray with shape (x, y, 3) representing RGB values for an x-by-y pixel image.</li>
+<li>rgb_array_list: return a list of frames representing the states of the environment since the last reset.
+Each frame is a numpy.ndarray with shape (x, y, 3), as with <code>rgb_array</code>.</li>
+<li>ansi: Return a strings (str) or StringIO.StringIO containing a
+terminal-style text representation for each time step.
+The text can include newlines and ANSI escape sequences (e.g. for colors).</li>
+</ul>
+<h2 id="note">Note</h2>
+<p>Make sure that your class's metadata 'render_modes' key includes
+the list of supported modes. It's recommended to call super()
+in implementations to use the functionality of this method.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def render(
-    self: object, *args: Tuple[Any], **kwargs: Dict[str, Any]
-) -&gt; render_return:
-    if &#34;mode&#34; in kwargs.keys() or len(args) &gt; 0:
-        deprecation(
-            &#34;The argument mode in render method is deprecated; &#34;
-            &#34;use render_mode during environment initialization instead.\n&#34;
-            &#34;See here for more information: https://www.gymlibrary.ml/content/api/&#34;
-        )
-    elif self.spec is not None and &#34;render_mode&#34; not in self.spec.kwargs.keys():  # type: ignore
-        deprecation(
-            &#34;You are calling render method, &#34;
-            &#34;but you didn&#39;t specified the argument render_mode at environment initialization. &#34;
-            &#34;To maintain backward compatibility, the environment will render in human mode.\n&#34;
-            &#34;If you want to render in human mode, initialize the environment in this way: &#34;
-            &#34;gym.make(&#39;EnvName&#39;, render_mode=&#39;human&#39;) and don&#39;t call the render method.\n&#34;
-            &#34;See here for more information: https://www.gymlibrary.ml/content/api/&#34;
-        )
+<pre><code class="python">def render(self, mode=&#39;human&#39;, draw_lidars=True):
+    #self.scroll = 1
+    from gym.envs.classic_control import rendering
+    if self.viewer is None:
+        self.viewer = rendering.Viewer(RENDERING_VIEWER_W, RENDERING_VIEWER_H)
+    self.viewer.set_bounds(self.scroll, RENDERING_VIEWER_W/SCALE + self.scroll, 0, RENDERING_VIEWER_H/SCALE)
 
-    return render_func(self, *args, **kwargs)</code></pre>
+    self.viewer.draw_polygon( [
+        (self.scroll,                  0),
+        (self.scroll+RENDERING_VIEWER_W/SCALE, 0),
+        (self.scroll+RENDERING_VIEWER_W/SCALE, RENDERING_VIEWER_H/SCALE),
+        (self.scroll,                  RENDERING_VIEWER_H/SCALE),
+        ], color=(0.9, 0.9, 1.0) )
+    for poly,x1,x2 in self.cloud_poly:
+        if x2 &lt; self.scroll/2: continue
+        if x1 &gt; self.scroll/2 + RENDERING_VIEWER_W/SCALE: continue
+        self.viewer.draw_polygon( [(p[0]+self.scroll/2, p[1]) for p in poly], color=(1,1,1))
+    for poly, color in self.terrain_poly:
+        if poly[1][0] &lt; self.scroll: continue
+        if poly[0][0] &gt; self.scroll + RENDERING_VIEWER_W/SCALE: continue
+        self.viewer.draw_polygon(poly, color=color)
+
+    for obj in self.drawlist:
+        for f in obj.fixtures:
+            trans = f.body.transform
+            if type(f.shape) is circleShape:
+                t = rendering.Transform(translation=trans*f.shape.pos)
+                self.viewer.draw_circle(f.shape.radius, 30, color=obj.color1).add_attr(t)
+                self.viewer.draw_circle(f.shape.radius, 30, color=obj.color2, filled=False, linewidth=2).add_attr(t)
+            else:
+                path = [trans*v for v in f.shape.vertices]
+                self.viewer.draw_polygon(path, color=obj.color1)
+                path.append(path[0])
+                self.viewer.draw_polyline(path, color=obj.color2, linewidth=2)
+
+    # Draw lidars
+    if draw_lidars:
+        for i in range(len(self.lidar)):
+            l = self.lidar[i]
+            self.viewer.draw_polyline([l.p1, l.p2], color=(1, 0, 0), linewidth=1)
+
+    flagy1 = TERRAIN_HEIGHT
+    flagy2 = flagy1 + 50/SCALE
+    x = TERRAIN_STEP*3
+    self.viewer.draw_polyline( [(x, flagy1), (x, flagy2)], color=(0,0,0), linewidth=2 )
+    f = [(x, flagy2), (x, flagy2-10/SCALE), (x+25/SCALE, flagy2-5/SCALE)]
+    self.viewer.draw_polygon(f, color=(0.9,0.2,0) )
+    self.viewer.draw_polyline(f + [f[0]], color=(0,0,0), linewidth=2 )
+
+    return self.viewer.render(return_rgb_array = mode==&#39;rgb_array&#39;)</code></pre>
 </details>
 </dd>
 <dt id="TeachMyAgent.environments.envs.parametric_continuous_stump_tracks.ParametricContinuousStumpTracks.reset"><code class="name flex">
@@ -1437,9 +1490,6 @@ However, if the environment already has a PRNG and <code>seed=None</code> is pas
 If you pass an integer, the PRNG will be reset even if it already exists.
 Usually, you want to pass an integer <em>right after the environment has been initialized and then never again</em>.
 Please refer to the minimal example above to see this paradigm in action.</dd>
-<dt><strong><code>return_info</code></strong> :&ensp;<code>bool</code></dt>
-<dd>If true, return additional information along with initial observation.
-This info should be analogous to the info returned in :meth:<code>step</code></dd>
 <dt><strong><code>options</code></strong> :&ensp;<code>optional dict</code></dt>
 <dd>Additional information to specify how the environment is reset (optional,
 depending on the specific environment)</dd>
@@ -1447,8 +1497,8 @@ depending on the specific environment)</dd>
 <h2 id="returns">Returns</h2>
 <p>observation (object): Observation of the initial state. This will be an element of :attr:<code>observation_space</code>
 (typically a numpy array) and is analogous to the observation returned by :meth:<code>step</code>.
-info (optional dictionary): This will <em>only</em> be returned if <code>return_info=True</code> is passed.
-It contains auxiliary information complementing <code>observation</code>. This dictionary should be analogous to
+info (dictionary):
+This dictionary contains auxiliary information complementing <code>observation</code>. It should be analogous to
 the <code>info</code> returned by :meth:<code>step</code>.</p></div>
 <details class="source">
 <summary>
@@ -1478,20 +1528,7 @@ the <code>info</code> returned by :meth:<code>step</code>.</p></div>
 <span>def <span class="ident">seed</span></span>(<span>self, seed=None)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>:deprecated: function that sets the seed for the environment's random number generator(s).</p>
-<p>Use <code>env.reset(seed=seed)</code> as the new API for setting the seed of the environment.</p>
-<h2 id="note">Note</h2>
-<p>Some environments use multiple pseudorandom number generators.
-We want to capture all such seeds used in order to ensure that
-there aren't accidental correlations between multiple generators.</p>
-<h2 id="args">Args</h2>
-<p>seed(Optional int): The seed value for the random number generator</p>
-<h2 id="returns">Returns</h2>
-<p>seeds (List[int]): Returns the list of seeds used in this environment's random
-number generators. The first value in the list should be the
-"main" seed, or the value which a reproducer should pass to
-'seed'. Often, the main seed equals the provided 'seed', but
-this won't be true <code>if seed=None</code>, for example.</p></div>
+<div class="desc"></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -1559,8 +1596,7 @@ Call this method before <code>reset()</code>.</p>
 <dd>
 <div class="desc"><p>Run one timestep of the environment's dynamics.</p>
 <p>When end of episode is reached, you are responsible for calling :meth:<code>reset</code> to reset this environment's state.
-Accepts an action and returns either a tuple <code>(observation, reward, terminated, truncated, info)</code>, or a tuple
-(observation, reward, done, info). The latter is deprecated and will be removed in future versions.</p>
+Accepts an action and returns either a tuple <code>(observation, reward, terminated, truncated, info)</code>.</p>
 <h2 id="args">Args</h2>
 <dl>
 <dt><strong><code>action</code></strong> :&ensp;<code>ActType</code></dt>
@@ -1699,6 +1735,7 @@ a certain timelimit was exceeded, or the physics simulation has entered an inval
 <li><code><a title="TeachMyAgent.environments.envs.parametric_continuous_stump_tracks.ParametricContinuousStumpTracks.metadata" href="#TeachMyAgent.environments.envs.parametric_continuous_stump_tracks.ParametricContinuousStumpTracks.metadata">metadata</a></code></li>
 <li><code><a title="TeachMyAgent.environments.envs.parametric_continuous_stump_tracks.ParametricContinuousStumpTracks.observation_space" href="#TeachMyAgent.environments.envs.parametric_continuous_stump_tracks.ParametricContinuousStumpTracks.observation_space">observation_space</a></code></li>
 <li><code><a title="TeachMyAgent.environments.envs.parametric_continuous_stump_tracks.ParametricContinuousStumpTracks.render" href="#TeachMyAgent.environments.envs.parametric_continuous_stump_tracks.ParametricContinuousStumpTracks.render">render</a></code></li>
+<li><code><a title="TeachMyAgent.environments.envs.parametric_continuous_stump_tracks.ParametricContinuousStumpTracks.render_mode" href="#TeachMyAgent.environments.envs.parametric_continuous_stump_tracks.ParametricContinuousStumpTracks.render_mode">render_mode</a></code></li>
 <li><code><a title="TeachMyAgent.environments.envs.parametric_continuous_stump_tracks.ParametricContinuousStumpTracks.reset" href="#TeachMyAgent.environments.envs.parametric_continuous_stump_tracks.ParametricContinuousStumpTracks.reset">reset</a></code></li>
 <li><code><a title="TeachMyAgent.environments.envs.parametric_continuous_stump_tracks.ParametricContinuousStumpTracks.seed" href="#TeachMyAgent.environments.envs.parametric_continuous_stump_tracks.ParametricContinuousStumpTracks.seed">seed</a></code></li>
 <li><code><a title="TeachMyAgent.environments.envs.parametric_continuous_stump_tracks.ParametricContinuousStumpTracks.set_environment" href="#TeachMyAgent.environments.envs.parametric_continuous_stump_tracks.ParametricContinuousStumpTracks.set_environment">set_environment</a></code></li>

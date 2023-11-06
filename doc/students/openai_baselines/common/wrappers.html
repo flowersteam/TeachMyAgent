@@ -69,7 +69,7 @@ class ClipActionsWrapper(gym.Wrapper):
 <dl>
 <dt id="TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper"><code class="flex name class">
 <span>class <span class="ident">ClipActionsWrapper</span></span>
-<span>(</span><span>env: gym.core.Env, new_step_api: bool = False)</span>
+<span>(</span><span>env: gym.core.Env)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Wraps an environment to allow a modular transformation of the :meth:<code>step</code> and :meth:<code>reset</code> methods.</p>
@@ -83,8 +83,6 @@ original code.</p>
 <dl>
 <dt><strong><code>env</code></strong></dt>
 <dd>The environment to wrap</dd>
-<dt><strong><code>new_step_api</code></strong></dt>
-<dd>Whether the wrapper's step method will output in new or old step API</dd>
 </dl></div>
 <details class="source">
 <summary>
@@ -123,6 +121,21 @@ def action_space(self) -&gt; spaces.Space[ActType]:
     return self._action_space</code></pre>
 </details>
 </dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper.metadata"><code class="name">var <span class="ident">metadata</span> : dict</code></dt>
+<dd>
+<div class="desc"><p>Returns the environment metadata.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def metadata(self) -&gt; dict:
+    &#34;&#34;&#34;Returns the environment metadata.&#34;&#34;&#34;
+    if self._metadata is None:
+        return self.env.metadata
+    return self._metadata</code></pre>
+</details>
+</dd>
 <dt id="TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper.observation_space"><code class="name">var <span class="ident">observation_space</span> : gym.spaces.space.Space</code></dt>
 <dd>
 <div class="desc"><p>Returns the observation space of the environment.</p></div>
@@ -136,6 +149,19 @@ def observation_space(self) -&gt; spaces.Space:
     if self._observation_space is None:
         return self.env.observation_space
     return self._observation_space</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper.render_mode"><code class="name">var <span class="ident">render_mode</span> : Union[str, NoneType]</code></dt>
+<dd>
+<div class="desc"><p>Returns the environment render_mode.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def render_mode(self) -&gt; Optional[str]:
+    &#34;&#34;&#34;Returns the environment render_mode.&#34;&#34;&#34;
+    return self.env.render_mode</code></pre>
 </details>
 </dd>
 <dt id="TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper.spec"><code class="name">var <span class="ident">spec</span></code></dt>
@@ -201,8 +227,6 @@ original code.</p>
 <dl>
 <dt><strong><code>env</code></strong></dt>
 <dd>The environment to wrap</dd>
-<dt><strong><code>new_step_api</code></strong></dt>
-<dd>Whether the wrapper's step method will output in new or old step API</dd>
 </dl></div>
 <details class="source">
 <summary>
@@ -249,6 +273,21 @@ def action_space(self) -&gt; spaces.Space[ActType]:
     return self._action_space</code></pre>
 </details>
 </dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.wrappers.TimeLimit.metadata"><code class="name">var <span class="ident">metadata</span> : dict</code></dt>
+<dd>
+<div class="desc"><p>Returns the environment metadata.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def metadata(self) -&gt; dict:
+    &#34;&#34;&#34;Returns the environment metadata.&#34;&#34;&#34;
+    if self._metadata is None:
+        return self.env.metadata
+    return self._metadata</code></pre>
+</details>
+</dd>
 <dt id="TeachMyAgent.students.openai_baselines.common.wrappers.TimeLimit.observation_space"><code class="name">var <span class="ident">observation_space</span> : gym.spaces.space.Space</code></dt>
 <dd>
 <div class="desc"><p>Returns the observation space of the environment.</p></div>
@@ -262,6 +301,19 @@ def observation_space(self) -&gt; spaces.Space:
     if self._observation_space is None:
         return self.env.observation_space
     return self._observation_space</code></pre>
+</details>
+</dd>
+<dt id="TeachMyAgent.students.openai_baselines.common.wrappers.TimeLimit.render_mode"><code class="name">var <span class="ident">render_mode</span> : Union[str, NoneType]</code></dt>
+<dd>
+<div class="desc"><p>Returns the environment render_mode.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def render_mode(self) -&gt; Optional[str]:
+    &#34;&#34;&#34;Returns the environment render_mode.&#34;&#34;&#34;
+    return self.env.render_mode</code></pre>
 </details>
 </dd>
 <dt id="TeachMyAgent.students.openai_baselines.common.wrappers.TimeLimit.spec"><code class="name">var <span class="ident">spec</span></code></dt>
@@ -336,9 +388,11 @@ def spec(self):
 <ul>
 <li>
 <h4><code><a title="TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper" href="#TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper">ClipActionsWrapper</a></code></h4>
-<ul class="">
+<ul class="two-column">
 <li><code><a title="TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper.action_space" href="#TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper.action_space">action_space</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper.metadata" href="#TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper.metadata">metadata</a></code></li>
 <li><code><a title="TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper.observation_space" href="#TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper.observation_space">observation_space</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper.render_mode" href="#TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper.render_mode">render_mode</a></code></li>
 <li><code><a title="TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper.reset" href="#TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper.reset">reset</a></code></li>
 <li><code><a title="TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper.spec" href="#TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper.spec">spec</a></code></li>
 <li><code><a title="TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper.step" href="#TeachMyAgent.students.openai_baselines.common.wrappers.ClipActionsWrapper.step">step</a></code></li>
@@ -346,9 +400,11 @@ def spec(self):
 </li>
 <li>
 <h4><code><a title="TeachMyAgent.students.openai_baselines.common.wrappers.TimeLimit" href="#TeachMyAgent.students.openai_baselines.common.wrappers.TimeLimit">TimeLimit</a></code></h4>
-<ul class="">
+<ul class="two-column">
 <li><code><a title="TeachMyAgent.students.openai_baselines.common.wrappers.TimeLimit.action_space" href="#TeachMyAgent.students.openai_baselines.common.wrappers.TimeLimit.action_space">action_space</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.wrappers.TimeLimit.metadata" href="#TeachMyAgent.students.openai_baselines.common.wrappers.TimeLimit.metadata">metadata</a></code></li>
 <li><code><a title="TeachMyAgent.students.openai_baselines.common.wrappers.TimeLimit.observation_space" href="#TeachMyAgent.students.openai_baselines.common.wrappers.TimeLimit.observation_space">observation_space</a></code></li>
+<li><code><a title="TeachMyAgent.students.openai_baselines.common.wrappers.TimeLimit.render_mode" href="#TeachMyAgent.students.openai_baselines.common.wrappers.TimeLimit.render_mode">render_mode</a></code></li>
 <li><code><a title="TeachMyAgent.students.openai_baselines.common.wrappers.TimeLimit.reset" href="#TeachMyAgent.students.openai_baselines.common.wrappers.TimeLimit.reset">reset</a></code></li>
 <li><code><a title="TeachMyAgent.students.openai_baselines.common.wrappers.TimeLimit.spec" href="#TeachMyAgent.students.openai_baselines.common.wrappers.TimeLimit.spec">spec</a></code></li>
 <li><code><a title="TeachMyAgent.students.openai_baselines.common.wrappers.TimeLimit.step" href="#TeachMyAgent.students.openai_baselines.common.wrappers.TimeLimit.step">step</a></code></li>
